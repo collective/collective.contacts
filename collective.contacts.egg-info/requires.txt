@@ -1,0 +1,5 @@
+setuptools
+
+[tests]
+zope.testing
+plone.mocktestcase

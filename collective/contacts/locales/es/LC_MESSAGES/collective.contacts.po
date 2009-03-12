@@ -1,0 +1,802 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2009-01-14 21:51+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: es\n"
+"Language-Name: Español\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.contacts\n"
+
+#: ./imports.py:196
+msgid "${organizations_number} organizations to be added to \"${location}\"."
+msgstr "Se añadirán ${organizations_number} organizaciones en \"${location}\"."
+
+#: ./imports.py:95
+msgid "${persons_number} persons to be added to \"${location}\"."
+msgstr "Se añadirán ${persons_number} personas en \"${location}\"."
+
+#: ./browser/importview.py:54
+msgid "%s successfuly imported organizations"
+msgstr "%s organizaciones importadas correctamente"
+
+#: ./browser/importview.py:45
+msgid "%s successfuly imported persons"
+msgstr "%s personas importadas correctamente"
+
+#: ./content/organization.py:110
+msgid "2nd E-mail address"
+msgstr "2da dirección de email"
+
+#: ./content/person.py:143
+msgid "2nd Work E-mail address (optional)"
+msgstr "2da dirección de email del trabajo (opcional)"
+
+#: ./interfaces/person.py:77
+msgid "3nd Work E-mail address (optional)"
+msgstr "3ra dirección de email del trabajo (opcional)"
+
+#: ./content/organization.py:122
+msgid "3rd E-mail address"
+msgstr "3ra dirección de email"
+
+#: ./content/person.py:156
+msgid "3rd Work E-mail address (optional)"
+msgstr "3ra dirección de email del trabajo (opcional)"
+
+#: ./content/person.py:144
+msgid "A second work e-mail address"
+msgstr "Una segunda dirección de email del trabajo"
+
+#: ./content/person.py:157
+msgid "A third work e-mail address"
+msgstr "Una tercera dirección de email del trabajo"
+
+#: ./content/organization.py:22
+msgid "Address"
+msgstr "Dirección"
+
+#. Default: "Address Book"
+#: ./profiles/default/types/Address_Book.xml
+msgid "Address Book"
+msgstr "Libreta de direcciones"
+
+#. Default: "An address book"
+#: ./profiles/default/types/Address_Book.xml
+msgid "An address book"
+msgstr "Una libreta de direcciones"
+
+#: ./content/organization.py:33
+msgid "City"
+msgstr "Ciudad"
+
+#. Default: "Contact information of a person"
+#: ./profiles/default/types/Person.xml
+msgid "Contact information of a person"
+msgstr "Información de contacto de una persona"
+
+#. Default: "Contact information of an organization"
+#: ./profiles/default/types/Organization.xml
+msgid "Contact information of an organization"
+msgstr "Información de contacto de una organización"
+
+#: ./content/organization.py:56
+msgid "Country"
+msgstr "Pais"
+
+#: ./content/person.py:94
+msgid "Department"
+msgstr "Departamento"
+
+#: ./content/person.py:95
+msgid "Department where this person works"
+msgstr "Departamento donde esta persona trabaja"
+
+#: ./content/organization.py:98
+msgid "E-mail address"
+msgstr "Dirección de email"
+
+#: ./content/organization.py:67
+msgid "Extra Address Info"
+msgstr "Información extra de la dirección"
+
+#: ./interfaces/organization.py:51
+msgid "Fax Number"
+msgstr "Número de Fax"
+
+#: ./content/organization.py:88
+msgid "Fax number"
+msgstr "Número de Fax"
+
+#: ./content/person.py:44
+msgid "First Name"
+msgstr "Nombre"
+
+#: ./content/person.py:282
+msgid "Full Name"
+msgstr "Nombre completo"
+
+#. Default: "Group"
+#: ./profiles/default/types/Group.xml
+msgid "Group"
+msgstr "Grupo"
+
+#: ./content/person.py:55
+msgid "Last Name"
+msgstr "Apellido"
+
+#. Default: "Let you have several persons together"
+#: ./profiles/default/types/Group.xml
+msgid "Let you have several persons together"
+msgstr "Le permite tener varias personas juntas"
+
+#: ./content/person.py:231
+msgid "Mobile Phone Number"
+msgstr "Teléfono móvil"
+
+#: ./content/organization.py:170
+msgid "Name"
+msgstr "Nombre"
+
+#: ./content/person.py:66
+msgid "Organization"
+msgstr "Organización"
+
+#: ./content/organization.py:111
+msgid "Organization's 2nd e-mail address"
+msgstr "2da dirección de email de la organización"
+
+#: ./content/organization.py:123
+msgid "Organization's 3rd e-mail address"
+msgstr "3ra dirección de email de la organización"
+
+#: ./content/organization.py:45
+msgid "Organization's ZIP"
+msgstr "Código postal de la organización"
+
+#: ./content/organization.py:23
+msgid "Organization's address"
+msgstr "Dirección de la organización"
+
+#: ./content/organization.py:34
+msgid "Organization's city"
+msgstr "Ciudad de la organización"
+
+#: ./content/organization.py:57
+msgid "Organization's country"
+msgstr "País de la organización"
+
+#: ./content/organization.py:99
+msgid "Organization's e-mail address"
+msgstr "Dirección de email de la organización"
+
+#: ./content/organization.py:68
+msgid "Organization's extra address information."
+msgstr "Información extra de la dirección de la organización"
+
+#: ./content/organization.py:89
+msgid "Organization's fax number"
+msgstr "Número de fax de la organización"
+
+#: ./content/organization.py:79
+msgid "Organization's phone number"
+msgstr "Número de telefono de la organización"
+
+#: ./content/organization.py:148
+msgid "Organization's sector"
+msgstr "Rubro de la organización"
+
+#: ./content/organization.py:135
+msgid "Organization's web page or blog"
+msgstr "Página web o blog de la organización"
+
+#. Default: "Person"
+#: ./profiles/default/types/Person.xml
+msgid "Person"
+msgstr "Persona"
+
+#: ./content/person.py:183
+msgid "Person's address"
+msgstr "Dirección de la persona"
+
+#: ./content/person.py:208
+msgid "Person's city"
+msgstr "Ciudad de la persona"
+
+#: ./content/person.py:196
+msgid "Person's country"
+msgstr "País de la persona"
+
+#: ./content/person.py:244
+msgid "Person's e-mail address"
+msgstr "Dirección de email de la persona"
+
+#: ./content/person.py:45
+msgid "Person's first name"
+msgstr "Nombre de la persona"
+
+#: ./content/person.py:56
+msgid "Person's last name"
+msgstr "Apellido de la persona"
+
+#: ./content/person.py:232
+msgid "Person's mobile phone number"
+msgstr "Número del teléfono móvil de la persona"
+
+#: ./content/person.py:220
+msgid "Person's phone number"
+msgstr "Número telefónico de la persona"
+
+#: ./content/person.py:170
+msgid "Person's photo"
+msgstr "Foto de la persona"
+
+#: ./content/person.py:83
+msgid "Person's position in the company"
+msgstr "Posición de la persona en la compañía"
+
+#: ./content/person.py:36
+msgid "Person's short name"
+msgstr "Apodo de la persona"
+
+#: ./content/person.py:257
+msgid "Person's web page or blog"
+msgstr "Página web o blog de la persona"
+
+#: ./content/person.py:131
+msgid "Person's work e-mail address"
+msgstr "Dirección de email laboral de la persona"
+
+#: ./content/person.py:119
+msgid "Person's work mobile phone number"
+msgstr "Número de telefono del móvil laboral de la persona"
+
+#: ./content/person.py:107
+msgid "Person's work phone number"
+msgstr "Número de teléfono laboral de la persona"
+
+#: ./content/group.py:25
+msgid "Persons"
+msgstr "Personas"
+
+#: ./content/organization.py:78
+msgid "Phone Number"
+msgstr "Número de teléfono"
+
+#: ./content/person.py:169
+msgid "Photo"
+msgstr "Foto"
+
+#: ./content/person.py:82
+msgid "Position"
+msgstr "Posición"
+
+#: ./content/organization.py:147
+msgid "Sector"
+msgstr "Rubro"
+
+#: ./content/person.py:35
+msgid "Short Name"
+msgstr "Apodo"
+
+#: ./imports.py:168
+msgid "Starting the organizations import process"
+msgstr "Comenzando el proceso de importar organizaciones"
+
+#: ./imports.py:64
+msgid "Starting the persons import process"
+msgstr "Comenzando el proceso de importar personas"
+
+#: ./imports.py:231
+msgid "Successfuly added ${organizations_number} organizations to \"${location}\"."
+msgstr "Añadidas ${organizations_number} organizaciones satisfactoriamente en \"${location}\"."
+
+#: ./imports.py:155
+msgid "Successfuly added ${persons_number} persons to \"${location}\"."
+msgstr "Añadidas ${persons_number} personas satisfactoriamente en \"${location}\"."
+
+#: ./imports.py:220
+msgid "Successfuly added \"${organization_id}\"."
+msgstr "\"${organization_id}\" añadida satisfactoriamente."
+
+#: ./imports.py:140
+msgid "Successfuly added \"${person_id}\"."
+msgstr "\"${person_id}\" añadida satisfactoriamente."
+
+#: ./content/organization.py:158
+msgid "Text"
+msgstr "Texto"
+
+#: ./content/person.py:67
+msgid "The organization the person belongs to"
+msgstr "La organización a la que esta persona pertenece"
+
+#: ./content/group.py:26
+msgid "The persons that belong to this group"
+msgstr "Las personas que pertenecen a este grupo"
+
+#: ./imports.py:112
+msgid "There are ${org_size} organizations with the same title, i don't know with which one relate this person."
+msgstr "Existen ${org_size} organizaciones con el mismo título, no se con cual relacionar a esta persona."
+
+#: ./browser/searchaddressbookview.py:110
+msgid "There are no persons to send an email to"
+msgstr "No hay personas a las cuales enviar un email."
+
+#: ./imports.py:144
+msgid "There was an error while adding."
+msgstr "Hubo un error al agregar."
+
+#: ./imports.py:122
+msgid "There's already a person with this id here."
+msgstr "Ya existe una persona con éste id aquí"
+
+#: ./imports.py:205
+msgid "There's already an organization with this id here."
+msgstr "Ya existe una organización con éste id aquí."
+
+#: ./imports.py:150
+msgid "There's no organization with title ${organization_name}, make sure it exists before adding persons. \"${person_id}\" not added"
+msgstr "No existe una organización con título ${organization_name}, asegúrese que existe antes de agregar personas. \"${person_id}\" no añadida"
+
+#: ./content/organization.py:134
+msgid "Web"
+msgstr "Web"
+
+#: ./content/person.py:256
+msgid "Web / Blog"
+msgstr "Web / Blog"
+
+#: ./content/person.py:130
+msgid "Work E-mail address"
+msgstr "Dirección de email laboral"
+
+#: ./content/person.py:118
+msgid "Work Mobile Phone Number"
+msgstr "Número de telefono móvil laboral"
+
+#: ./content/person.py:106
+msgid "Work Phone Number"
+msgstr "Número de teléfono laboral"
+
+#: ./browser/searchaddressbookview.py:93
+msgid "You need to select at least one group"
+msgstr "Debe seleccionar al menos un grupo."
+
+#: ./browser/searchaddressbookview.py:59
+msgid "You need to select at least one person or organization"
+msgstr "Debe seleccionar a lo sumo una persona u organizacion"
+
+#: ./imports.py:207
+msgid "You will have to load the organization with id \"${organization_id}\" manually."
+msgstr "Va a tener que agregar la organización con id \"${organization_id}\" a mano."
+
+#: ./imports.py:116
+msgid "You will have to load the person with id \"${person_id}\" manually."
+msgstr "Va a tener que agregar la persona con id \"${person_id}\" a mano."
+
+#: ./content/organization.py:44
+msgid "ZIP"
+msgstr "Código postal"
+
+#. Default: "Advanced organizations search:"
+#: ./browser/searchaddressbookview.pt:165
+msgid "advanced_organizations_search"
+msgstr "Búsqueda avanzada de organizaciones:"
+
+#. Default: "Advanced person search:"
+#: ./browser/searchaddressbookview.pt:49
+msgid "advanced_person_search"
+msgstr "Búsqueda avanzada de personas"
+
+#. Default: "There are no persons assigned to this group."
+#: ./browser/groupview.pt:13
+msgid "group_no_persons"
+msgstr "No hay personas asignadas a este grupo."
+
+#. Default: "Groups:"
+#: ./browser/addressview.pt:162
+msgid "groups"
+msgstr "Grupos:"
+
+#. Default: "Advanced Search"
+#: ./browser/searchaddressbookview.pt:346
+msgid "label_advanced_search"
+msgstr "Búsqueda avanzada"
+
+#. Default: "Advanced search for persons or organizations"
+#: ./browser/addressview.pt:200
+msgid "label_advanced_search_addressbook"
+msgstr "Búsqueda avanzada de personas u organizaciones"
+
+#. Default: "Search Again"
+#: ./browser/searchaddressbookview.pt:339
+msgid "label_do_another_search"
+msgstr "Buscar de nuevo"
+
+#. Default: "Error"
+#: ./browser/searchaddressbookview.pt:23
+msgid "label_error"
+msgstr "Error"
+
+#. Default: "Export organizations"
+#: ./browser/searchaddressbookview.pt:420
+msgid "label_export_organizations"
+msgstr "Exportar organizaciones"
+
+#. Default: "Export persons"
+#: ./browser/searchaddressbookview.pt:332
+msgid "label_export_persons"
+msgstr "Exportar personas"
+
+#. Default: "Go back"
+#: ./browser/searchaddressbookview.pt:28
+msgid "label_go_back"
+msgstr "Ir atrás"
+
+#. Default: "here"
+#: ./browser/searchaddressbookview.pt:588
+msgid "label_here"
+msgstr "Aquí"
+
+#. Default: "Import file"
+#: ./browser/importview.pt:22
+msgid "label_import_file"
+msgstr "Importar archivo"
+
+#. Default: "Import organizations or persons"
+#: ./browser/addressview.pt:207
+msgid "label_import_organizations_persons"
+msgstr "Importar organizaciones o personas"
+
+#. Default: "Selection"
+#: ./browser/importview.pt:25
+msgid "label_import_selection"
+msgstr "Selección"
+
+#. Default: "Import"
+#: ./browser/importview.pt:32
+msgid "label_import_submit"
+msgstr "Importar"
+
+#. Default: "Info"
+#: ./browser/importview.pt:13
+msgid "label_info"
+msgstr "Info"
+
+#. Default: "Organizations"
+#: ./browser/importview.pt:28
+msgid "label_organizations"
+msgstr "Organizaciones"
+
+#. Default: "Persons"
+#: ./browser/importview.pt:27
+msgid "label_persons"
+msgstr "Personas"
+
+#. Default: "Quick Search"
+#: ./browser/addressview.pt:168
+msgid "label_quick_search_groups"
+msgstr ""
+
+#. Default: "Quick Search"
+#: ./browser/addressview.pt:101
+msgid "label_quick_search_organizations"
+msgstr "Búsqueda rápida"
+
+#. Default: "Quick Search"
+#: ./browser/addressview.pt:29
+msgid "label_quick_search_persons"
+msgstr "Búsqueda rápida"
+
+#. Default: "Search Organizations"
+#: ./browser/searchaddressbookview.pt:253
+msgid "label_search_organizations"
+msgstr "Buscar organizaciones"
+
+#. Default: "Address"
+#: ./browser/searchaddressbookview.pt:174
+msgid "label_search_organizations_address"
+msgstr "Dirección"
+
+#. Default: "City"
+#: ./browser/searchaddressbookview.pt:180
+msgid "label_search_organizations_city"
+msgstr "Ciudad"
+
+#. Default: "Country"
+#: ./browser/searchaddressbookview.pt:192
+msgid "label_search_organizations_country"
+msgstr "País"
+
+#. Default: "Email address"
+#: ./browser/searchaddressbookview.pt:216
+msgid "label_search_organizations_email"
+msgstr "Dirección de email"
+
+#. Default: "2nd Email address"
+#: ./browser/searchaddressbookview.pt:222
+msgid "label_search_organizations_email2"
+msgstr "2da dirección de email"
+
+#. Default: "3rd Email address"
+#: ./browser/searchaddressbookview.pt:228
+msgid "label_search_organizations_email3"
+msgstr "3ra dirección de email"
+
+#. Default: "Extra Address Info"
+#: ./browser/searchaddressbookview.pt:198
+msgid "label_search_organizations_extra_address"
+msgstr "Información extra de la dirección"
+
+#. Default: "Fax"
+#: ./browser/searchaddressbookview.pt:210
+msgid "label_search_organizations_fax"
+msgstr "Fax"
+
+#. Default: "Phone Number"
+#: ./browser/searchaddressbookview.pt:204
+msgid "label_search_organizations_phone"
+msgstr "Número de teléfono"
+
+#. Default: "Sector"
+#: ./browser/searchaddressbookview.pt:240
+msgid "label_search_organizations_sector"
+msgstr "Rubro"
+
+#. Default: "Text"
+#: ./browser/searchaddressbookview.pt:246
+msgid "label_search_organizations_text"
+msgstr "Texto"
+
+#. Default: "Name"
+#: ./browser/searchaddressbookview.pt:168
+msgid "label_search_organizations_title"
+msgstr "Nombre"
+
+#. Default: "Web"
+#: ./browser/searchaddressbookview.pt:234
+msgid "label_search_organizations_web"
+msgstr "Web"
+
+#. Default: "Zip"
+#: ./browser/searchaddressbookview.pt:186
+msgid "label_search_organizations_zip"
+msgstr "Código postal"
+
+#. Default: "Search Persons"
+#: ./browser/searchaddressbookview.pt:155
+msgid "label_search_persons"
+msgstr "Buscar personas"
+
+#. Default: "Address"
+#: ./browser/searchaddressbookview.pt:106
+msgid "label_search_persons_address"
+msgstr "Dirección"
+
+#. Default: "City"
+#: ./browser/searchaddressbookview.pt:118
+msgid "label_search_persons_city"
+msgstr "Ciudad"
+
+#. Default: "Country"
+#: ./browser/searchaddressbookview.pt:112
+msgid "label_search_persons_country"
+msgstr "País"
+
+#. Default: "Department"
+#: ./browser/searchaddressbookview.pt:82
+msgid "label_search_persons_department"
+msgstr "Departamento"
+
+#. Default: "Work Email"
+#: ./browser/searchaddressbookview.pt:100
+msgid "label_search_persons_email"
+msgstr "Email laboral"
+
+#. Default: "First Name"
+#: ./browser/searchaddressbookview.pt:58
+msgid "label_search_persons_first_name"
+msgstr "Nombre"
+
+#. Default: "Search"
+#: ./browser/groupview.pt:26
+msgid "label_search_persons_in_group"
+msgstr "Buscar"
+
+#. Default: "Last Name"
+#: ./browser/searchaddressbookview.pt:64
+msgid "label_search_persons_last_name"
+msgstr "Apellido"
+
+#. Default: "Mobile Phone Number"
+#: ./browser/searchaddressbookview.pt:130
+msgid "label_search_persons_mobile_phone"
+msgstr "Número de teléfono móvil"
+
+#. Default: "Organization"
+#: ./browser/searchaddressbookview.pt:70
+msgid "label_search_persons_organization"
+msgstr "Organización"
+
+#. Default: "Phone Number"
+#: ./browser/searchaddressbookview.pt:124
+msgid "label_search_persons_phone"
+msgstr "Número de teléfono"
+
+#. Default: "Position"
+#: ./browser/searchaddressbookview.pt:76
+msgid "label_search_persons_position"
+msgstr "Posición"
+
+#. Default: "Short Name"
+#: ./browser/searchaddressbookview.pt:52
+msgid "label_search_persons_short_name"
+msgstr "Apodo"
+
+#. Default: "Text"
+#: ./browser/searchaddressbookview.pt:148
+msgid "label_search_persons_text"
+msgstr "Texto"
+
+#. Default: "Web / Blog"
+#: ./browser/searchaddressbookview.pt:142
+msgid "label_search_persons_web"
+msgstr "Web / Blog"
+
+#. Default: "Work Mobile Phone"
+#: ./browser/searchaddressbookview.pt:94
+msgid "label_search_persons_work_mobile_phone"
+msgstr "Teléfono móvil laboral"
+
+#. Default: "Work Phone Number"
+#: ./browser/searchaddressbookview.pt:88
+msgid "label_search_persons_work_phone"
+msgstr "Número de teléfono laboral"
+
+#. Default: "Send emails"
+#: ./browser/searchaddressbookview.pt:585
+msgid "label_send_emails"
+msgstr "Enviar emails"
+
+#. Default: "You're about to send an email to the following addresses:"
+#: ./browser/searchaddressbookview.pt:586
+msgid "label_send_emails_text"
+msgstr "Está a punto de enviar un email a las siguientes direcciones:"
+
+#. Default: "Send mail to"
+#: ./browser/searchaddressbookview.pt:331
+msgid "label_send_mail_to"
+msgstr "Enviar email a"
+
+#. Default: "Send mail to group"
+#: ./browser/searchaddressbookview.pt:482
+msgid "label_send_mail_to_group"
+msgstr "Enviar mail a grupo."
+
+#. Default: "to correct."
+#: ./browser/searchaddressbookview.pt:28
+msgid "label_to_correct"
+msgstr "para corregir."
+
+#. Default: "Members"
+#: ./browser/searchaddressbookview.pt:463
+msgid "listingheader_groups_members"
+msgstr "Miembros"
+
+#. Default: "Name"
+#: ./browser/searchaddressbookview.pt:462
+msgid "listingheader_groups_name"
+msgstr "Nombre"
+
+#. Default: "Address"
+#: ./browser/searchaddressbookview.pt:381
+msgid "listingheader_organizations_address"
+msgstr "Dirección"
+
+#. Default: "City"
+#: ./browser/searchaddressbookview.pt:382
+msgid "listingheader_organizations_city"
+msgstr "Ciudad"
+
+#. Default: "Country"
+#: ./browser/searchaddressbookview.pt:383
+msgid "listingheader_organizations_country"
+msgstr "País"
+
+#. Default: "E-Mail"
+#: ./browser/searchaddressbookview.pt:379
+msgid "listingheader_organizations_email"
+msgstr "E-mail"
+
+#. Default: "Fax"
+#: ./browser/searchaddressbookview.pt:378
+msgid "listingheader_organizations_fax"
+msgstr "Fax"
+
+#. Default: "Name"
+#: ./browser/searchaddressbookview.pt:375
+msgid "listingheader_organizations_name"
+msgstr "Nombre"
+
+#. Default: "Phone"
+#: ./browser/searchaddressbookview.pt:377
+msgid "listingheader_organizations_phone"
+msgstr "Teléfono"
+
+#. Default: "Sector"
+#: ./browser/searchaddressbookview.pt:376
+msgid "listingheader_organizations_sector"
+msgstr "Rubro"
+
+#. Default: "Web"
+#: ./browser/searchaddressbookview.pt:380
+msgid "listingheader_organizations_web"
+msgstr "Web"
+
+#. Default: "Address"
+#: ./browser/searchaddressbookview.pt:289
+msgid "listingheader_persons_address"
+msgstr "Dirección"
+
+#. Default: "City"
+#: ./browser/searchaddressbookview.pt:290
+msgid "listingheader_persons_city"
+msgstr "Ciudad"
+
+#. Default: "Country"
+#: ./browser/searchaddressbookview.pt:291
+msgid "listingheader_persons_country"
+msgstr "País"
+
+#. Default: "E-Mail"
+#: ./browser/searchaddressbookview.pt:287
+msgid "listingheader_persons_email"
+msgstr "E-mail"
+
+#. Default: "Name and Last Name"
+#: ./browser/searchaddressbookview.pt:283
+msgid "listingheader_persons_first_last_name"
+msgstr "Nombre y apellido"
+
+#. Default: "Mobile"
+#: ./browser/searchaddressbookview.pt:286
+msgid "listingheader_persons_mobile"
+msgstr "Móvil"
+
+#. Default: "Organization"
+#: ./browser/searchaddressbookview.pt:284
+msgid "listingheader_persons_organization"
+msgstr "Organización"
+
+#. Default: "Phone"
+#: ./browser/searchaddressbookview.pt:285
+msgid "listingheader_persons_phone"
+msgstr "Teléfono"
+
+#. Default: "Web"
+#: ./browser/searchaddressbookview.pt:288
+msgid "listingheader_persons_web"
+msgstr "Web"
+
+#. Default: "Organizations:"
+#: ./browser/addressview.pt:95
+msgid "organizations"
+msgstr "Organizaciones:"
+
+#. Default: "Persons:"
+#: ./browser/groupview.pt:18
+msgid "persons"
+msgstr "Personas"
+
+#. Default: "Search results:"
+#: ./browser/searchaddressbookview.pt:273
+msgid "search_results"
+msgstr "Resultados de la búsqueda:"
+

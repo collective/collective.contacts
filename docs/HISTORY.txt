@@ -1,0 +1,25 @@
+Changelog
+=========
+
+SVN
+----------------
+
+* Persons and organizations as addable types
+
+* Tabular views for listing inside an address book with batch navigation
+
+* Quick search feature
+
+* Advanced search feature
+
+* Exporting to CSV persons or organizations
+
+* Sending email (not from site, but from the user's configured email client)
+
+
+
+1.0.0 - Unreleased
+----------------
+
+* Initial release
+
