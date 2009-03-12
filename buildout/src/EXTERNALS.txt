@@ -1,0 +1,4 @@
+#
+# applied by: svn propset svn:externals -F ./EXTERNALS.txt .
+#
+collective.contacts https://dev.menttes.com/svn/repo/packages/collective.contacts/tags/1.0.0a1/collective.contacts

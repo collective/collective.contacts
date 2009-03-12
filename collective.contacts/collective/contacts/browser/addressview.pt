@@ -1,0 +1,212 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="collective.contacts">
+<body>
+    <div metal:fill-slot="main"
+         tal:define="Batch python:modules['Products.CMFPlone'].Batch;
+                     persons_start request/persons_start | python:0;
+                     persons_size request/persons_size | python:20;
+                     organizations_start request/organizations_start | python:0;
+                     organizations_size request/organizations_size | python:20;
+                     groups_start request/groups_start | python:0;
+                     groups_size request/groups_size | python:20;
+                     persons view/search_persons | python:None;
+                     organizations view/search_organizations | python:None;
+                     groups view/search_groups | python:None;">
+
+        <tal:main-macro metal:define-macro="main">
+        <div tal:condition="persons">
+
+            <tal:batch define="batch_persons python:Batch(persons, persons_size, int(persons_start), orphan=1, b_start_str='persons_start')">
+
+            <h2 i18n:translate="persons">Persons:</h2>
+
+            <form action="#" method="post"
+                  tal:attributes="action string:${context/absolute_url}/search_addressbook">
+                    <input name="search_string">
+                    <input type="hidden" name="quick_persons_submitted" value="1" />
+                    <input type="submit" name="quick_search_persons"
+                     value="Quick Search"
+                     i18n:attributes="value label_quick_search_persons"
+                     />
+            </form>
+            
+            <div metal:use-macro="here/custom_batch_macros/macros/navigation" />
+
+            <table class="listing">
+                <tr>
+                    <th i18n:translate="listingheader_persons_first_last_name">Name and Last Name</th>
+                    <th i18n:translate="listingheader_persons_organization">Organization</th>
+                    <th i18n:translate="listingheader_persons_phone">Phone</th>
+                    <th i18n:translate="listingheader_persons_mobile">Mobile</th>
+                    <th i18n:translate="listingheader_persons_email">E-Mail</th>
+                    <th i18n:translate="listingheader_persons_web">Web</th>
+                    <th i18n:translate="listingheader_persons_address">Address</th>
+                    <th i18n:translate="listingheader_persons_city">City</th>
+                    <th i18n:translate="listingheader_persons_country">Country</th>
+                </tr>
+                <tal:block repeat="person batch_persons">
+                <tr tal:define="oddrow repeat/person/odd"
+                    tal:attributes="class python:view.test(oddrow,'odd','even')">
+                    <td>
+                        <a href="#" tal:attributes="href person/absolute_url">
+                            <span><span tal:replace="person/last_name"/>, <span tal:replace="person/first_name"/></span>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" tal:attributes="href person/organization/absolute_url"
+                                    tal:condition="python:getattr(person,'organization', False)">
+                            <span tal:content="person/organization/id"/>
+                        </a>
+                    </td>
+                    <td><span tal:content="person/phone"/></td>
+                    <td><span tal:content="person/mobile_phone"/></td>
+                    <td>
+                        <a href="#" tal:attributes="href string:mailto:${person/email}">
+                            <span tal:content="person/email"/>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" tal:attributes="href person/web">
+                            <span tal:content="person/web"/>
+                        </a>
+                    </td>
+                    <td><span tal:content="person/address"/></td>
+                    <td><span tal:content="person/city"/></td>
+                    <td><span tal:content="person/country"/></td>
+                </tr>
+                </tal:block>
+            </table>
+
+            <div metal:use-macro="here/custom_batch_macros/macros/navigation" />
+            
+            </tal:batch>
+            <form action="#" method="post"
+                    tal:attributes="action string:${context/absolute_url}">
+                <input name="form.button.export_persons" value="Export persons" type="submit" i18n:attributes="value label_export_persons">
+            </form>
+        </div>
+            <br/>
+        <div tal:condition="organizations">
+
+            <tal:batch define="batch_organizations python:Batch(organizations, organizations_size, int(organizations_start), orphan=1, b_start_str='organizations_start')">
+
+            <h2 i18n:translate="organizations">Organizations:</h2>
+
+            <form action="#" method="post"
+                  tal:attributes="action string:${context/absolute_url}/search_addressbook">
+                    <input name="search_string">
+                    <input type="hidden" name="quick_organizations_submitted" value="1" />
+                    <input type="submit" name="quick_search_organizations"
+                     value="Quick Search"
+                     i18n:attributes="value label_quick_search_organizations"
+                     />
+            </form>
+
+            <div metal:use-macro="here/custom_batch_macros/macros/navigation" />
+
+            <table class="listing">
+                <tr>
+                    <th i18n:translate="listingheader_organizations_name">Name</th>
+                    <th i18n:translate="listingheader_organizations_sector">Sector</th>
+                    <th i18n:translate="listingheader_organizations_phone">Phone</th>
+                    <th i18n:translate="listingheader_organizations_fax">Fax</th>
+                    <th i18n:translate="listingheader_organizations_email">E-Mail</th>
+                    <th i18n:translate="listingheader_organizations_web">Web</th>
+                    <th i18n:translate="listingheader_organizations_address">Address</th>
+                    <th i18n:translate="listingheader_organizations_city">City</th>
+                    <th i18n:translate="listingheader_organizations_country">Country</th>
+                </tr>
+                <tal:block repeat="organization batch_organizations">
+                <tr tal:define="oddrow repeat/organization/odd"
+                    tal:attributes="class python:view.test(oddrow,'odd','even')">
+                    <td>
+                        <a href="#" tal:attributes="href organization/absolute_url">
+                            <span tal:content="organization/title"/>
+                        </a>
+                    </td>
+                    <td><span tal:content="organization/sector"/></td>
+                    <td><span tal:content="organization/phone"/></td>
+                    <td><span tal:content="organization/fax"/></td>
+                    <td>
+                        <a href="#" tal:attributes="href string:mailto:${organization/email}">
+                            <span tal:content="organization/email"/>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" tal:attributes="href organization/web">
+                            <span tal:content="organization/web"/>
+                        </a>
+                    </td>
+                    <td><span tal:content="organization/address"/></td>
+                    <td><span tal:content="organization/city"/></td>
+                    <td><span tal:content="organization/country"/></td>
+                </tr>
+                </tal:block>
+            </table>
+
+            <div metal:use-macro="here/custom_batch_macros/macros/navigation" />
+            
+            </tal:batch>
+            <form action="#" method="post"
+                    tal:attributes="action string:${context/absolute_url}">
+                <input name="form.button.export_org" value="Export organizations" type="submit" i18n:attributes="value label_export_organizations">
+            </form>
+        </div>
+
+        <div tal:condition="groups">
+
+            <tal:batch define="batch_groups python:Batch(groups, groups_size, int(groups_start), orphan=1, b_start_str='groups_start')">
+
+            <h2 i18n:translate="groups">Groups:</h2>
+
+            <form action="#" method="post"
+                  tal:attributes="action string:${context/absolute_url}/search_addressbook">
+                    <input name="search_string">
+                    <input type="hidden" name="quick_groups_submitted" value="1" />
+                    <input type="submit" name="quick_search_groups"
+                     value="Quick Search"
+                     i18n:attributes="value label_quick_search_groups"
+                     />
+            </form>
+
+            <div metal:use-macro="here/custom_batch_macros/macros/navigation" />
+
+            <table class="listing">
+                <tr>
+                    <th i18n:translate="listingheader_groups_name">Name</th>
+                    <th i18n:translate="listingheader_groups_members">Members</th>
+                </tr>
+                <tal:block repeat="group batch_groups">
+                <tr tal:define="oddrow repeat/group/odd"
+                    tal:attributes="class python:view.test(oddrow,'odd','even')">
+                    <td>
+                        <a href="#" tal:attributes="href group/absolute_url">
+                            <span tal:content="group/title"/>
+                        </a>
+                    </td>
+                    <td><span tal:content="python:len(group.persons)"/></td>
+                </tr>
+                </tal:block>
+            </table>
+
+            <div metal:use-macro="here/custom_batch_macros/macros/navigation" />
+
+            </tal:batch>
+        </div>
+
+        <br/>
+        <a href="#" tal:attributes="href string:${context/absolute_url}/search_addressbook"
+        i18n:translate="label_advanced_search_addressbook"
+        tal:condition="python: persons or organizations">Advanced search for persons or organizations</a>
+        <br/>
+
+        <form action="#" method="post"
+                    tal:attributes="action string:${context/absolute_url}/import_view">
+            <input name="form.button.import" value="Import organizations or persons" type="submit" i18n:attributes="value label_import_organizations_persons">
+        </form>
+        </tal:main-macro>
+    </div>
+</body>
+</html>

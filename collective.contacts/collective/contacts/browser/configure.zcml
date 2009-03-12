@@ -1,0 +1,50 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.contacts">
+
+  <include package="plone.app.contentmenu" />
+
+  <!-- -*- extra stuff goes here -*- -->
+
+    <browser:page
+      for="*"
+      name="group_view"
+      class=".groupview.GroupView"
+      template="groupview.pt"
+      allowed_interface=".groupview.IGroupView"
+      permission="zope.Public"
+    />
+
+
+    <browser:page
+      for="*"
+      name="import_view"
+      class=".importview.ImportView"
+      template="importview.pt"
+      allowed_interface=".importview.IImportView"
+      permission="zope.Public"
+    />
+
+
+    <browser:page
+      for="*"
+      name="search_addressbook"
+      class=".searchaddressbookview.SearchAddressBookView"
+      template="searchaddressbookview.pt"
+      allowed_interface=".searchaddressbookview.ISearchAddressBookView"
+      permission="zope.Public"
+    />
+
+
+    <browser:page
+      for="*"
+      name="address_view"
+      class=".addressview.AddressView"
+      template="addressview.pt"
+      allowed_interface=".addressview.IAddressView"
+      permission="zope.Public"
+    />
+
+
+</configure>
