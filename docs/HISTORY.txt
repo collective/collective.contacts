@@ -1,0 +1,33 @@
+Changelog
+=========
+
+1.0.0a3
+----------------
+
+* Added the default address book view to the 'display' drop down
+
+1.0.0a2
+----------------
+
+* Translations fixed
+
+1.0.0a1
+----------------
+
+* Groups,Persons and organizations as addable types
+
+* Tabular views for listing inside an address book with batch navigation
+
+* Quick search feature
+
+* Advanced search feature
+
+* Exporting to CSV persons or organizations
+
+* Importing from CSV persons or organizations
+
+* Sending email (not from site, but from the user's configured email client)
+
+
+
+
