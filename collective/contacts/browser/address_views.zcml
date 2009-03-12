@@ -1,0 +1,35 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.contacts">
+
+  <browser:page
+      for="*"
+      name="addressgroups_view"
+      class=".addressgroupsview.AddressGroupsView"
+      template="templates/addressgroupsview.pt"
+      allowed_interface=".addressgroupsview.IAddressGroupsView"
+      permission="zope2.Public"
+      />
+
+
+  <browser:page
+      for="*"
+      name="addressorganizations_view"
+      class=".addressorganizationsview.AddressOrganizationsView"
+      template="templates/addressorganizationsview.pt"
+      allowed_interface=".addressorganizationsview.IAddressOrganizationsView"
+      permission="zope.Public"
+      />
+
+
+  <browser:page
+      for="*"
+      name="addresspersons_view"
+      class=".addresspersonsview.AddressPersonsView"
+      template="templates/addresspersonsview.pt"
+      allowed_interface=".addresspersonsview.IAddressPersonsView"
+      permission="zope.Public"
+      />
+
+</configure>

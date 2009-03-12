@@ -1,0 +1,115 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="collective.contacts">
+
+<body>
+    <div metal:fill-slot="main"
+         tal:define="Batch python:modules['Products.CMFPlone'].Batch;
+                     organizations_start request/organizations_start | python:0;
+                     organizations_size request/organizations_size | python:20;
+                     organizations view/get_organizations | python:None;
+                     template_id string:addressorganizations_view;">
+
+        <tal:main-macro metal:define-macro="main">
+
+        <div tal:condition="not:organizations">
+            <h3 i18n:translate="no_organizations_added">There are no organizations in this address book.</h3>
+        </div>
+        <div tal:condition="organizations">
+
+            <tal:batch define="batch_organizations python:Batch(organizations, organizations_size, int(organizations_start), orphan=1, b_start_str='organizations_start')">
+
+            <h2 i18n:translate="organizations">Organizations:</h2>
+
+            <form action="#" method="post"
+                  tal:attributes="action string:${context/absolute_url}/search_addressbook">
+                    <input name="search_string">
+                    <input type="submit" name="quick_organizations_submitted"
+                     value="Quick Search"
+                     i18n:attributes="value label_quick_search_organizations"
+                     />
+                    <input type="submit" name="form.button.advanced_organizations"
+                     value="Advanced Search"
+                     i18n:attributes="value label_advanced_search_organizations"
+                     />
+            </form>
+
+            <form action="#" method="post"
+                    tal:attributes="action string:${context/absolute_url}/search_addressbook">
+            <div metal:use-macro="here/custom_batch_macros/macros/navigation" />
+
+            <table class="listing">
+                <tr>
+                    <th></th>
+                    <th i18n:translate="listingheader_organizations_name">Name</th>
+                    <th i18n:translate="listingheader_organizations_sector">Sector</th>
+                    <th i18n:translate="listingheader_organizations_phone">Phone</th>
+                    <th i18n:translate="listingheader_organizations_fax">Fax</th>
+                    <th i18n:translate="listingheader_organizations_email">E-Mail</th>
+                    <th i18n:translate="listingheader_organizations_web">Web</th>
+                    <th i18n:translate="listingheader_organizations_address">Address</th>
+                    <th i18n:translate="listingheader_organizations_city">City</th>
+                    <th i18n:translate="listingheader_organizations_country">Country</th>
+                </tr>
+                <tal:block repeat="organization batch_organizations">
+                <tr tal:define="oddrow repeat/organization/odd;
+                                country_vocab python:organization.getField('country').Vocabulary()"
+                    tal:attributes="class python:view.test(oddrow,'odd','even')">
+                    <td class="notDraggable">
+                        <input class="noborder" name="user_selection:list" id="#" value="#" type="checkbox"
+                               tal:attributes="id organization/id;
+                                               value python:'%s %s'%(organization.id, organization.email);
+                                               disabled python:view.test(organization.email, False, True)"/>
+                    </td>
+                    <td>
+                        <a href="#" tal:attributes="href organization/absolute_url">
+                            <span tal:content="organization/title"/>
+                        </a>
+                    </td>
+                    <td><span tal:content="organization/sector"/></td>
+                    <td><span tal:content="organization/phone"/></td>
+                    <td><span tal:content="organization/fax"/></td>
+                    <td>
+                        <a href="#" tal:attributes="href string:mailto:${organization/email}">
+                            <span tal:content="organization/email"/>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" tal:attributes="href organization/web">
+                            <span tal:content="organization/web"/>
+                        </a>
+                    </td>
+                    <td><span tal:content="organization/address"/></td>
+                    <td><span tal:content="organization/city"/></td>
+                    <td><span tal:content="python:country_vocab.getValue(organization.country)"/></td>
+                </tr>
+                </tal:block>
+            </table>
+
+            <div metal:use-macro="here/custom_batch_macros/macros/navigation" />
+
+                <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to">
+                <input name="form.button.export_org" value="Export selected organizations" type="submit" i18n:attributes="value label_export_selected_organizations">
+            </form>
+            </tal:batch>
+
+            <br/>
+
+            <form action="#" method="post"
+                    tal:attributes="action string:${context/absolute_url}/addressorganizations_view">
+                <input name="form.button.export_org" value="Export all organizations" type="submit" i18n:attributes="value label_export_all_organizations">
+            </form>
+        </div>
+
+        <br/>
+
+        <form action="#" method="post"
+                    tal:attributes="action string:${context/absolute_url}/import_view">
+            <input name="form.button.import" value="Import organizations or persons" type="submit" i18n:attributes="value label_import_organizations_persons">
+        </form>
+
+        </tal:main-macro>
+    </div>
+</body>
+</html>

@@ -1,0 +1,606 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="collective.contacts">
+<script>
+  function checkedAll (id, checked) {
+    var el = document.getElementById(id);
+    for (var i = 0; i < el.elements.length; i++) {
+      el.elements[i].checked = checked;
+    }
+  }
+</script>
+<body>
+    
+    <div metal:fill-slot="main" tal:define="persons_submitted request/persons_submitted | python:None;
+                                            organizations_submitted request/organizations_submitted | python:None;
+                                            persons_group_submitted request/persons_group_submitted | python:None;
+                                            quick_persons_submitted request/quick_persons_submitted | python:None;
+                                            quick_organizations_submitted request/quick_organizations_submitted | python:None;
+                                            quick_groups_submitted request/quick_groups_submitted | python:None;
+                                            string_emails request/string_emails | python:None;
+                                            error_message request/error_message | python:None;
+                                            ">
+                                                
+        <tal:main-macro metal:define-macro="main">
+            
+            <!-- This part of the form will be rendered if an error arises, it will show the error and
+                 provides a "Go back" button
+                 XXX: this needs to be redone: instead of sending the string through the URL, a code should be sent so with tal:conditions we load some html. This is needed because we cannot send non ascii characters using the URL, so, error messages cannot be well translated.-->
+            <tal:block condition ="error_message">
+                <dl class="portalMessage error">
+                    <dt i18n:translate="label_error">Error</dt>
+
+                    <dd tal:content="error_message">error message</dd>
+                </dl>
+                <br/>
+                <p><a href = "javascript:history.back()" i18n:translate="label_go_back">Go back</a> <span i18n:translate="label_to_correct">to correct.</span></p>
+
+            </tal:block>
+
+            <!-- This part of the form will be rendered when the user tries to do an advanced search.
+                 Below are the definitions for both the person search and the organization search.-->
+            <tal:block condition="python: not persons_submitted and
+                                          not organizations_submitted and
+                                          not persons_group_submitted and
+                                          not quick_persons_submitted and
+                                          not quick_organizations_submitted and
+                                          not quick_groups_submitted and
+                                          not string_emails and
+                                          not error_message">
+
+
+            <br/>
+            <a href = "javascript:history.back()" i18n:translate="label_go_back">Go back</a>
+            <br/>
+            <div id="advanced_persons_search">
+                <form action="#" method="post"
+                      tal:attributes="action string:${context/absolute_url}/search_addressbook">
+                    <h2 i18n:translate="advanced_person_search">Advanced person search:</h2>
+                    <br/>
+                    <span class="short_name">
+                        <label for="short_name"
+                               i18n:translate="label_search_persons_short_name">Short Name</label>
+                        <input name="short_name">
+                    </span>
+                    <br/>
+                    <span class="first_name">
+                        <label for="first_name"
+                               i18n:translate="label_search_persons_first_name">First Name</label>
+                        <input name="first_name">
+                    </span>
+                    <br/>
+                    <span class="last_name">
+                        <label for="last_name"
+                               i18n:translate="label_search_persons_last_name">Last Name</label>
+                        <input name="last_name">
+                    </span>
+                    <br/>
+                    <span class="organization">
+                        <label for="organization"
+                               i18n:translate="label_search_persons_organization">Organization</label>
+                        <input name="organization">
+                    </span>
+                    <br/>
+                    <span class="position">
+                        <label for="position"
+                               i18n:translate="label_search_persons_position">Position</label>
+                        <input name="position">
+                    </span>
+                    <br/>
+                    <span class="department">
+                        <label for="department"
+                               i18n:translate="label_search_persons_department">Department</label>
+                        <input name="department">
+                    </span>
+                    <br/>
+                    <span class="work_phone">
+                        <label for="work_phone"
+                               i18n:translate="label_search_persons_work_phone">Work Phone Number</label>
+                        <input name="work_phone">
+                    </span>
+                    <br/>
+                    <span class="work_mobile_phone">
+                        <label for="work_mobile_phone"
+                               i18n:translate="label_search_persons_work_mobile_phone">Work Mobile Phone</label>
+                        <input name="work_mobile_phone">
+                    </span>
+                    <br/>
+                    <span class="work_email">
+                        <label for="work_email"
+                               i18n:translate="label_search_persons_email">Work Email</label>
+                        <input name="work_email">
+                    </span>
+                    <br/>
+                    <span class="address">
+                        <label for="address"
+                               i18n:translate="label_search_persons_address">Address</label>
+                        <input name="address">
+                    </span>
+                    <br/>
+                    <span class="country">
+                        <label for="country"
+                               i18n:translate="label_search_persons_country">Country</label>
+                        <input name="country">
+                    </span>
+                    <br/>
+                    <span class="city">
+                        <label for="city"
+                               i18n:translate="label_search_persons_city">City</label>
+                        <input name="city">
+                    </span>
+                    <br/>
+                    <span class="phone">
+                        <label for="phone"
+                               i18n:translate="label_search_persons_phone">Phone Number</label>
+                        <input name="phone">
+                    </span>
+                    <br/>
+                    <span class="mobile_phone">
+                        <label for="mobile_phone"
+                               i18n:translate="label_search_persons_mobile_phone">Mobile Phone Number</label>
+                        <input name="mobile_phone">
+                    </span>
+                    <br/>
+                    <span class="email">
+                        <label for="email"
+                               i18n:translate="label_search_persons_email">E-mail</label>
+                        <input name="email">
+                    </span>
+                    <br/>
+                    <span class="web">
+                        <label for="web"
+                               i18n:translate="label_search_persons_web">Web / Blog</label>
+                        <input name="web">
+                    </span>
+                    <br/>
+                    <span class="text">
+                        <label for="text"
+                               i18n:translate="label_search_persons_text">Text</label>
+                        <input name="text">
+                    </span>
+                    <br/>
+                    <input type="hidden" name="persons_submitted" value="1" />
+                    <br/>
+                    <input type="submit" name="search_persons"
+                     value="Search Persons"
+                     i18n:attributes="value label_search_persons"
+                     />
+                </form>
+            </div>
+
+            <div id="advanced_organizations_search">
+                <form action="#" method="post"
+                      tal:attributes="action string:${context/absolute_url}/search_addressbook">
+                    <h2 i18n:translate="advanced_organizations_search">Advanced organizations search:</h2>
+                    <br/>
+                    <span class="title">
+                        <label for="title"
+                               i18n:translate="label_search_organizations_title">Name</label>
+                        <input name="title">
+                    </span>
+                    <br/>
+                    <span class="address">
+                        <label for="address"
+                               i18n:translate="label_search_organizations_address">Address</label>
+                        <input name="address">
+                    </span>
+                    <br/>
+                    <span class="city">
+                        <label for="city"
+                               i18n:translate="label_search_organizations_city">City</label>
+                        <input name="city">
+                    </span>
+                    <br/>
+                    <span class="zip">
+                        <label for="zip"
+                               i18n:translate="label_search_organizations_zip">Zip</label>
+                        <input name="zip">
+                    </span>
+                    <br/>
+                    <span class="country">
+                        <label for="country"
+                               i18n:translate="label_search_organizations_country">Country</label>
+                        <input name="country">
+                    </span>
+                    <br/>
+                    <span class="extra_adress">
+                        <label for="extra_adress"
+                               i18n:translate="label_search_organizations_extra_address">Extra Address Info</label>
+                        <input name="extra_address">
+                    </span>
+                    <br/>
+                    <span class="phone">
+                        <label for="phone"
+                               i18n:translate="label_search_organizations_phone">Phone Number</label>
+                        <input name="phone">
+                    </span>
+                    <br/>
+                    <span class="fax">
+                        <label for="fax"
+                               i18n:translate="label_search_organizations_fax">Fax</label>
+                        <input name="fax">
+                    </span>
+                    <br/>
+                    <span class="email">
+                        <label for="email"
+                               i18n:translate="label_search_organizations_email">Email address</label>
+                        <input name="email">
+                    </span>
+                    <br/>
+                    <span class="email2">
+                        <label for="email2"
+                               i18n:translate="label_search_organizations_email2">2nd Email address</label>
+                        <input name="email2">
+                    </span>
+                    <br/>
+                    <span class="email3">
+                        <label for="email3"
+                               i18n:translate="label_search_organizations_email3">3rd Email address</label>
+                        <input name="email3">
+                    </span>
+                    <br/>
+                    <span class="web">
+                        <label for="web"
+                               i18n:translate="label_search_organizations_web">Web</label>
+                        <input name="web">
+                    </span>
+                    <br/>
+                    <span class="sector">
+                        <label for="sector"
+                               i18n:translate="label_search_organizations_sector">Sector</label>
+                        <input name="sector">
+                    </span>
+                    <br/>
+                    <span class="text">
+                        <label for="text"
+                               i18n:translate="label_search_organizations_text">Text</label>
+                        <input name="text">
+                    </span>
+                    <br/>
+                    <input type="hidden" name="organizations_submitted" value="1" />
+                    <br/>
+                    <input type="submit" name="search_organizations"
+                     value="Search Organizations"
+                     i18n:attributes="value label_search_organizations"
+                     />
+                </form>
+            </div>
+            </tal:block>
+
+            <!-- This part of the form will be rendered when the user performs a search for persons
+                 this is used if the user does a quick search, or an advanced one -->
+            <tal:persons condition="python: persons_submitted or quick_persons_submitted"
+                         define="search_template string:${here/absolute_url}/search_addressbook">
+
+                <div tal:define="persons python:view.do_search_persons(request)">
+
+                <div tal:condition="not: persons">
+                    <p><strong i18n:translate="description_no_results_found">No results were found.</strong></p>
+                </div>
+                <div tal:condition="persons">
+                    <h2 i18n:translate="search_results">Search results:</h2>
+
+                <form action="#" method="post"
+                    tal:attributes="action string:${context/absolute_url}/search_addressbook">
+
+                    <table class="listing">
+                        <tr>
+                            <th></th>
+                            <th i18n:translate="listingheader_persons_first_last_name">Name and Last Name</th>
+                            <th i18n:translate="listingheader_persons_organization">Organization</th>
+                            <th i18n:translate="listingheader_persons_phone">Phone</th>
+                            <th i18n:translate="listingheader_persons_mobile">Mobile</th>
+                            <th i18n:translate="listingheader_persons_email">E-Mail</th>
+                            <th i18n:translate="listingheader_persons_web">Web</th>
+                            <th i18n:translate="listingheader_persons_address">Address</th>
+                            <th i18n:translate="listingheader_persons_city">City</th>
+                            <th i18n:translate="listingheader_persons_country">Country</th>
+                        </tr>
+
+                        <tal:block repeat="person persons">
+                        <tr tal:define="oddrow repeat/person/odd"
+                            tal:attributes="class python:view.test(oddrow,'odd','even')">
+                            <td class="notDraggable">
+                                <input class="noborder" name="user_selection:list" id="#" value="#" type="checkbox"
+                                       tal:attributes="id person/id;
+                                                       value python:'%s %s'%(person.id, person.email);
+                                                       disabled python:view.test(person.email, False, True)"/>
+                            </td>
+                            <td>
+                                <a href="#" tal:attributes="href person/absolute_url">
+                                    <span tal:content="person/first_name"/> <span tal:content="person/last_name"/>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#" tal:attributes="href person/organization/absolute_url"
+                                            tal:condition="python:getattr(person,'organization', False)">
+                                    <span tal:content="person/organization/id"/>
+                                </a>
+                            </td>
+                            <td><span tal:content="person/phone"/></td>
+                            <td><span tal:content="person/mobile_phone"/></td>
+                            <td>
+                                <a href="#" tal:attributes="href string:mailto:${person/email}">
+                                    <span tal:content="person/email"/>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#" tal:attributes="href person/web">
+                                    <span tal:content="person/web"/>
+                                </a>
+                            </td>
+                            <td><span tal:content="person/address"/></td>
+                            <td><span tal:content="person/city"/></td>
+                            <td><span tal:content="person/country"/></td>
+                        </tr>
+                        </tal:block>
+                    </table>
+                    <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to">
+                    <input name="form.button.export_persons" value="Export persons" type="submit" i18n:attributes="value label_export_persons">
+                    <input type="submit" name="form.button.advanced_persons"
+                     value="Search Again"
+                     i18n:attributes="value label_do_another_search"
+                     tal:condition="persons_submitted"
+                     />
+                </form>
+
+                </div>
+                </div>
+                <div class="bottom_search_buttons">
+                    <br/>
+                    <form action="#" method="post"
+                    tal:attributes="action string:${context/absolute_url}/search_addressbook">
+                        <input type="submit" name="form.button.advanced_persons"
+                         value="Advanced Search"
+                         i18n:attributes="value label_advanced_search_persons"
+                         tal:condition="quick_persons_submitted"
+                         />
+                    </form>
+                </div>
+            </tal:persons>
+
+            <!-- This part of the form will be rendered when the user performs a search for organizations
+                 this is used if the user does a quick search, or an advanced one -->
+            <tal:organizations condition="python: organizations_submitted or quick_organizations_submitted"
+                         define="search_template string:${here/absolute_url}/search_addressbook">
+
+                <div tal:define="organizations python:view.do_search_organizations(request)">
+
+                <div tal:condition="not: organizations">
+                    <p><strong i18n:translate="description_no_results_found">No results were found.</strong></p>
+                </div>
+                <div tal:condition="organizations">
+                    <h2 i18n:translate="search_results">Search results:</h2>
+
+                <form action="#" method="post"
+                    tal:attributes="action string:${context/absolute_url}/search_addressbook">
+
+                    <table class="listing">
+                        <tr>
+                            <th></th>
+                            <th i18n:translate="listingheader_organizations_name">Name</th>
+                            <th i18n:translate="listingheader_organizations_sector">Sector</th>
+                            <th i18n:translate="listingheader_organizations_phone">Phone</th>
+                            <th i18n:translate="listingheader_organizations_fax">Fax</th>
+                            <th i18n:translate="listingheader_organizations_email">E-Mail</th>
+                            <th i18n:translate="listingheader_organizations_web">Web</th>
+                            <th i18n:translate="listingheader_organizations_address">Address</th>
+                            <th i18n:translate="listingheader_organizations_city">City</th>
+                            <th i18n:translate="listingheader_organizations_country">Country</th>
+                        </tr>
+                        <tal:block repeat="organization organizations">
+                        <tr tal:define="oddrow repeat/organization/odd"
+                            tal:attributes="class python:view.test(oddrow,'odd','even')">
+                            <td class="notDraggable">
+                                <input class="noborder" name="user_selection:list" id="#" value="#" type="checkbox"
+                                       tal:attributes="id organization/id;
+                                                       value python:'%s %s'%(organization.id, organization.email);
+                                                       disabled python:view.test(organization.email, False, True)"/>
+                            </td>
+                            <td>
+                                <a href="#" tal:attributes="href organization/absolute_url">
+                                    <span tal:content="organization/title"/>
+                                </a>
+                            </td>
+                            <td>
+                                <span tal:content="organization/sector"/>
+                            </td>
+                            <td><span tal:content="organization/phone"/></td>
+                            <td><span tal:content="organization/fax"/></td>
+                            <td>
+                                <a href="#" tal:attributes="href string:mailto:${organization/email}">
+                                    <span tal:content="organization/email"/>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#" tal:attributes="href organization/web">
+                                    <span tal:content="organization/web"/>
+                                </a>
+                            </td>
+                            <td><span tal:content="organization/address"/></td>
+                            <td><span tal:content="organization/city"/></td>
+                            <td><span tal:content="organization/country"/></td>
+                        </tr>
+                        </tal:block>
+                    </table>
+                    <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to">
+                    <input name="form.button.export_org" value="Export organizations" type="submit" i18n:attributes="value label_export_organizations">
+                    <input type="submit" name="form.button.advanced_organizations"
+                     value="Search Again"
+                     i18n:attributes="value label_do_another_search"
+                     tal:condition="organizations_submitted"
+                     />
+                </form>
+
+                </div>
+                </div>
+                <div class="bottom_search_buttons">
+                    <br/>
+                    <form action="#" method="post"
+                    tal:attributes="action string:${context/absolute_url}/search_addressbook">
+                        <input type="submit" name="form.button.advanced_organizations"
+                         value="Advanced Search"
+                         i18n:attributes="value label_advanced_search_persons"
+                         tal:condition="quick_organizations_submitted"
+                         />
+                    </form>
+                </div>
+            </tal:organizations>
+
+            <!-- This part of the form will be rendered when the user performs a search for groups
+                 this is used if the user does a quick search, or an advanced one, at the moment
+                 only a quick search is used-->
+            <tal:groups condition="python: quick_groups_submitted"
+                         define="search_template string:${here/absolute_url}/search_addressbook">
+
+                <div tal:define="groups python:view.do_search_groups(request)">
+
+                <div tal:condition="not: groups">
+                    <p><strong i18n:translate="description_no_results_found">No results were found.</strong></p>
+                </div>
+                <div tal:condition="groups">
+                    <h2 i18n:translate="search_results">Search results:</h2>
+
+                <form action="#" method="post"
+                    tal:attributes="action string:${context/absolute_url}/search_addressbook">
+
+                    <table class="listing">
+                        <tr>
+                            <th></th>
+                            <th i18n:translate="listingheader_groups_name">Name</th>
+                            <th i18n:translate="listingheader_groups_members">Members</th>
+                        </tr>
+                        <tal:block repeat="group groups">
+                        <tr tal:define="oddrow repeat/group/odd"
+                            tal:attributes="class python:view.test(oddrow,'odd','even')">
+                            <td class="notDraggable">
+                                <input class="noborder" name="user_selection:list" id="#" value="#" type="checkbox"
+                                       tal:define="mail_list python:','.join(['%s'%(i.email) for i in group.persons])"
+                                       tal:attributes="id group/id;
+                                                       value mail_list;
+                                                       disabled python:view.test(mail_list, False, True)"/>
+                            </td>
+                            <td>
+                                <a href="#" tal:attributes="href group/absolute_url">
+                                    <span tal:content="group/title"/>
+                                </a>
+                            </td>
+                        <td><span tal:content="python:len(group.persons)"/></td>
+                        </tr>
+                        </tal:block>
+                    </table>
+                    <input name="form.button.mailto_group" value="Send mail to group" type="submit" i18n:attributes="value label_send_mail_to_group">
+                </form>
+
+                </div>
+                </div>
+                <br/>
+                <a href = "javascript:history.back()" i18n:translate="label_go_back">Go back</a>
+                <br/>
+                <!--<a href="#" tal:attributes="href string:${context/absolute_url}/search_addressbook"
+                            tal:condition="quick_groups_submitted"
+                            i18n:translate="label_advanced_search">
+                    Advanced Search
+                </a>-->
+            </tal:groups>
+
+            <!-- This part of the form will be rendered when the user performs a search for persons
+                 inside a group -->
+            <tal:persons_in_groups condition="python: persons_group_submitted"
+                         define="search_template string:${here/absolute_url}/search_addressbook;
+                                 group request/group_id | python:None;
+                                 search_string request/search_string | python:None">
+
+                <div tal:define="persons python:view.search_persons_in_group(request, search_string, group)">
+
+                <div tal:condition="not: persons">
+                    <p><strong i18n:translate="description_no_results_found">No results were found.</strong></p>
+                </div>
+                <div tal:condition="persons">
+
+                    <h2 i18n:translate="search_results">Search results:</h2>
+
+                <form action="#" method="post"
+                    tal:attributes="action string:${context/absolute_url}/search_addressbook">
+
+                    <table class="listing">
+                        <tr>
+                            <th></th>
+                            <th i18n:translate="listingheader_persons_first_last_name">Name and Last Name</th>
+                            <th i18n:translate="listingheader_persons_organization">Organization</th>
+                            <th i18n:translate="listingheader_persons_phone">Phone</th>
+                            <th i18n:translate="listingheader_persons_mobile">Mobile</th>
+                            <th i18n:translate="listingheader_persons_email">E-Mail</th>
+                            <th i18n:translate="listingheader_persons_web">Web</th>
+                            <th i18n:translate="listingheader_persons_address">Address</th>
+                            <th i18n:translate="listingheader_persons_city">City</th>
+                            <th i18n:translate="listingheader_persons_country">Country</th>
+                        </tr>
+
+                        <tal:block repeat="person persons">
+                        <tr tal:define="oddrow repeat/person/odd"
+                            tal:attributes="class python:view.test(oddrow,'odd','even')">
+                            <td class="notDraggable">
+                                <input class="noborder" name="user_selection:list" id="#" value="#" type="checkbox"
+                                       tal:attributes="id person/id;
+                                                       value python:'%s %s'%(person.id, person.email);
+                                                       disabled python:view.test(person.email, False, True)"/>
+                            </td>
+                            <td>
+                                <a href="#" tal:attributes="href person/absolute_url">
+                                    <span tal:content="person/first_name"/> <span tal:content="person/last_name"/>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#" tal:attributes="href person/organization/absolute_url"
+                                            tal:condition="python:getattr(person,'organization', False)">
+                                    <span tal:content="person/organization/id"/>
+                                </a>
+                            </td>
+                            <td><span tal:content="person/phone"/></td>
+                            <td><span tal:content="person/mobile_phone"/></td>
+                            <td>
+                                <a href="#" tal:attributes="href string:mailto:${person/email}">
+                                    <span tal:content="person/email"/>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#" tal:attributes="href person/web">
+                                    <span tal:content="person/web"/>
+                                </a>
+                            </td>
+                            <td><span tal:content="person/address"/></td>
+                            <td><span tal:content="person/city"/></td>
+                            <td><span tal:content="person/country"/></td>
+                        </tr>
+                        </tal:block>
+                    </table>
+                    <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to">
+                    <input name="form.button.export_persons" value="Export persons" type="submit" i18n:attributes="value label_export_persons">
+                </form>
+
+                </div>
+                </div>
+                <div class="bottom_search_buttons">
+                    <br/>
+                    <a href = "javascript:history.back()" i18n:translate="label_go_back">Go back</a>
+                    <br/>
+                </div>
+            </tal:persons_in_groups>
+
+            <!-- This part of the form will be rendered when the user tries to send an email -->
+            <tal:send_mails condition="string_emails">
+
+                <h2 i18n:translate="label_send_emails">Send emails</h2>
+                <h3 i18n:translate="label_send_emails_text">You're about to send an email to the following addresses:</h3>
+                <p><span tal:content="string_emails"></span></p>
+                <p>Click <span><a class="link" href="#" tal:attributes="href string:mailto:${string_emails}" i18n:translate="label_here">here</a></span> if it is correct.</p>
+                <p>Or <a href = "javascript:history.back()" i18n:translate="label_go_back">Go back</a> to correct.</p>
+                
+
+            </tal:send_mails>
+        </tal:main-macro>
+    </div>
+</body>
+</html>

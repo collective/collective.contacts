@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="collective.contacts">
+<body>
+    <div metal:fill-slot="main">
+        <tal:main-macro metal:define-macro="main"
+                        tal:define="message request/message | python:None;">
+
+            <tal:block condition ="message">
+                <dl class="portalMessage info">
+                    <dt i18n:translate="label_info">Info</dt>
+
+                    <dd tal:content="message">message</dd>
+                </dl>
+
+            </tal:block>
+
+            <form action="#" method="post" enctype="multipart/form-data"
+                      tal:attributes="action string:${context/absolute_url}/import_view">
+                   <label for="import_file" i18n:translate="label_import_file">Import file</label>
+                   <input type="file" id="import_file" name="import_file">
+                   <br/>
+                   <label for="import_selection" i18n:translate="label_import_selection">Selection</label>
+                   <select name="import_selection" id="import_selection">
+                       <option value="persons" i18n:translate="label_persons">Persons</option>
+                       <option value="organizations" i18n:translate="label_organizations">Organizations</option>
+                   </select>
+                   <input type="hidden" name="import.submitted" value="True">
+                   <br/>
+                   <input type="submit" name="submit" id="submit" i18n:attributes="value label_import_submit" value="Import">
+
+            </form>
+
+        </tal:main-macro>
+    </div>
+</body>
+</html>

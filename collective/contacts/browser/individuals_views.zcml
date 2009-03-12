@@ -1,0 +1,25 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.contacts">
+
+    <browser:page
+      for="*"
+      name="group_view"
+      class=".groupview.GroupView"
+      template="templates/groupview.pt"
+      allowed_interface=".groupview.IGroupView"
+      permission="zope.Public"
+    />
+
+
+    <browser:page
+      for="*"
+      name="import_view"
+      class=".importview.ImportView"
+      template="templates/importview.pt"
+      allowed_interface=".importview.IImportView"
+      permission="zope.Public"
+    />
+
+</configure>

@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.contacts">
+
+   <browser:page
+        for="Products.Archetypes.interfaces.IBaseObject"
+        attribute="kssModifyState"
+        class=".ksscommands.KSSModifySelector"
+        name="kssModifyState"
+        permission="cmf.ModifyPortalContent"
+        />
+
+    <browser:page
+        for="Products.Archetypes.interfaces.IBaseObject"
+        attribute="kssModifySector"
+        class=".ksscommands.KSSModifySelector"
+        name="kssModifySector"
+        permission="cmf.ModifyPortalContent"
+        />
+
+</configure>

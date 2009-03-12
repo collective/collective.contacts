@@ -1,0 +1,35 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:kss="http://namespaces.zope.org/kss"
+    i18n_domain="collective.contacts">
+
+  <browser:page
+      for="*"
+      name="personssearch_view"
+      class=".personssearchview.PersonsSearchView"
+      template="templates/personssearchview.pt"
+      allowed_interface=".personssearchview.IPersonsSearchView"
+      permission="zope.Public"
+      />
+
+
+  <browser:page
+      for="*"
+      name="organizationssearch_view"
+      class=".organizationssearchview.OrganizationsSearchView"
+      template="templates/organizationssearchview.pt"
+      allowed_interface=".organizationssearchview.IOrganizationsSearchView"
+      permission="zope.Public"
+      />
+
+  <browser:page
+      for="*"
+      name="search_addressbook"
+      class=".searchaddressbookview.SearchAddressBookView"
+      template="templates/searchaddressbookview.pt"
+      allowed_interface=".searchaddressbookview.ISearchAddressBookView"
+      permission="zope.Public"
+    />
+
+</configure>

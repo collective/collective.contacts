@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:kss="http://namespaces.zope.org/kss"
+    i18n_domain="collective.contacts">
+
+  <include package="plone.app.contentmenu" />
+
+  <!-- -*- extra stuff goes here -*- -->
+
+  <include file="address_views.zcml" />
+  <include file="individuals_views.zcml" />
+  <include file="search_views.zcml" />
+  <include file="kss.zcml" />
+
+    <browser:resourceDirectory
+        name="resources"
+        directory="resources"
+        permission="zope.Public"
+        />
+
+</configure>
