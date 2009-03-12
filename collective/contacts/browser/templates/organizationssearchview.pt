@@ -1,0 +1,111 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="collective.contacts">
+<body>
+
+    <div metal:fill-slot="main">
+
+        <tal:main-macro metal:define-macro="main">
+
+            <div id="advanced_organizations_search">
+                <form action="#" method="post"
+                      tal:attributes="action string:${context/absolute_url}/search_addressbook">
+                    <h2 i18n:translate="advanced_organizations_search">Advanced organizations search:</h2>
+                    <br/>
+                    <span class="title">
+                        <label for="title"
+                               i18n:translate="label_search_organizations_title">Name</label>
+                        <input name="title">
+                    </span>
+                    <br/>
+                    <span class="address">
+                        <label for="address"
+                               i18n:translate="label_search_organizations_address">Address</label>
+                        <input name="address">
+                    </span>
+                    <br/>
+                    <span class="city">
+                        <label for="city"
+                               i18n:translate="label_search_organizations_city">City</label>
+                        <input name="city">
+                    </span>
+                    <br/>
+                    <span class="zip">
+                        <label for="zip"
+                               i18n:translate="label_search_organizations_zip">Zip</label>
+                        <input name="zip">
+                    </span>
+                    <br/>
+                    <span class="country">
+                        <label for="country"
+                               i18n:translate="label_search_organizations_country">Country</label>
+                        <input name="country">
+                    </span>
+                    <br/>
+                    <span class="extra_adress">
+                        <label for="extra_adress"
+                               i18n:translate="label_search_organizations_extra_address">Extra Address Info</label>
+                        <input name="extra_address">
+                    </span>
+                    <br/>
+                    <span class="phone">
+                        <label for="phone"
+                               i18n:translate="label_search_organizations_phone">Phone Number</label>
+                        <input name="phone">
+                    </span>
+                    <br/>
+                    <span class="fax">
+                        <label for="fax"
+                               i18n:translate="label_search_organizations_fax">Fax</label>
+                        <input name="fax">
+                    </span>
+                    <br/>
+                    <span class="email">
+                        <label for="email"
+                               i18n:translate="label_search_organizations_email">Email address</label>
+                        <input name="email">
+                    </span>
+                    <br/>
+                    <span class="email2">
+                        <label for="email2"
+                               i18n:translate="label_search_organizations_email2">2nd Email address</label>
+                        <input name="email2">
+                    </span>
+                    <br/>
+                    <span class="email3">
+                        <label for="email3"
+                               i18n:translate="label_search_organizations_email3">3rd Email address</label>
+                        <input name="email3">
+                    </span>
+                    <br/>
+                    <span class="web">
+                        <label for="web"
+                               i18n:translate="label_search_organizations_web">Web</label>
+                        <input name="web">
+                    </span>
+                    <br/>
+                    <span class="sector">
+                        <label for="sector"
+                               i18n:translate="label_search_organizations_sector">Sector</label>
+                        <input name="sector">
+                    </span>
+                    <br/>
+                    <span class="text">
+                        <label for="text"
+                               i18n:translate="label_search_organizations_text">Text</label>
+                        <input name="text">
+                    </span>
+                    <br/>
+                    <input type="hidden" name="organizations_submitted" value="1" />
+                    <br/>
+                    <input type="submit" name="search_organizations"
+                     value="Search Organizations"
+                     i18n:attributes="value label_search_organizations"
+                     />
+                </form>
+            </div>
+        </tal:main-macro>
+    </div>
+</body>
+</html>

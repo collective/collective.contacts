@@ -1,0 +1,129 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="collective.contacts">
+<body>
+
+    <div metal:fill-slot="main">
+
+        <tal:main-macro metal:define-macro="main">
+
+            <div id="advanced_persons_search">
+                <form action="#" method="post"
+                      tal:attributes="action string:${context/absolute_url}/search_addressbook">
+                    <h2 i18n:translate="advanced_person_search">Advanced person search:</h2>
+                    <br/>
+                    <span class="short_name">
+                        <label for="short_name"
+                               i18n:translate="label_search_persons_short_name">Short Name</label>
+                        <input name="short_name">
+                    </span>
+                    <br/>
+                    <span class="first_name">
+                        <label for="first_name"
+                               i18n:translate="label_search_persons_first_name">First Name</label>
+                        <input name="first_name">
+                    </span>
+                    <br/>
+                    <span class="last_name">
+                        <label for="last_name"
+                               i18n:translate="label_search_persons_last_name">Last Name</label>
+                        <input name="last_name">
+                    </span>
+                    <br/>
+                    <span class="organization">
+                        <label for="organization"
+                               i18n:translate="label_search_persons_organization">Organization</label>
+                        <input name="organization">
+                    </span>
+                    <br/>
+                    <span class="position">
+                        <label for="position"
+                               i18n:translate="label_search_persons_position">Position</label>
+                        <input name="position">
+                    </span>
+                    <br/>
+                    <span class="department">
+                        <label for="department"
+                               i18n:translate="label_search_persons_department">Department</label>
+                        <input name="department">
+                    </span>
+                    <br/>
+                    <span class="work_phone">
+                        <label for="work_phone"
+                               i18n:translate="label_search_persons_work_phone">Work Phone Number</label>
+                        <input name="work_phone">
+                    </span>
+                    <br/>
+                    <span class="work_mobile_phone">
+                        <label for="work_mobile_phone"
+                               i18n:translate="label_search_persons_work_mobile_phone">Work Mobile Phone</label>
+                        <input name="work_mobile_phone">
+                    </span>
+                    <br/>
+                    <span class="work_email">
+                        <label for="work_email"
+                               i18n:translate="label_search_persons_email">Work Email</label>
+                        <input name="work_email">
+                    </span>
+                    <br/>
+                    <span class="address">
+                        <label for="address"
+                               i18n:translate="label_search_persons_address">Address</label>
+                        <input name="address">
+                    </span>
+                    <br/>
+                    <span class="country">
+                        <label for="country"
+                               i18n:translate="label_search_persons_country">Country</label>
+                        <input name="country">
+                    </span>
+                    <br/>
+                    <span class="city">
+                        <label for="city"
+                               i18n:translate="label_search_persons_city">City</label>
+                        <input name="city">
+                    </span>
+                    <br/>
+                    <span class="phone">
+                        <label for="phone"
+                               i18n:translate="label_search_persons_phone">Phone Number</label>
+                        <input name="phone">
+                    </span>
+                    <br/>
+                    <span class="mobile_phone">
+                        <label for="mobile_phone"
+                               i18n:translate="label_search_persons_mobile_phone">Mobile Phone Number</label>
+                        <input name="mobile_phone">
+                    </span>
+                    <br/>
+                    <span class="email">
+                        <label for="email"
+                               i18n:translate="label_search_persons_email">E-mail</label>
+                        <input name="email">
+                    </span>
+                    <br/>
+                    <span class="web">
+                        <label for="web"
+                               i18n:translate="label_search_persons_web">Web / Blog</label>
+                        <input name="web">
+                    </span>
+                    <br/>
+                    <span class="text">
+                        <label for="text"
+                               i18n:translate="label_search_persons_text">Text</label>
+                        <input name="text">
+                    </span>
+                    <br/>
+                    <input type="hidden" name="persons_submitted" value="1" />
+                    <br/>
+                    <input type="submit" name="search_persons"
+                     value="Search Persons"
+                     i18n:attributes="value label_search_persons"
+                     />
+                </form>
+            </div>
+        </tal:main-macro>
+    </div>
+</body>
+</html>

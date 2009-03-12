@@ -1,0 +1,19 @@
+select#country:load {
+    action-server:            kssModifyState;
+    kssModifyState-country:   currentFormVar('country');
+}
+
+select#country:change {
+    action-server:            kssModifyState;
+    kssModifyState-country:   currentFormVar('country');
+}
+
+select#sector:load {
+    action-server:            kssModifySector;
+    kssModifySector-sector:   currentFormVar('sector');
+}
+
+select#sector:change {
+    action-server:            kssModifySector;
+    kssModifySector-sector:   currentFormVar('sector');
+}

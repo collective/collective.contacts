@@ -1,0 +1,70 @@
+Changelog
+=========
+
+1.2.0
+----------------
+
+* Added Sectors and Sub sectors drop downs to organizations, where you can
+  select a "sector" and then the "sub sectors" are automatically updated
+  using KSS (Same behaviour as countries and states). This sectors are
+  loaded in the address book itself
+
+* Replaced the Country and State text entries with a drop down for all countries
+  and, using kss, a drop down with states for each country. This was mainly
+  taken from GetPaid, so most of the credit goes for those great gentlemen.
+
+* Title for the group view page
+
+* Moved some fields to the default schemata, so instead of a drop down, they
+  are shown as tabs
+
+* Replaced the advanced search link with buttons.
+
+* Fixed a bug with the advanced search. Was giving some errors when searching
+  persons based on their organization.
+
+* The import script now imports persons even if they had no organization.
+
+* Quick search feature can now return results if part of a string was
+  entered. And if several words are used, it does an OR of all of them.
+
+* Added "No results found" string when no results are found, instead of
+  showing an empty table.
+
+* Removed all required fields, only Name and Last name are required for
+  persons, and just the name for organizations.
+
+* If persons or organizations have no email set, then the checkbox for sending
+  them an email is disabled. Same if a group has no members, or members with
+  no email.
+
+1.0.0a3
+----------------
+
+* Added the default address book view to the 'display' drop down
+
+1.0.0a2
+----------------
+
+* Translations fixed
+
+1.0.0a1
+----------------
+
+* Groups,Persons and organizations as addable types
+
+* Tabular views for listing inside an address book with batch navigation
+
+* Quick search feature
+
+* Advanced search feature
+
+* Exporting to CSV persons or organizations
+
+* Importing from CSV persons or organizations
+
+* Sending email (not from site, but from the user's configured email client)
+
+
+
+

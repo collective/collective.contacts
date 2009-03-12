@@ -1,0 +1,53 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="collective.contacts">
+
+  <!-- configure your content components here -->
+  
+  <!-- -*- extra stuff goes here -*- -->
+    <class class=".group.Group">
+
+        <require
+            permission="zope2.View"
+            interface="..interfaces.IGroup"
+            />
+
+        <require
+            permission="cmf.ModifyPortalContent"
+            set_schema="..interfaces.IGroup"
+            />
+
+    </class>
+  <class class=".organization.Organization">
+    <require
+        permission="zope2.View"
+        interface="..interfaces.IOrganization"
+        />
+    <require
+        permission="cmf.ModifyPortalContent"
+        set_schema="..interfaces.IOrganization"
+        />
+  </class>
+  <class class=".person.Person">
+    <require
+        permission="zope2.View"
+        interface="..interfaces.IPerson"
+        />
+    <require
+        permission="cmf.ModifyPortalContent"
+        set_schema="..interfaces.IPerson"
+        />
+  </class>
+  <class class=".addressbook.AddressBook">
+    <require
+        permission="zope2.View"
+        interface="..interfaces.IAddressBook"
+        />
+    <require
+        permission="cmf.ModifyPortalContent"
+        set_schema="..interfaces.IAddressBook"
+        />
+  </class>
+
+</configure>

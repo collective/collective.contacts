@@ -1,0 +1,22 @@
+def importVarious(context):
+    """
+    Import various settings for collective.contacts
+    copied from Products.ATExtensions
+
+    This provisional handler will be removed again as soon as
+    full handlers are implemented for this step.
+    """
+    site = context.getSite()
+    pfc = site.portal_form_controller
+    pfc.addFormValidators('atct_edit',
+                          '',   # context_type
+                          'more',
+                          '')   # validators
+    pfc.addFormAction('atct_edit',
+                      'success',
+                      '',    # context_type
+                      'more',
+                      'traverse_to',
+                      'string:more_edit')
+    return "Added validator and action for the 'more' button to " \
+           "the form controller."

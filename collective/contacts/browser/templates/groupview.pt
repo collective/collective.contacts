@@ -1,0 +1,87 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="collective.contacts">
+<body>
+    <div metal:fill-slot="main"
+         tal:define="Batch python:modules['Products.CMFPlone'].Batch;
+                     persons_start request/persons_start | python:0;
+                     persons_size request/persons_size | python:20;
+                     persons view/persons | python:None;">
+
+        <tal:main-macro metal:define-macro="main">
+            <h1 i18n:translate="">Group: <span i18n:name="group_name" tal:content="here/title"/></h1>
+            <p i18n:translate="group_no_persons"
+                tal:condition="not:persons">There are no persons assigned to this group.</p>
+            <tal:batch define="batch_persons python:Batch(persons, persons_size, int(persons_start), orphan=1, b_start_str='persons_start')"
+                       condition="persons">
+
+            <h3 i18n:translate="persons">Persons:</h3>
+
+            <form action="#" method="post"
+                  tal:attributes="action string:${context/aq_parent/absolute_url}/search_addressbook">
+                    <input name="search_string">
+                    <input type="hidden" name="persons_group_submitted" value="1" />
+                    <input type="hidden" name="group_id" value="#"
+                                tal:attributes="value here/id"/>
+                    <input type="submit" name="search_persons_in_group"
+                     value="Search"
+                     i18n:attributes="value label_search_persons_in_group"
+                     />
+            </form>
+
+            <div metal:use-macro="here/custom_batch_macros/macros/navigation" />
+
+            <table class="listing">
+                <tr>
+                    <th i18n:translate="listingheader_persons_first_last_name">Name and Last Name</th>
+                    <th i18n:translate="listingheader_persons_organization">Organization</th>
+                    <th i18n:translate="listingheader_persons_phone">Phone</th>
+                    <th i18n:translate="listingheader_persons_mobile">Mobile</th>
+                    <th i18n:translate="listingheader_persons_email">E-Mail</th>
+                    <th i18n:translate="listingheader_persons_web">Web</th>
+                    <th i18n:translate="listingheader_persons_address">Address</th>
+                    <th i18n:translate="listingheader_persons_city">City</th>
+                    <th i18n:translate="listingheader_persons_country">Country</th>
+                </tr>
+                <tal:block repeat="person batch_persons">
+                <tr tal:define="oddrow repeat/person/odd"
+                    tal:attributes="class python:view.test(oddrow,'odd','even')">
+                    <td>
+                        <a href="#" tal:attributes="href person/absolute_url">
+                            <span tal:content="person/first_name"/> <span tal:content="person/last_name"/>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" tal:attributes="href person/organization/absolute_url"
+                                    tal:condition="python:getattr(person,'organization', False)">
+                            <span tal:content="person/organization/id"/>
+                        </a>
+                    </td>
+                    <td><span tal:content="person/phone"/></td>
+                    <td><span tal:content="person/mobile_phone"/></td>
+                    <td>
+                        <a href="#" tal:attributes="href string:mailto:${person/email}">
+                            <span tal:content="person/email"/>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" tal:attributes="href person/web">
+                            <span tal:content="person/web"/>
+                        </a>
+                    </td>
+                    <td><span tal:content="person/address"/></td>
+                    <td><span tal:content="person/city"/></td>
+                    <td><span tal:content="person/country"/></td>
+                </tr>
+                </tal:block>
+            </table>
+
+            <div metal:use-macro="here/custom_batch_macros/macros/navigation" />
+
+            </tal:batch>
+
+        </tal:main-macro>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<object name="Address Book"
+   meta_type="Factory-based Type Information with dynamic views"
+   i18n:domain="collective.contacts" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+  <property name="title" i18n:translate="">Address Book</property>
+  <property name="description"
+    i18n:translate="">An address book</property>
+  <property name="content_meta_type">Address Book</property>
+  <property name="content_icon">folder_icon.gif</property>
+  <property name="product">collective.contacts</property>
+  <property name="factory">addAddressBook</property>
+  <property name="immediate_view">edit</property>
+  <property name="global_allow">True</property>
+  <property name="filter_content_types">True</property>
+  <property name="allowed_content_types">
+    <element value="Person" />
+    <element value="Organization" />
+    <element value="Group" />
+  </property>
+  <property name="allow_discussion">False</property>
+  <property name="default_view">addresspersons_view</property>
+  <property name="view_methods">
+    <element value="addresspersons_view" />
+    <element value="base_view" />
+  </property>
+  <alias from="(Default)" to="(dynamic view)" />
+  <alias from="edit" to="atct_edit" />
+  <alias from="sharing" to="@@sharing" />
+  <alias from="view" to="(selected layout)" />
+  <action title="Persons" action_id="view" category="object" condition_expr=""
+    url_expr="string:${folder_url}/addresspersons_view" visible="True" i18n:translate="">
+    <permission value="View" />
+  </action>
+  <action title="Organizations" action_id="addr_organizations" category="object" condition_expr=""
+    url_expr="string:${folder_url}/addressorganizations_view" visible="True"  i18n:translate="">
+    <permission value="View" />
+  </action>
+  <action title="Groups" action_id="addr_groups" category="object" condition_expr=""
+    url_expr="string:${folder_url}/addressgroups_view" visible="True" i18n:translate="">
+    <permission value="View" />
+  </action>
+  <action title="Edit" action_id="edit" category="object" condition_expr=""
+    url_expr="string:${object_url}/edit" visible="True">
+    <permission value="Modify portal content" />
+  </action>
+</object>
