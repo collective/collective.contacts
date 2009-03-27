@@ -4,8 +4,7 @@ from zLOG import LOG, INFO, WARNING
 from config import PROJECTNAME
 import zope.i18n
 
-from zope.i18nmessageid import MessageFactory
-_ = MessageFactory('collective.contacts')
+from collective.contacts import contactsMessageFactory as _
 
 import codecs
 import csv

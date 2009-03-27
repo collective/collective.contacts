@@ -27,28 +27,6 @@ OrganizationSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
     ),
 
     atapi.StringField(
-        'city',
-        storage=atapi.AnnotationStorage(),
-        widget=atapi.StringWidget(
-            label=_(u"City"),
-            description=_(u"Organization's city"),
-        ),
-        required=False,
-        searchable=1,
-    ),
-
-    atapi.StringField(
-        'zip',
-        storage=atapi.AnnotationStorage(),
-        widget=atapi.StringWidget(
-            label=_(u"ZIP"),
-            description=_(u"Organization's ZIP"),
-        ),
-        required=False,
-        searchable=1,
-    ),
-
-    atapi.StringField(
         'country',
         storage=atapi.AnnotationStorage(),
         widget=atapi.SelectionWidget(
@@ -68,6 +46,28 @@ OrganizationSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
             description=_(u"Organization's state"),
         ),
         vocabulary_factory='contacts.states',
+        required=False,
+        searchable=1,
+    ),
+
+    atapi.StringField(
+        'city',
+        storage=atapi.AnnotationStorage(),
+        widget=atapi.StringWidget(
+            label=_(u"City"),
+            description=_(u"Organization's city"),
+        ),
+        required=False,
+        searchable=1,
+    ),
+
+    atapi.StringField(
+        'zip',
+        storage=atapi.AnnotationStorage(),
+        widget=atapi.StringWidget(
+            label=_(u"ZIP"),
+            description=_(u"Organization's ZIP"),
+        ),
         required=False,
         searchable=1,
     ),
@@ -215,10 +215,10 @@ class Organization(base.ATCTContent):
     
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
     address = atapi.ATFieldProperty('address')
-    city = atapi.ATFieldProperty('city')
-    zip = atapi.ATFieldProperty('zip')
     country = atapi.ATFieldProperty('country')
     state = atapi.ATFieldProperty('state')
+    city = atapi.ATFieldProperty('city')
+    zip = atapi.ATFieldProperty('zip')
     extra_address = atapi.ATFieldProperty('extraAddress')
     phone = atapi.ATFieldProperty('phone')
     fax = atapi.ATFieldProperty('fax')

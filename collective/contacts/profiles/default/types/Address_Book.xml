@@ -26,19 +26,7 @@
   <alias from="(Default)" to="(dynamic view)" />
   <alias from="edit" to="atct_edit" />
   <alias from="sharing" to="@@sharing" />
-  <alias from="view" to="(selected layout)" />
-  <action title="Persons" action_id="view" category="object" condition_expr=""
-    url_expr="string:${folder_url}/addresspersons_view" visible="True" i18n:translate="">
-    <permission value="View" />
-  </action>
-  <action title="Organizations" action_id="addr_organizations" category="object" condition_expr=""
-    url_expr="string:${folder_url}/addressorganizations_view" visible="True"  i18n:translate="">
-    <permission value="View" />
-  </action>
-  <action title="Groups" action_id="addr_groups" category="object" condition_expr=""
-    url_expr="string:${folder_url}/addressgroups_view" visible="True" i18n:translate="">
-    <permission value="View" />
-  </action>
+  <alias from="view" to="addresspersons_view" />
   <action title="Edit" action_id="edit" category="object" condition_expr=""
     url_expr="string:${object_url}/edit" visible="True">
     <permission value="Modify portal content" />

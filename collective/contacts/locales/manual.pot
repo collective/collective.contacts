@@ -17,9 +17,4 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.contacts\n"
 
-msgid "Organizations"
-msgstr ""
-
-msgid "Groups"
-msgstr ""
 

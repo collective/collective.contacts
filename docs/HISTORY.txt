@@ -3,6 +3,18 @@ Changelog
 
 SVN
 ----------------
+* Fixed missing translations under the "Send emails page".
+
+* Added "go back" and "Advanced search" buttons properly when getting or not
+  getting search results.
+
+* Finished with the country and states fields, added them to the search
+  templates.
+
+* Fixed a typo with the email spanish translation
+
+* Added a note when sending emails about opening the default email client
+
 
 1.2.0
 ----------------

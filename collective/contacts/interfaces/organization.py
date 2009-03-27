@@ -13,18 +13,6 @@ class IOrganization(Interface):
         description=_(u"Organization's address"),
     )
 
-    city = schema.TextLine(
-        title=_(u"City"),
-        required=False,
-        description=_(u"Organization's city"),
-    )
-
-    zip = schema.TextLine(
-        title=_(u"ZIP"),
-        required=False,
-        description=_(u"Organization's ZIP"),
-    )
-
     country = schema.Choice(
         title=_(u"Country"),
         required=False,
@@ -37,6 +25,18 @@ class IOrganization(Interface):
         required=False,
         description=_(u"Organization's state"),
         vocabulary='contacts.states'
+    )
+
+    city = schema.TextLine(
+        title=_(u"City"),
+        required=False,
+        description=_(u"Organization's city"),
+    )
+
+    zip = schema.TextLine(
+        title=_(u"ZIP"),
+        required=False,
+        description=_(u"Organization's ZIP"),
     )
 
     extra_address = schema.TextLine(

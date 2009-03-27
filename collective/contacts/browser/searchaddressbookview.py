@@ -219,7 +219,6 @@ class SearchAddressBookView(BrowserView):
                  'address' : request.get('address', None),
                  'city' : request.get('city', None),
                  'zip' : request.get('zip', None),
-                 'country' : request.get('country', None),
                  'extra_adress' : request.get('extra_adress', None),
                  'phone' : request.get('phone', None),
                  'fax' : request.get('fax', None),
@@ -230,6 +229,19 @@ class SearchAddressBookView(BrowserView):
                  'sector' : request.get('sector', None),
                  'text' : request.get('text', None),
                 }
+
+        
+        country = request.get('country', None)
+        if country and country != '--':
+            attrs['country'] = country
+        else:
+            attrs['country'] = None
+
+        state = request.get('state', None)
+        if state and state != '--':
+            attrs['state'] = state
+        else:
+            attrs['state'] = None
 
         all_organizations = [i.getObject() for i in self.portal_catalog(
                                {'portal_type':'Organization',
@@ -299,7 +311,6 @@ class SearchAddressBookView(BrowserView):
                  'work_mobile_phone' : request.get('work_mobile_phone', None),
                  'work_email' : request.get('work_email', None),
                  'address' : request.get('address', None),
-                 'country' : request.get('country', None),
                  'city' : request.get('city', None),
                  'phone' : request.get('phone', None),
                  'mobile_phone' : request.get('mobile_phone', None),
@@ -307,6 +318,18 @@ class SearchAddressBookView(BrowserView):
                  'web' : request.get('web', None),
                  'text' : request.get('text', None),
         }
+        
+        country = request.get('country', None)
+        if country and country != '--':
+            attrs['country'] = country
+        else:
+            attrs['country'] = None
+
+        state = request.get('state', None)
+        if state and state != '--':
+            attrs['state'] = state
+        else:
+            attrs['state'] = None
 
         all_persons = [i.getObject() for i in self.portal_catalog(
                               {'portal_type':'Person',

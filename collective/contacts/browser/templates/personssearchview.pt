@@ -10,7 +10,9 @@
 
             <div id="advanced_persons_search">
                 <form action="#" method="post"
-                      tal:attributes="action string:${context/absolute_url}/search_addressbook">
+                      tal:attributes="action string:${context/absolute_url}/search_addressbook"
+                      tal:define="person python:context.objectValues(spec='Person')[0];
+                                  errors python:{}">
                     <h2 i18n:translate="advanced_person_search">Advanced person search:</h2>
                     <br/>
                     <span class="short_name">
@@ -76,7 +78,23 @@
                     <span class="country">
                         <label for="country"
                                i18n:translate="label_search_persons_country">Country</label>
-                        <input name="country">
+                        <select id="country" name="country">
+                            <option value="--">--</option>
+                            <option tal:repeat="option view/allCountries"
+                                    tal:content="option/title"
+                                    tal:attributes="value option/value"/>
+                        </select>
+                    </span>
+                    <br/>
+                    <span class="state">
+                        <label for="state"
+                               i18n:translate="label_search_persons_state">State</label>
+                        <select id="state" name="state">
+                            <option value="--">--</option>
+                            <option tal:repeat="option view/allStates"
+                                    tal:attributes="value python:option[0]"
+                                    tal:content="python:option[1]"/>
+                        </select>
                     </span>
                     <br/>
                     <span class="city">
