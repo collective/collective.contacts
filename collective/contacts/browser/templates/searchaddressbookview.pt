@@ -10,6 +10,11 @@
     }
   }
 </script>
+<head>
+    <metal:block fill-slot="top_slot"
+                 tal:define="dummy python:request.set('disable_border',1)" />
+</head>
+
 <body>
     
     <div metal:fill-slot="main" tal:define="persons_submitted request/persons_submitted | python:None;
@@ -19,8 +24,7 @@
                                             quick_organizations_submitted request/quick_organizations_submitted | python:None;
                                             quick_groups_submitted request/quick_groups_submitted | python:None;
                                             string_emails request/string_emails | python:None;
-                                            error_message request/error_message | python:None;
-                                            ">
+                                            error_message request/error_message | python:None;">
                                                 
         <tal:main-macro metal:define-macro="main">
             

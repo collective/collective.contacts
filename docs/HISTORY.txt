@@ -3,6 +3,16 @@ Changelog
 
 SVN
 ----------------
+
+* When a user has permission to view an address book, it will see the 3
+  main tabs with the 3 main views.
+
+* Removed the border when inside a search or a search result. This "fixes"
+  the issue where the wrong tab was selected when inside a search or search
+  results.
+
+* Added checkboxes to send email and export inside a group view.
+
 * Fixed missing translations under the "Send emails page".
 
 * Added "go back" and "Advanced search" buttons properly when getting or not

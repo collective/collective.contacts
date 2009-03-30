@@ -2,7 +2,10 @@
       lang="en"
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="collective.contacts">
-
+<head>
+    <metal:block fill-slot="top_slot"
+                 tal:define="dummy python:request.set('enable_border',1)" />
+</head>
 <body>
     <div metal:fill-slot="main"
          tal:define="Batch python:modules['Products.CMFPlone'].Batch;
@@ -35,14 +38,25 @@
 
             <div metal:use-macro="here/custom_batch_macros/macros/navigation" />
 
+            <form action="#" method="post"
+                    tal:attributes="action string:${context/absolute_url}/search_addressbook">
+
             <table class="listing">
                 <tr>
+                    <th></th>
                     <th i18n:translate="listingheader_groups_name">Name</th>
                     <th i18n:translate="listingheader_groups_members">Members</th>
                 </tr>
                 <tal:block repeat="group batch_groups">
                 <tr tal:define="oddrow repeat/group/odd"
                     tal:attributes="class python:view.test(oddrow,'odd','even')">
+                    <td class="notDraggable">
+                                <input class="noborder" name="user_selection:list" id="#" value="#" type="checkbox"
+                                       tal:define="mail_list python:','.join(['%s'%(i.email) for i in group.persons])"
+                                       tal:attributes="id group/id;
+                                                       value mail_list;
+                                                       disabled python:view.test(mail_list, False, True)"/>
+                    </td>
                     <td>
                         <a href="#" tal:attributes="href group/absolute_url">
                             <span tal:content="group/title"/>
@@ -52,7 +66,8 @@
                 </tr>
                 </tal:block>
             </table>
-
+            <input name="form.button.mailto_group" value="Send mail to group" type="submit" i18n:attributes="value label_send_mail_to_group">
+            </form>
             <div metal:use-macro="here/custom_batch_macros/macros/navigation" />
 
             </tal:batch>

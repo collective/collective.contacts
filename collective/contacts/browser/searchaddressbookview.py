@@ -41,7 +41,13 @@ class SearchAddressBookView(BrowserView):
         # XXX: This should be reviewed and changed to use portal_form_controller
 
         form = self.request.form
-        path = '/'.join(self.context.getPhysicalPath())
+
+        if self.context.meta_type == 'Group':
+            # Means i'm exporting persons from inside a group. I should form
+            # the path from my parent
+            path = '/'.join(self.context.aq_inner.aq_parent.getPhysicalPath())
+        else:
+            path = '/'.join(self.context.getPhysicalPath())
 
         # Here we know if the user requested to export the users
         # the organizations or to send mails to them.

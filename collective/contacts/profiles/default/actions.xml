@@ -15,7 +15,7 @@
    <property name="visible">True</property>
   </object>
   <object name="addresspersons_view" meta_type="CMF Action" i18n:domain="collective.contacts"
-        insert-after="organizations">
+        insert-after="addressorganizations_view">
    <property name="title" i18n:translate="">Persons</property>
    <property name="description" i18n:translate=""/>
    <property name="url_expr">string:${folder_url}/addresspersons_view</property>
@@ -27,7 +27,7 @@
    <property name="visible">True</property>
   </object>
   <object name="addressgroups_view" meta_type="CMF Action" i18n:domain="collective.contacts"
-        insert-after="persons">
+        insert-after="addresspersons_view">
    <property name="title" i18n:translate="">Groups</property>
    <property name="description" i18n:translate=""/>
    <property name="url_expr">string:${folder_url}/addressgroups_view</property>

@@ -32,8 +32,12 @@
 
             <div metal:use-macro="here/custom_batch_macros/macros/navigation" />
 
+            <form action="#" method="post"
+                tal:attributes="action string:${context/absolute_url}/search_addressbook">
+
             <table class="listing">
                 <tr>
+                    <th></th>
                     <th i18n:translate="listingheader_persons_first_last_name">Name and Last Name</th>
                     <th i18n:translate="listingheader_persons_organization">Organization</th>
                     <th i18n:translate="listingheader_persons_phone">Phone</th>
@@ -47,6 +51,12 @@
                 <tal:block repeat="person batch_persons">
                 <tr tal:define="oddrow repeat/person/odd"
                     tal:attributes="class python:view.test(oddrow,'odd','even')">
+                    <td class="notDraggable">
+                        <input class="noborder" name="user_selection:list" id="#" value="#" type="checkbox"
+                               tal:attributes="id person/id;
+                                               value python:'%s %s'%(person.id, person.email);
+                                               disabled python:view.test(person.email, False, True)"/>
+                    </td>
                     <td>
                         <a href="#" tal:attributes="href person/absolute_url">
                             <span tal:content="person/first_name"/> <span tal:content="person/last_name"/>
@@ -76,6 +86,9 @@
                 </tr>
                 </tal:block>
             </table>
+            <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to">
+            <input name="form.button.export_persons" value="Export selected persons" type="submit" i18n:attributes="value label_export_selected_persons">
+            </form>
 
             <div metal:use-macro="here/custom_batch_macros/macros/navigation" />
 
