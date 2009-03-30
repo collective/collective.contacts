@@ -18,15 +18,17 @@
     <element value="Group" />
   </property>
   <property name="allow_discussion">False</property>
-  <property name="default_view">addresspersons_view</property>
+  <property name="default_view">addressorganizations_view</property>
   <property name="view_methods">
+    <element value="addressorganizations_view" />
     <element value="addresspersons_view" />
+    <element value="addressgroups_view" />
     <element value="base_view" />
   </property>
   <alias from="(Default)" to="(dynamic view)" />
   <alias from="edit" to="atct_edit" />
   <alias from="sharing" to="@@sharing" />
-  <alias from="view" to="addresspersons_view" />
+  <alias from="view" to="addressorganizations_view" />
   <action title="Edit" action_id="edit" category="object" condition_expr=""
     url_expr="string:${object_url}/edit" visible="True">
     <permission value="Modify portal content" />

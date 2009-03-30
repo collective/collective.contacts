@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object name="portal_actions" meta_type="Plone Actions Tool" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <object name="object" meta_type="CMF Action Category">
+  <property name="title"/>
+  <object name="addressorganizations_view" meta_type="CMF Action" i18n:domain="collective.contacts"
+        insert-before="folderContents">
+   <property name="title" i18n:translate="">Organizations</property>
+   <property name="description" i18n:translate=""/>
+   <property name="url_expr">string:${folder_url}/addressorganizations_view</property>
+   <property name="icon_expr"/>
+   <property name="available_expr">python:object.meta_type == 'AddressBook'</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="addresspersons_view" meta_type="CMF Action" i18n:domain="collective.contacts"
+        insert-after="organizations">
+   <property name="title" i18n:translate="">Persons</property>
+   <property name="description" i18n:translate=""/>
+   <property name="url_expr">string:${folder_url}/addresspersons_view</property>
+   <property name="icon_expr"/>
+   <property name="available_expr">python:object.meta_type == 'AddressBook'</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="addressgroups_view" meta_type="CMF Action" i18n:domain="collective.contacts"
+        insert-after="persons">
+   <property name="title" i18n:translate="">Groups</property>
+   <property name="description" i18n:translate=""/>
+   <property name="url_expr">string:${folder_url}/addressgroups_view</property>
+   <property name="icon_expr"/>
+   <property name="available_expr">python:object.meta_type == 'AddressBook'</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+ </object>
+</object>
