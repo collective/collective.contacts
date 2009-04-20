@@ -44,7 +44,14 @@
 
             <table class="listing">
                 <tr>
-                    <th></th>
+                    <th>
+                    <input type="checkbox"
+                        onclick="javascript:toggleSelect(this, 'user_selection:list', false);"
+                        name="pt_toggle"
+                        value="#"
+                        id="pt_toggle"
+                        class="noborder"/>
+                    </th>
                     <th i18n:translate="listingheader_organizations_name">Name</th>
                     <th i18n:translate="listingheader_organizations_sector">Sector</th>
                     <th i18n:translate="listingheader_organizations_phone">Phone</th>
@@ -63,7 +70,8 @@
                         <input class="noborder" name="user_selection:list" id="#" value="#" type="checkbox"
                                tal:attributes="id organization/id;
                                                value python:'%s %s'%(organization.id, organization.email);
-                                               disabled python:view.test(organization.email, False, True)"/>
+                                               disabled python:view.test(organization.email, False, True);
+                                               name python:view.test(organization.email, 'user_selection:list', 'no_mail');"/>
                     </td>
                     <td>
                         <a href="#" tal:attributes="href organization/absolute_url">

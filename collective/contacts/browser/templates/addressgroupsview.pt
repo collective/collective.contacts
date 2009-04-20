@@ -43,7 +43,14 @@
 
             <table class="listing">
                 <tr>
-                    <th></th>
+                    <th>
+                    <input type="checkbox"
+                        onclick="javascript:toggleSelect(this, 'user_selection:list', false);"
+                        name="pt_toggle"
+                        value="#"
+                        id="pt_toggle"
+                        class="noborder"/>
+                    </th>
                     <th i18n:translate="listingheader_groups_name">Name</th>
                     <th i18n:translate="listingheader_groups_members">Members</th>
                 </tr>
@@ -55,7 +62,8 @@
                                        tal:define="mail_list python:','.join(['%s'%(i.email) for i in group.persons])"
                                        tal:attributes="id group/id;
                                                        value mail_list;
-                                                       disabled python:view.test(mail_list, False, True)"/>
+                                                       disabled python:view.test(mail_list, False, True);
+                                                       name python:view.test(mail_list, 'user_selection:list', 'no_mail');"/>
                     </td>
                     <td>
                         <a href="#" tal:attributes="href group/absolute_url">

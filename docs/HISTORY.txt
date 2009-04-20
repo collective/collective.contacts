@@ -4,6 +4,8 @@ Changelog
 SVN
 ----------------
 
+* Added the "Select all" checkbox to all tables.
+
 * Added an uninstall profile.
 
 * When a user has permission to view an address book, it will see the 3
