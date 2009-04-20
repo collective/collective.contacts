@@ -21,6 +21,13 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="Contacts Uninstall"
+      directory="profiles/uninstall"
+      description="Remove Collective.Contacts"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
 
    <browser:menuItems
         for="*"

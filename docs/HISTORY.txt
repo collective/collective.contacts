@@ -4,6 +4,8 @@ Changelog
 SVN
 ----------------
 
+* Added an uninstall profile.
+
 * When a user has permission to view an address book, it will see the 3
   main tabs with the 3 main views.
 
