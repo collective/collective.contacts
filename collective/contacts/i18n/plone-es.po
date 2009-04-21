@@ -13,7 +13,7 @@ msgstr ""
 "Language-Code: es\n"
 "Language-Name: Español\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: collective.contacts\n"
+"Domain: plone\n"
 "X-Generator: Lokalize 0.3\n"
 
 #. Default: "delete"
@@ -30,3 +30,8 @@ msgstr "eliminar todas las entradas"
 #: records widget
 msgid "more_entries"
 msgstr " Más "
+
+# Default: " Work "
+msgid "label_schema_work"
+msgstr "Trabajo"
+

@@ -26,7 +26,7 @@
 
             <h2 i18n:translate="groups">Groups:</h2>
 
-            <form action="#" method="post"
+            <form action="#" method="post" class="visualNoPrint"
                   tal:attributes="action string:${context/absolute_url}/search_addressbook">
                     <input name="search_string">
                     <input type="hidden" name="quick_groups_submitted" value="1" />
@@ -43,7 +43,7 @@
 
             <table class="listing">
                 <tr>
-                    <th>
+                    <th class="visualNoPrint">
                     <input type="checkbox"
                         onclick="javascript:toggleSelect(this, 'user_selection:list', false);"
                         name="pt_toggle"
@@ -57,7 +57,7 @@
                 <tal:block repeat="group batch_groups">
                 <tr tal:define="oddrow repeat/group/odd"
                     tal:attributes="class python:view.test(oddrow,'odd','even')">
-                    <td class="notDraggable">
+                    <td class="visualNoPrint">
                                 <input class="noborder" name="user_selection:list" id="#" value="#" type="checkbox"
                                        tal:define="mail_list python:','.join(['%s'%(i.email) for i in group.persons])"
                                        tal:attributes="id group/id;
@@ -74,7 +74,7 @@
                 </tr>
                 </tal:block>
             </table>
-            <input name="form.button.mailto_group" value="Send mail to group" type="submit" i18n:attributes="value label_send_mail_to_group">
+            <input name="form.button.mailto_group" value="Send mail to group" type="submit" i18n:attributes="value label_send_mail_to_group" class="visualNoPrint">
             </form>
             <div metal:use-macro="here/custom_batch_macros/macros/navigation" />
 
@@ -83,7 +83,7 @@
 
         <br/>
 
-        <form action="#" method="post"
+        <form action="#" method="post" class="visualNoPrint"
                     tal:attributes="action string:${context/absolute_url}/import_view">
             <input name="form.button.import" value="Import organizations or persons" type="submit" i18n:attributes="value label_import_organizations_persons">
         </form>

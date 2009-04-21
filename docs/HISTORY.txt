@@ -4,6 +4,10 @@ Changelog
 SVN
 ----------------
 
+* Found a way to get the 'Work' schemata title to be translated to spanish.
+
+* Added some classes to the views, so forms and buttons are hidden when printing
+
 * Added the "Select all" checkbox to all tables.
 
 * Added an uninstall profile.

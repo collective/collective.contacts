@@ -51,7 +51,7 @@
 
                 <div tal:condition="not: persons">
                     <p><strong i18n:translate="description_no_results_found">No results were found.</strong></p>
-                    <form action="#" method="post"
+                    <form action="#" method="post" class="visualNoPrint"
                     tal:attributes="action string:${context/absolute_url}/search_addressbook">
 
                         <input type="submit" name="form.button.advanced_persons"
@@ -69,7 +69,7 @@
 
                     <table class="listing">
                         <tr>
-                            <th>
+                            <th class="visualNoPrint">
                             <input type="checkbox"
                                 onclick="javascript:toggleSelect(this, 'user_selection:list', false);"
                                 name="pt_toggle"
@@ -91,7 +91,7 @@
                         <tal:block repeat="person persons">
                         <tr tal:define="oddrow repeat/person/odd"
                             tal:attributes="class python:view.test(oddrow,'odd','even')">
-                            <td class="notDraggable">
+                            <td class="visualNoPrint">
                                 <input class="noborder" name="user_selection:list" id="#" value="#" type="checkbox"
                                        tal:attributes="id person/id;
                                                        value python:'%s %s'%(person.id, person.email);
@@ -127,9 +127,9 @@
                         </tr>
                         </tal:block>
                     </table>
-                    <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to">
-                    <input name="form.button.export_persons" value="Export persons" type="submit" i18n:attributes="value label_export_persons">
-                    <input type="submit" name="form.button.advanced_persons"
+                    <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to" class="visualNoPrint">
+                    <input name="form.button.export_persons" value="Export persons" type="submit" i18n:attributes="value label_export_persons" class="visualNoPrint">
+                    <input type="submit" name="form.button.advanced_persons" class="visualNoPrint"
                      value="Search Again"
                      i18n:attributes="value label_do_another_search"
                      tal:condition="persons_submitted"
@@ -140,7 +140,7 @@
                 </div>
                 <div class="bottom_search_buttons">
                     <br/>
-                    <form action="#" method="post"
+                    <form action="#" method="post" class="visualNoPrint"
                     tal:attributes="action string:${context/absolute_url}/search_addressbook">
                         <input type="submit" name="form.button.advanced_persons"
                          value="Advanced Search"
@@ -161,7 +161,7 @@
                 <div tal:condition="not: organizations">
                     <p><strong i18n:translate="description_no_results_found">No results were found.</strong></p>
 
-                    <form action="#" method="post"
+                    <form action="#" method="post" class="visualNoPrint"
                         tal:attributes="action string:${context/absolute_url}/search_addressbook">
 
                         <input type="submit" name="form.button.advanced_organizations"
@@ -179,7 +179,7 @@
 
                     <table class="listing">
                         <tr>
-                            <th>
+                            <th class="visualNoPrint">
                             <input type="checkbox"
                                 onclick="javascript:toggleSelect(this, 'user_selection:list', false);"
                                 name="pt_toggle"
@@ -200,7 +200,7 @@
                         <tal:block repeat="organization organizations">
                         <tr tal:define="oddrow repeat/organization/odd"
                             tal:attributes="class python:view.test(oddrow,'odd','even')">
-                            <td class="notDraggable">
+                            <td class="visualNoPrint">
                                 <input class="noborder" name="user_selection:list" id="#" value="#" type="checkbox"
                                        tal:attributes="id organization/id;
                                                        value python:'%s %s'%(organization.id, organization.email);
@@ -233,9 +233,9 @@
                         </tr>
                         </tal:block>
                     </table>
-                    <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to">
-                    <input name="form.button.export_org" value="Export organizations" type="submit" i18n:attributes="value label_export_organizations">
-                    <input type="submit" name="form.button.advanced_organizations"
+                    <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to" class="visualNoPrint">
+                    <input name="form.button.export_org" value="Export organizations" type="submit" i18n:attributes="value label_export_organizations" class="visualNoPrint">
+                    <input type="submit" name="form.button.advanced_organizations" class="visualNoPrint"
                      value="Search Again"
                      i18n:attributes="value label_do_another_search"
                      tal:condition="organizations_submitted"
@@ -246,7 +246,7 @@
                 </div>
                 <div class="bottom_search_buttons">
                     <br/>
-                    <form action="#" method="post"
+                    <form action="#" method="post" class="visualNoPrint"
                     tal:attributes="action string:${context/absolute_url}/search_addressbook">
                         <input type="submit" name="form.button.advanced_organizations"
                          value="Advanced Search"
@@ -279,7 +279,7 @@
 
                     <table class="listing">
                         <tr>
-                            <th>
+                            <th class="visualNoPrint">
                             <input type="checkbox"
                                 onclick="javascript:toggleSelect(this, 'user_selection:list', false);"
                                 name="pt_toggle"
@@ -293,7 +293,7 @@
                         <tal:block repeat="group groups">
                         <tr tal:define="oddrow repeat/group/odd"
                             tal:attributes="class python:view.test(oddrow,'odd','even')">
-                            <td class="notDraggable">
+                            <td class="visualNoPrint">
                                 <input class="noborder" name="user_selection:list" id="#" value="#" type="checkbox"
                                        tal:define="mail_list python:','.join(['%s'%(i.email) for i in group.persons])"
                                        tal:attributes="id group/id;
@@ -310,13 +310,13 @@
                         </tr>
                         </tal:block>
                     </table>
-                    <input name="form.button.mailto_group" value="Send mail to group" type="submit" i18n:attributes="value label_send_mail_to_group">
+                    <input name="form.button.mailto_group" value="Send mail to group" type="submit" i18n:attributes="value label_send_mail_to_group" class="visualNoPrint">
                 </form>
 
                 </div>
                 </div>
                 <br/>
-                <a href = "javascript:history.back()" i18n:translate="label_go_back">Go back</a>
+                <a href = "javascript:history.back()" i18n:translate="label_go_back" class="visualNoPrint">Go back</a>
                 <br/>
                 <!--<a href="#" tal:attributes="href string:${context/absolute_url}/search_addressbook"
                             tal:condition="quick_groups_submitted"
@@ -349,7 +349,7 @@
 
                     <table class="listing">
                         <tr>
-                            <th>
+                            <th class="visualNoPrint">
                             <input type="checkbox"
                                 onclick="javascript:toggleSelect(this, 'user_selection:list', false);"
                                 name="pt_toggle"
@@ -371,7 +371,7 @@
                         <tal:block repeat="person persons">
                         <tr tal:define="oddrow repeat/person/odd"
                             tal:attributes="class python:view.test(oddrow,'odd','even')">
-                            <td class="notDraggable">
+                            <td class="visualNoPrint">
                                 <input class="noborder" name="user_selection:list" id="#" value="#" type="checkbox"
                                        tal:attributes="id person/id;
                                                        value python:'%s %s'%(person.id, person.email);
@@ -407,15 +407,15 @@
                         </tr>
                         </tal:block>
                     </table>
-                    <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to">
-                    <input name="form.button.export_persons" value="Export persons" type="submit" i18n:attributes="value label_export_persons">
+                    <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to" class="visualNoPrint">
+                    <input name="form.button.export_persons" value="Export persons" type="submit" i18n:attributes="value label_export_persons" class="visualNoPrint">
                 </form>
 
                 </div>
                 </div>
                 <div class="bottom_search_buttons">
                     <br/>
-                    <a href = "javascript:history.back()" i18n:translate="label_go_back">Go back</a>
+                    <a href = "javascript:history.back()" i18n:translate="label_go_back" class="visualNoPrint">Go back</a>
                     <br/>
                 </div>
             </tal:persons_in_groups>

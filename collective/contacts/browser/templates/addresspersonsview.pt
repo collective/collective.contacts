@@ -22,7 +22,7 @@
             <tal:batch define="batch_persons python:Batch(persons, persons_size, int(persons_start), orphan=1, b_start_str='persons_start')">
             <h2 i18n:translate="persons">Persons:</h2>
 
-            <form action="#" method="post"
+            <form action="#" method="post" class="visualNoPrint"
                   tal:attributes="action string:${context/absolute_url}/search_addressbook">
                     <input name="search_string">
                     <input type="submit" name="quick_persons_submitted"
@@ -41,7 +41,7 @@
             
             <table class="listing">
                 <tr>
-                    <th>
+                    <th class="visualNoPrint">
                     <input type="checkbox"
                         onclick="javascript:toggleSelect(this, 'user_selection:list', false);"
                         name="pt_toggle"
@@ -63,7 +63,7 @@
                 <tr tal:define="oddrow repeat/person/odd;
                                 country_vocab python:person.getField('country').Vocabulary()"
                     tal:attributes="class python:view.test(oddrow,'odd','even')">
-                    <td class="notDraggable">
+                    <td class="visualNoPrint">
                         <input class="noborder" name="user_selection:list" id="#" value="#" type="checkbox"
                                tal:attributes="id person/id;
                                                value python:'%s %s'%(person.id, person.email);
@@ -103,14 +103,14 @@
             <div metal:use-macro="here/custom_batch_macros/macros/navigation" />
 
 
-                <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to">
-                <input name="form.button.export_persons" value="Export selected persons" type="submit" i18n:attributes="value label_export_selected_persons">
+                <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to" class="visualNoPrint">
+                <input name="form.button.export_persons" value="Export selected persons" type="submit" i18n:attributes="value label_export_selected_persons" class="visualNoPrint">
 
             </form>
             </tal:batch>
 
             <br/>
-            <form action="#" method="post"
+            <form action="#" method="post" class="visualNoPrint"
                     tal:attributes="action string:${context/absolute_url}">
                 <input name="form.button.export_persons" value="Export all persons" type="submit" i18n:attributes="value label_export_all_persons">
             </form>
@@ -118,7 +118,7 @@
 
         <br/>
 
-        <form action="#" method="post"
+        <form action="#" method="post" class="visualNoPrint"
                     tal:attributes="action string:${context/absolute_url}/import_view">
             <input name="form.button.import" value="Import organizations or persons" type="submit" i18n:attributes="value label_import_organizations_persons">
         </form>

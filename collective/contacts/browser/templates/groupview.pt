@@ -16,9 +16,9 @@
             <tal:batch define="batch_persons python:Batch(persons, persons_size, int(persons_start), orphan=1, b_start_str='persons_start')"
                        condition="persons">
 
-            <h3 i18n:translate="persons">Persons:</h3>
+            <h3 i18n:translate="persons:">Persons:</h3>
 
-            <form action="#" method="post"
+            <form action="#" method="post" class="visualNoPrint"
                   tal:attributes="action string:${context/aq_parent/absolute_url}/search_addressbook">
                     <input name="search_string">
                     <input type="hidden" name="persons_group_submitted" value="1" />
@@ -37,7 +37,7 @@
 
             <table class="listing">
                 <tr>
-                    <th>
+                    <th class="visualNoPrint">
                     <input type="checkbox"
                         onclick="javascript:toggleSelect(this, 'user_selection:list', false);"
                         name="pt_toggle"
@@ -58,7 +58,7 @@
                 <tal:block repeat="person batch_persons">
                 <tr tal:define="oddrow repeat/person/odd"
                     tal:attributes="class python:view.test(oddrow,'odd','even')">
-                    <td class="notDraggable">
+                    <td class="visualNoPrint">
                         <input class="noborder" name="user_selection:list" id="#" value="#" type="checkbox"
                                tal:attributes="id person/id;
                                                value python:'%s %s'%(person.id, person.email);
@@ -94,8 +94,8 @@
                 </tr>
                 </tal:block>
             </table>
-            <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to">
-            <input name="form.button.export_persons" value="Export selected persons" type="submit" i18n:attributes="value label_export_selected_persons">
+            <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to" class="visualNoPrint">
+            <input name="form.button.export_persons" value="Export selected persons" type="submit" i18n:attributes="value label_export_selected_persons" class="visualNoPrint">
             </form>
 
             <div metal:use-macro="here/custom_batch_macros/macros/navigation" />
