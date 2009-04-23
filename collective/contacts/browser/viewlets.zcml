@@ -1,0 +1,20 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+   <interface
+      interface=".interfaces.IThemeSpecific"
+      type="zope.publisher.interfaces.browser.IBrowserSkinType"
+      name="Collective_contacts Theme"
+      />
+
+    <!-- Content views (tabs) -->
+    <browser:viewlet
+        name="plone.contentviews"
+        manager="plone.app.layout.viewlets.interfaces.IContentViews"
+        class=".content.ContentActionsViewlet"
+        layer= ".interfaces.IThemeSpecific"
+        permission="zope2.View"
+        />
+
+</configure>

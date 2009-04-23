@@ -12,6 +12,8 @@
   <include file="individuals_views.zcml" />
   <include file="search_views.zcml" />
   <include file="kss.zcml" />
+  <include file="viewlets.zcml" />
+
 
     <browser:resourceDirectory
         name="resources"
