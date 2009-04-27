@@ -7,7 +7,7 @@ from setuptools import setup, find_packages
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
-version = 'SVN'
+version = '1.3.0'
 
 long_description = (
     read('README.txt')
