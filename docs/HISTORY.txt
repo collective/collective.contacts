@@ -4,6 +4,10 @@ Changelog
 SVN
 ----------------
 
+
+1.3.0
+----------------
+
 * Did an override over the contentviews template to workaround a possible bug of Plone when having the default page as a portal_action
 
 * Found a way to get the 'Work' schemata title to be translated to spanish.
