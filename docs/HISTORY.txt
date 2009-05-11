@@ -4,6 +4,9 @@ Changelog
 SVN
 ----------------
 
+1.3.1
+----------------
+
 * Fixed display issues with rich text fields
 
 * Added sector and subsector drop downs to the advanced organizations search
