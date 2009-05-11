@@ -4,6 +4,8 @@ Changelog
 SVN
 ----------------
 
+* Added sector and subsector drop downs to the advanced organizations search
+
 * Added a "Go back" link, when doing a quick search.
 
 * [FIXED] was using the same id for translating both work and personal email
