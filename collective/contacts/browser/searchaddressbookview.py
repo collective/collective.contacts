@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from zope.interface import implements, Interface
 
 from Products.Five import BrowserView
@@ -232,7 +233,6 @@ class SearchAddressBookView(BrowserView):
                  'email2' : request.get('email2', None),
                  'email3' : request.get('email3', None),
                  'web' : request.get('web', None),
-                 'sector' : request.get('sector', None),
                  'text' : request.get('text', None),
                 }
 
@@ -249,6 +249,18 @@ class SearchAddressBookView(BrowserView):
         else:
             attrs['state'] = None
 
+        sector = request.get('sector', None)
+        if sector and sector != '--':
+            attrs['sector'] = sector
+        else:
+            attrs['sector'] = None
+
+        sub_sector = request.get('sub_sector', None)
+        if sub_sector and sub_sector != '--':
+            attrs['sub_sector'] = sub_sector
+        else:
+            attrs['sub_sector'] = None
+            
         all_organizations = [i.getObject() for i in self.portal_catalog(
                                {'portal_type':'Organization',
                                 'path':'/'.join(self.context.getPhysicalPath()),

@@ -4,6 +4,19 @@ Changelog
 SVN
 ----------------
 
+* Added a "Go back" link, when doing a quick search.
+
+* [FIXED] was using the same id for translating both work and personal email
+  in the search for persons template.
+  
+* Replaced the way content was retrieved for the views. Now it uses the catalog
+  and, in the case of the persons, it uses the advanced query capabilities
+  so it will sort using last name first and then first name.
+
+* Added 2 sortable fields to the catalog, one for the last name and the other
+  for the first name. They are added and indexed on installation.
+
+* Added types names translation to the old i18n (probably a Plone bug?).
 
 1.3.0
 ----------------

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<object name="portal_catalog" meta_type="Plone Catalog Tool">
+    <index name="lastName" meta_type="FieldIndex">
+        <indexed_attr value="last_name"/>
+    </index>
+    <index name="firstName" meta_type="FieldIndex">
+        <indexed_attr value="first_name"/>
+    </index>
+    <column value="firstName"/>
+    <column value="lastName"/>
+</object>

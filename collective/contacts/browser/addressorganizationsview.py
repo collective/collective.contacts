@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from zope.interface import implements, Interface, alsoProvides
 
 from plone.app.layout.globals.interfaces import IViewView
@@ -84,10 +85,14 @@ class AddressOrganizationsView(BrowserView):
         """
         This method returns all organizations inside this address book
         """
-        organizations = []
-        for i in self.context.getChildNodes():
-            if i.portal_type == 'Organization':
-                organizations.append(i)
+        brains = self.portal_catalog({'portal_type':'Organization',
+                             'path':'/'.join(self.context.getPhysicalPath()),
+                             'sort_on':'sortable_title'})
+                             
+        # XXX: This getObject should be removed and done in a way
+        # that we can ask the data from the catalog instead of getting
+        # all the objects.
+        organizations = [i.getObject() for i in brains]
 
         return organizations
 

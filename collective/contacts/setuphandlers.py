@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 def importVarious(context):
     """
     Import various settings for collective.contacts
@@ -20,3 +21,13 @@ def importVarious(context):
                       'string:more_edit')
     return "Added validator and action for the 'more' button to " \
            "the form controller."
+
+def reindexCatalog(context):
+    """
+    This method will reindex the 2 new indexes added to the catalog
+    """
+    from Products.CMFCore.utils import getToolByName
+    site = context.getSite()
+    cat = getToolByName(site, 'portal_catalog')
+    cat.reindexIndex('lastName', site.REQUEST)
+    cat.reindexIndex('firstName', site.REQUEST)

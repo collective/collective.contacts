@@ -110,7 +110,23 @@
                     <span class="sector">
                         <label for="sector"
                                i18n:translate="label_search_organizations_sector">Sector</label>
-                        <input name="sector">
+                        <select id="sector" name="sector">
+                            <option value="--">--</option>
+                            <option tal:repeat="option view/allSectors"
+                                    tal:content="option/title"
+                                    tal:attributes="value option/value"/>
+                        </select>
+                    </span>
+                    <br/>
+                    <span class="sub_sector">
+                        <label for="sub_sector"
+                               i18n:translate="label_search_organizations_sub_sector">Sub Sector</label>
+                        <select id="sub_sector" name="sub_sector">
+                            <option value="--">--</option>
+                            <option tal:repeat="option view/allSubSectors"
+                                    tal:content="option/title"
+                                    tal:attributes="value option/value"/>
+                        </select>
                     </span>
                     <br/>
                     <span class="text">

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from zope.interface import implements, Interface, alsoProvides
 
 from plone.app.layout.globals.interfaces import IViewView
@@ -59,10 +60,14 @@ class AddressGroupsView(BrowserView):
         """
         This method returns all groups inside this address book
         """
-        groups = []
-        for i in self.context.getChildNodes():
-            if i.portal_type == 'Group':
-                groups.append(i)
+        brains = self.portal_catalog({'portal_type':'Group',
+                             'path':'/'.join(self.context.getPhysicalPath()),
+                             'sort_on':'sortable_title'})
+
+        # XXX: This getObject should be removed and done in a way
+        # that we can ask the data from the catalog instead of getting
+        # all the objects.
+        groups = [i.getObject() for i in brains]
 
         return groups
 

@@ -138,16 +138,18 @@
 
                 </div>
                 </div>
-                <div class="bottom_search_buttons">
+                <div class="bottom_search_buttons" tal:condition="quick_persons_submitted">
                     <br/>
                     <form action="#" method="post" class="visualNoPrint"
                     tal:attributes="action string:${context/absolute_url}/search_addressbook">
                         <input type="submit" name="form.button.advanced_persons"
                          value="Advanced Search"
                          i18n:attributes="value label_advanced_search_persons"
-                         tal:condition="quick_persons_submitted"
                          />
                     </form>
+                    <br/>
+                    <a href = "javascript:history.back()" i18n:translate="label_go_back" class="visualNoPrint">Go back</a>
+                    <br/>
                 </div>
             </tal:persons>
 
@@ -244,16 +246,18 @@
 
                 </div>
                 </div>
-                <div class="bottom_search_buttons">
+                <div class="bottom_search_buttons" tal:condition="quick_organizations_submitted">
                     <br/>
                     <form action="#" method="post" class="visualNoPrint"
                     tal:attributes="action string:${context/absolute_url}/search_addressbook">
                         <input type="submit" name="form.button.advanced_organizations"
                          value="Advanced Search"
-                         i18n:attributes="value label_advanced_search_persons"
-                         tal:condition="quick_organizations_submitted"
+                         i18n:attributes="value label_advanced_search_persons"                         
                          />
                     </form>
+                    <br/>
+                    <a href = "javascript:history.back()" i18n:translate="label_go_back" class="visualNoPrint">Go back</a>
+                    <br/>
                 </div>
             </tal:organizations>
 

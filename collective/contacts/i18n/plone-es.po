@@ -35,3 +35,23 @@ msgstr " Más "
 msgid "label_schema_work"
 msgstr "Trabajo"
 
+# this (below this line) is needed for the edit templates :(
+#. Default: "Address Book"
+#: ./profiles/default/types/Address_Book.xml
+msgid "Address Book"
+msgstr "Libreta de direcciones"
+
+#. Default: "Organization"
+#: ./profiles/default/types/Organization.xml
+msgid "Organization"
+msgstr "Organización"
+
+#. Default: "Person"
+#: ./profiles/default/types/Person.xml
+msgid "Person"
+msgstr "Persona"
+
+#. Default: "Group"
+#: ./profiles/default/types/Group.xml
+msgid "Group"
+msgstr "Grupo"

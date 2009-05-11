@@ -67,7 +67,6 @@ PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
             label=_(u"Organization"),
             description=_(u"The organization the person belongs to"),
             allow_browse = True,
-            base_query = {'portal_type':'Organization'},
             restrict_browsing_to_startup_directory=True,
         ),
         searchable=1,

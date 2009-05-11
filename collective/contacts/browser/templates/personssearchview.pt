@@ -71,7 +71,7 @@
                     <br/>
                     <span class="work_email">
                         <label for="work_email"
-                               i18n:translate="label_search_persons_email">Work Email</label>
+                               i18n:translate="label_search_persons_work_email">Work Email</label>
                         <input name="work_email">
                     </span>
                     <br/>

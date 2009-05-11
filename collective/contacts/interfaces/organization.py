@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from zope import schema
 from zope.interface import Interface
 from collective.contacts import contactsMessageFactory as _
@@ -89,7 +90,7 @@ class IOrganization(Interface):
     )
 
     sub_sector = schema.TextLine(
-        title=_(u"Sub Sector"),
+        title=_(u"Sub sector"),
         required=False,
         description=_(u"Organization's sub sector"),
     )

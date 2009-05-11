@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from zope.interface import implements, Interface
 
 from Products.Five import BrowserView
@@ -62,6 +63,14 @@ class OrganizationsSearchView(BrowserView):
         """
         utility = zapi.getUtility(ICountriesStates)
         return utility.allStateValues()
+
+    def allSectors(self):
+        address_book = self.context.aq_inner
+        return TitledVocabulary.fromTitles(address_book.get_sectors())
+
+    def allSubSectors(self):
+        address_book = self.context.aq_inner
+        return TitledVocabulary.fromTitles(address_book.get_all_sub_sectors())
 
     def test(self, condition, true_value, false_value):
         """

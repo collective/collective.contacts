@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Definition of the Organization content type
 """
 
@@ -152,7 +153,6 @@ OrganizationSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         validators=('isURL'),
     ),
 
-    #ESto deberia ser un drop down con opciones de rubros
     atapi.StringField(
         'sector',
         storage=atapi.AnnotationStorage(),
@@ -170,7 +170,7 @@ OrganizationSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         'sub_sector',
         storage=atapi.AnnotationStorage(),
         widget=atapi.SelectionWidget(
-            label=_(u"Sub Sector"),
+            label=_(u"Sub sector"),
             description=_(u"Organization's sub sector"),
             format='select',
         ),

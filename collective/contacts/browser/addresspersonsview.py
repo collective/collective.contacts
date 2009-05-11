@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from zope.interface import implements, Interface, alsoProvides
 
 from plone.app.layout.globals.interfaces import IViewView
@@ -77,19 +78,18 @@ class AddressPersonsView(BrowserView):
         """
         This method returns all persons inside this address book
         """
+        aq = self.portal_catalog.makeAdvancedQuery({'portal_type':'Person',
+                             'path':'/'.join(self.context.getPhysicalPath())})
+
+        brains = self.portal_catalog.evalAdvancedQuery(aq,
+                                                       (('lastName', 'asc'),
+                                                        ('firstName', 'asc'))
+                                                        )
+
         # XXX: This getObject should be removed and done in a way
         # that we can ask the data from the catalog instead of getting
         # all the objects.
-#        persons =[i.getObject() for i in self.portal_catalog(
-#                               {'portal_type':'Person',
-#                                'path':'/'.join(self.context.getPhysicalPath()),
-#                                'sort_on':'id'
-#                                })]
-
-        persons = []
-        for i in self.context.getChildNodes():
-            if i.portal_type == 'Person':
-                persons.append(i)
+        persons =[i.getObject() for i in brains]
 
         return persons
 
