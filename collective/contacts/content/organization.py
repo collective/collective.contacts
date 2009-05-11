@@ -187,6 +187,8 @@ OrganizationSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         ),
         required=False,
         searchable=1,
+        default_content_type='text/html',
+        default_output_type='text/x-html-safe',
     ),
 
 ))
