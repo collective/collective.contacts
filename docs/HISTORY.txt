@@ -4,7 +4,7 @@ Changelog
 SVN
 ----------------
 
-SVN
+1.3.2
 ----------------
 
 * Included a custom referencobrowser_popup to show only objects that are
