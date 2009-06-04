@@ -543,7 +543,7 @@ msgstr "Exportar personas"
 #. Default: "Export selected organizations"
 #: ./browser/templates/addressorganizationsview.pt:104
 msgid "label_export_selected_organizations"
-msgstr "Eportar organizaciones seleccionadas"
+msgstr "Exportar organizaciones seleccionadas"
 
 #. Default: "Export selected persons"
 #: ./browser/templates/groupview.pt:98

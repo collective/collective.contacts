@@ -4,6 +4,8 @@ Changelog
 SVN
 ----------------
 
+* Fixed a typo in spanish translation ("Eportar" instead of "Exportar")
+
 1.3.2
 ----------------
 
