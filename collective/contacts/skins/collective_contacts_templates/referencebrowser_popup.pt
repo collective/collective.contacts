@@ -235,11 +235,12 @@
                <p i18n:translate="referencebrowser_no_items_found">No items found.</p>
            </tal:noresults>
            <tal:list tal:define="checkPermission python: here.portal_membership.checkPermission;
-                                 folder_contents python: [i.getObject() for i in here.portal_catalog(path='/'.join(here.getPhysicalPath()), sort_on='sortable_title')];
+                                 searchable_folder python: test(here.isPrincipiaFolderish, here, here.aq_inner.aq_parent);
+                                 folder_contents python: [i.getObject() for i in here.portal_catalog(path='/'.join(searchable_folder.getPhysicalPath()), sort_on='sortable_title')];
                                  results python: test(search_text!='' or not allow_browse, query_results, test(allow_browse, [item for item in folder_contents if checkPermission('View',item)], []));
                                  results python: [i for i in results if (not allowed_types or i.portal_type in allowed_types)];
                                  batch python: Batch(results, b_size, int(b_start), orphan=1);">
-                -->
+
                 <table class="group"
                           width="100%"
                           cellspacing="0"

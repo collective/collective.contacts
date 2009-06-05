@@ -4,6 +4,8 @@ Changelog
 SVN
 ----------------
 
+* Fixed the referencebrowser_popup template that wasn't showing content when re-editing a person or a group
+
 * Fixed bug where drop down fields will not update their content when editing inline
 
 * Fixed a typo in spanish translation ("Eportar" instead of "Exportar")
