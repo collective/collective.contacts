@@ -18,7 +18,7 @@ class KSSModifySelector(PloneKSSView):
 
     
     implements(IPloneKSSView)
-    def kssModifyState(self, country):
+    def kssModifyState(self, country=None):
         """
         This method is used to update the province drop down when adding
         a person or organization and also from the advanced search template
@@ -26,13 +26,18 @@ class KSSModifySelector(PloneKSSView):
         in two methods, one that gets called from the ct, and another one
         that gets called from the search template
         """
-        
+
         context = aq_inner(self.context)
         ksscore = self.getCommandSet('core')
 
         selector = ksscore.getHtmlIdSelector('state')
 
         utility = zapi.getUtility(ICountriesStates)
+
+        if not country:
+            # This is necesary for the inline edition
+            country = context.getCountry()
+            
         if country != '--':
             # I will be here if the country has -- selected, in which case
             # i should return all states possible
@@ -82,7 +87,7 @@ class KSSModifySelector(PloneKSSView):
         # and finally we render
         return self.render()
 
-    def kssModifySector(self, sector):
+    def kssModifySector(self, sector=None):
         """
         This method is used to update the sub sector drop down when adding
         an organization and also from the advanced search template that's why
@@ -103,6 +108,10 @@ class KSSModifySelector(PloneKSSView):
             # If i'm here means i'm inside some ct
             address_book = context.aq_parent
 
+        if not sector:
+            # This is necesary for the inline edition
+            sector = context.getSector()
+            
         if sector == '--':
             # If i'm here, means someone selected the -- sector, in which
             # case, i should return all sub sectors available

@@ -4,6 +4,8 @@ Changelog
 SVN
 ----------------
 
+* Fixed bug where drop down fields will not update their content when editing inline
+
 * Fixed a typo in spanish translation ("Eportar" instead of "Exportar")
 
 * Added a css to override Plone's default behaviour when editing a drop down field inline (it repeats the field label)
