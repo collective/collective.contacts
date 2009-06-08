@@ -54,6 +54,7 @@
                     </th>
                     <th i18n:translate="listingheader_organizations_name">Name</th>
                     <th i18n:translate="listingheader_organizations_sector">Sector</th>
+                    <th i18n:translate="listingheader_organizations_sub_sector">Sub Sector</th>
                     <th i18n:translate="listingheader_organizations_phone">Phone</th>
                     <th i18n:translate="listingheader_organizations_fax">Fax</th>
                     <th i18n:translate="listingheader_organizations_email">E-Mail</th>
@@ -79,6 +80,7 @@
                         </a>
                     </td>
                     <td><span tal:content="organization/sector"/></td>
+                    <td><span tal:content="organization/sub_sector"/></td>
                     <td><span tal:content="organization/phone"/></td>
                     <td><span tal:content="organization/fax"/></td>
                     <td>

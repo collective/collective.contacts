@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.contacts\n"
-"POT-Creation-Date: 2009-06-08 14:02+0000\n"
-"PO-Revision-Date: 2009-06-08 11:03-0300\n"
+"POT-Creation-Date: 2009-06-08 19:24+0000\n"
+"PO-Revision-Date: 2009-06-08 16:26-0300\n"
 "Last-Translator: Franco Pellegrini <frapell@menttes.com>\n"
 "Language-Team: Franco Pellegrini <frapell@menttes.com>\n"
 "MIME-Version: 1.0\n"
@@ -521,7 +521,7 @@ msgid "label_error"
 msgstr "Error"
 
 #. Default: "Export all organizations"
-#: ./browser/templates/addressorganizationsview.pt:112
+#: ./browser/templates/addressorganizationsview.pt:114
 msgid "label_export_all_organizations"
 msgstr "Exportar todas las organizaciones"
 
@@ -541,7 +541,7 @@ msgid "label_export_persons"
 msgstr "Exportar personas"
 
 #. Default: "Export selected organizations"
-#: ./browser/templates/addressorganizationsview.pt:104
+#: ./browser/templates/addressorganizationsview.pt:106
 msgid "label_export_selected_organizations"
 msgstr "Exportar organizaciones seleccionadas"
 
@@ -566,7 +566,7 @@ msgid "label_import_file"
 msgstr "Importar archivo"
 
 #. Default: "Import organizations or persons"
-#: ./browser/templates/addressorganizationsview.pt:120
+#: ./browser/templates/addressorganizationsview.pt:122
 msgid "label_import_organizations_persons"
 msgstr "Importar organizaciones o personas"
 
@@ -869,6 +869,11 @@ msgstr "Teléfono"
 #: ./browser/templates/searchaddressbookview.pt:193
 msgid "listingheader_organizations_sector"
 msgstr "Rubro"
+
+#. Default: "Sub Sector"
+#: ./browser/templates/addressorganizationsview.pt:57
+msgid "listingheader_organizations_sub_sector"
+msgstr "Sub rubro"
 
 #. Default: "Web"
 #: ./browser/templates/searchaddressbookview.pt:197

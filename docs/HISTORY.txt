@@ -4,15 +4,17 @@ Changelog
 SVN
 ----------------
 
-* Did some rework on the advanced search templates (for persons and organizations)
+* Added the sub-sector field to the columns in the organizations view.
 
-* Fixed the referencebrowser_popup template that wasn't showing content when re-editing a person or a group
+* Did some rework on the advanced search templates (for persons and organizations).
 
-* Fixed bug where drop down fields will not update their content when editing inline
+* Fixed the referencebrowser_popup template that wasn't showing content when re-editing a person or a group.
 
-* Fixed a typo in spanish translation ("Eportar" instead of "Exportar")
+* Fixed bug where drop down fields will not update their content when editing inline.
 
-* Added a css to override Plone's default behaviour when editing a drop down field inline (it repeats the field label)
+* Fixed a typo in spanish translation ("Eportar" instead of "Exportar").
+
+* Added a css to override Plone's default behaviour when editing a drop down field inline (it repeats the field label).
 
 1.3.2
 ----------------
