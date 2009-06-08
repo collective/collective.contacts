@@ -4,6 +4,9 @@ Changelog
 SVN
 ----------------
 
+1.3.3
+----------------
+
 * Added the sub-sector field to the columns in the organizations view.
 
 * Did some rework on the advanced search templates (for persons and organizations).
