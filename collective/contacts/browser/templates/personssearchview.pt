@@ -20,131 +20,151 @@
                       tal:define="person python:context.objectValues(spec='Person')[0];
                                   errors python:{}">
                     <h2 i18n:translate="advanced_person_search">Advanced person search:</h2>
-                    <br/>
-                    <span class="short_name">
-                        <label for="short_name"
-                               i18n:translate="label_search_persons_short_name">Short Name</label>
-                        <input name="short_name">
-                    </span>
-                    <br/>
-                    <span class="first_name">
-                        <label for="first_name"
-                               i18n:translate="label_search_persons_first_name">First Name</label>
-                        <input name="first_name">
-                    </span>
-                    <br/>
-                    <span class="last_name">
-                        <label for="last_name"
-                               i18n:translate="label_search_persons_last_name">Last Name</label>
-                        <input name="last_name">
-                    </span>
-                    <br/>
-                    <span class="organization">
-                        <label for="organization"
-                               i18n:translate="label_search_persons_organization">Organization</label>
-                        <input name="organization">
-                    </span>
-                    <br/>
-                    <span class="position">
-                        <label for="position"
-                               i18n:translate="label_search_persons_position">Position</label>
-                        <input name="position">
-                    </span>
-                    <br/>
-                    <span class="department">
-                        <label for="department"
-                               i18n:translate="label_search_persons_department">Department</label>
-                        <input name="department">
-                    </span>
-                    <br/>
-                    <span class="work_phone">
-                        <label for="work_phone"
-                               i18n:translate="label_search_persons_work_phone">Work Phone Number</label>
-                        <input name="work_phone">
-                    </span>
-                    <br/>
-                    <span class="work_mobile_phone">
-                        <label for="work_mobile_phone"
-                               i18n:translate="label_search_persons_work_mobile_phone">Work Mobile Phone</label>
-                        <input name="work_mobile_phone">
-                    </span>
-                    <br/>
-                    <span class="work_email">
-                        <label for="work_email"
-                               i18n:translate="label_search_persons_work_email">Work Email</label>
-                        <input name="work_email">
-                    </span>
-                    <br/>
-                    <span class="address">
-                        <label for="address"
-                               i18n:translate="label_search_persons_address">Address</label>
-                        <input name="address">
-                    </span>
-                    <br/>
-                    <span class="country">
-                        <label for="country"
-                               i18n:translate="label_search_persons_country">Country</label>
-                        <select id="country" name="country">
-                            <option value="--">--</option>
-                            <option tal:repeat="option view/allCountries"
-                                    tal:content="option/title"
-                                    tal:attributes="value option/value"/>
-                        </select>
-                    </span>
-                    <br/>
-                    <span class="state">
-                        <label for="state"
-                               i18n:translate="label_search_persons_state">State</label>
-                        <select id="state" name="state">
-                            <option value="--">--</option>
-                            <option tal:repeat="option view/allStates"
-                                    tal:attributes="value python:option[0]"
-                                    tal:content="python:option[1]"/>
-                        </select>
-                    </span>
-                    <br/>
-                    <span class="city">
-                        <label for="city"
-                               i18n:translate="label_search_persons_city">City</label>
-                        <input name="city">
-                    </span>
-                    <br/>
-                    <span class="phone">
-                        <label for="phone"
-                               i18n:translate="label_search_persons_phone">Phone Number</label>
-                        <input name="phone">
-                    </span>
-                    <br/>
-                    <span class="mobile_phone">
-                        <label for="mobile_phone"
-                               i18n:translate="label_search_persons_mobile_phone">Mobile Phone Number</label>
-                        <input name="mobile_phone">
-                    </span>
-                    <br/>
-                    <span class="email">
-                        <label for="email"
-                               i18n:translate="label_search_persons_email">E-mail</label>
-                        <input name="email">
-                    </span>
-                    <br/>
-                    <span class="web">
-                        <label for="web"
-                               i18n:translate="label_search_persons_web">Web / Blog</label>
-                        <input name="web">
-                    </span>
-                    <br/>
-                    <span class="text">
-                        <label for="text"
-                               i18n:translate="label_search_persons_text">Text</label>
-                        <input name="text">
-                    </span>
-                    <br/>
-                    <input type="hidden" name="persons_submitted" value="1" />
-                    <br/>
-                    <input type="submit" name="search_persons"
-                     value="Search Persons"
-                     i18n:attributes="value label_search_persons"
-                     />
+                    <fieldset>
+                        <legend i18n:translate="search_terms">Search Terms </legend>
+                        <div class="field short_name">
+                            <label for="short_name"
+                                i18n:translate="label_search_persons_short_name">Short Name</label>
+                            <br/>
+                            <input name="short_name">
+                        </div>
+
+                        <div class="field first_name">
+                            <label for="first_name"
+                                i18n:translate="label_search_persons_first_name">First Name</label>
+                            <br/>
+                            <input name="first_name">
+                        </div>
+
+                        <div class="field last_name">
+                            <label for="last_name"
+                                i18n:translate="label_search_persons_last_name">Last Name</label>
+                            <br/>
+                            <input name="last_name">
+                        </div>
+
+                        <div class="field organization">
+                            <label for="organization"
+                                i18n:translate="label_search_persons_organization">Organization</label>
+                            <br/>
+                            <input name="organization">
+                        </div>
+
+                        <div class="field position">
+                            <label for="position"
+                                i18n:translate="label_search_persons_position">Position</label>
+                            <br/>
+                            <input name="position">
+                        </div>
+
+                        <div class="field department">
+                            <label for="department"
+                                i18n:translate="label_search_persons_department">Department</label>
+                            <br/>
+                            <input name="department">
+                        </div>
+
+                        <div class="field work_phone">
+                            <label for="work_phone"
+                                i18n:translate="label_search_persons_work_phone">Work Phone Number</label>
+                            <br/>
+                            <input name="work_phone">
+                        </div>
+
+                        <div class="field work_mobile_phone">
+                            <label for="work_mobile_phone"
+                                i18n:translate="label_search_persons_work_mobile_phone">Work Mobile Phone</label>
+                            <br/>
+                            <input name="work_mobile_phone">
+                        </div>
+
+                        <div class="field work_email">
+                            <label for="work_email"
+                                i18n:translate="label_search_persons_work_email">Work Email</label>
+                            <br/>
+                            <input name="work_email">
+                        </div>
+
+                        <div class="field address">
+                            <label for="address"
+                                i18n:translate="label_search_persons_address">Address</label>
+                            <br/>
+                            <input name="address">
+                        </div>
+
+                        <div class="field country">
+                            <label for="country"
+                                i18n:translate="label_search_persons_country">Country</label>
+                            <br/>
+                            <select id="country" name="country">
+                                <option value="--">--</option>
+                                <option tal:repeat="option view/allCountries"
+                                        tal:content="option/title"
+                                        tal:attributes="value option/value"/>
+                            </select>
+                        </div>
+
+                        <div class="field state">
+                            <label for="state"
+                                i18n:translate="label_search_persons_state">State</label>
+                            <br/>
+                            <select id="state" name="state">
+                                <option value="--">--</option>
+                                <option tal:repeat="option view/allStates"
+                                        tal:attributes="value python:option[0]"
+                                        tal:content="python:option[1]"/>
+                            </select>
+                        </div>
+
+                        <div class="field city">
+                            <label for="city"
+                                i18n:translate="label_search_persons_city">City</label>
+                            <br/>
+                            <input name="city">
+                        </div>
+
+                        <div class="field phone">
+                            <label for="phone"
+                                i18n:translate="label_search_persons_phone">Phone Number</label>
+                            <br/>
+                            <input name="phone">
+                        </div>
+
+                        <div class="field mobile_phone">
+                            <label for="mobile_phone"
+                                i18n:translate="label_search_persons_mobile_phone">Mobile Phone Number</label>
+                            <br/>
+                            <input name="mobile_phone">
+                        </div>
+
+                        <div class="field email">
+                            <label for="email"
+                                i18n:translate="label_search_persons_email">E-mail</label>
+                            <br/>
+                            <input name="email">
+                        </div>
+
+                        <div class="field web">
+                            <label for="web"
+                                i18n:translate="label_search_persons_web">Web / Blog</label>
+                            <br/>
+                            <input name="web">
+                        </div>
+
+                        <div class="field text">
+                            <label for="text"
+                                i18n:translate="label_search_persons_text">Text</label>
+                            <br/>
+                            <input name="text">
+                        </div>
+
+                        <input type="hidden" name="persons_submitted" value="1" />
+                        <br/>
+                        <input type="submit" name="search_persons"
+                        value="Search Persons"
+                        i18n:attributes="value label_search_persons"
+                        />
+                    </fieldset>
                 </form>
             </div>
         </tal:main-macro>

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-05-11 22:23+0000\n"
+"POT-Creation-Date: 2009-06-08 14:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -142,7 +142,7 @@ msgstr ""
 msgid "First Name"
 msgstr ""
 
-#: ./content/person.py:288
+#: ./content/person.py:290
 msgid "Full Name"
 msgstr ""
 
@@ -179,7 +179,7 @@ msgstr ""
 msgid "Mobile Phone Number"
 msgstr ""
 
-#: ./content/organization.py:198
+#: ./content/organization.py:200
 msgid "Name"
 msgstr ""
 
@@ -611,122 +611,122 @@ msgid "label_quick_search_persons"
 msgstr ""
 
 #. Default: "Search Organizations"
-#: ./browser/templates/organizationssearchview.pt:140
+#: ./browser/templates/organizationssearchview.pt:157
 msgid "label_search_organizations"
 msgstr ""
 
 #. Default: "Address"
-#: ./browser/templates/organizationssearchview.pt:29
+#: ./browser/templates/organizationssearchview.pt:31
 msgid "label_search_organizations_address"
 msgstr ""
 
 #. Default: "City"
-#: ./browser/templates/organizationssearchview.pt:57
+#: ./browser/templates/organizationssearchview.pt:62
 msgid "label_search_organizations_city"
 msgstr ""
 
 #. Default: "Country"
-#: ./browser/templates/organizationssearchview.pt:35
+#: ./browser/templates/organizationssearchview.pt:38
 msgid "label_search_organizations_country"
 msgstr ""
 
 #. Default: "Email address"
-#: ./browser/templates/organizationssearchview.pt:87
+#: ./browser/templates/organizationssearchview.pt:97
 msgid "label_search_organizations_email"
 msgstr ""
 
 #. Default: "2nd Email address"
-#: ./browser/templates/organizationssearchview.pt:93
+#: ./browser/templates/organizationssearchview.pt:104
 msgid "label_search_organizations_email2"
 msgstr ""
 
 #. Default: "3rd Email address"
-#: ./browser/templates/organizationssearchview.pt:99
+#: ./browser/templates/organizationssearchview.pt:111
 msgid "label_search_organizations_email3"
 msgstr ""
 
 #. Default: "Extra Address Info"
-#: ./browser/templates/organizationssearchview.pt:69
+#: ./browser/templates/organizationssearchview.pt:76
 msgid "label_search_organizations_extra_address"
 msgstr ""
 
 #. Default: "Fax"
-#: ./browser/templates/organizationssearchview.pt:81
+#: ./browser/templates/organizationssearchview.pt:90
 msgid "label_search_organizations_fax"
 msgstr ""
 
 #. Default: "Phone Number"
-#: ./browser/templates/organizationssearchview.pt:75
+#: ./browser/templates/organizationssearchview.pt:83
 msgid "label_search_organizations_phone"
 msgstr ""
 
 #. Default: "Sector"
-#: ./browser/templates/organizationssearchview.pt:111
+#: ./browser/templates/organizationssearchview.pt:125
 msgid "label_search_organizations_sector"
 msgstr ""
 
 #. Default: "State"
-#: ./browser/templates/organizationssearchview.pt:46
+#: ./browser/templates/organizationssearchview.pt:50
 msgid "label_search_organizations_state"
 msgstr ""
 
 #. Default: "Sub Sector"
-#: ./browser/templates/organizationssearchview.pt:122
+#: ./browser/templates/organizationssearchview.pt:137
 msgid "label_search_organizations_sub_sector"
 msgstr ""
 
 #. Default: "Text"
-#: ./browser/templates/organizationssearchview.pt:133
+#: ./browser/templates/organizationssearchview.pt:149
 msgid "label_search_organizations_text"
 msgstr ""
 
 #. Default: "Name"
-#: ./browser/templates/organizationssearchview.pt:23
+#: ./browser/templates/organizationssearchview.pt:24
 msgid "label_search_organizations_title"
 msgstr ""
 
 #. Default: "Web"
-#: ./browser/templates/organizationssearchview.pt:105
+#: ./browser/templates/organizationssearchview.pt:118
 msgid "label_search_organizations_web"
 msgstr ""
 
 #. Default: "Zip"
-#: ./browser/templates/organizationssearchview.pt:63
+#: ./browser/templates/organizationssearchview.pt:69
 msgid "label_search_organizations_zip"
 msgstr ""
 
 #. Default: "Search Persons"
-#: ./browser/templates/personssearchview.pt:144
+#: ./browser/templates/personssearchview.pt:163
 msgid "label_search_persons"
 msgstr ""
 
 #. Default: "Address"
-#: ./browser/templates/personssearchview.pt:79
+#: ./browser/templates/personssearchview.pt:89
 msgid "label_search_persons_address"
 msgstr ""
 
 #. Default: "City"
-#: ./browser/templates/personssearchview.pt:107
+#: ./browser/templates/personssearchview.pt:120
 msgid "label_search_persons_city"
 msgstr ""
 
 #. Default: "Country"
-#: ./browser/templates/personssearchview.pt:85
+#: ./browser/templates/personssearchview.pt:96
 msgid "label_search_persons_country"
 msgstr ""
 
 #. Default: "Department"
-#: ./browser/templates/personssearchview.pt:55
+#: ./browser/templates/personssearchview.pt:61
 msgid "label_search_persons_department"
 msgstr ""
 
 #. Default: "E-mail"
-#: ./browser/templates/personssearchview.pt:125
+#: ./browser/templates/personssearchview.pt:141
 msgid "label_search_persons_email"
 msgstr ""
 
 #. Default: "First Name"
-#: ./browser/templates/personssearchview.pt:31
+#: ./browser/templates/personssearchview.pt:33
 msgid "label_search_persons_first_name"
 msgstr ""
 
@@ -736,62 +736,62 @@ msgid "label_search_persons_in_group"
 msgstr ""
 
 #. Default: "Last Name"
-#: ./browser/templates/personssearchview.pt:37
+#: ./browser/templates/personssearchview.pt:40
 msgid "label_search_persons_last_name"
 msgstr ""
 
 #. Default: "Mobile Phone Number"
-#: ./browser/templates/personssearchview.pt:119
+#: ./browser/templates/personssearchview.pt:134
 msgid "label_search_persons_mobile_phone"
 msgstr ""
 
 #. Default: "Organization"
-#: ./browser/templates/personssearchview.pt:43
+#: ./browser/templates/personssearchview.pt:47
 msgid "label_search_persons_organization"
 msgstr ""
 
 #. Default: "Phone Number"
-#: ./browser/templates/personssearchview.pt:113
+#: ./browser/templates/personssearchview.pt:127
 msgid "label_search_persons_phone"
 msgstr ""
 
 #. Default: "Position"
-#: ./browser/templates/personssearchview.pt:49
+#: ./browser/templates/personssearchview.pt:54
 msgid "label_search_persons_position"
 msgstr ""
 
 #. Default: "Short Name"
-#: ./browser/templates/personssearchview.pt:25
+#: ./browser/templates/personssearchview.pt:26
 msgid "label_search_persons_short_name"
 msgstr ""
 
 #. Default: "State"
-#: ./browser/templates/personssearchview.pt:96
+#: ./browser/templates/personssearchview.pt:108
 msgid "label_search_persons_state"
 msgstr ""
 
 #. Default: "Text"
-#: ./browser/templates/personssearchview.pt:137
+#: ./browser/templates/personssearchview.pt:155
 msgid "label_search_persons_text"
 msgstr ""
 
 #. Default: "Web / Blog"
-#: ./browser/templates/personssearchview.pt:131
+#: ./browser/templates/personssearchview.pt:148
 msgid "label_search_persons_web"
 msgstr ""
 
 #. Default: "Work Email"
-#: ./browser/templates/personssearchview.pt:73
+#: ./browser/templates/personssearchview.pt:82
 msgid "label_search_persons_work_email"
 msgstr ""
 
 #. Default: "Work Mobile Phone"
-#: ./browser/templates/personssearchview.pt:67
+#: ./browser/templates/personssearchview.pt:75
 msgid "label_search_persons_work_mobile_phone"
 msgstr ""
 
 #. Default: "Work Phone Number"
-#: ./browser/templates/personssearchview.pt:61
+#: ./browser/templates/personssearchview.pt:68
 msgid "label_search_persons_work_phone"
 msgstr ""
 
@@ -953,6 +953,11 @@ msgstr ""
 #. Default: "Search results:"
 #: ./browser/templates/searchaddressbookview.pt:65
 msgid "search_results"
+msgstr ""
+
+#. Default: "Search Terms"
+#: ./browser/templates/organizationssearchview.pt:22
+msgid "search_terms"
 msgstr ""
 
 #: ./interfaces/widgets.py:13

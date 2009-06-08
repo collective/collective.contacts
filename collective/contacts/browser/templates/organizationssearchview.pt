@@ -18,129 +18,147 @@
                 <form action="#" method="post"
                       tal:attributes="action string:${context/absolute_url}/search_addressbook">
                     <h2 i18n:translate="advanced_organizations_search">Advanced organizations search:</h2>
-                    <br/>
-                    <span class="title">
-                        <label for="title"
-                               i18n:translate="label_search_organizations_title">Name</label>
-                        <input name="title">
-                    </span>
-                    <br/>
-                    <span class="address">
-                        <label for="address"
-                               i18n:translate="label_search_organizations_address">Address</label>
-                        <input name="address">
-                    </span>
-                    <br/>
-                    <span class="country">
-                        <label for="country"
-                               i18n:translate="label_search_organizations_country">Country</label>
-                        <select id="country" name="country">
-                            <option value="--">--</option>
-                            <option tal:repeat="option view/allCountries"
-                                    tal:content="option/title"
-                                    tal:attributes="value option/value"/>
-                        </select>
-                    </span>
-                    <br/>
-                    <span class="state">
-                        <label for="state"
-                               i18n:translate="label_search_organizations_state">State</label>
-                        <select id="state" name="state">
-                            <option value="--">--</option>
-                            <option tal:repeat="option view/allStates"
-                                    tal:attributes="value python:option[0]"
-                                    tal:content="python:option[1]"/>
-                        </select>
-                    </span>
-                    <br/>
-                    <span class="city">
-                        <label for="city"
-                               i18n:translate="label_search_organizations_city">City</label>
-                        <input name="city">
-                    </span>
-                    <br/>
-                    <span class="zip">
-                        <label for="zip"
-                               i18n:translate="label_search_organizations_zip">Zip</label>
-                        <input name="zip">
-                    </span>
-                    <br/>
-                    <span class="extra_adress">
-                        <label for="extra_adress"
-                               i18n:translate="label_search_organizations_extra_address">Extra Address Info</label>
-                        <input name="extra_address">
-                    </span>
-                    <br/>
-                    <span class="phone">
-                        <label for="phone"
-                               i18n:translate="label_search_organizations_phone">Phone Number</label>
-                        <input name="phone">
-                    </span>
-                    <br/>
-                    <span class="fax">
-                        <label for="fax"
-                               i18n:translate="label_search_organizations_fax">Fax</label>
-                        <input name="fax">
-                    </span>
-                    <br/>
-                    <span class="email">
-                        <label for="email"
-                               i18n:translate="label_search_organizations_email">Email address</label>
-                        <input name="email">
-                    </span>
-                    <br/>
-                    <span class="email2">
-                        <label for="email2"
-                               i18n:translate="label_search_organizations_email2">2nd Email address</label>
-                        <input name="email2">
-                    </span>
-                    <br/>
-                    <span class="email3">
-                        <label for="email3"
-                               i18n:translate="label_search_organizations_email3">3rd Email address</label>
-                        <input name="email3">
-                    </span>
-                    <br/>
-                    <span class="web">
-                        <label for="web"
-                               i18n:translate="label_search_organizations_web">Web</label>
-                        <input name="web">
-                    </span>
-                    <br/>
-                    <span class="sector">
-                        <label for="sector"
-                               i18n:translate="label_search_organizations_sector">Sector</label>
-                        <select id="sector" name="sector">
-                            <option value="--">--</option>
-                            <option tal:repeat="option view/allSectors"
-                                    tal:content="option/title"
-                                    tal:attributes="value option/value"/>
-                        </select>
-                    </span>
-                    <br/>
-                    <span class="sub_sector">
-                        <label for="sub_sector"
-                               i18n:translate="label_search_organizations_sub_sector">Sub Sector</label>
-                        <select id="sub_sector" name="sub_sector">
-                            <option value="--">--</option>
-                            <option tal:repeat="option view/allSubSectors"
-                                    tal:content="option/title"
-                                    tal:attributes="value option/value"/>
-                        </select>
-                    </span>
-                    <br/>
-                    <span class="text">
-                        <label for="text"
-                               i18n:translate="label_search_organizations_text">Text</label>
-                        <input name="text">
-                    </span>
-                    <br/>
-                    <input type="hidden" name="organizations_submitted" value="1" />
-                    <br/>
-                    <input type="submit" name="search_organizations"
-                     value="Search Organizations"
-                     i18n:attributes="value label_search_organizations"
-                     />
+                    <fieldset>
+                        <legend i18n:translate="search_terms">Search Terms </legend>
+                        <div class="field name">
+                            <label for="title"
+                                i18n:translate="label_search_organizations_title">Name</label>
+                            <br/>
+                            <input name="title">
+                        </div>
+
+                        <div class="field address">
+                            <label for="address"
+                                i18n:translate="label_search_organizations_address">Address</label>
+                            <br/>
+                            <input name="address">
+                        </div>
+
+                        <div class="field country">
+                            <label for="country"
+                                i18n:translate="label_search_organizations_country">Country</label>
+                            <br/>
+                            <select id="country" name="country">
+                                <option value="--">--</option>
+                                <option tal:repeat="option view/allCountries"
+                                        tal:content="option/title"
+                                        tal:attributes="value option/value"/>
+                            </select>
+                        </div>
+
+                        <div class="field state">
+                            <label for="state"
+                                i18n:translate="label_search_organizations_state">State</label>
+                            <br/>
+                            <select id="state" name="state">
+                                <option value="--">--</option>
+                                <option tal:repeat="option view/allStates"
+                                        tal:attributes="value python:option[0]"
+                                        tal:content="python:option[1]"/>
+                            </select>
+                        </div>
+
+                        <div class="field city">
+                            <label for="city"
+                                i18n:translate="label_search_organizations_city">City</label>
+                            <br/>
+                            <input name="city">
+                        </div>
+
+                        <div class="field zip">
+                            <label for="zip"
+                                i18n:translate="label_search_organizations_zip">Zip</label>
+                            <br/>
+                            <input name="zip">
+                        </div>
+
+                        <div class="field extra_adress">
+                            <label for="extra_adress"
+                                i18n:translate="label_search_organizations_extra_address">Extra Address Info</label>
+                            <br/>
+                            <input name="extra_address">
+                        </div>
+
+                        <div class="field phone">
+                            <label for="phone"
+                                i18n:translate="label_search_organizations_phone">Phone Number</label>
+                            <br/>
+                            <input name="phone">
+                        </div>
+
+                        <div class="field fax">
+                            <label for="fax"
+                                i18n:translate="label_search_organizations_fax">Fax</label>
+                            <br/>
+                            <input name="fax">
+                        </div>
+
+                        <div class="field email">
+                            <label for="email"
+                                i18n:translate="label_search_organizations_email">Email address</label>
+                            <br/>
+                            <input name="email">
+                        </div>
+
+                        <div class="field email2">
+                            <label for="email2"
+                                i18n:translate="label_search_organizations_email2">2nd Email address</label>
+                            <br/>
+                            <input name="email2">
+                        </div>
+
+                        <div class="field email3">
+                            <label for="email3"
+                                i18n:translate="label_search_organizations_email3">3rd Email address</label>
+                            <br/>
+                            <input name="email3">
+                        </div>
+
+                        <div class="field web">
+                            <label for="web"
+                                i18n:translate="label_search_organizations_web">Web</label>
+                            <br/>
+                            <input name="web">
+                        </div>
+
+                        <div class="field sector">
+                            <label for="sector"
+                                i18n:translate="label_search_organizations_sector">Sector</label>
+                            <br/>
+                            <select id="sector" name="sector">
+                                <option value="--">--</option>
+                                <option tal:repeat="option view/allSectors"
+                                        tal:content="option/title"
+                                        tal:attributes="value option/value"/>
+                            </select>
+                        </div>
+
+                        <div class="field sub_sector">
+                            <label for="sub_sector"
+                                i18n:translate="label_search_organizations_sub_sector">Sub Sector</label>
+                            <br/>
+                            <select id="sub_sector" name="sub_sector">
+                                <option value="--">--</option>
+                                <option tal:repeat="option view/allSubSectors"
+                                        tal:content="option/title"
+                                        tal:attributes="value option/value"/>
+                            </select>
+                        </div>
+
+                        <div class="field text">
+                            <label for="text"
+                                i18n:translate="label_search_organizations_text">Text</label>
+                            <br/>
+                            <input name="text">
+                        </div>
+
+                        <input type="hidden" name="organizations_submitted" value="1" />
+                        <br/>
+                        <input type="submit" name="search_organizations"
+                        value="Search Organizations"
+                        i18n:attributes="value label_search_organizations"
+                        />
+                    </fieldset>
                 </form>
             </div>
         </tal:main-macro>
