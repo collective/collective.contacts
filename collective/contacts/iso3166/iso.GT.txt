@@ -15,11 +15,11 @@ ISO3166-2 regions for GT
    GT-PE : Petén
    GT-QZ : Quezaltenango
    GT-QC : Quiché
-   GT-RE : Reta.thuleu
+   GT-RE : Retalhuleu
    GT-SA : Sacatepéquez
    GT-SM : San Marcos
    GT-SR : Santa Rosa
-   GT-SO : Solol6
+   GT-SO : Solola
    GT-SU : Suchitepéquez
    GT-TO : Totonicapán
    GT-ZA : Zacapa
