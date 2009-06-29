@@ -2,7 +2,7 @@ Changelog
 =========
 
 SVN
-----------------
+---
 
 * Added a customize view so it's possible to select which columns are shown or not
 
@@ -17,29 +17,32 @@ SVN
 * Fixed two province names from Guatemala (Thanks Warren)
 
 1.3.3
-----------------
+-----
 
 * Added the sub-sector field to the columns in the organizations view.
 
 * Did some rework on the advanced search templates (for persons and organizations).
 
-* Fixed the referencebrowser_popup template that wasn't showing content when re-editing a person or a group.
+* Fixed the referencebrowser_popup template that wasn't showing content when
+re-editing a person or a group.
 
-* Fixed bug where drop down fields will not update their content when editing inline.
+* Fixed bug where drop down fields will not update their content when editing
+inline.
 
 * Fixed a typo in spanish translation ("Eportar" instead of "Exportar").
 
-* Added a css to override Plone's default behaviour when editing a drop down field inline (it repeats the field label).
+* Added a css to override Plone's default behaviour when editing a drop down
+field inline (it repeats the field label).
 
 1.3.2
-----------------
+-----
 
 * Included a custom referencobrowser_popup to show only objects that are
   allowed to be referenced inside the reference browser pop up.
   (Used when relating a person with an organization for example)
 
 1.3.1
-----------------
+-----
 
 * Fixed display issues with rich text fields
 
@@ -49,7 +52,7 @@ SVN
 
 * [FIXED] was using the same id for translating both work and personal email
   in the search for persons template.
-  
+
 * Replaced the way content was retrieved for the views. Now it uses the catalog
   and, in the case of the persons, it uses the advanced query capabilities
   so it will sort using last name first and then first name.
@@ -60,9 +63,10 @@ SVN
 * Added types names translation to the old i18n (probably a Plone bug?).
 
 1.3.0
-----------------
+-----
 
-* Did an override over the contentviews template to workaround a possible bug of Plone when having the default page as a portal_action
+* Did an override over the contentviews template to workaround a possible bug of
+Plone when having the default page as a portal_action
 
 * Found a way to get the 'Work' schemata title to be translated to spanish.
 
@@ -93,9 +97,8 @@ SVN
 
 * Added a note when sending emails about opening the default email client
 
-
 1.2.0
-----------------
+-----
 
 * Added Sectors and Sub sectors drop downs to organizations, where you can
   select a "sector" and then the "sub sectors" are automatically updated
@@ -132,17 +135,17 @@ SVN
   no email.
 
 1.0.0a3
-----------------
+-------
 
 * Added the default address book view to the 'display' drop down
 
 1.0.0a2
-----------------
+-------
 
 * Translations fixed
 
 1.0.0a1
-----------------
+-------
 
 * Groups,Persons and organizations as addable types
 
@@ -157,7 +160,3 @@ SVN
 * Importing from CSV persons or organizations
 
 * Sending email (not from site, but from the user's configured email client)
-
-
-
-

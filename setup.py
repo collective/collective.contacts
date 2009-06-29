@@ -10,20 +10,23 @@ def read(*rnames):
 version = 'SVN'
 
 long_description = (
-    read('README.txt')
+    read('README-en.txt')
     + '\n' +
-    'Change history\n'
-    '**************\n'
+    '=========\n'
+    'Changelog\n'
+    '=========\n'
     + '\n' +
     read('docs', 'HISTORY.txt')
     + '\n' +
+    '============\n'
     'Contributors\n'
-    '************\n'
+    '============\n'
     + '\n' +
     read('CONTRIBUTORS.txt')
     + '\n' +
+    '========\n'
     'Download\n'
-    '********\n'
+    '========\n'
     )
 
 tests_require = ['zope.testing', 'plone.mocktestcase']
@@ -37,12 +40,15 @@ setup(name='collective.contacts',
       classifiers=[
         'Framework :: Plone',
         'Intended Audience :: Developers',
+        'Intended Audience :: End Users/Desktop',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'License :: OSI Approved :: GNU General Public License (GPL)',
         ],
-      keywords='plone addressbook',
+      keywords='plone addressbook collective contacts',
       author='Emanuel Sartor, Franco Pellegrini',
       author_email='info@menttes.com',
+      maintainer='Franco Pellegrini',
+      maintainer_email='frapell@menttes.com',
       url='http://plone.org/products/collective.contacts',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
