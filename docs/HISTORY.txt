@@ -4,6 +4,9 @@ Changelog
 SVN
 ---
 
+1.4.0
+-----
+
 * Added a customize view so it's possible to select which columns are shown or not
 
 * Removed the "Import organizations or persons" from the groups view, since it was misleading
