@@ -83,11 +83,6 @@
 
         <br/>
 
-        <form action="#" method="post" class="visualNoPrint"
-                    tal:attributes="action string:${context/absolute_url}/import_view">
-            <input name="form.button.import" value="Import organizations or persons" type="submit" i18n:attributes="value label_import_organizations_persons">
-        </form>
-
         </tal:main-macro>
     </div>
 </body>

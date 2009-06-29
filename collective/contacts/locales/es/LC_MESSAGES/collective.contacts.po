@@ -1,20 +1,21 @@
 # Franco Pellegrini <frapell@menttes.com>, 2009.
+# Franco Pellegrini <franco.p@ifpeople.net>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.contacts\n"
-"POT-Creation-Date: 2009-06-08 19:24+0000\n"
-"PO-Revision-Date: 2009-06-08 16:26-0300\n"
-"Last-Translator: Franco Pellegrini <frapell@menttes.com>\n"
-"Language-Team: Franco Pellegrini <frapell@menttes.com>\n"
+"POT-Creation-Date: 2009-06-28 00:22+0000\n"
+"PO-Revision-Date: 2009-06-27 21:25-0300\n"
+"Last-Translator: Franco Pellegrini <franco.p@ifpeople.net>\n"
+"Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "Language-Code: es\n"
 "Language-Name: Español\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.contacts\n"
-"X-Generator: Lokalize 0.3\n"
+"X-Generator: Lokalize 1.0\n"
 
 #: ./imports.py:219
 msgid "${organizations_number} organizations to be added to ${location}."
@@ -73,7 +74,7 @@ msgstr "Una segunda dirección de email del trabajo"
 msgid "A third work e-mail address"
 msgstr "Una tercera dirección de email del trabajo"
 
-#: ./content/addressbook.py:24
+#: ./content/addressbook.py:25
 msgid "Add here sectors and subsectors that will be used by organizations."
 msgstr "Añada aquí rubros y sub rubros que van a ser utilizados por las organizaciones."
 
@@ -342,11 +343,11 @@ msgstr "Foto"
 msgid "Position"
 msgstr "Posición"
 
-#: ./content/addressbook.py:42
+#: ./content/addressbook.py:43
 msgid "Sector"
 msgstr "Rubro"
 
-#: ./content/addressbook.py:27
+#: ./content/addressbook.py:28
 msgid "Sectors"
 msgstr "Rubros"
 
@@ -370,7 +371,7 @@ msgstr "Comenzando el proceso de importar personas"
 msgid "State"
 msgstr "Provincia"
 
-#: ./content/addressbook.py:42
+#: ./content/addressbook.py:43
 msgid "Sub sector"
 msgstr "Sub rubro"
 
@@ -480,6 +481,11 @@ msgstr "Búsqueda avanzada de personas"
 msgid "countries"
 msgstr "países"
 
+#. Default: "Customize view"
+#: ./browser/templates/addressorganizationsview.pt:22
+msgid "customize_view"
+msgstr "Customizar vista"
+
 #. Default: "No results were found."
 #: ./browser/templates/searchaddressbookview.pt:53
 msgid "description_no_results_found"
@@ -501,7 +507,7 @@ msgid "here"
 msgstr "aquí"
 
 #. Default: "Advanced Search"
-#: ./browser/templates/addressorganizationsview.pt:35
+#: ./browser/templates/addressorganizationsview.pt:41
 msgid "label_advanced_search_organizations"
 msgstr "Búsqueda avanzada"
 
@@ -509,6 +515,11 @@ msgstr "Búsqueda avanzada"
 #: ./browser/templates/searchaddressbookview.pt:145
 msgid "label_advanced_search_persons"
 msgstr "Búsqueda avanzada"
+
+#. Default: "Cancel"
+#: ./browser/templates/customizeview.pt:51
+msgid "label_cancel"
+msgstr "Cancelar"
 
 #. Default: "Search Again"
 #: ./browser/templates/searchaddressbookview.pt:57
@@ -521,12 +532,12 @@ msgid "label_error"
 msgstr "Error"
 
 #. Default: "Export all organizations"
-#: ./browser/templates/addressorganizationsview.pt:114
+#: ./browser/templates/addressorganizationsview.pt:95
 msgid "label_export_all_organizations"
 msgstr "Exportar todas las organizaciones"
 
 #. Default: "Export all persons"
-#: ./browser/templates/addresspersonsview.pt:115
+#: ./browser/templates/addresspersonsview.pt:94
 msgid "label_export_all_persons"
 msgstr "Exportar todas las personas"
 
@@ -541,7 +552,7 @@ msgid "label_export_persons"
 msgstr "Exportar personas"
 
 #. Default: "Export selected organizations"
-#: ./browser/templates/addressorganizationsview.pt:106
+#: ./browser/templates/addressorganizationsview.pt:87
 msgid "label_export_selected_organizations"
 msgstr "Exportar organizaciones seleccionadas"
 
@@ -566,7 +577,7 @@ msgid "label_import_file"
 msgstr "Importar archivo"
 
 #. Default: "Import organizations or persons"
-#: ./browser/templates/addressorganizationsview.pt:122
+#: ./browser/templates/addressorganizationsview.pt:104
 msgid "label_import_organizations_persons"
 msgstr "Importar organizaciones o personas"
 
@@ -601,14 +612,19 @@ msgid "label_quick_search_groups"
 msgstr "Búsqueda rápida"
 
 #. Default: "Quick Search"
-#: ./browser/templates/addressorganizationsview.pt:31
+#: ./browser/templates/addressorganizationsview.pt:37
 msgid "label_quick_search_organizations"
 msgstr "Búsqueda rápida"
 
 #. Default: "Quick Search"
-#: ./browser/templates/addresspersonsview.pt:28
+#: ./browser/templates/addresspersonsview.pt:35
 msgid "label_quick_search_persons"
 msgstr "Búsqueda rápida"
+
+#. Default: "Save"
+#: ./browser/templates/customizeview.pt:45
+msgid "label_save"
+msgstr "Guardar"
 
 #. Default: "Search Organizations"
 #: ./browser/templates/organizationssearchview.pt:157
@@ -870,11 +886,6 @@ msgstr "Teléfono"
 msgid "listingheader_organizations_sector"
 msgstr "Rubro"
 
-#. Default: "Sub Sector"
-#: ./browser/templates/addressorganizationsview.pt:57
-msgid "listingheader_organizations_sub_sector"
-msgstr "Sub rubro"
-
 #. Default: "Web"
 #: ./browser/templates/searchaddressbookview.pt:197
 msgid "listingheader_organizations_web"
@@ -931,22 +942,22 @@ msgid "no_groups_added"
 msgstr "No hay grupos en esta libreta de direcciones."
 
 #. Default: "There are no organizations in this address book."
-#: ./browser/templates/addressorganizationsview.pt:20
+#: ./browser/templates/addressorganizationsview.pt:26
 msgid "no_organizations_added"
 msgstr "No hay organizaciones en esta libreta de direcciones."
 
 #. Default: "There are no persons in this address book."
-#: ./browser/templates/addresspersonsview.pt:19
+#: ./browser/templates/addresspersonsview.pt:26
 msgid "no_persons_added"
 msgstr "No hay personas en esta libreta de direcciones."
 
 #. Default: "Organizations:"
-#: ./browser/templates/addressorganizationsview.pt:26
+#: ./browser/templates/addressorganizationsview.pt:32
 msgid "organizations"
 msgstr "Organizaciones:"
 
 #. Default: "Persons:"
-#: ./browser/templates/addresspersonsview.pt:23
+#: ./browser/templates/addresspersonsview.pt:30
 msgid "persons"
 msgstr "Personas"
 
@@ -968,5 +979,10 @@ msgstr "Términos a Buscar"
 #: ./interfaces/widgets.py:13
 msgid "states"
 msgstr "provincias"
+
+#. Default: "Customize columns"
+#: ./browser/templates/customizeview.pt:25
+msgid "title_customize_columns"
+msgstr "Customizar columnas"
 
 

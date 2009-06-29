@@ -15,6 +15,13 @@
                      template_id string:addresspersons_view">
 
         <tal:main-macro metal:define-macro="main">
+
+        <a href="#"
+            tal:attributes="href string:${context/absolute_url}/customize_view?type=Person"
+            tal:condition="python: checkPermission('Modify Portal Content', context)">
+            <span i18n:translate="customize_view">Customize view</span>
+        </a>
+
         <div tal:condition="not:persons">
             <h3 i18n:translate="no_persons_added">There are no persons in this address book.</h3>
         </div>
@@ -49,15 +56,10 @@
                         id="pt_toggle"
                         class="noborder"/>
                     </th>
-                    <th i18n:translate="listingheader_persons_first_last_name">Name and Last Name</th>
-                    <th i18n:translate="listingheader_persons_organization">Organization</th>
-                    <th i18n:translate="listingheader_persons_phone">Phone</th>
-                    <th i18n:translate="listingheader_persons_mobile">Mobile</th>
-                    <th i18n:translate="listingheader_persons_email">E-Mail</th>
-                    <th i18n:translate="listingheader_persons_web">Web</th>
-                    <th i18n:translate="listingheader_persons_address">Address</th>
-                    <th i18n:translate="listingheader_persons_city">City</th>
-                    <th i18n:translate="listingheader_persons_country">Country</th>
+
+                    <!-- all headers -->
+                    <th tal:repeat="header view/get_table_headers" tal:content="header"/>
+                    
                 </tr>
                 <tal:block repeat="person batch_persons">
                 <tr tal:define="oddrow repeat/person/odd;
@@ -70,32 +72,9 @@
                                                disabled python:view.test(person.email, False, True);
                                                name python:view.test(person.email, 'user_selection:list', 'no_mail');"/>
                     </td>
-                    <td>
-                        <a href="#" tal:attributes="href person/absolute_url">
-                            <span><span tal:replace="person/last_name"/>, <span tal:replace="person/first_name"/></span>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" tal:attributes="href person/organization/absolute_url"
-                                    tal:condition="python:getattr(person,'organization', False)">
-                            <span tal:content="person/organization/id"/>
-                        </a>
-                    </td>
-                    <td><span tal:content="person/phone"/></td>
-                    <td><span tal:content="person/mobile_phone"/></td>
-                    <td>
-                        <a href="#" tal:attributes="href string:mailto:${person/email}">
-                            <span tal:content="person/email"/>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" tal:attributes="href person/web">
-                            <span tal:content="person/web"/>
-                        </a>
-                    </td>
-                    <td><span tal:content="person/address"/></td>
-                    <td><span tal:content="person/city"/></td>
-                    <td><span tal:content="python:country_vocab.getValue(person.country)"/></td>
+                    <!-- All content from organizations goes here -->
+                    <td tal:repeat="row python:view.get_table_rows(person)" tal:content="structure row"/>
+
                 </tr>
                 </tal:block>
             </table>
@@ -119,7 +98,8 @@
         <br/>
 
         <form action="#" method="post" class="visualNoPrint"
-                    tal:attributes="action string:${context/absolute_url}/import_view">
+                    tal:attributes="action string:${context/absolute_url}/import_view"
+                    tal:condition="python: checkPermission('Modify Portal Content', context)">
             <input name="form.button.import" value="Import organizations or persons" type="submit" i18n:attributes="value label_import_organizations_persons">
         </form>
 

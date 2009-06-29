@@ -12,6 +12,8 @@
   <include package=".browser" />
   <include package=".content" />
 
+  <include file="updates.zcml" />
+
   <!-- Register the installation GenericSetup extension profile -->
   <genericsetup:registerProfile
       name="default"

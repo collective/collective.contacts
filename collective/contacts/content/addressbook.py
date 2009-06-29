@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Definition of the Address Book content type
 """
 
@@ -62,6 +63,49 @@ class AddressBook(folder.ATFolder):
 
     title = atapi.ATFieldProperty('title')
     description = atapi.ATFieldProperty('description')
+
+    # Here i will list the fields that should be shown by default in the table
+    # view for organizations
+    show_on_organizations_view = [('title', True),
+                                  ('sector', True),
+                                  ('sub_sector', True),
+                                  ('phone', True),
+                                  ('fax', True),
+                                  ('email', True),
+                                  ('web', True),
+                                  ('address', True),
+                                  ('city', True),
+                                  ('country', True),
+                                  ('state', False),
+                                  ('zip', False),
+                                  ('extraAddress', False),
+                                  ('email2', False),
+                                  ('email3', False),
+                                  ('text', False)]
+
+    show_on_persons_view = [('title', True),
+                            ('shortName', False),
+                            ('firstName', False),
+                            ('lastName', False),
+                            ('organization', True),
+                            ('position', False),
+                            ('department', False),
+                            ('workPhone', False),
+                            ('workMobilePhone', False),
+                            ('workEmail', False),
+                            ('phone', True),
+                            ('mobilePhone', True),
+                            ('email', True),
+                            ('web', True),
+                            ('address', True),
+                            ('city', True),
+                            ('country', True),
+                            ('state', False),
+                            ('workEmail2', False),
+                            ('workEmail3', False),
+                            ('photo', False),
+                            ('text', False)]
+
 
     security.declarePublic('get_sectors')
     def get_sectors(self):

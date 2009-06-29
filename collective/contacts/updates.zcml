@@ -1,0 +1,24 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="collective.contacts">
+
+    <genericsetup:upgradeSteps
+        sortkey="1"
+        source="1.3.3"
+        destination="1.4.0"
+        profile="collective.contacts:default"
+        >
+            <genericsetup:upgradeStep
+                title="Add columns"
+                description="Add selected columns to the address books"
+                handler=".upgrades.v1_3_3_to_v1_4_0.addColumns"
+                />
+            <genericsetup:upgradeStep
+                title="Update person photos"
+                description="Updates the photo scales for the persons"
+                handler=".upgrades.v1_3_3_to_v1_4_0.updatePersonPhotos"
+                />
+    </genericsetup:upgradeSteps>
+
+</configure>

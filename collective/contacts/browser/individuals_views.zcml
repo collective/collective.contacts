@@ -12,14 +12,22 @@
       permission="zope.Public"
     />
 
-
     <browser:page
       for="*"
       name="import_view"
       class=".importview.ImportView"
       template="templates/importview.pt"
       allowed_interface=".importview.IImportView"
-      permission="zope.Public"
+      permission="cmf.ModifyPortalContent"
     />
 
+    <browser:page
+      for="*"
+      name="customize_view"
+      class=".customizeview.CustomizeView"
+      template="templates/customizeview.pt"
+      allowed_interface=".customizeview.ICustomizeView"
+      permission="cmf.ModifyPortalContent"
+    />
+    
 </configure>

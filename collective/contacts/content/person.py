@@ -132,7 +132,7 @@ PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
             label=_(u"Work E-mail address"),
             description=_(u"Person's work e-mail address"),
         ),
-        validators=('isEmail'),
+        validators=('isEmail',),
         required=False,
         schemata='work',
         searchable=1,
@@ -145,7 +145,7 @@ PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
             label=_(u"2nd Work E-mail address (optional)"),
             description=_(u"A second work e-mail address"),
         ),
-        validators=('isEmail'),
+        validators=('isEmail',),
         required=False,
         schemata='work',
         searchable=1,
@@ -158,7 +158,7 @@ PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
             label=_(u"3rd Work E-mail address (optional)"),
             description=_(u"A third work e-mail address"),
         ),
-        validators=('isEmail'),
+        validators=('isEmail',),
         searchable=1,
         required=False,
         schemata='work',
@@ -171,9 +171,9 @@ PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
             label=_(u"Photo"),
             description=_(u"Person's photo"),
         ),
-        validators=('isNonEmptyFile'),
+        validators=('isNonEmptyFile',),
         required=False,
-        searchable=1,
+        sizes={'large' : (768, 768), 'preview' : (400, 400), 'mini' : (200, 200), 'thumb' : (128, 128), 'tile' : (64, 64), 'icon' : (32, 32), 'listing' : (16, 16)},
     ),
 
     atapi.StringField(
@@ -251,7 +251,7 @@ PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
             label=_(u"E-mail address"),
             description=_(u"Person's e-mail address"),
         ),
-        validators=('isEmail'),
+        validators=('isEmail',),
         required=False,
         searchable=1,
     ),
@@ -264,7 +264,7 @@ PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
             description=_(u"Person's web page or blog. Example: "
                            "http://www.google.com"),
         ),
-        validators=('isURL'),
+        validators=('isURL',),
         required=False,
         searchable=1,
     ),
@@ -335,5 +335,31 @@ class Person(base.ATCTContent):
     def _compute_title(self):
         """Compute title from last and first name"""
         return '%s, %s' % (self.last_name, self.first_name)
+
+    def tag(self, **kwargs):
+        """Generate image tag using the api of the ImageField
+        """
+        return self.getField('photo').tag(self, **kwargs)
+
+    def __bobo_traverse__(self, REQUEST, name):
+        """
+        Transparent access to image scales.
+        Taken from http://www.unc.edu/~jj/plone/#imagefieldscales
+        """
+        if name.startswith('photo'):
+            field = self.getField('photo')
+            image = None
+            if name == 'photo':
+                image = field.getScale(self)
+            else:
+                scalename = name[len('photo_'):]
+                if scalename in field.getAvailableSizes(self):
+                    image = field.getScale(self, scale=scalename)
+            if image is not None and not isinstance(image, basestring):
+                # image might be None or '' for empty images
+                return image
+
+        return super(Person, self).__bobo_traverse__(REQUEST, name)
+
 
 atapi.registerType(Person, PROJECTNAME)

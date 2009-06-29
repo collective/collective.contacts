@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-06-08 19:24+0000\n"
+"POT-Creation-Date: 2009-06-28 00:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,7 +73,7 @@ msgstr ""
 msgid "A third work e-mail address"
 msgstr ""
 
-#: ./content/addressbook.py:24
+#: ./content/addressbook.py:25
 msgid "Add here sectors and subsectors that will be used by organizations."
 msgstr ""
 
@@ -342,11 +342,11 @@ msgstr ""
 msgid "Position"
 msgstr ""
 
-#: ./content/addressbook.py:42
+#: ./content/addressbook.py:43
 msgid "Sector"
 msgstr ""
 
-#: ./content/addressbook.py:27
+#: ./content/addressbook.py:28
 msgid "Sectors"
 msgstr ""
 
@@ -370,7 +370,7 @@ msgstr ""
 msgid "State"
 msgstr ""
 
-#: ./content/addressbook.py:42
+#: ./content/addressbook.py:43
 msgid "Sub sector"
 msgstr ""
 
@@ -480,6 +480,11 @@ msgstr ""
 msgid "countries"
 msgstr ""
 
+#. Default: "Customize view"
+#: ./browser/templates/addressorganizationsview.pt:22
+msgid "customize_view"
+msgstr ""
+
 #. Default: "No results were found."
 #: ./browser/templates/searchaddressbookview.pt:53
 msgid "description_no_results_found"
@@ -501,13 +506,18 @@ msgid "here"
 msgstr ""
 
 #. Default: "Advanced Search"
-#: ./browser/templates/addressorganizationsview.pt:35
+#: ./browser/templates/addressorganizationsview.pt:41
 msgid "label_advanced_search_organizations"
 msgstr ""
 
 #. Default: "Advanced Search"
 #: ./browser/templates/searchaddressbookview.pt:145
 msgid "label_advanced_search_persons"
+msgstr ""
+
+#. Default: "Cancel"
+#: ./browser/templates/customizeview.pt:51
+msgid "label_cancel"
 msgstr ""
 
 #. Default: "Search Again"
@@ -521,12 +531,12 @@ msgid "label_error"
 msgstr ""
 
 #. Default: "Export all organizations"
-#: ./browser/templates/addressorganizationsview.pt:114
+#: ./browser/templates/addressorganizationsview.pt:95
 msgid "label_export_all_organizations"
 msgstr ""
 
 #. Default: "Export all persons"
-#: ./browser/templates/addresspersonsview.pt:115
+#: ./browser/templates/addresspersonsview.pt:94
 msgid "label_export_all_persons"
 msgstr ""
 
@@ -541,7 +551,7 @@ msgid "label_export_persons"
 msgstr ""
 
 #. Default: "Export selected organizations"
-#: ./browser/templates/addressorganizationsview.pt:106
+#: ./browser/templates/addressorganizationsview.pt:87
 msgid "label_export_selected_organizations"
 msgstr ""
 
@@ -566,7 +576,7 @@ msgid "label_import_file"
 msgstr ""
 
 #. Default: "Import organizations or persons"
-#: ./browser/templates/addressorganizationsview.pt:122
+#: ./browser/templates/addressorganizationsview.pt:104
 msgid "label_import_organizations_persons"
 msgstr ""
 
@@ -601,13 +611,18 @@ msgid "label_quick_search_groups"
 msgstr ""
 
 #. Default: "Quick Search"
-#: ./browser/templates/addressorganizationsview.pt:31
+#: ./browser/templates/addressorganizationsview.pt:37
 msgid "label_quick_search_organizations"
 msgstr ""
 
 #. Default: "Quick Search"
-#: ./browser/templates/addresspersonsview.pt:28
+#: ./browser/templates/addresspersonsview.pt:35
 msgid "label_quick_search_persons"
+msgstr ""
+
+#. Default: "Save"
+#: ./browser/templates/customizeview.pt:45
+msgid "label_save"
 msgstr ""
 
 #. Default: "Search Organizations"
@@ -870,11 +885,6 @@ msgstr ""
 msgid "listingheader_organizations_sector"
 msgstr ""
 
-#. Default: "Sub Sector"
-#: ./browser/templates/addressorganizationsview.pt:57
-msgid "listingheader_organizations_sub_sector"
-msgstr ""
-
 #. Default: "Web"
 #: ./browser/templates/searchaddressbookview.pt:197
 msgid "listingheader_organizations_web"
@@ -931,22 +941,22 @@ msgid "no_groups_added"
 msgstr ""
 
 #. Default: "There are no organizations in this address book."
-#: ./browser/templates/addressorganizationsview.pt:20
+#: ./browser/templates/addressorganizationsview.pt:26
 msgid "no_organizations_added"
 msgstr ""
 
 #. Default: "There are no persons in this address book."
-#: ./browser/templates/addresspersonsview.pt:19
+#: ./browser/templates/addresspersonsview.pt:26
 msgid "no_persons_added"
 msgstr ""
 
 #. Default: "Organizations:"
-#: ./browser/templates/addressorganizationsview.pt:26
+#: ./browser/templates/addressorganizationsview.pt:32
 msgid "organizations"
 msgstr ""
 
 #. Default: "Persons:"
-#: ./browser/templates/addresspersonsview.pt:23
+#: ./browser/templates/addresspersonsview.pt:30
 msgid "persons"
 msgstr ""
 
@@ -967,5 +977,10 @@ msgstr ""
 
 #: ./interfaces/widgets.py:13
 msgid "states"
+msgstr ""
+
+#. Default: "Customize columns"
+#: ./browser/templates/customizeview.pt:25
+msgid "title_customize_columns"
 msgstr ""
 

@@ -4,6 +4,18 @@ Changelog
 SVN
 ----------------
 
+* Added a customize view so it's possible to select which columns are shown or not
+
+* Removed the "Import organizations or persons" from the groups view, since it was misleading
+
+* Added an update step to add the needed field to all address books that were created before this version
+
+* Added sizes to the photo field for persons, and an update step that will handle the existing objects that were created before this version
+
+* Added some security checks to the import buttons and import view page
+
+* Fixed two province names from Guatemala (Thanks Warren)
+
 1.3.3
 ----------------
 
