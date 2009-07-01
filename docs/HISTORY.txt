@@ -4,6 +4,8 @@ Changelog
 SVN
 ---
 
+* Changed the skin layers, now the product will not add his own Skin to portal_skins, but instead it will add its layer to all of them and use "Plone Default"
+
 1.4.0
 -----
 
