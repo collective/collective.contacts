@@ -12,10 +12,6 @@ version = 'SVN'
 long_description = (
     read('README-en.txt')
     + '\n' +
-    '=========\n'
-    'Changelog\n'
-    '=========\n'
-    + '\n' +
     read('docs', 'HISTORY.txt')
     + '\n' +
     '============\n'
