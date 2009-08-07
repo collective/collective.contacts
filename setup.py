@@ -53,7 +53,7 @@ setup(name='collective.contacts',
       zip_safe=False,
       install_requires=['setuptools',
                         # -*- Extra requirements: -*-
-                        'Products.ATExtensions==0.9.5'
+                        'Products.ATExtensions==0.9.6'
                         ],
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
