@@ -24,14 +24,14 @@
                             <label for="title"
                                 i18n:translate="label_search_organizations_title">Name</label>
                             <br/>
-                            <input name="title">
+                            <input id="title" name="title"/>
                         </div>
 
                         <div class="field address">
                             <label for="address"
                                 i18n:translate="label_search_organizations_address">Address</label>
                             <br/>
-                            <input name="address">
+                            <input id="address" name="address"/>
                         </div>
 
                         <div class="field country">
@@ -62,63 +62,63 @@
                             <label for="city"
                                 i18n:translate="label_search_organizations_city">City</label>
                             <br/>
-                            <input name="city">
+                            <input id="city" name="city"/>
                         </div>
 
                         <div class="field zip">
                             <label for="zip"
                                 i18n:translate="label_search_organizations_zip">Zip</label>
                             <br/>
-                            <input name="zip">
+                            <input id="zip" name="zip"/>
                         </div>
 
                         <div class="field extra_adress">
-                            <label for="extra_adress"
+                            <label for="extra_address"
                                 i18n:translate="label_search_organizations_extra_address">Extra Address Info</label>
                             <br/>
-                            <input name="extra_address">
+                            <input id="extra_address" name="extra_address"/>
                         </div>
 
                         <div class="field phone">
                             <label for="phone"
                                 i18n:translate="label_search_organizations_phone">Phone Number</label>
                             <br/>
-                            <input name="phone">
+                            <input id="phone" name="phone"/>
                         </div>
 
                         <div class="field fax">
                             <label for="fax"
                                 i18n:translate="label_search_organizations_fax">Fax</label>
                             <br/>
-                            <input name="fax">
+                            <input id="fax" name="fax"/>
                         </div>
 
                         <div class="field email">
                             <label for="email"
                                 i18n:translate="label_search_organizations_email">Email address</label>
                             <br/>
-                            <input name="email">
+                            <input id="email" name="email"/>
                         </div>
 
                         <div class="field email2">
                             <label for="email2"
                                 i18n:translate="label_search_organizations_email2">2nd Email address</label>
                             <br/>
-                            <input name="email2">
+                            <input id="email2" name="email2"/>
                         </div>
 
                         <div class="field email3">
                             <label for="email3"
                                 i18n:translate="label_search_organizations_email3">3rd Email address</label>
                             <br/>
-                            <input name="email3">
+                            <input id="email3" name="email3"/>
                         </div>
 
                         <div class="field web">
                             <label for="web"
                                 i18n:translate="label_search_organizations_web">Web</label>
                             <br/>
-                            <input name="web">
+                            <input id="web" name="web"/>
                         </div>
 
                         <div class="field sector">
@@ -149,7 +149,7 @@
                             <label for="text"
                                 i18n:translate="label_search_organizations_text">Text</label>
                             <br/>
-                            <input name="text">
+                            <input id="text" name="text"/>
                         </div>
 
                         <input type="hidden" name="organizations_submitted" value="1" />

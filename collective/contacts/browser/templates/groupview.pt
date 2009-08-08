@@ -20,7 +20,7 @@
 
             <form action="#" method="post" class="visualNoPrint"
                   tal:attributes="action string:${context/aq_parent/absolute_url}/search_addressbook">
-                    <input name="search_string">
+                    <input name="search_string"/>
                     <input type="hidden" name="persons_group_submitted" value="1" />
                     <input type="hidden" name="group_id" value="#"
                                 tal:attributes="value here/id"/>
@@ -94,8 +94,8 @@
                 </tr>
                 </tal:block>
             </table>
-            <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to" class="visualNoPrint">
-            <input name="form.button.export_persons" value="Export selected persons" type="submit" i18n:attributes="value label_export_selected_persons" class="visualNoPrint">
+            <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to" class="visualNoPrint"/>
+            <input name="form.button.export_persons" value="Export selected persons" type="submit" i18n:attributes="value label_export_selected_persons" class="visualNoPrint"/>
             </form>
 
             <div metal:use-macro="here/custom_batch_macros/macros/navigation" />

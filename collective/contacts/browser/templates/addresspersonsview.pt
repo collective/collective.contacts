@@ -31,7 +31,7 @@
 
             <form action="#" method="post" class="visualNoPrint"
                   tal:attributes="action string:${context/absolute_url}/search_addressbook">
-                    <input name="search_string">
+                    <input name="search_string"/>
                     <input type="submit" name="quick_persons_submitted"
                      value="Quick Search"
                      i18n:attributes="value label_quick_search_persons"
@@ -82,8 +82,8 @@
             <div metal:use-macro="here/custom_batch_macros/macros/navigation" />
 
 
-                <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to" class="visualNoPrint">
-                <input name="form.button.export_persons" value="Export selected persons" type="submit" i18n:attributes="value label_export_selected_persons" class="visualNoPrint">
+                <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to" class="visualNoPrint"/>
+                <input name="form.button.export_persons" value="Export selected persons" type="submit" i18n:attributes="value label_export_selected_persons" class="visualNoPrint"/>
 
             </form>
             </tal:batch>
@@ -91,7 +91,7 @@
             <br/>
             <form action="#" method="post" class="visualNoPrint"
                     tal:attributes="action string:${context/absolute_url}">
-                <input name="form.button.export_persons" value="Export all persons" type="submit" i18n:attributes="value label_export_all_persons">
+                <input name="form.button.export_persons" value="Export all persons" type="submit" i18n:attributes="value label_export_all_persons"/>
             </form>
         </div>
 
@@ -100,7 +100,7 @@
         <form action="#" method="post" class="visualNoPrint"
                     tal:attributes="action string:${context/absolute_url}/import_view"
                     tal:condition="python: checkPermission('Modify Portal Content', context)">
-            <input name="form.button.import" value="Import organizations or persons" type="submit" i18n:attributes="value label_import_organizations_persons">
+            <input name="form.button.import" value="Import organizations or persons" type="submit" i18n:attributes="value label_import_organizations_persons"/>
         </form>
 
         </tal:main-macro>

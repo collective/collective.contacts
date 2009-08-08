@@ -31,16 +31,16 @@
                           name="selected:list"
                           tal:attributes="id python:field[0];
                                           value python:field[0];
-                                          checked python:field[2]">
+                                          checked python:field[2]"/>
                     <label
                           tal:content="python:field[1]"
                           tal:attributes="for python:field[0]">Field Name</label>
                     <input type="hidden" name="columns:list"
-                            tal:attributes="value python:field[0]">
+                            tal:attributes="value python:field[0]"/>
                   </div>
-                   <input type="hidden" name="customize.submitted" value="True">
+                   <input type="hidden" name="customize.submitted" value="True"/>
                    <input type="hidden" name="customize.type"
-                          tal:attributes="value contenttype">
+                          tal:attributes="value contenttype"/>
                    <br/>
                 <input class="context"
                        type="submit"

@@ -28,7 +28,7 @@
 
             <form action="#" method="post" class="visualNoPrint"
                   tal:attributes="action string:${context/absolute_url}/search_addressbook">
-                    <input name="search_string">
+                    <input name="search_string"/>
                     <input type="hidden" name="quick_groups_submitted" value="1" />
                     <input type="submit" name="quick_search_groups"
                      value="Quick Search"
@@ -74,7 +74,7 @@
                 </tr>
                 </tal:block>
             </table>
-            <input name="form.button.mailto_group" value="Send mail to group" type="submit" i18n:attributes="value label_send_mail_to_group" class="visualNoPrint">
+            <input name="form.button.mailto_group" value="Send mail to group" type="submit" i18n:attributes="value label_send_mail_to_group" class="visualNoPrint"/>
             </form>
             <div metal:use-macro="here/custom_batch_macros/macros/navigation" />
 
