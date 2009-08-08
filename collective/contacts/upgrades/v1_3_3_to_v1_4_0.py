@@ -31,4 +31,3 @@ def updatePersonPhotos(portal_setup):
         
         photo_field.removeScales(person)
         photo_field.createScales(person)
-    

@@ -132,7 +132,7 @@ class AddressBook(folder.ATFolder):
 
         return sub_sectors
 
-    security.declarePublic('get__all_sub_sectors')
+    security.declarePublic('get_all_sub_sectors')
     def get_all_sub_sectors(self):
         """
         We use this method as a starting point to the field's vocabulary.

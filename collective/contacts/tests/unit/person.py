@@ -34,6 +34,7 @@ class TestPerson(MockTestCase):
                        'photo',
                        'address',
                        'country',
+                       'state',
                        'city',
                        'phone',
                        'mobilePhone',

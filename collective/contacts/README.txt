@@ -34,7 +34,6 @@ With that in place, we can go to the portal front page and log in. We will
 do this using the default user from PloneTestCase:
 
     >>> from Products.PloneTestCase.setup import portal_owner, default_password
-
     >>> browser.open(portal_url)
 
 We have the login portlet, so let's use that.
@@ -211,7 +210,6 @@ Now we fill the form and submit it.
 
     >>> browser.getControl(name='firstName').value = 'Juan'
     >>> browser.getControl(name='lastName').value = 'Perez'
-    >>> browser.getControl(name='organization').value = 'Department'
     >>> browser.getControl(name='position').value = 'Position'
     >>> browser.getControl(name='department').value = 'Department'
     >>> browser.getControl(name='workEmail').value = 'test@test.com'

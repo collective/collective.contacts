@@ -21,6 +21,8 @@ from Products.PloneTestCase.layer import onsetup
 # not in the Products.*) namespace. For that, see below.
 # All of Plone's products are already set up by PloneTestCase.
 
+ztc.installProduct('ATExtensions')
+
 @onsetup
 def setup_product():
     """Set up the package and its dependencies.
@@ -57,7 +59,7 @@ def setup_product():
 # PloneTestCase set up this product on installation.
 
 setup_product()
-ptc.setupPloneSite(products=['collective.contacts'])
+ptc.setupPloneSite(products=['ATExtensions', 'collective.contacts'])
 
 class TestCase(ptc.PloneTestCase):
     """We use this base class for all the tests in this package. If
