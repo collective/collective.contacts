@@ -10,7 +10,7 @@ def read(*rnames):
 version = 'SVN'
 
 long_description = (
-    read('README-en.txt')
+    read('docs', 'README-en.txt')
     + '\n' +
     read('docs', 'HISTORY.txt')
     + '\n' +
@@ -18,7 +18,7 @@ long_description = (
     'Contributors\n'
     '============\n'
     + '\n' +
-    read('CONTRIBUTORS.txt')
+    read('docs', 'CONTRIBUTORS.txt')
     + '\n' +
     '========\n'
     'Download\n'
@@ -29,7 +29,7 @@ tests_require = ['zope.testing', 'plone.mocktestcase']
 
 setup(name='collective.contacts',
       version=version,
-      description="Address book content type for Plone",
+      description="Address book product for Plone",
       long_description=long_description,
       # Get more strings from
       # http://www.python.org/pypi?%3Aaction=list_classifiers

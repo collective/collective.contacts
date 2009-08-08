@@ -1,171 +1,187 @@
-=========
-Changelog
-=========
+Changelog for collective.contacts
+=================================
+
+    (name of developer listed in brackets)
 
 SVN
 ---
 
+  * Fixed XHTML validation for several templates. [emanuel]
+
+  * Depend on newer version of ATExtensions. [frapell]
+
+  * Fixed testing infrastructure which was outdated. [emanuel, frapell]
+
 1.4.1
 -----
 
-* Changed the skin layers, now the product will not add his own Skin to portal_skins, but instead it will add its layer to all of them and use "Plone Default"
+  * Changed the skin layers, now the product will not add his own Skin to
+    portal_skins, but instead it will add its layer to all of them and use
+    "Plone Default".
 
 1.4.0
 -----
 
-* Added a customize view so it's possible to select which columns are shown or not
+  * Added a customize view so it's possible to select which columns are shown
+    or not.
 
-* Removed the "Import organizations or persons" from the groups view, since it was misleading
+  * Removed the "Import organizations or persons" from the groups view, since
+    it was misleading.
 
-* Added an update step to add the needed field to all address books that were created before this version
+  * Added an update step to add the needed field to all address books that were
+    created before this version.
 
-* Added sizes to the photo field for persons, and an update step that will handle the existing objects that were created before this version
+  * Added sizes to the photo field for persons, and an update step that will
+    handle the existing objects that were created before this version.
 
-* Added some security checks to the import buttons and import view page
+  * Added some security checks to the import buttons and import view page.
 
-* Fixed two province names from Guatemala (Thanks Warren)
+  * Fixed two province names from Guatemala (Thanks Warren).
 
 1.3.3
 -----
 
-* Added the sub-sector field to the columns in the organizations view.
+  * Added the sub-sector field to the columns in the organizations view.
 
-* Did some rework on the advanced search templates (for persons and organizations).
+  * Did some rework on the advanced search templates (for persons and
+    organizations).
 
-* Fixed the referencebrowser_popup template that wasn't showing content when
-re-editing a person or a group.
+  * Fixed the referencebrowser_popup template that wasn't showing content when
+    re-editing a person or a group.
 
-* Fixed bug where drop down fields will not update their content when editing
-inline.
+  * Fixed bug where drop down fields will not update their content when editing
+    inline.
 
-* Fixed a typo in spanish translation ("Eportar" instead of "Exportar").
+  * Fixed a typo in spanish translation ("Eportar" instead of "Exportar").
 
-* Added a css to override Plone's default behaviour when editing a drop down
-field inline (it repeats the field label).
+  * Added a css to override Plone's default behaviour when editing a drop down
+    field inline (it repeats the field label).
 
 1.3.2
 -----
 
-* Included a custom referencobrowser_popup to show only objects that are
-  allowed to be referenced inside the reference browser pop up.
-  (Used when relating a person with an organization for example)
+  * Included a custom referencobrowser_popup to show only objects that are
+    allowed to be referenced inside the reference browser pop up.
+    (Used when relating a person with an organization for example).
 
 1.3.1
 -----
 
-* Fixed display issues with rich text fields
+  * Fixed display issues with rich text fields.
 
-* Added sector and subsector drop downs to the advanced organizations search
+  * Added sector and subsector drop downs to the advanced organizations search.
 
-* Added a "Go back" link, when doing a quick search.
+  * Added a "Go back" link, when doing a quick search.
 
-* [FIXED] was using the same id for translating both work and personal email
-  in the search for persons template.
+  * [FIXED] was using the same id for translating both work and personal email
+    in the search for persons template.
 
-* Replaced the way content was retrieved for the views. Now it uses the catalog
-  and, in the case of the persons, it uses the advanced query capabilities
-  so it will sort using last name first and then first name.
+  * Replaced the way content was retrieved for the views. Now it uses the
+    catalog and, in the case of the persons, it uses the advanced query
+    capabilities so it will sort using last name first and then first name.
 
-* Added 2 sortable fields to the catalog, one for the last name and the other
-  for the first name. They are added and indexed on installation.
+  * Added 2 sortable fields to the catalog, one for the last name and the other
+    for the first name. They are added and indexed on installation.
 
-* Added types names translation to the old i18n (probably a Plone bug?).
+  * Added types names translation to the old i18n (probably a Plone bug?).
 
 1.3.0
 -----
 
-* Did an override over the contentviews template to workaround a possible bug of
-Plone when having the default page as a portal_action
+  * Did an override over the contentviews template to workaround a possible bug
+    of Plone when having the default page as a portal_action.
 
-* Found a way to get the 'Work' schemata title to be translated to spanish.
+  * Found a way to get the 'Work' schemata title to be translated to spanish.
 
-* Added some classes to the views, so forms and buttons are hidden when printing
+  * Added some classes to the views, so forms and buttons are hidden when
+    printing.
 
-* Added the "Select all" checkbox to all tables.
+  * Added the "Select all" checkbox to all tables.
 
-* Added an uninstall profile.
+  * Added an uninstall profile.
 
-* When a user has permission to view an address book, it will see the 3
-  main tabs with the 3 main views.
+  * When a user has permission to view an address book, it will see the 3
+    main tabs with the 3 main views.
 
-* Removed the border when inside a search or a search result. This "fixes"
-  the issue where the wrong tab was selected when inside a search or search
-  results.
+  * Removed the border when inside a search or a search result. This "fixes"
+    the issue where the wrong tab was selected when inside a search or search
+    results.
 
-* Added checkboxes to send email and export inside a group view.
+  * Added checkboxes to send email and export inside a group view.
 
-* Fixed missing translations under the "Send emails page".
+  * Fixed missing translations under the "Send emails page".
 
-* Added "go back" and "Advanced search" buttons properly when getting or not
-  getting search results.
+  * Added "go back" and "Advanced search" buttons properly when getting or not
+    getting search results.
 
-* Finished with the country and states fields, added them to the search
-  templates.
+  * Finished with the country and states fields, added them to the search
+    templates.
 
-* Fixed a typo with the email spanish translation
+  * Fixed a typo with the email spanish translation.
 
-* Added a note when sending emails about opening the default email client
+  * Added a note when sending emails about opening the default email client.
 
 1.2.0
 -----
 
-* Added Sectors and Sub sectors drop downs to organizations, where you can
-  select a "sector" and then the "sub sectors" are automatically updated
-  using KSS (Same behaviour as countries and states). This sectors are
-  loaded in the address book itself
+  * Added Sectors and Sub sectors drop downs to organizations, where you can
+    select a "sector" and then the "sub sectors" are automatically updated
+    using KSS (Same behaviour as countries and states). This sectors are
+    loaded in the address book itself.
 
-* Replaced the Country and State text entries with a drop down for all countries
-  and, using kss, a drop down with states for each country. This was mainly
-  taken from GetPaid, so most of the credit goes for those great gentlemen.
+  * Replaced the Country and State text entries with a drop down for all
+    countries and, using kss, a drop down with states for each country. This
+    was mainly taken from GetPaid, so most of the credit goes for those great
+    gentlemen.
 
-* Title for the group view page
+  * Title for the group view page.
 
-* Moved some fields to the default schemata, so instead of a drop down, they
-  are shown as tabs
+  * Moved some fields to the default schemata, so instead of a drop down, they
+    are shown as tabs.
 
-* Replaced the advanced search link with buttons.
+  * Replaced the advanced search link with buttons.
 
-* Fixed a bug with the advanced search. Was giving some errors when searching
-  persons based on their organization.
+  * Fixed a bug with the advanced search. Was giving some errors when searching
+    persons based on their organization.
 
-* The import script now imports persons even if they had no organization.
+  * The import script now imports persons even if they had no organization.
 
-* Quick search feature can now return results if part of a string was
-  entered. And if several words are used, it does an OR of all of them.
+  * Quick search feature can now return results if part of a string was
+    entered. And if several words are used, it does an OR of all of them.
 
-* Added "No results found" string when no results are found, instead of
-  showing an empty table.
+  * Added "No results found" string when no results are found, instead of
+    showing an empty table.
 
-* Removed all required fields, only Name and Last name are required for
-  persons, and just the name for organizations.
+  * Removed all required fields, only Name and Last name are required for
+    persons, and just the name for organizations.
 
-* If persons or organizations have no email set, then the checkbox for sending
-  them an email is disabled. Same if a group has no members, or members with
-  no email.
+  * If persons or organizations have no email set, then the checkbox for
+    sending them an email is disabled. Same if a group has no members, or
+    members with no email.
 
 1.0.0a3
 -------
 
-* Added the default address book view to the 'display' drop down
+  * Added the default address book view to the 'display' drop down.
 
 1.0.0a2
 -------
 
-* Translations fixed
+  * Translations fixed.
 
 1.0.0a1
 -------
 
-* Groups,Persons and organizations as addable types
+  * Groups, persons and organizations as addable types.
 
-* Tabular views for listing inside an address book with batch navigation
+  * Tabular views for listing inside an address book with batch navigation.
 
-* Quick search feature
+  * Quick search feature.
 
-* Advanced search feature
+  * Advanced search feature.
 
-* Exporting to CSV persons or organizations
+  * Exporting to CSV persons or organizations.
 
-* Importing from CSV persons or organizations
+  * Importing from CSV persons or organizations.
 
-* Sending email (not from site, but from the user's configured email client)
+  * Sending email (not from site, but from the user's configured email client).
