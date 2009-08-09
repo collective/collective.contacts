@@ -120,8 +120,8 @@ class KSSModifySelector(PloneKSSView):
         else:
             # If i'm here, means someone selected some sector, in which case,
             # i should return a filtered sub sector list
-            results = TitledVocabulary.fromTitles(
-                                         address_book.get_sub_sectors(sector))
+            sub_sectors = address_book.get_sub_sectors(sector)
+            results = TitledVocabulary.fromTitles(zip(sub_sectors, sub_sectors))
 
         if context.meta_type == 'AddressBook':
             # If i'm here means i'm inside the advanced search template

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Definition of the Address Book content type
-"""
+"""Definition of the Address Book content type"""
 
 from AccessControl import ClassSecurityInfo
 
@@ -38,11 +37,20 @@ AddressBookSchema['title'].storage = atapi.AnnotationStorage()
 AddressBookSchema['description'].storage = atapi.AnnotationStorage()
 
 AddressBookSchema['sectors'].subfields = ('sector', 'sub_sector')
-AddressBookSchema['sectors'].subfield_types = {'sector':'string', 'sub_sector':'lines'}
+AddressBookSchema['sectors'].subfield_types = {
+    'sector': 'string',
+    'sub_sector': 'lines'
+}
 AddressBookSchema['sectors'].subfield_vocabularies = {}
-AddressBookSchema['sectors'].subfield_labels = {'sector':_('Sector'), 'sub_sector':_('Sub sector')}
+AddressBookSchema['sectors'].subfield_labels = {
+    'sector': _('Sector'),
+    'sub_sector': _('Sub sector')
+}
 #AddressBookSchema['sectors'].required_subfields = ('sector', 'sub_sector')
-#AddressBookSchema['sectors'].subfield_validators = {'source':('is_source_name',), 'kinds':('is_not_empty_kinds',)}
+#AddressBookSchema['sectors'].subfield_validators = {
+#    'source': ('is_source_name',),
+#    'kinds':('is_not_empty_kinds',)
+#}
 AddressBookSchema['sectors'].innerJoin = ', '
 AddressBookSchema['sectors'].outerJoin = '<br />'
 #AddressBookSchema['sectors'].widget.macro = 'dct_records_widget'
@@ -64,8 +72,8 @@ class AddressBook(folder.ATFolder):
     title = atapi.ATFieldProperty('title')
     description = atapi.ATFieldProperty('description')
 
-    # Here i will list the fields that should be shown by default in the table
-    # view for organizations
+    # Here i will list the fields that should be shown by default in
+    # the table view for organizations
     show_on_organizations_view = [('title', True),
                                   ('sector', True),
                                   ('sub_sector', True),
@@ -109,16 +117,13 @@ class AddressBook(folder.ATFolder):
 
     security.declarePublic('get_sectors')
     def get_sectors(self):
-        """
-        Get the sectors for the vocabulary
-        """
-        return [(i.get('sector'),i.get('sector')) for i in self.sectors]
+        """Get the sectors"""
+        return [i.get('sector') for i in self.sectors]
 
     security.declarePublic('get_sub_sectors')
     def get_sub_sectors(self, sector):
-        """
-        Method used to get the sub sectors given a sector.
-        """
+        """Get the sub sectors given a sector"""
+
         sub_sectors = []
         for i in self.sectors:
             if i.get('sector') == sector:
@@ -128,15 +133,14 @@ class AddressBook(folder.ATFolder):
                     for j in i.get('sub_sector'):
                         to_add = (j,j)
                         if to_add not in sub_sectors:
-                            sub_sectors.append((j,j))
+                            sub_sectors.append(j)
 
         return sub_sectors
 
     security.declarePublic('get_all_sub_sectors')
     def get_all_sub_sectors(self):
-        """
-        We use this method as a starting point to the field's vocabulary.
-        Showing every entry in the sub sectors.
+        """We use this method as a starting point to the field's
+        vocabulary. Showing every entry in the sub sectors.
         """
         sub_sectors = []
         for i in self.sectors:

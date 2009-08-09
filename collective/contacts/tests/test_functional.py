@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+"""Functional tests suit"""
+
 import unittest
 import doctest
 

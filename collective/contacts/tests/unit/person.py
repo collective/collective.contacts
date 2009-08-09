@@ -1,5 +1,5 @@
-"""Unit test module for the Person content type
-"""
+# -*- coding: utf-8 -*-
+"""Unit test module for the Person content type"""
 
 from plone.mocktestcase import MockTestCase
 

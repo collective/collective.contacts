@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Test setup for integration and functional tests.
 
 When we import PloneTestCase and then call setupPloneSite(), all of
@@ -75,6 +76,6 @@ class FunctionalTestCase(ptc.FunctionalTestCase):
 
     def afterSetUp(self):
         roles = ('Member', 'Contributor')
-        self.portal.portal_membership.addMember('contributor',
-                                                'secret',
-                                                roles, [])
+        self.portal.portal_membership.addMember(
+            'contributor', 'secret', roles, []
+        )

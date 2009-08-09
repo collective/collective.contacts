@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+"""Unit tests suit"""
 import unittest
 
 from collective.contacts.tests.unit.person import TestPerson

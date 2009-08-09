@@ -117,7 +117,8 @@ def States( context ):
 
 def Sectors( context ):
     address_book = context.aq_inner.aq_parent
-    return TitledVocabulary.fromTitles(address_book.get_sectors())
+    sectors = address_book.get_sectors()
+    return TitledVocabulary.fromTitles(zip(sectors, sectors))
 
 def SubSectors( context ):
     address_book = context.aq_inner.aq_parent
