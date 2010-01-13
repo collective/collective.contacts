@@ -6,6 +6,11 @@ Changelog for collective.contacts
 SVN
 ---
 
+  * Fixed use of deprecated zcml directive "vocabulary". see
+    http://wiki.zope.org/zope3/ReducingTheAmountOfZCMLDirectives [thet]
+
+  * Removed "default-skin" directive from skins.xml [thet]
+
   * Fixed XHTML validation for several templates. [emanuel]
 
   * Depend on newer version of ATExtensions. [frapell]
