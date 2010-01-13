@@ -3,7 +3,9 @@ $Id: vocabularies.py 1957 2008-09-03 23:16:52Z javimansilla $
 
 vocabularies for getpaid
 """
-from zope.interface import implements
+
+from zope.interface import implements, implementer, alsoProvides
+from zope.schema.interfaces import IVocabulary, IVocabularyFactory
 from zope.app import zapi
 from os import path
 
@@ -27,7 +29,7 @@ class TitledVocabulary(vocabulary.SimpleVocabulary):
         One or more interfaces may also be provided so that alternate
         widgets may be bound without subclassing.
         """
-        
+
         terms = [cls.createTerm(value,value,title) for (value,title) in items]
         return cls(terms, *interfaces)
     fromTitles = classmethod(fromTitles)
@@ -107,19 +109,27 @@ class CountriesStatesFromFile(object):
         all_states = self.csparser.getStatesOfAllCountries()
         return self._allowed_no_values + self._not_aplicable + all_states
 
+@implementer(IVocabulary)
 def Countries( context ):
     utility = zapi.getUtility(ICountriesStates)
     return TitledVocabulary.fromTitles(utility.countries)
+alsoProvides(Countries, IVocabularyFactory)
 
+@implementer(IVocabulary)
 def States( context ):
     utility = zapi.getUtility(ICountriesStates)
     return TitledVocabulary.fromTitles(utility.allStateValues())
+alsoProvides(States, IVocabularyFactory)
 
+@implementer(IVocabulary)
 def Sectors( context ):
     address_book = context.aq_inner.aq_parent
     sectors = address_book.get_sectors()
     return TitledVocabulary.fromTitles(zip(sectors, sectors))
+alsoProvides(Sectors, IVocabularyFactory)
 
+@implementer(IVocabulary)
 def SubSectors( context ):
     address_book = context.aq_inner.aq_parent
     return TitledVocabulary.fromTitles(address_book.get_all_sub_sectors())
+alsoProvides(SubSectors, IVocabularyFactory)
