@@ -45,30 +45,27 @@
 
     <include file="skins.zcml" />
 
+    <utility factory=".vocabularies.CountriesStatesFromFile" />
+
     <utility
-        provides=".interfaces.ICountriesStates"
-        factory=".vocabularies.CountriesStatesFromFile"/>
+        component=".vocabularies.Countries"
+        name="contacts.countries"
+        />
 
+    <utility
+        component=".vocabularies.States"
+        name="contacts.states"
+        />
 
-    <vocabulary
-      name="contacts.countries"
-      factory=".vocabularies.Countries"
-      />
+    <utility
+        component=".vocabularies.Sectors"
+        name="contacts.sectors"
+        />
 
-    <vocabulary
-      name="contacts.states"
-      factory=".vocabularies.States"
-      />
-
-    <vocabulary
-      name="contacts.sectors"
-      factory=".vocabularies.Sectors"
-      />
-
-    <vocabulary
-      name="contacts.sub_sectors"
-      factory=".vocabularies.SubSectors"
-      />
+    <utility
+        component=".vocabularies.SubSectors"
+        name="contacts.sub_sectors"
+        />
 
   <!-- -*- extra stuff goes here -*- -->
 
