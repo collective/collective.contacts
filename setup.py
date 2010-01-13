@@ -53,13 +53,13 @@ setup(name='collective.contacts',
       zip_safe=False,
       install_requires=['setuptools',
                         # -*- Extra requirements: -*-
-                        'Products.ATExtensions==0.9.6'
+                        'Products.ATExtensions',
                         ],
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
       #test_suite = 'collective.contacts.tests.test_docs.test_suite',
       entry_points="""
-      # -*- entry_points -*- 
+      # -*- entry_points -*-
       [distutils.setup_keywords]
       paster_plugins = setuptools.dist:assert_string_list
 
