@@ -62,13 +62,12 @@ class SearchAddressBookView(BrowserView):
 
         # This is necessary in case this method gets called and no button was
         # pressed. In that case it will just render the template
-        
         if mailto or export_persons or export_organizations:
             # In any case we ask for the user selection
             # Now the selections come in a list formed of the id's and the
             # emails, using a space as a separator, so we now separate them
 
-            if not form.has_key('user_selection'):
+            if not form.has_key('user_selection') and not form.has_key('no_mail'):
                 aux = _(u'You need to select at least one person or '
                          'organization')
                 status = zope.i18n.translate(aux, context=self.request)
@@ -77,9 +76,33 @@ class SearchAddressBookView(BrowserView):
                       '/search_addressbook?error_message=%s' % (status,)
                       
                 return self.request.response.redirect(url)
+            elif not form.has_key('user_selection') and mailto:
+                aux = _(u'You need to select at least one person or '
+                         'organization that has an email')
+                status = zope.i18n.translate(aux, context=self.request)
+                url = self.context.absolute_url() + \
+                      '/search_addressbook?error_message=%s' % (status,)
 
-            ids = [i.split(' ')[0] for i in form['user_selection']]
-            mails = [i.split(' ')[1] for i in form['user_selection']]
+                return self.request.response.redirect(url)
+                
+            if form.has_key('user_selection'):
+                ids = [i.split(' ')[0] for i in form['user_selection']]
+                
+                if form.has_key('no_mail'):
+                    if not isinstance(form['no_mail'], list):
+                        ids_nomail = [form['no_mail'].strip()]
+                    else:
+                        ids_nomail = [i.strip() for i in form['no_mail']]
+                    ids = ids + ids_nomail
+                    
+                mails = [i.split(' ')[1] for i in form['user_selection']]
+            else:
+                if not isinstance(form['no_mail'], list):
+                    ids = [form['no_mail'].strip()]                    
+                else:
+                    ids = [i.strip() for i in form['no_mail']]
+
+                mails = []
 
             self.request.string_emails = ', '.join(mails)
 
@@ -102,7 +125,6 @@ class SearchAddressBookView(BrowserView):
                                            path,
                                            ids,
                                            'csv')
-
         if mailto_group:
             if not form.has_key('user_selection'):
                 aux = _(u'You need to select at least one group')

@@ -69,7 +69,6 @@
                         <input class="noborder" name="user_selection:list" id="#" value="#" type="checkbox"
                                tal:attributes="id person/id;
                                                value python:'%s %s'%(person.id, person.email);
-                                               disabled python:view.test(person.email, False, True);
                                                name python:view.test(person.email, 'user_selection:list', 'no_mail');"/>
                     </td>
                     <!-- All content from organizations goes here -->
@@ -90,7 +89,7 @@
 
             <br/>
             <form action="#" method="post" class="visualNoPrint"
-                    tal:attributes="action string:${context/absolute_url}">
+                    tal:attributes="action string:${context/absolute_url}/persons">
                 <input name="form.button.export_persons" value="Export all persons" type="submit" i18n:attributes="value label_export_all_persons"/>
             </form>
         </div>

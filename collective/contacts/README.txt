@@ -568,4 +568,411 @@ Finally, let's login back as manager.
     >>> browser.getControl(name='__ac_password').value = default_password
     >>> browser.getControl(name='submit').click()
     >>> browser.open(portal_url)
+		
+Test the names of the view are correct
+--------------------------------------
+Let's add more persons
 
+	>>> browser.open(portal_url)
+	>>> browser.getLink('Address Book Sample').click()
+	>>> browser.getLink('Add new').click()
+	>>> browser.getControl('Person').click()
+	>>> browser.getControl(name='form.button.Add').click()
+	>>> 'Person' in browser.contents
+	True
+	>>> browser.getControl(name='firstName').value = 'name1'
+	>>> browser.getControl(name='lastName').value = 'last1'
+	>>> browser.getControl(name='email').value = 'name1@mail.com'
+	>>> browser.getControl('Save').click()
+	>>> 'Changes saved' in browser.contents
+	True
+
+this one do not have no e-mail
+
+    >>> browser.open(portal_url)
+	>>> browser.getLink('Address Book Sample').click()
+    >>> browser.getLink('Add new').click()
+    >>> browser.getControl('Person').click()
+    >>> browser.getControl(name='form.button.Add').click()
+    >>> 'Person' in browser.contents
+    True
+    >>> browser.getControl(name='firstName').value = 'name2'
+    >>> browser.getControl(name='lastName').value = 'last2'
+    >>> browser.getControl('Save').click()
+    >>> 'Changes saved' in browser.contents
+	True
+
+Let's add more organizations
+
+	>>> browser.getLink('Address Book Sample').click()
+	>>> browser.getLink('Add new').click()
+	>>> browser.getControl('Organization').click()
+	>>> browser.getControl(name='form.button.Add').click()
+	>>> 'Organization' in browser.contents
+	True
+	>>> browser.getControl(name='title').value = 'Organization1'
+	>>> browser.getControl(name='email').value = 'Org@mail.com'
+	>>> browser.getControl('Save').click()
+	>>> 'Changes saved' in browser.contents
+	True
+
+this one with out an email
+
+	>>> browser.getLink('Address Book Sample').click()
+	>>> browser.getLink('Add new').click()
+	>>> browser.getControl('Organization').click()
+	>>> browser.getControl(name='form.button.Add').click()
+	>>> 'Organization' in browser.contents
+	True
+	>>> browser.getControl(name='title').value = 'Organization2'
+	>>> browser.getControl('Save').click()
+	>>> 'Changes saved' in browser.contents
+	True
+
+Checking the organization view is called organizations
+
+    >>> browser.open(portal_url)
+	>>> browser.getLink('Address Book Sample').click()
+	>>> view_org_url = browser.url +"/organizations"
+	>>> browser.open(view_org_url)
+	>>> "Organization Sample" in browser.contents
+	True
+	>>> "Organization1" in browser.contents
+	True
+	>>> "Organization2" in browser.contents
+	True
+
+
+
+Checking the persons view is called persons
+
+    >>> browser.open(portal_url)
+	>>> browser.getLink('Address Book Sample').click()
+	>>> view_pers_url = browser.url +"/persons"
+	>>> browser.open(view_pers_url)
+	>>> "juan" in browser.contents
+	True
+	>>> "name1" in browser.contents
+	True
+	>>> "name2" in browser.contents
+	True
+
+
+Checking the groups view is called groups
+
+    >>> browser.open(portal_url)
+	>>> browser.getLink('Address Book Sample').click()
+	>>> view_group_url = browser.url +"/groups"
+	>>> browser.open(view_group_url)
+	>>> "Group Sample" in browser.contents
+	True
+
+
+Send mail to persons
+--------------------
+
+Send mail to persons with email
+
+
+	>>> browser.open(view_pers_url)
+	>>> browser.getControl(name='user_selection:list').value = [1]
+	>>> browser.getControl(name='form.button.mailto').click()
+	>>> 'Send emails' in browser.contents
+	True
+	>>> 'name1@mail.com' in browser.contents
+	True
+	>>> 'test@test.com' in browser.contents
+	False
+	
+Sending mail with out choosing a person
+
+	>>> browser.open(view_pers_url)
+	>>> browser.getControl(name='form.button.mailto').click()
+	>>> 'You need to select at least one person or organization' in browser.contents
+	True
+	
+Sending mail to a person without an email
+
+	>>> browser.open(view_pers_url)
+	>>> browser.getControl(name='no_mail').value = ['last2-name2 ']
+	>>> browser.getControl(name='form.button.mailto').click()
+	>>> 'You need to select at least one person or organization that has an email' in browser.contents
+	True
+	
+Sending mails to a person with an email and one without an email
+
+	>>> browser.open(view_pers_url)
+	>>> browser.getControl(name='user_selection:list').value = [1]
+	>>> browser.getControl(name='no_mail').value = ['last2-name2 ']
+	>>> browser.getControl(name='form.button.mailto').click()
+	>>> 'Send emails' in browser.contents
+	True
+	>>> 'name1@mail.com' in browser.contents
+	True
+
+
+Send mail to organizations
+--------------------------
+
+Send mail to organizations with email
+
+	>>> browser.open(view_org_url)
+	>>> browser.getControl(name='user_selection:list').value = [1]
+	>>> browser.getControl(name='form.button.mailto').click()
+	>>> 'Send emails' in browser.contents
+	True
+	>>> 'Org@mail.com' in browser.contents
+	True
+
+Sending mail with out choosing an organization
+
+	>>> browser.open(view_org_url)
+	>>> browser.getControl(name='form.button.mailto').click()
+	>>> 'You need to select at least one person or organization' in browser.contents
+	True
+
+Sending mail to an organization without an email
+
+	>>> browser.open(view_org_url)
+	>>> browser.getControl(name='no_mail').value = ['organization2 ']
+	>>> browser.getControl(name='form.button.mailto').click()
+	>>> 'You need to select at least one person or organization that has an email' in browser.contents
+	True
+	
+Sending mails to an organization with an email and one without an email
+
+	>>> browser.open(view_org_url)
+	>>> browser.getControl(name='user_selection:list').value = [1]
+	>>> browser.getControl(name='no_mail').value = ['organization2 ']
+	>>> browser.getControl(name='form.button.mailto').click()
+	>>> 'Send emails' in browser.contents
+	True
+	>>> 'Org@mail.com' in browser.contents
+	True
+
+
+Test export file persons
+------------------------
+
+persons with email
+------------------
+
+	>>> browser.open(view_pers_url)
+	>>> browser.getControl(name='user_selection:list').value = [1]
+	>>> browser.getControl(name='form.button.export_persons',index=0).click()
+	
+check the headers
+
+	>>> "id,short_name,first_name,last_name,organization,position" in browser.contents 
+	True
+	>>> "department,work_phone,work_mobile_phone,work_email,work_email2," in browser.contents
+	True
+	>>> "work_email3,address,country,state,city,phone,mobile_phone,email,web,text" in browser.contents
+	True
+	
+check some of the data
+
+	>>> 'last1-name1' in browser.contents
+	True
+	>>> 'name1@mail.com' in browser.contents
+	True
+
+persons without an email
+------------------------
+
+	>>> browser.open(view_pers_url)
+	>>> browser.getControl(name='no_mail').value = ['last2-name2 ']
+	>>> browser.getControl(name='form.button.export_persons',index=0).click()
+
+check the headers
+
+	>>> "id,short_name,first_name,last_name,organization,position" in browser.contents 
+	True
+	>>> "department,work_phone,work_mobile_phone,work_email,work_email2," in browser.contents
+	True
+	>>> "work_email3,address,country,state,city,phone,mobile_phone,email,web,text" in browser.contents
+	True
+
+check some of the data
+
+	>>> 'last2-name2' in browser.contents
+	True
+
+
+persons with and without an email
+---------------------------------
+
+	>>> browser.open(view_pers_url)
+	>>> browser.getControl(name='no_mail').value = ['last2-name2 ']
+	>>> browser.getControl(name='user_selection:list').value = [1]
+	>>> browser.getControl(name='form.button.export_persons',index=0).click()
+
+check the headers
+
+	>>> "id,short_name,first_name,last_name,organization,position" in browser.contents 
+	True
+	>>> "department,work_phone,work_mobile_phone,work_email,work_email2," in browser.contents
+	True
+	>>> "work_email3,address,country,state,city,phone,mobile_phone,email,web,text" in browser.contents
+	True
+
+check some of the data
+
+	>>> 'last1-name1' in browser.contents
+	True
+	>>> 'name1@mail.com' in browser.contents
+	True
+	>>> 'last2-name2' in browser.contents
+	True
+
+without choosing a person
+-------------------------
+
+	>>> browser.open(view_pers_url)
+	>>> browser.getControl(name='form.button.export_persons',index=0).click()
+	>>> 'You need to select at least one person or organization' in browser.contents
+	True
+
+
+export all persons
+------------------
+
+	>>> browser.open(view_pers_url)
+	>>> browser.getControl(name='form.button.export_persons',index=1).click()
+
+check the headers
+
+	>>> "id,short_name,first_name,last_name,organization,position" in browser.contents 
+	True
+	>>> "department,work_phone,work_mobile_phone,work_email,work_email2," in browser.contents
+	True
+	>>> "work_email3,address,country,state,city,phone,mobile_phone,email,web,text" in browser.contents
+	True
+
+check some of the data
+
+	>>> 'perez-juan' in browser.contents
+	True
+	>>> 'last1-name1' in browser.contents
+	True
+	>>> 'name1@mail.com' in browser.contents
+	True
+	>>> 'last2-name2' in browser.contents
+	True
+
+
+Test export file organizations
+------------------------------
+
+organizations with email
+------------------------
+
+	>>> browser.open(view_org_url)
+	>>> browser.getControl(name='user_selection:list').value = [1]
+	>>> browser.getControl(name='form.button.export_org',index=0).click()
+
+check the headers
+
+	>>> "id,title,address,city,zip,country,state,extra_address,phone,fax,email" in browser.contents
+	True
+	>>> "email2,email3,web,sector,sub_sector,text" in browser.contents
+	True
+
+check some of the data
+
+	>>> 'organization1' in browser.contents
+	True
+	>>> 'Org@mail.com' in browser.contents
+	True
+
+organizations without an email
+------------------------
+
+	>>> browser.open(view_org_url)
+	>>> browser.getControl(name='no_mail').value = ['organization2 ']
+	>>> browser.getControl(name='form.button.export_org',index=0).click()
+
+check the headers
+
+	>>> "id,title,address,city,zip,country,state,extra_address,phone,fax,email" in browser.contents
+	True
+	>>> "email2,email3,web,sector,sub_sector,text" in browser.contents
+	True
+
+check some of the data
+
+	>>> 'organization2' in browser.contents
+	True
+
+
+organizations with and without an email
+---------------------------------
+
+	>>> browser.open(view_org_url)
+	>>> browser.getControl(name='no_mail').value = ['organization2 ']
+	>>> browser.getControl(name='user_selection:list').value = [1]
+	>>> browser.getControl(name='form.button.export_org',index=0).click()
+
+check the headers
+
+	>>> "id,title,address,city,zip,country,state,extra_address,phone,fax,email" in browser.contents
+	True
+	>>> "email2,email3,web,sector,sub_sector,text" in browser.contents
+	True
+
+check some of the data
+
+	>>> 'organization1' in browser.contents
+	True
+	>>> 'Org@mail.com' in browser.contents
+	True
+	>>> 'organization2' in browser.contents
+	True
+
+without choosing an organization
+--------------------------------
+
+	>>> browser.open(view_org_url)
+	>>> browser.getControl(name='form.button.export_org',index=0).click()
+	>>> 'You need to select at least one person or organization' in browser.contents
+	True
+
+
+export all organizations
+------------------------
+
+	>>> browser.open(view_org_url)
+	>>> browser.getControl(name='form.button.export_org',index=1).click()
+
+check the headers
+
+
+	>>> "id,title,address,city,zip,country,state,extra_address,phone,fax,email" in browser.contents
+	True
+	>>> "email2,email3,web,sector,sub_sector,text" in browser.contents
+	True
+
+check some of the data
+
+	>>> 'organization1' in browser.contents
+	True
+	>>> 'Org@mail.com' in browser.contents
+	True
+	>>> 'organization2' in browser.contents
+	True
+	
+Import persons
+---------------
+
+    >>> #import_view = portal_url + "/import_view"
+    >>> #browser.open(import_view)
+    >>> #browser.getControl(name='import_selection').value = ['persons']
+    >>> #import os
+    >>> #input = open('user.csv', 'rb')
+    >>> #control = browser.getControl(name='import_file')
+    >>> #file_control = control.mech_control
+    >>> #file_control.add_file(input,'text/plain', 'test.csv')
+    >>> #browser.getControl(name='submit').click()
+    >>> #'1 successfuly imported persons' in browser.contents
+
+for a reason is not reading the file correctly, but if it's done throw the web works

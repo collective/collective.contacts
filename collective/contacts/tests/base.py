@@ -15,6 +15,9 @@ from Testing import ZopeTestCase as ztc
 from Products.PloneTestCase import PloneTestCase as ptc
 from Products.PloneTestCase.layer import onsetup
 
+from utils import MockMailHost
+
+
 # When ZopeTestCase configures Zope, it will *not* auto-load products
 # in Products/. Instead, we have to use a statement such as:
 #   ztc.installProduct('SimpleAttachment')
@@ -75,7 +78,13 @@ class FunctionalTestCase(ptc.FunctionalTestCase):
     """
 
     def afterSetUp(self):
+        # Use the fake mailhost
+        self.portal._original_MailHost = self.portal.MailHost
+        self.portal.MailHost = MockMailHost('MailHost')
         roles = ('Member', 'Contributor')
         self.portal.portal_membership.addMember(
             'contributor', 'secret', roles, []
         )
+        
+    def beforeTearDown(self):
+        self.portal.MailHost = self.portal._original_MailHost

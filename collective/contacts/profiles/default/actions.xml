@@ -2,11 +2,11 @@
 <object name="portal_actions" meta_type="Plone Actions Tool" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <object name="object" meta_type="CMF Action Category">
   <property name="title"/>
-  <object name="addressorganizations_view" meta_type="CMF Action" i18n:domain="collective.contacts"
+  <object name="organizations" meta_type="CMF Action" i18n:domain="collective.contacts"
         insert-before="folderContents">
    <property name="title" i18n:translate="">Organizations</property>
    <property name="description" i18n:translate=""/>
-   <property name="url_expr">string:${folder_url}/addressorganizations_view</property>
+   <property name="url_expr">string:${folder_url}/organizations</property>
    <property name="icon_expr"/>
    <property name="available_expr">python:object.meta_type == 'AddressBook'</property>
    <property name="permissions">
@@ -14,11 +14,11 @@
    </property>
    <property name="visible">True</property>
   </object>
-  <object name="addresspersons_view" meta_type="CMF Action" i18n:domain="collective.contacts"
-        insert-after="addressorganizations_view">
+  <object name="persons" meta_type="CMF Action" i18n:domain="collective.contacts"
+        insert-after="organizations">
    <property name="title" i18n:translate="">Persons</property>
    <property name="description" i18n:translate=""/>
-   <property name="url_expr">string:${folder_url}/addresspersons_view</property>
+   <property name="url_expr">string:${folder_url}/persons</property>
    <property name="icon_expr"/>
    <property name="available_expr">python:object.meta_type == 'AddressBook'</property>
    <property name="permissions">
@@ -26,11 +26,11 @@
    </property>
    <property name="visible">True</property>
   </object>
-  <object name="addressgroups_view" meta_type="CMF Action" i18n:domain="collective.contacts"
-        insert-after="addresspersons_view">
+  <object name="groups" meta_type="CMF Action" i18n:domain="collective.contacts"
+        insert-after="persons">
    <property name="title" i18n:translate="">Groups</property>
    <property name="description" i18n:translate=""/>
-   <property name="url_expr">string:${folder_url}/addressgroups_view</property>
+   <property name="url_expr">string:${folder_url}/groups</property>
    <property name="icon_expr"/>
    <property name="available_expr">python:object.meta_type == 'AddressBook'</property>
    <property name="permissions">

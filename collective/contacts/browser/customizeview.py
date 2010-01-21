@@ -37,10 +37,10 @@ class CustomizeView(BrowserView):
         if cancelled:
             if contenttype == 'Organization':
                 url = self.context.absolute_url() + \
-                    '/addressorganizations_view'
+                    '/organizations'
             elif contenttype == 'Person':
                 url = self.context.absolute_url() + \
-                    '/addresspersons_view'
+                    '/persons'
             return self.request.response.redirect(url)
         
         submitted = self.request.form.get('customize.submitted', False)
@@ -57,11 +57,11 @@ class CustomizeView(BrowserView):
                 if contenttype == 'Organization':
                     self.context.show_on_organizations_view = new_columns
                     url = self.context.absolute_url() + \
-                                '/addressorganizations_view'
+                                '/organizations'
                 elif contenttype == 'Person':
                     self.context.show_on_persons_view = new_columns
                     url = self.context.absolute_url() + \
-                                '/addresspersons_view'
+                                '/persons'
                 #url = self.context.absolute_url() + \
                       #'/customize_view?type=%s' % (contenttype,)
                 return self.request.response.redirect(url)

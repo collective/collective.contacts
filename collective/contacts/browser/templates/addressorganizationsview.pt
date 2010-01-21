@@ -12,7 +12,7 @@
                      organizations_start request/organizations_start | python:0;
                      organizations_size request/organizations_size | python:20;
                      organizations view/get_organizations | python:None;
-                     template_id string:addressorganizations_view;">
+                     template_id string:organizations;">
 
         <tal:main-macro metal:define-macro="main">
 
@@ -71,7 +71,6 @@
                         <input class="noborder" name="user_selection:list" id="#" value="#" type="checkbox"
                                tal:attributes="id organization/id;
                                                value python:'%s %s'%(organization.id, organization.email);
-                                               disabled python:view.test(organization.email, False, True);
                                                name python:view.test(organization.email, 'user_selection:list', 'no_mail');"/>
                     </td>
                     <!-- All content from organizations goes here -->
@@ -91,7 +90,7 @@
             <br/>
 
             <form action="#" method="post"  class="visualNoPrint"
-                    tal:attributes="action string:${context/absolute_url}/addressorganizations_view">
+                    tal:attributes="action string:${context/absolute_url}/organizations">
                 <input name="form.button.export_org" value="Export all organizations" type="submit" i18n:attributes="value label_export_all_organizations"/>
             </form>
         </div>
