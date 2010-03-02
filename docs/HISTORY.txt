@@ -6,6 +6,9 @@ Changelog for collective.contacts
 SVN
 ---
 
+  * [bugfix] Sectors and subsectors gets duplicates removed when
+    adding/editing an Address Book. [frapell]
+
   * Fixed use of deprecated zcml directive "vocabulary". see
     http://wiki.zope.org/zope3/ReducingTheAmountOfZCMLDirectives [thet]
 

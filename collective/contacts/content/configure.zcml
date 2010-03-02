@@ -4,7 +4,7 @@
     i18n_domain="collective.contacts">
 
   <!-- configure your content components here -->
-  
+
   <!-- -*- extra stuff goes here -*- -->
     <class class=".group.Group">
 
@@ -49,5 +49,9 @@
         set_schema="..interfaces.IAddressBook"
         />
   </class>
+
+  <subscriber handler=".addressbook.handle_addressbook_added" />
+  <subscriber handler=".addressbook.handle_addressbook_edited" />
+
 
 </configure>

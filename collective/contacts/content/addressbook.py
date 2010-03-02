@@ -15,6 +15,10 @@ from collective.contacts import contactsMessageFactory as _
 from collective.contacts.interfaces import IAddressBook
 from collective.contacts.config import PROJECTNAME
 
+from Products.Archetypes.interfaces import IObjectInitializedEvent, IObjectEditedEvent
+from zope.component import adapter
+import transaction
+
 AddressBookSchema = folder.ATFolderSchema.copy() + atapi.Schema((
 
     # -*- Your Archetypes field definitions here ... -*-
@@ -153,3 +157,31 @@ class AddressBook(folder.ATFolder):
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
 
 atapi.registerType(AddressBook, PROJECTNAME)
+
+def removeDups(obj):
+    sectors = []
+    result = []
+    for i in obj.getSectors():
+        if i['sector'] not in sectors:
+            sectors.append(i['sector'])
+            result.append({'sector': i['sector'],
+                           'sub_sector': [x for x in set(i['sub_sector'])]})
+
+    return result
+
+@adapter(IAddressBook, IObjectInitializedEvent)
+def handle_addressbook_added(obj, event):
+    """Handle the IObjectInitializedEvent event for an addressbook"""
+    if not obj.REQUEST.get('form.button.more'):
+        result = removeDups(obj)
+        obj.setSectors(result)
+        transaction.commit()
+
+
+@adapter(IAddressBook, IObjectEditedEvent)
+def handle_addressbook_edited(obj, event):
+    """Handle the IObjectEditedEvent event for an addressbook"""
+    if not obj.REQUEST.get('form.button.more'):
+        result = removeDups(obj)
+        obj.setSectors(result)
+        transaction.commit()
