@@ -6,6 +6,9 @@ Changelog for collective.contacts
 SVN
 ---
 
+1.4.2
+-----
+
   * Changed the name of the views [flecox]
 
   * [bugfix] "Export all" was redirecting to a view instead of
