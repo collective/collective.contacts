@@ -6,6 +6,11 @@ Changelog for collective.contacts
 SVN
 ---
 
+  * Changed the name of the views [flecox]
+
+  * [bugfix] "Export all" was redirecting to a view instead of
+    exporting. Now exports ok [flecox]
+
   * [bugfix] Sectors and subsectors gets duplicates removed when
     adding/editing an Address Book. [frapell]
 
