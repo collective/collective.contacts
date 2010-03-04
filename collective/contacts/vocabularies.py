@@ -131,5 +131,6 @@ alsoProvides(Sectors, IVocabularyFactory)
 @implementer(IVocabulary)
 def SubSectors( context ):
     address_book = context.aq_inner.aq_parent
-    return TitledVocabulary.fromTitles(address_book.get_all_sub_sectors())
+    sub_sectors = address_book.get_all_sub_sectors()
+    return TitledVocabulary.fromTitles(zip(sub_sectors,sub_sectors))
 alsoProvides(SubSectors, IVocabularyFactory)
