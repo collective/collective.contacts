@@ -6,7 +6,7 @@ from Products.CMFCore.utils import getToolByName
 
 from collective.contacts import contactsMessageFactory as _
 
-from zope.app import zapi
+from zope.component import _api as zapi
 from collective.contacts.interfaces import ICountriesStates
 from collective.contacts.vocabularies import TitledVocabulary
 

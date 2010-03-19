@@ -6,7 +6,7 @@ vocabularies for getpaid
 
 from zope.interface import implements, implementer, alsoProvides
 from zope.schema.interfaces import IVocabulary, IVocabularyFactory
-from zope.app import zapi
+from zope.component import _api as zapi
 from os import path
 
 from zope.schema import vocabulary

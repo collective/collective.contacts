@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from Acquisition import aq_inner
 
-from zope.app import zapi
+from zope.component import _api as zapi
 from collective.contacts.interfaces import ICountriesStates
 from collective.contacts.vocabularies import TitledVocabulary
 
@@ -16,7 +16,7 @@ import zope.i18n
 
 class KSSModifySelector(PloneKSSView):
 
-    
+
     implements(IPloneKSSView)
     def kssModifyState(self, country=None):
         """
@@ -37,7 +37,7 @@ class KSSModifySelector(PloneKSSView):
         if not country:
             # This is necesary for the inline edition
             country = context.getCountry()
-            
+
         if country != '--':
             # I will be here if the country has -- selected, in which case
             # i should return all states possible
@@ -51,7 +51,7 @@ class KSSModifySelector(PloneKSSView):
             # If we are here, means this is a search template
             result_html = u'<select name="state" id="state">'
             result_html += (u'<option value="--">--</option>')
-            
+
             for i in results._terms:
                 if (i.value == u'(no values)' or i.value == u'??NA'):
                     continue
@@ -111,7 +111,7 @@ class KSSModifySelector(PloneKSSView):
         if not sector:
             # This is necesary for the inline edition
             sector = context.getSector()
-            
+
         if sector == '--':
             # If i'm here, means someone selected the -- sector, in which
             # case, i should return all sub sectors available
@@ -132,7 +132,7 @@ class KSSModifySelector(PloneKSSView):
                 result_html += (u'<option value="%s">%s</option>'
                                                     % (i.value,i.title))
             result_html += u'</select>'
-            
+
         else:
             # If i'm here, means i'm inside some ct, then i create the html
             # for the drop down
