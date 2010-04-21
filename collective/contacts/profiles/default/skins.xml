@@ -5,8 +5,13 @@
     meta_type="Filesystem Directory View"
     directory="collective.contacts:skins/collective_contacts_templates"/>
 
+ <object name="collective_contacts_styles"
+    meta_type="Filesystem Directory View"
+    directory="collective.contacts:skins/collective_contacts_styles"/>
+
  <skin-path name="*">
   <layer name="collective_contacts_templates" insert-after="custom"/>
+  <layer name="collective_contacts_styles" insert-after="custom"/>
  </skin-path>
 
 </object>

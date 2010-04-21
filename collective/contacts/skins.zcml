@@ -7,4 +7,7 @@
    <cmf:registerDirectory
        name="collective_contacts_templates"/>
 
+   <cmf:registerDirectory
+       name="collective_contacts_styles"/>
+
 </configure>
