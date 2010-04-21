@@ -5,6 +5,11 @@ Changelog for collective.contacts
 
 SVN
 ---
+  * Added css rule so subsectors wouldn't get smashed down when
+    editing an address book in a small window [frapell]
+
+  * Fixed crash when no subsector was loaded (Fixes: #5) [frapell]
+
 
 1.4.2
 -----

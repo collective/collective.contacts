@@ -164,8 +164,11 @@ def removeDups(obj):
     for i in obj.getSectors():
         if i['sector'] not in sectors:
             sectors.append(i['sector'])
-            result.append({'sector': i['sector'],
-                           'sub_sector': [x for x in set(i['sub_sector'])]})
+            dic = {'sector': i['sector']}
+            if 'sub_sector' in i:
+                dic['sub_sector'] = [x for x in set(i['sub_sector'])]
+                
+            result.append(dic)
 
     return result
 
