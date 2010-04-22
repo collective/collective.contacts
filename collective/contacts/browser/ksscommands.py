@@ -115,8 +115,9 @@ class KSSModifySelector(PloneKSSView):
         if sector == '--':
             # If i'm here, means someone selected the -- sector, in which
             # case, i should return all sub sectors available
+            sub_sectors = address_book.get_all_sub_sectors()
             results = TitledVocabulary.fromTitles(
-                                            address_book.get_all_sub_sectors())
+                                            zip(sub_sectors, sub_sectors))
         else:
             # If i'm here, means someone selected some sector, in which case,
             # i should return a filtered sub sector list

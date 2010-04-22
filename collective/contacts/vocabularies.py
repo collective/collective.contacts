@@ -29,7 +29,6 @@ class TitledVocabulary(vocabulary.SimpleVocabulary):
         One or more interfaces may also be provided so that alternate
         widgets may be bound without subclassing.
         """
-
         terms = [cls.createTerm(value,value,title) for (value,title) in items]
         return cls(terms, *interfaces)
     fromTitles = classmethod(fromTitles)

@@ -71,7 +71,8 @@ class OrganizationsSearchView(BrowserView):
 
     def allSubSectors(self):
         address_book = self.context.aq_inner
-        return TitledVocabulary.fromTitles(address_book.get_all_sub_sectors())
+        sub_sectors = address_book.get_all_sub_sectors()
+        return TitledVocabulary.fromTitles(zip(sub_sectors, sub_sectors))
 
     def test(self, condition, true_value, false_value):
         """

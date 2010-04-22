@@ -5,10 +5,17 @@ Changelog for collective.contacts
 
 SVN
 ---
+
+  * Removed the "default-skin" from the uninstall profile
+    for skins (Fix: #4) [frapell]
+
+  * Fixed a crash when entering the advanced search 
+    (Fix: #7) [frapell]
+
   * Added css rule so subsectors wouldn't get smashed down when
     editing an address book in a small window [frapell]
 
-  * Fixed crash when no subsector was loaded (Fixes: #5) [frapell]
+  * Fixed crash when no subsector was loaded (Fix: #5) [frapell]
 
 
 1.4.2
