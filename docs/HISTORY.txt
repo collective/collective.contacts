@@ -17,6 +17,8 @@ SVN
 
   * Fixed crash when no subsector was loaded (Fix: #5) [frapell]
 
+  * Added italian translation [fdelia]
+
 
 1.4.2
 -----
