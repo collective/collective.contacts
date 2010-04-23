@@ -6,6 +6,10 @@ Changelog for collective.contacts
 SVN
 ---
 
+
+1.4.4
+-----
+
   * Removed the "default-skin" from the uninstall profile
     for skins (Fix: #4) [frapell]
 
@@ -19,6 +23,11 @@ SVN
 
   * Added italian translation [fdelia]
 
+1.4.3
+-----
+
+  * Fixing an old bug with vocabularies returning ValueError: too many values
+    to unpack [flecox]
 
 1.4.2
 -----
