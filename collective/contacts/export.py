@@ -94,6 +94,7 @@ def exportPersonsToCSV(context, path, filter=None):
                       "country",
                       "state",
                       "city",
+                      "zip",
                       "phone", 
                       "mobile_phone", 
                       "email", 
@@ -143,7 +144,7 @@ def exportPersonsToCSV(context, path, filter=None):
 
 def setCSVHeaders(request, text, export_type):
     """
-    This function will set the request apropiately to return a csv file
+    This function will set the request appropriately to return a csv file
     """
     request.RESPONSE.setHeader('Content-Type','application/csv')
     request.RESPONSE.setHeader('Content-Length',len(text.getvalue()))
@@ -157,10 +158,10 @@ def setCSVHeaders(request, text, export_type):
 
 def exportPersons(context, request, path, filter=None, format='csv'):
     """
-    This function will first get the exported persons, and will load the RESPONSE headers apropiately to return it to the browser and get a nice download dialog.
+    This function will first get the exported persons, and will load the RESPONSE headers appropriately to return it to the browser and get a nice download dialog.
     """
 
-    # Using this dictionary we do a matching with the format chosen by the user with the apropiate function
+    # Using this dictionary we do a matching with the format chosen by the user with the appropriate function
     formats = {'csv':exportPersonsToCSV,}
     # And with this other dictionary we do a matching with the format chosen and how the response header should be set.
     headers = {'csv':setCSVHeaders,}
@@ -175,10 +176,10 @@ def exportPersons(context, request, path, filter=None, format='csv'):
 
 def exportOrganizations(context, request, path, filter=None, format='csv'):
     """
-    This function will first get the exported organizations, and will load the RESPONSE headers apropiately to return it to the browser and get a nice download dialog.
+    This function will first get the exported organizations, and will load the RESPONSE headers appropriately to return it to the browser and get a nice download dialog.
     """
 
-    # Using this dictionary we do a matching with the format chosen by the user with the apropiate function
+    # Using this dictionary we do a matching with the format chosen by the user with the appropriate function
     formats = {'csv':exportOrganizationsToCSV,}
     # And with this other dictionary we do a matching with the format chosen and how the response header should be set.
     headers = {'csv':setCSVHeaders,}

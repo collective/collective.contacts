@@ -352,6 +352,7 @@ class SearchAddressBookView(BrowserView):
                  'work_email' : request.get('work_email', None),
                  'address' : request.get('address', None),
                  'city' : request.get('city', None),
+                 'zip' : request.get('zip', None),
                  'phone' : request.get('phone', None),
                  'mobile_phone' : request.get('mobile_phone', None),
                  'email' : request.get('email', None),
@@ -387,8 +388,8 @@ class SearchAddressBookView(BrowserView):
             # if i should add this person to the results or not.
             for attr in attrs.keys():
                 if attrs[attr] and attrs[attr] != '':
-                    # If i'm here means the user entered something to search
-                    # for first i need to get the person's attribute,
+                    # If i'm here it means the user entered something to search
+                    # for. First i need to get the person's attribute,
                     # and if the attribute was organization, i need to convert
                     # it to string.
                     if attr == 'organization':

@@ -38,7 +38,7 @@ Import:
 
 You can import Persons or organizations, but csv has to have very precise
 format, so importing a csv that was exported using this exporter is
-reccomended.
+recommended.
 
 Sending mail:
 -------------

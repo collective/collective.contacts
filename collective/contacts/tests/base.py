@@ -15,7 +15,7 @@ from Testing import ZopeTestCase as ztc
 from Products.PloneTestCase import PloneTestCase as ptc
 from Products.PloneTestCase.layer import onsetup
 
-from utils import MockMailHost
+from Products.CMFPlone.tests.utils import MockMailHost
 
 
 # When ZopeTestCase configures Zope, it will *not* auto-load products

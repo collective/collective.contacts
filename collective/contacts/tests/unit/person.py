@@ -36,6 +36,7 @@ class TestPerson(MockTestCase):
                        'country',
                        'state',
                        'city',
+                       'zip',
                        'phone',
                        'mobilePhone',
                        'email',
@@ -55,7 +56,7 @@ class TestPerson(MockTestCase):
 
     def test_schema_fields_cardinal(self):
         # If you add a new field and don't update tests, this is the
-        # test you will brake. :-)
+        # test you will break. :-)
         atct = ATCTContent('foo')
         person = Person('bar')
         self.assertEquals(len(atct.schema.fields()) + len(self.fields),

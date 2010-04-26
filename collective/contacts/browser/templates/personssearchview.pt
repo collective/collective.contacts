@@ -122,6 +122,13 @@
                             <br/>
                             <input id="city" name="city"/>
                         </div>
+                        
+                        <div class="field zip">
+                            <label for="zip"
+                                i18n:translate="label_search_persons_zip">ZIP</label>
+                            <br/>
+                            <input id="zip" name="zip"/>
+                        </div>
 
                         <div class="field phone">
                             <label for="phone"

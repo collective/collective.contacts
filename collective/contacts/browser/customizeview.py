@@ -81,7 +81,7 @@ class CustomizeView(BrowserView):
         This method is used to get all fields from the CT, being persons
         or organizations. This will return a list of tuples in the form
         (id, name, bool) where id is the field id, name is the field name,
-        and bool is wether this field is selected to be shown in the table
+        and bool is whether this field is selected to be shown in the table
         view or not.
         """
         get_schema = {'Organization':Organization.schema,

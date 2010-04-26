@@ -111,6 +111,7 @@ class AddressBook(folder.ATFolder):
                             ('web', True),
                             ('address', True),
                             ('city', True),
+                            ('zip', True),
                             ('country', True),
                             ('state', False),
                             ('workEmail2', False),

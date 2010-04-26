@@ -65,7 +65,7 @@ class AddressPersonsView(BrowserView):
         
     def __call__(self):
         """
-        This method gets called everytime the template needs to be rendered
+        This method gets called every time the template needs to be rendered
         """
         # This is needed so the actions bar will be shown.
         # the one with the actions, display, add item and workflow drop downs.
@@ -159,6 +159,7 @@ class AddressPersonsView(BrowserView):
                       'web':'web',
                       'address':'address',
                       'city':'city',
+                      'zip':'zip',
                       'country':'country',
                       'state':'state',
                       'workEmail2':'work_email2',

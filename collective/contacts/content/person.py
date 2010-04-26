@@ -221,6 +221,17 @@ PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         required=False,
         searchable=1,
     ),
+    
+    atapi.StringField(
+        'zip',
+        storage=atapi.AnnotationStorage(),
+        widget=atapi.StringWidget(
+            label=_(u"ZIP"),
+            description=_(u"Person's ZIP"),
+        ),
+        required=False,
+        searchable=1,
+    ),
 
     atapi.StringField(
         'phone',
@@ -326,6 +337,7 @@ class Person(base.ATCTContent):
     country = atapi.ATFieldProperty('country')
     state = atapi.ATFieldProperty('state')
     city = atapi.ATFieldProperty('city')
+    zip = atapi.ATFieldProperty('zip')
     phone = atapi.ATFieldProperty('phone')
     mobile_phone = atapi.ATFieldProperty('mobilePhone')
     email = atapi.ATFieldProperty('email')

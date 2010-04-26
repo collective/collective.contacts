@@ -93,6 +93,11 @@ class IPerson(Interface):
         required=False,
         description=_(u"Person's city"),
     )
+    zip = schema.TextLine(
+        title=_(u"ZIP"),
+        required=False,
+        description=_(u"Person's ZIP"),
+    )
     phone = schema.TextLine(
         title=_(u"Phone Number"),
         required=False,

@@ -767,7 +767,7 @@ check the headers
 	True
 	>>> "department,work_phone,work_mobile_phone,work_email,work_email2," in browser.contents
 	True
-	>>> "work_email3,address,country,state,city,phone,mobile_phone,email,web,text" in browser.contents
+	>>> "work_email3,address,country,state,city,zip,phone,mobile_phone,email,web,text" in browser.contents
 	True
 	
 check some of the data
@@ -790,7 +790,7 @@ check the headers
 	True
 	>>> "department,work_phone,work_mobile_phone,work_email,work_email2," in browser.contents
 	True
-	>>> "work_email3,address,country,state,city,phone,mobile_phone,email,web,text" in browser.contents
+	>>> "work_email3,address,country,state,city,zip,phone,mobile_phone,email,web,text" in browser.contents
 	True
 
 check some of the data
@@ -813,7 +813,7 @@ check the headers
 	True
 	>>> "department,work_phone,work_mobile_phone,work_email,work_email2," in browser.contents
 	True
-	>>> "work_email3,address,country,state,city,phone,mobile_phone,email,web,text" in browser.contents
+	>>> "work_email3,address,country,state,city,zip,phone,mobile_phone,email,web,text" in browser.contents
 	True
 
 check some of the data
@@ -846,7 +846,7 @@ check the headers
 	True
 	>>> "department,work_phone,work_mobile_phone,work_email,work_email2," in browser.contents
 	True
-	>>> "work_email3,address,country,state,city,phone,mobile_phone,email,web,text" in browser.contents
+	>>> "work_email3,address,country,state,city,zip,phone,mobile_phone,email,web,text" in browser.contents
 	True
 
 check some of the data
