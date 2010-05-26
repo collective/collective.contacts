@@ -190,7 +190,7 @@ msgstr "Nicht anwendbar"
 #. Default: "Or ${label_go_back} to correct."
 #: ./browser/templates/searchaddressbookview.pt:435
 msgid "Or ${label_go_back} to correct."
-msgstr "Oder gehen Sie zu Korrektur ${label_go_back}."
+msgstr "Oder gehen Sie zur Korrektur ${label_go_back}."
 
 #: ./content/person.py:67
 msgid "Organization"
