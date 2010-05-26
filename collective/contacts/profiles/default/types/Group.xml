@@ -6,7 +6,7 @@
   <property name="description"
     i18n:translate="">Let you have several persons together</property>
   <property name="content_meta_type">Group</property>
-  <property name="content_icon">document_icon.gif</property>
+  <property name="content_icon">++resource++resources/group.gif</property>
   <property name="product">collective.contacts</property>
   <property name="factory">addGroup</property>
   <property name="immediate_view">atct_edit</property>
