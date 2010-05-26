@@ -54,3 +54,19 @@ msgstr "Person"
 #: ./profiles/default/types/Group.xml
 msgid "Group"
 msgstr "Gruppe"
+
+#: ./profiles/default/types/Address_Book.xml
+msgid "organizations"
+msgstr "Organisationen"
+
+#: ./profiles/default/types/Address_Book.xml
+msgid "persons"
+msgstr "Personen"
+
+#: ./profiles/default/types/Address_Book.xml
+msgid "groups"
+msgstr "Gruppen"
+
+#: ./profiles/default/types/Address_Book.xml
+msgid "Base View"
+msgstr "Standardansicht"
