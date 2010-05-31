@@ -38,7 +38,7 @@ class CountriesStatesFromFile(object):
     """
     implements(ICountriesStates)
 
-    _no_values = [(u'(no values)',_(u'(no values)'))]
+    _no_values = [('',_(u'(no values)'))]
     # Be careful, somewhere else, there is code that asumes that state values
     # length is <= 6. Don't modify this ones that are part of the vocabulary
     _not_aplicable = [(u'??NA',_(u'Not Applicable'))]

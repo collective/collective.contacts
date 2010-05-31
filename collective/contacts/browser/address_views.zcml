@@ -6,29 +6,21 @@
   <browser:page
       for="*"
       name="groups"
-      class=".addressgroupsview.AddressGroupsView"
-      template="templates/addressgroupsview.pt"
-      allowed_interface=".addressgroupsview.IAddressGroupsView"
-      permission="zope2.Public"
+      class=".list.GroupListView"
+      permission="zope.Public"
       />
-
 
   <browser:page
       for="*"
       name="organizations"
-      class=".addressorganizationsview.AddressOrganizationsView"
-      template="templates/addressorganizationsview.pt"
-      allowed_interface=".addressorganizationsview.IAddressOrganizationsView"
+      class=".list.OrganizationListView"
       permission="zope.Public"
       />
 
-
   <browser:page
       for="*"
-	  name="persons"
-      class=".addresspersonsview.AddressPersonsView"
-      template="templates/addresspersonsview.pt"
-      allowed_interface=".addresspersonsview.IAddressPersonsView"
+	    name="persons"
+      class=".list.PersonListView"
       permission="zope.Public"
       />
 

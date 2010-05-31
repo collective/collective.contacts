@@ -16,10 +16,9 @@
 
             <div id="advanced_persons_search">
                 <form action="#" method="post"
-                      tal:attributes="action string:${context/absolute_url}/search_addressbook"
-                      tal:define="person python:context.objectValues(spec='Person')[0];
-                                  errors python:{}">
-                    <h2 i18n:translate="advanced_person_search">Advanced person search:</h2>
+                      tal:attributes="action string:${context/absolute_url}/search_person"
+                      tal:define="errors python:{}">
+                    <h1 class="documentFirstHeading" i18n:translate="advanced_person_search">Advanced person search:</h1>
                     <fieldset>
                         <legend i18n:translate="search_terms">Search Terms </legend>
                         <div class="field short_name">
@@ -97,7 +96,7 @@
                                 i18n:translate="label_search_persons_country">Country</label>
                             <br/>
                             <select id="country" name="country">
-                                <option value="--">--</option>
+                                <option value="">--</option>
                                 <option tal:repeat="option view/allCountries"
                                         tal:content="option/title"
                                         tal:attributes="value option/value"/>
@@ -109,7 +108,7 @@
                                 i18n:translate="label_search_persons_state">State</label>
                             <br/>
                             <select id="state" name="state">
-                                <option value="--">--</option>
+                                <option value="">--</option>
                                 <option tal:repeat="option view/allStates"
                                         tal:attributes="value python:option[0]"
                                         tal:content="python:option[1]"/>
@@ -165,12 +164,15 @@
                             <input id="text" name="text"/>
                         </div>
 
-                        <input type="hidden" name="persons_submitted" value="1" />
-                        <br/>
-                        <input type="submit" name="search_persons"
-                        value="Search Persons"
-                        i18n:attributes="value label_search_persons"
-                        />
+                        <input type="hidden" name="search" value="1" />
+                        
+                        <div class="formControls">
+                          <input type="submit" name="search_persons"
+                                 class="context"
+                                 value="Search Persons"
+                                 i18n:attributes="value label_search_persons"
+                                  />
+                        </div>
                     </fieldset>
                 </form>
             </div>

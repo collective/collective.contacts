@@ -44,7 +44,6 @@ class IPerson(Interface):
         title=_(u"Work Phone Number"),
         required=False,
         description=_(u"Person's work phone number"),
-
     )
     work_mobile_phone = schema.TextLine(
         title=_(u"Work Mobile Phone Number"),

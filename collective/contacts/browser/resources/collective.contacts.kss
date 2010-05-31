@@ -4,6 +4,7 @@
 select#country:load {
     action-server:            kssModifyState;
     kssModifyState-country:   currentFormVar('country');
+    kssModifyState-search:    currentFormVar('search');
 }
 
 /* This is used when changing the country from the drop-down */
@@ -11,6 +12,7 @@ select#country:load {
 select#country:change {
     action-server:            kssModifyState;
     kssModifyState-country:   currentFormVar('country');
+    kssModifyState-search:    currentFormVar('search');
 }
 
 /* This is used when loading the edit template, we cannot use the sub-sector

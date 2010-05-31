@@ -18,7 +18,7 @@ class KSSModifySelector(PloneKSSView):
 
 
     implements(IPloneKSSView)
-    def kssModifyState(self, country=None):
+    def kssModifyState(self, country=None, search=0):
         """
         This method is used to update the province drop down when adding
         a person or organization and also from the advanced search template
@@ -26,7 +26,6 @@ class KSSModifySelector(PloneKSSView):
         in two methods, one that gets called from the ct, and another one
         that gets called from the search template
         """
-
         context = aq_inner(self.context)
         ksscore = self.getCommandSet('core')
 
@@ -38,7 +37,7 @@ class KSSModifySelector(PloneKSSView):
             # This is necesary for the inline edition
             country = context.getCountry()
 
-        if country != '--':
+        if country != '':
             # I will be here if the country has -- selected, in which case
             # i should return all states possible
             results = TitledVocabulary.fromTitles(utility.states(country=country))
@@ -47,10 +46,10 @@ class KSSModifySelector(PloneKSSView):
             # case i should return a filtered state list
             results = TitledVocabulary.fromTitles(utility.states())
 
-        if context.meta_type == 'AddressBook':
+        if search:
             # If we are here, means this is a search template
             result_html = u'<select name="state" id="state">'
-            result_html += (u'<option value="--">--</option>')
+            result_html += (u'<option value="">--</option>')
 
             for i in results._terms:
                 if (i.value == u'(no values)' or i.value == u'??NA'):
@@ -63,8 +62,8 @@ class KSSModifySelector(PloneKSSView):
                                                     % (value,title))
             result_html += u'</select>'
 
-        if (context.meta_type == 'Person' or
-            context.meta_type == 'Organization'):
+        elif (context.meta_type == 'Person' or
+              context.meta_type == 'Organization'):
             # If i'm here, means this is some content type
             result_html = u'<select name="state" id="state">'
             for i in results._terms:
@@ -112,7 +111,7 @@ class KSSModifySelector(PloneKSSView):
             # This is necesary for the inline edition
             sector = context.getSector()
 
-        if sector == '--':
+        if sector == '':
             # If i'm here, means someone selected the -- sector, in which
             # case, i should return all sub sectors available
             sub_sectors = address_book.get_all_sub_sectors()
@@ -128,7 +127,7 @@ class KSSModifySelector(PloneKSSView):
             # If i'm here means i'm inside the advanced search template
             # so i create the html needed for the sub sector drop down
             result_html = u'<select name="sub_sector" id="sub_sector">'
-            result_html += (u'<option value="--">--</option>')
+            result_html += (u'<option value="">--</option>')
             for i in results._terms:
                 result_html += (u'<option value="%s">%s</option>'
                                                     % (i.value,i.title))

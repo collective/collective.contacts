@@ -1,0 +1,69 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="collective.contacts">
+<head>
+    <metal:block fill-slot="top_slot"
+                 tal:define="dummy python:request.set('enable_border',1)" />
+</head>
+<body>
+    <div metal:fill-slot="main">
+
+        <tal:main-macro metal:define-macro="main">
+            
+        <h1 class="documentFirstHeading" tal:content="view/title">Persons</h1>
+
+        <a href="#" class="customize-view"
+           tal:attributes="href view/customize_url"
+           tal:condition="view/customize_url">
+            <span i18n:translate="customize_view">Customize view</span>
+        </a>
+
+        <div tal:condition="view/error">
+            <h3 tal:content="view/error">There are no persons available.</h3>
+        </div>
+        
+        <div class="contacts-list"
+             tal:condition="not:view/error"
+             tal:define="batch view/batch;
+                         template_id view/template_id">
+
+            <form action="#" method="post" class="visualNoPrint"
+                  tal:condition="view/search_url"
+                  tal:attributes="action view/search_url">
+                    <input name="SearchableText"/>
+                    <input type="submit" name="quicksearch"
+                           class="context"
+                           value="Quick Search"
+                           i18n:attributes="value label_quick_search"
+                           />
+                    <input type="submit" name="form.button.advanced"
+                           class="context"
+                           value="Advanced Search"
+                           i18n:attributes="value label_advanced_search"
+                           />
+            </form>
+            
+            <form action="#" method="post"
+                tal:attributes="action view/search_url">
+
+              <div metal:use-macro="here/batch_macros/macros/navigation" />
+            
+              <table tal:replace="structure view/results" />
+
+              <div metal:use-macro="here/batch_macros/macros/navigation" />
+
+              <div class="formControls">
+                <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to" class="context visualNoPrint"/>
+                <input name="form.button.export" value="Export selected" type="submit" i18n:attributes="value label_export_selected" class="context visualNoPrint"/>
+                <input name="form.button.exportall" value="Export all" type="submit" i18n:attributes="value label_export_all" class="context visualNoPrint"/>
+                <input name="form.button.import" value="Import organizations or persons" type="submit" tal:condition="view/canImport" i18n:attributes="value label_import_organizations_persons" class="context visualNoPrint"/>
+              </div>
+
+            </form>
+        </div>
+
+        </tal:main-macro>
+    </div>
+</body>
+</html>

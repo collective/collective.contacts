@@ -6,17 +6,30 @@
 
   <browser:page
       for="*"
-      name="personssearch_view"
+      name="search_person"
+      class=".search.PersonSearchView"
+      permission="zope.Public"
+      />
+      
+  <browser:page
+      for="*"
+      name="find_person"
       class=".personssearchview.PersonsSearchView"
       template="templates/personssearchview.pt"
       allowed_interface=".personssearchview.IPersonsSearchView"
       permission="zope.Public"
       />
 
+  <browser:page
+      for="*"
+      name="search_organization"
+      class=".search.OrganizationSearchView"
+      permission="zope.Public"
+      />
 
   <browser:page
       for="*"
-      name="organizationssearch_view"
+      name="find_organization"
       class=".organizationssearchview.OrganizationsSearchView"
       template="templates/organizationssearchview.pt"
       allowed_interface=".organizationssearchview.IOrganizationsSearchView"
@@ -25,11 +38,9 @@
 
   <browser:page
       for="*"
-      name="search_addressbook"
-      class=".searchaddressbookview.SearchAddressBookView"
-      template="templates/searchaddressbookview.pt"
-      allowed_interface=".searchaddressbookview.ISearchAddressBookView"
+      name="search_group"
+      class=".search.GroupSearchView"
       permission="zope.Public"
-    />
+      />
 
 </configure>

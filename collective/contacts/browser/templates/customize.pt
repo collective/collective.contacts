@@ -23,24 +23,23 @@
             </tal:block>
 
             <h1 i18n:translate="title_customize_columns">Customize columns</h1>
-            <form action="#" method="post"                  
-                  tal:define="contenttype here/REQUEST/type|nothing"
-                  tal:attributes="action string:${context/absolute_url}/customize_view?type=${contenttype}">
-                  <div tal:repeat="field python:view.get_columns(contenttype)">
+            <form action="#" method="post"
+                  tal:attributes="action string:${context/absolute_url}/customize_view?type=${view/contenttype}">
+                  <div tal:repeat="field view/get_columns">
                    <input type="checkbox"
                           name="selected:list"
-                          tal:attributes="id python:field[0];
-                                          value python:field[0];
-                                          checked python:field[2]"/>
+                          tal:attributes="id field/id;
+                                          value field/id;
+                                          checked field/checked"/>
                     <label
-                          tal:content="python:field[1]"
-                          tal:attributes="for python:field[0]">Field Name</label>
+                          tal:content="field/title"
+                          tal:attributes="for field/id">Field Name</label>
                     <input type="hidden" name="columns:list"
-                            tal:attributes="value python:field[0]"/>
+                            tal:attributes="value field/id"/>
                   </div>
                    <input type="hidden" name="customize.submitted" value="True"/>
                    <input type="hidden" name="customize.type"
-                          tal:attributes="value contenttype"/>
+                          tal:attributes="value contenttype/contenttype"/>
                    <br/>
                 <input class="context"
                        type="submit"

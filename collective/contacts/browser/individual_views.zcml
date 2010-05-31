@@ -1,0 +1,34 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.contacts">
+
+  <browser:page
+      for="..interfaces.IOrganization"
+      name="persons"
+      class=".organization.OrganizationView"
+      permission="zope.Public"
+      />
+
+  <browser:page
+      for="..interfaces.IGroup"
+      name="persons"
+      class=".group.GroupView"
+      permission="zope.Public"
+      />
+
+  <browser:page
+      for="*"
+      name="import"
+      class=".import.ImportView"
+      permission="cmf.ModifyPortalContent"
+      />
+
+  <browser:page
+      for="*"
+      name="customize"
+      class=".customize.CustomizeView"
+      permission="cmf.ModifyPortalContent"
+      />
+    
+</configure>

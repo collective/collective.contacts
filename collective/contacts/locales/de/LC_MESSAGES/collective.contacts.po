@@ -35,7 +35,7 @@ msgstr "%s Personen wurden erfolgreich importiert"
 
 #: ./vocabularies.py:40
 msgid "(no values)"
-msgstr "(keine Werte)"
+msgstr "(keine Angabe)"
 
 #: ./content/organization.py:123
 msgid "2nd E-mail address"

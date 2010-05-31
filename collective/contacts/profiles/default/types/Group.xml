@@ -13,9 +13,9 @@
   <property name="global_allow">False</property>
   <property name="filter_content_types">False</property>
   <property name="allow_discussion">False</property>
-  <property name="default_view">group_view</property>
+  <property name="default_view">@@persons</property>
   <property name="view_methods">
-    <element value="base_view" />
+    <element value="@@persons" />
   </property>
   <alias from="(Default)" to="(dynamic view)" />
   <alias from="edit" to="atct_edit" />

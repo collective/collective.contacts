@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
-from Products.CMFCore.utils import getToolByName
 from StringIO import StringIO
 import csv
 import time
 
-def exportOrganizationsToCSV(context, path, filter=None):
+from collective.contacts.interfaces import ISearch, IPerson, IOrganization
+
+def exportOrganizationsToCSV(context, organizations):
     """
     get a csv with organizations from context.
     """
-
-    portal_catalog = getToolByName(context, 'portal_catalog')
 
     text = StringIO()
     writer = csv.writer(text)
@@ -37,25 +36,14 @@ def exportOrganizationsToCSV(context, path, filter=None):
     # I add them to the first row in the CSV
 
     writer.writerow(organizations_fields)
-
-    # I now get all organizations from the given path using the filter
-    if filter:
-        all_organizations =[i.getObject() for i in portal_catalog(
-                                    portal_type = 'Organization',
-                                    path = path,
-                                    id = {'query':filter,
-                                              'operator':'or'}
-                                    )]
-                                    
-    # If no filter is given, i intend to export all persons.
-    else:
-        all_organizations =[i.getObject() for i in portal_catalog(
-                                    portal_type = 'Organization',
-                                    path = path
-                                    )]
+    
+    # if no organizations are given fetch all organizations using the search adapter
+    if organizations is None:
+        search = ISearch(context)
+        organizations = search.search({'object_provides': IOrganization.__identifier__})
 
     # And now, for each organization, i load his data on each column
-    for organization in all_organizations:
+    for organization in organizations:
         row = []
         for field in organizations_fields:
             row.append(getattr(organization,field))
@@ -64,12 +52,10 @@ def exportOrganizationsToCSV(context, path, filter=None):
 
     return text
 
-def exportPersonsToCSV(context, path, filter=None):
+def exportPersonsToCSV(context, persons):
     """
     get a csv with persons from context.
     """
-
-    portal_catalog = getToolByName(context, 'portal_catalog')
 
     text = StringIO()
     writer = csv.writer(text)
@@ -104,27 +90,15 @@ def exportPersonsToCSV(context, path, filter=None):
     # I add them to the first row in the CSV
 
     writer.writerow(persons_fields)
-
-    # I now get all persons from the given path using the filter
-    if filter:
-        all_persons =[i.getObject() for i in portal_catalog(
-                                    portal_type = 'Person',
-                                    path = path,
-                                    id = {'query':filter,
-                                          'operator':'or'}
-                                    )]
-                                    
-    # If no filter is given, i intend to export all persons.
-    else:
-        all_persons =[i.getObject() for i in portal_catalog(
-                                    portal_type = 'Person',
-                                    path = path
-                                    )]
     
+    # if no persons are given fetch all persons using the search adapter
+    if persons is None:
+        search = ISearch(context)
+        persons = search.search({'object_provides': IPerson.__identifier__})
     
     # And now, for each person, i load his data on each column
 
-    for person in all_persons:
+    for person in persons:
         row = []
         for field in persons_fields:
             # there's only one exception, if the field is organizations,
@@ -156,7 +130,7 @@ def setCSVHeaders(request, text, export_type):
     return request
 
 
-def exportPersons(context, request, path, filter=None, format='csv'):
+def exportPersons(context, request, persons=None, format='csv'):
     """
     This function will first get the exported persons, and will load the RESPONSE headers appropriately to return it to the browser and get a nice download dialog.
     """
@@ -167,14 +141,14 @@ def exportPersons(context, request, path, filter=None, format='csv'):
     headers = {'csv':setCSVHeaders,}
 
     # We call the importer according to the format chosen by the user. If the format is not available, then a CSV export is done
-    text = formats.get(format.lower(), 'csv')(context, path, filter)
+    text = formats.get(format.lower(), 'csv')(context, persons)
 
     # Finally we set the response headers so it will open a download dialog
     request = headers.get(format.lower(), 'csv')(request, text, 'persons')
 
     return text.getvalue()
 
-def exportOrganizations(context, request, path, filter=None, format='csv'):
+def exportOrganizations(context, request, organizations=None, format='csv'):
     """
     This function will first get the exported organizations, and will load the RESPONSE headers appropriately to return it to the browser and get a nice download dialog.
     """
@@ -185,10 +159,9 @@ def exportOrganizations(context, request, path, filter=None, format='csv'):
     headers = {'csv':setCSVHeaders,}
 
     # We call the importer according to the format chosen by the user. If the format is not available, then a CSV export is done
-    text = formats.get(format.lower(), 'csv')(context, path, filter)
+    text = formats.get(format.lower(), 'csv')(context, organizations)
 
     # Finally we set the response headers so it will open a download dialog
     request = headers.get(format.lower(), 'csv')(request, text, 'organizations')
 
     return text.getvalue()
-

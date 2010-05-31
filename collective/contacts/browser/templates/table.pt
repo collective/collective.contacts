@@ -1,0 +1,28 @@
+<tal:def define="table options/table">
+<table class="listing"
+       tal:condition="table/rows">
+  <tr>
+    <th  class="visualNoPrint">
+      <input type="checkbox"
+             onclick="javascript:toggleSelect(this, 'selection:list', false);"
+             name="pt_toggle"
+             value="#"
+             id="pt_toggle"
+             class="noborder"/>
+    </th>
+    <th tal:repeat="header table/columns">
+      <span tal:content="header" i18n:translate="" />
+    </th>
+  </tr>
+  <tal:block repeat="row table/rows">
+  <tr tal:define="oddrow repeat/row/odd"
+      tal:attributes="class python:oddrow and 'odd' or 'even'">
+    <td  class="visualNoPrint">
+        <input class="noborder" name="selection:list" id="" value="" type="checkbox"
+               tal:attributes="value row/object/UID;" />
+    </td>
+    <td tal:repeat="cell row/cells" tal:content="structure cell"/>
+  </tr>
+  </tal:block>
+</table>
+</tal:def>

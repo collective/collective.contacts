@@ -31,16 +31,6 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
-   <browser:menuItems
-        for="*"
-        menu="plone_displayviews">
-        <browser:menuItem
-            title="Address View"
-            action="address_view"
-            description="Display Address book in a tabular format"
-            />
-    </browser:menuItems>
-
     <i18n:registerTranslations directory="locales" />
 
     <include file="skins.zcml" />
@@ -65,6 +55,79 @@
     <utility
         component=".vocabularies.SubSectors"
         name="contacts.sub_sectors"
+        />
+    
+
+    <!-- columns -->
+    <adapter
+        factory=".columns.PersonColumns"
+        for="*"
+        provides="collective.contacts.interfaces.ICustomizableColumns"
+        name="person"
+        />
+        
+    <adapter
+        factory=".columns.OrganizationColumns"
+        for="*"
+        provides="collective.contacts.interfaces.ICustomizableColumns"
+        name="organization"
+        />
+        
+    <adapter
+        factory=".columns.GroupColumns"
+        for="*"
+        provides="collective.contacts.interfaces.ICustomizableColumns"
+        name="group"
+        />
+        
+    <!-- search -->
+    <adapter
+        factory=".search.Search"
+        for="*"
+        provides="collective.contacts.interfaces.ISearch"
+        />
+        
+    <adapter
+        factory=".search.AddressBookSearch"
+        for="collective.contacts.interfaces.IAddressBook"
+        provides="collective.contacts.interfaces.ISearch"
+        />
+        
+    <adapter
+        factory=".search.OrganizationSearch"
+        for="collective.contacts.interfaces.IOrganization"
+        provides="collective.contacts.interfaces.ISearch"
+        />
+        
+    <adapter
+        factory=".search.GroupSearch"
+        for="collective.contacts.interfaces.IGroup"
+        provides="collective.contacts.interfaces.ISearch"
+        />
+    
+    <!-- table -->
+    <adapter
+        factory=".table.PersonTable"
+        for="*
+             zope.publisher.interfaces.browser.IBrowserRequest"
+        provides="collective.contacts.interfaces.ITable"
+        name="person"
+        />
+    
+    <adapter
+        factory=".table.OrganizationTable"
+        for="*
+             zope.publisher.interfaces.browser.IBrowserRequest"
+        provides="collective.contacts.interfaces.ITable"
+        name="organization"
+        />
+    
+    <adapter
+        factory=".table.GroupTable"
+        for="*
+             zope.publisher.interfaces.browser.IBrowserRequest"
+        provides="collective.contacts.interfaces.ITable"
+        name="group"
         />
 
   <!-- -*- extra stuff goes here -*- -->

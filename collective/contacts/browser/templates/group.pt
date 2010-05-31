@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="collective.contacts">
+<body>
+    <div metal:fill-slot="main">
+
+        <tal:main-macro metal:define-macro="main">
+          
+        <h1 class="documentFirstHeading" tal:content="context/Title">
+          Group
+        </h1>
+        
+        <tal:list replace="structure view/list/main" />
+        
+        </tal:main-macro>
+    </div>
+</body>
+</html>

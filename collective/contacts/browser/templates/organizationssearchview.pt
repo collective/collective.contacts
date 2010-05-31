@@ -16,8 +16,8 @@
 
             <div id="advanced_organizations_search">
                 <form action="#" method="post"
-                      tal:attributes="action string:${context/absolute_url}/search_addressbook">
-                    <h2 i18n:translate="advanced_organizations_search">Advanced organizations search:</h2>
+                      tal:attributes="action string:${context/absolute_url}/search_organization">
+                    <h1 class="documentFirstHeading" i18n:translate="advanced_organizations_search">Advanced organizations search:</h1>
                     <fieldset>
                         <legend i18n:translate="search_terms">Search Terms </legend>
                         <div class="field name">
@@ -39,7 +39,7 @@
                                 i18n:translate="label_search_organizations_country">Country</label>
                             <br/>
                             <select id="country" name="country">
-                                <option value="--">--</option>
+                                <option value="">--</option>
                                 <option tal:repeat="option view/allCountries"
                                         tal:content="option/title"
                                         tal:attributes="value option/value"/>
@@ -51,7 +51,7 @@
                                 i18n:translate="label_search_organizations_state">State</label>
                             <br/>
                             <select id="state" name="state">
-                                <option value="--">--</option>
+                                <option value="">--</option>
                                 <option tal:repeat="option view/allStates"
                                         tal:attributes="value python:option[0]"
                                         tal:content="python:option[1]"/>
@@ -126,7 +126,7 @@
                                 i18n:translate="label_search_organizations_sector">Sector</label>
                             <br/>
                             <select id="sector" name="sector">
-                                <option value="--">--</option>
+                                <option value="">--</option>
                                 <option tal:repeat="option view/allSectors"
                                         tal:content="option/title"
                                         tal:attributes="value option/value"/>
@@ -138,7 +138,7 @@
                                 i18n:translate="label_search_organizations_sub_sector">Sub Sector</label>
                             <br/>
                             <select id="sub_sector" name="sub_sector">
-                                <option value="--">--</option>
+                                <option value="">--</option>
                                 <option tal:repeat="option view/allSubSectors"
                                         tal:content="option/title"
                                         tal:attributes="value option/value"/>
@@ -152,7 +152,7 @@
                             <input id="text" name="text"/>
                         </div>
 
-                        <input type="hidden" name="organizations_submitted" value="1" />
+                        <input type="hidden" name="search" value="1" />
                         <br/>
                         <input type="submit" name="search_organizations"
                         value="Search Organizations"
