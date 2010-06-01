@@ -10,15 +10,6 @@
       class=".search.PersonSearchView"
       permission="zope.Public"
       />
-      
-  <browser:page
-      for="*"
-      name="find_person"
-      class=".personssearchview.PersonsSearchView"
-      template="templates/personssearchview.pt"
-      allowed_interface=".personssearchview.IPersonsSearchView"
-      permission="zope.Public"
-      />
 
   <browser:page
       for="*"
@@ -29,17 +20,24 @@
 
   <browser:page
       for="*"
-      name="find_organization"
-      class=".organizationssearchview.OrganizationsSearchView"
-      template="templates/organizationssearchview.pt"
-      allowed_interface=".organizationssearchview.IOrganizationsSearchView"
+      name="search_group"
+      class=".search.GroupSearchView"
+      permission="zope.Public"
+      />
+  
+  <!-- advanced search forms -->
+  
+  <browser:page
+      for="*"
+      name="find_person"
+      class=".find_person.FindPersonForm"
       permission="zope.Public"
       />
 
   <browser:page
       for="*"
-      name="search_group"
-      class=".search.GroupSearchView"
+      name="find_organization"
+      class=".find_organization.FindOrganizationForm"
       permission="zope.Public"
       />
 

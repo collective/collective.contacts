@@ -2,89 +2,90 @@
       lang="en"
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="collective.contacts">
-<head>
-    <metal:block fill-slot="top_slot"
-                 tal:define="dummy python:request.set('disable_border',1)" />
-</head>
 <body>
-    <div metal:fill-slot="main" tal:define="error view/error | nothing;
-                                            mail view/mailto | nothing">
-        <tal:main-macro metal:define-macro="main">
-            
-            <!-- This part of the form will be rendered if an error arises, it will show the error and
-                 provides a "Go back" button -->
-            <tal:block condition ="error">
-                <dl class="portalMessage error">
-                    <dt i18n:translate="label_error">Error</dt>
-                    <dd tal:content="error">error message</dd>
-                </dl>
-                <br/>
-                <p><a href="javascript:history.back()" i18n:translate="label_go_back">Go back</a> <span i18n:translate="label_to_correct">to correct.</span></p>
-            </tal:block>
-            
-            <tal:noerror condition="not: error">
+  <div metal:fill-slot="main" tal:define="error view/error | nothing;
+                                          mail view/mailto | nothing">
+    <tal:main-macro metal:define-macro="main">
+      
+      <tal:error condition="error">
+        <dl class="portalMessage error">
+          <dt i18n:translate="label_error">Error</dt>
+          <dd tal:content="error">error message</dd>
+        </dl>
+        <p i18n:translate=""><span i18n:name="label_go_back"><a href="javascript:history.back()" i18n:translate="">Go back</a></span> to correct.</p>
+      </tal:error>
+      
+      <tal:noerror condition="not: error">
+        
+        <tal:mail condition="mail">
+          <h1 class="documentFirstHeading" i18n:translate="label_send_emails">Send emails</h1>
+          <p i18n:translate="label_send_emails_text"><strong>You're about to send an email to the following addresses:</strong></p>
+          <p><span tal:content="mail"></span></p>
+          <p i18n:translate="">Click <span i18n:name="label_here"><a class="link" href="#" tal:attributes="href string:mailto:${mail}" i18n:translate="">here</a></span> if it is correct.</p>
+          <p i18n:translate="label_help_send_mail">Your default e-mail client will be opened to send the email.</p>
+          <p i18n:translate="">Or <span i18n:name="label_go_back"><a href="javascript:history.back()" i18n:translate="">go back</a></span> to correct.</p>
+        </tal:mail>
+        
+        <tal:results condition="not: mail">
+          <h1 class="documentFirstHeading" i18n:translate="search_results">Search results</h1>
+          
+          <div tal:condition="not: view/table/rows">
+            <p>
+              <strong i18n:translate="description_no_results_found">No results were found.</strong>
+            </p>
+            <form action="#" method="post" class="visualNoPrint"
+                  tal:attributes="action string:${view/search_url}">
               
-              <tal:mail condition="mail">
-                <h1 class="documentFirstHeading" i18n:translate="label_send_emails">Send emails</h1>
-                <h2 i18n:translate="label_send_emails_text">You're about to send an email to the following addresses:</h2>
-                <p><span tal:content="mail"></span></p>
-                <p i18n:translate="">Click <span i18n:name="label_here"><a class="link" href="#" tal:attributes="href string:mailto:${mail}" i18n:translate="">here</a></span> if it is correct.</p>
-                <p i18n:translate="label_help_send_mail">Your default e-mail client will be opened to send the email.</p>
-                <p i18n:translate="">Or <span  i18n:name="label_go_back"><a href = "javascript:history.back()" i18n:translate="">Go back</a></span> to correct.</p>
-              </tal:mail>
+              <div class="formControls">
+                <input type="submit" name="form.button.advanced"
+                       value="Search Again"
+                       class="context"
+                       i18n:attributes="value label_do_another_search"
+                       tal:condition="view/advanced_url"
+                       />
+              </div>
+            </form>
+          </div>
+          <div class="contacts-list"
+               tal:condition="view/table/rows">
+            <form action="#" method="post"
+                  tal:attributes="action string:${view/search_url}">
+  
+              <table tal:replace="structure view/results" />
               
-              <tal:results condition="not: mail">
-                <div tal:condition="not: view/table/rows">
-                    <h3 i18n:translate="description_no_results_found">No results were found.</h3>
-                    <form action="#" method="post" class="visualNoPrint"
-                          tal:attributes="action string:${view/search_url}">
-
-                        <input type="submit" name="form.button.advanced"
-                               value="Search Again"
-                               i18n:attributes="value label_do_another_search"
-                               tal:condition="view/advanced_url"
-                         />
-                    </form>
-                </div>
-                <div class="contacts-list"
-                     tal:condition="view/table/rows">
-                    <h1 class="documentFirstHeading" i18n:translate="search_results">Search results:</h1>
-                    
-                    <form action="#" method="post"
-                          tal:attributes="action string:${view/search_url}">
-
-                      <table tal:replace="structure view/results" />
-                      
-                      <div class="formControls">
-                        <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to" class="context visualNoPrint">
-                        <input name="form.button.export" value="Export" type="submit" i18n:attributes="value label_export" class="context visualNoPrint">
-                        <input type="submit" name="form.button.advanced" class="context visualNoPrint"
-                               value="Search Again"
-                               i18n:attributes="value label_do_another_search"
-                               tal:condition="view/advanced_url"
-                               />
-                      </div>
-                    </form>
-                </div>
-                <div class="bottom_search_buttons" tal:condition="view/quick">
-                    <br/>
-                    <form action="#" method="post" class="visualNoPrint"
-                          tal:attributes="action string:${view/advanced_url}">
-                        <input type="submit" name="form.button.advanced"
-                               value="Advanced Search"
-                               i18n:attributes="value label_advanced_search"
-                               tal:condition="view/advanced_url"
-                               />
-                    </form>
-                    <br/>
-                    <a href = "javascript:history.back()" i18n:translate="label_go_back" class="visualNoPrint">Go back</a>
-                    <br/>
-                </div>
-              </tal:results>
-            
-            </tal:noerror>
-            
-        </tal:main-macro>
-    </div>
+              <div class="formControls">
+                <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to" class="context visualNoPrint">
+                <input name="form.button.export" value="Export" type="submit" i18n:attributes="value label_export" class="context visualNoPrint">
+                <input type="submit" name="form.button.advanced" class="context visualNoPrint"
+                       value="Search Again"
+                       i18n:attributes="value label_do_another_search"
+                       tal:condition="view/advanced_url"
+                       />
+              </div>
+            </form>
+          </div>
+          <div class="bottom_search_buttons" tal:condition="view/quick">
+            <br/>
+            <form action="#" method="post" class="visualNoPrint"
+                  tal:attributes="action string:${view/advanced_url}">
+              <div class="formControls">
+                <input type="submit" name="form.button.advanced"
+                       value="Advanced Search"
+                       class="context"
+                       i18n:attributes="value label_advanced_search"
+                       tal:condition="view/advanced_url"
+                       />
+              </div>
+            </form>
+            <br/>
+            <a href = "javascript:history.back()" i18n:translate="label_go_back" class="visualNoPrint">Go back</a>
+            <br/>
+          </div>
+        </tal:results>
+        
+      </tal:noerror>
+        
+    </tal:main-macro>
+  </div>
 </body>
 </html>

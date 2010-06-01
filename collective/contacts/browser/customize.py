@@ -17,6 +17,7 @@ class CustomizeView(BrowserView):
         self.request = request
 
     def __call__(self):
+        self.request.set('disable_border', 1)
         self.contenttype = self.request.get('customize.type', False)
         cancelled = self.request.form.get('form.button.cancel', False)
        

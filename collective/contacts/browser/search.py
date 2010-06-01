@@ -1,3 +1,5 @@
+from Acquisition import aq_inner, aq_parent
+
 from zope.component import getMultiAdapter
 from plone.memoize.instance import memoize
 
@@ -8,7 +10,7 @@ from Products.CMFCore.permissions import ModifyPortalContent
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from collective.contacts import contactsMessageFactory as _
-from collective.contacts.interfaces import ITable
+from collective.contacts.interfaces import ITable, IAddressBook
 from collective.contacts.export import exportPersons, exportOrganizations
 
 class AbstractSearchView(BrowserView):
@@ -23,6 +25,7 @@ class AbstractSearchView(BrowserView):
         self.request = request
         
     def __call__(self):
+        self.request.set('disable_border', 1)
         # redirect on import
         if self.request.get('form.button.import', None) is not None:
             parent = aq_inner(self.context)
@@ -30,7 +33,7 @@ class AbstractSearchView(BrowserView):
                 parent = aq_parent(parent)
             if not _checkPermission(ModifyPortalContent, parent):
                 return None
-            return '%s/import_view' % parent.absolute_url()
+            return self.request.response.redirect('%s/import' % parent.absolute_url())
         
         self.error = None
         self.quick = self.request.get('quicksearch', None) is not None
@@ -70,8 +73,8 @@ class AbstractSearchView(BrowserView):
         for object in selection:
             email = self.table.email(object)
             if email:
-                emails.append(email)
-        return ', '.join(emails)
+                emails.extend(email.split(', '))
+        return ', '.join(set(emails))
     
     @property
     def advanced_url(self):

@@ -4,7 +4,11 @@
 select#country:load {
     action-server:            kssModifyState;
     kssModifyState-country:   currentFormVar('country');
-    kssModifyState-search:    currentFormVar('search');
+}
+select#form\.country:load {
+    action-server:            kssModifyState;
+    kssModifyState-country:   currentFormVar('form.country');
+    kssModifyState-search:    1;
 }
 
 /* This is used when changing the country from the drop-down */
@@ -12,7 +16,11 @@ select#country:load {
 select#country:change {
     action-server:            kssModifyState;
     kssModifyState-country:   currentFormVar('country');
-    kssModifyState-search:    currentFormVar('search');
+}
+select#form\.country:change {
+    action-server:            kssModifyState;
+    kssModifyState-country:   currentFormVar('form.country');
+    kssModifyState-search:    1;
 }
 
 /* This is used when loading the edit template, we cannot use the sub-sector
@@ -22,12 +30,22 @@ select#sector:load {
     action-server:            kssModifySector;
     kssModifySector-sector:   currentFormVar('sector');
 }
+select#form\.sector:load {
+    action-server:            kssModifySector;
+    kssModifySector-sector:   currentFormVar('form.sector');
+    kssModifySector-search:   1;
+}
 
 /* This is used when changing the sector from the drop-down */
 
 select#sector:change {
     action-server:            kssModifySector;
     kssModifySector-sector:   currentFormVar('sector');
+}
+select#form\.sector:change {
+    action-server:            kssModifySector;
+    kssModifySector-sector:   currentFormVar('form.sector');
+    kssModifySector-search:   1;
 }
 
 /* This part will be called when we are in inline edition, we have changed

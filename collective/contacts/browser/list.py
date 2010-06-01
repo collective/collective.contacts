@@ -28,13 +28,11 @@ class AbstractListView(BrowserView):
         rows = self.table.rows()
         if not rows:
             self.error = self.error_msg
-        self.batch = Batch(rows, self.page_size, self.request.get('b_start', 0))
+        self.batch = Batch(rows, self.page_size, self.request.form.get('b_start', 0))
         return self.template()
     
-    def export_url(self):
-        if self.name == 'group':
-            return None
-        return '%s/@@%s' % (self.context.absolute_url(), self.template_id)
+    def canExport(self):
+        return not self.name == 'group'
     
     def canImport(self):
         parent = aq_inner(self.context)
@@ -42,12 +40,15 @@ class AbstractListView(BrowserView):
             parent = aq_parent(parent)
         return _checkPermission(ModifyPortalContent, parent)
     
+    def hasAdvancedSearch(self):
+        return not self.name == 'group'
+    
     def customize_url(self):
         if self.name == 'group':
             return None
         if not _checkPermission(ModifyPortalContent, aq_inner(self.context)):
             return None
-        return '%s/customize_view?customize.type=%s' % (self.context.absolute_url(), self.name)
+        return '%s/customize?customize.type=%s' % (self.context.absolute_url(), self.name)
     
     def search_url(self):
         return '%s/search_%s' % (self.context.absolute_url(), self.name)

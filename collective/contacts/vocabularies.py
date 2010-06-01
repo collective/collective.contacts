@@ -12,7 +12,7 @@ from os import path
 from zope.schema import vocabulary
 
 from iso3166 import CountriesStatesParser
-from interfaces import ICountriesStates
+from interfaces import ICountriesStates, IAddressBook
 
 
 from zope.i18nmessageid import MessageFactory
@@ -38,11 +38,7 @@ class CountriesStatesFromFile(object):
     """
     implements(ICountriesStates)
 
-    _no_values = [('',_(u'(no values)'))]
-    # Be careful, somewhere else, there is code that asumes that state values
-    # length is <= 6. Don't modify this ones that are part of the vocabulary
-    _not_aplicable = [(u'??NA',_(u'Not Applicable'))]
-    _allowed_no_values = [(u'??NV',_(u'(no values)'))]
+    _no_value = [('--',_(u'(no value)'))]
 
     def __init__(self):
         iso3166_path = path.join(path.dirname(__file__), 'iso3166')
@@ -51,14 +47,12 @@ class CountriesStatesFromFile(object):
         self.loaded_countries = []
 
     def special_values(self):
-        return [self._no_values[0],
-                self._not_aplicable[0],
-                self._allowed_no_values[0]]
+        return [self._no_values[0]]
     special_values = property(special_values)
 
     def countries(self):
-        if self.loaded_countries:
-            return self.loaded_countries
+        #if self.loaded_countries:
+        #    return self.loaded_countries
         names =  self.csparser.getCountriesNameOrdered()
         res = []
         for n in names:
@@ -82,31 +76,25 @@ class CountriesStatesFromFile(object):
             return cmp( x[1], y[1] )
 
         res.sort( sorter )
+        res = self._no_value + res
         self.loaded_countries = res
         return res
 
     countries = property(countries)
 
-    def states(self, country=None, allow_no_values=False):
+    def states(self, country=None):
         if country is None:
-            states = self._not_aplicable + self.allStates()
+            states = self.allStates()
         else:
-            states = self.csparser.getStatesOf(country)
-
-        if len(states) == 0:
-            states = self._not_aplicable
-        elif allow_no_values:
-            states = self._allowed_no_values + states
-        else:
-            states = self._no_values + states
+            states = self._no_value + self.csparser.getStatesOf(country)
         return states
 
     def allStates(self):
-        return self.csparser.getStatesOfAllCountries()
+        return self._no_value + self.csparser.getStatesOfAllCountries()
 
     def allStateValues(self):
         all_states = self.csparser.getStatesOfAllCountries()
-        return self._allowed_no_values + self._not_aplicable + all_states
+        return self._no_value + all_states
 
 @implementer(IVocabulary)
 def Countries( context ):
@@ -122,14 +110,18 @@ alsoProvides(States, IVocabularyFactory)
 
 @implementer(IVocabulary)
 def Sectors( context ):
-    address_book = context.aq_inner.aq_parent
+    address_book = context.aq_inner
+    while not IAddressBook.providedBy(address_book):
+        address_book = address_book.aq_parent
     sectors = address_book.get_sectors()
-    return TitledVocabulary.fromTitles(zip(sectors, sectors))
+    return TitledVocabulary.fromTitles([('--',_(u'(no value)'))] + zip(sectors, sectors))
 alsoProvides(Sectors, IVocabularyFactory)
 
 @implementer(IVocabulary)
 def SubSectors( context ):
-    address_book = context.aq_inner.aq_parent
+    address_book = context.aq_inner
+    while not IAddressBook.providedBy(address_book):
+        address_book = address_book.aq_parent
     sub_sectors = address_book.get_all_sub_sectors()
-    return TitledVocabulary.fromTitles(zip(sub_sectors,sub_sectors))
+    return TitledVocabulary.fromTitles([('--',_(u'(no value)'))] + zip(sub_sectors,sub_sectors))
 alsoProvides(SubSectors, IVocabularyFactory)

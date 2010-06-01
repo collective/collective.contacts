@@ -22,7 +22,7 @@ class Search(object):
         for attr, value in query.items():
             data = getattr(o, attr, self._marker)
             if data is self._marker:
-                continue
+                return False
             try:
                 # try to convert to string
                 data = str(data)
@@ -54,7 +54,7 @@ class Search(object):
         filter = {}
         catalog = {}
         for key, value in query.items():
-            if value is None:
+            if not value or (value == '--' and key in ('state', 'country', 'sector', 'sub_sector',)):
                 continue
             if key in indexes:
                 catalog[key] = value

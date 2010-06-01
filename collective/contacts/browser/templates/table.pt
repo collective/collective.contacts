@@ -1,6 +1,7 @@
-<tal:def define="table options/table">
+<tal:def define="table options/table;
+                 rows options/batch|table/rows">
 <table class="listing"
-       tal:condition="table/rows">
+       tal:condition="rows">
   <tr>
     <th  class="visualNoPrint">
       <input type="checkbox"
@@ -14,7 +15,7 @@
       <span tal:content="header" i18n:translate="" />
     </th>
   </tr>
-  <tal:block repeat="row table/rows">
+  <tal:block repeat="row rows">
   <tr tal:define="oddrow repeat/row/odd"
       tal:attributes="class python:oddrow and 'odd' or 'even'">
     <td  class="visualNoPrint">

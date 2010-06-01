@@ -136,5 +136,5 @@ class GroupColumns(object):
     def translate_column(self, column):
         """ Translates a column
         """
-        return not self.translations.get(column, column)
+        return self.translations.get(column, column)
     

@@ -2,61 +2,61 @@
       lang="en"
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="collective.contacts">
-
-<head>
-    <metal:block fill-slot="top_slot"
-                 tal:define="dummy python:request.set('disable_border',1)" />
-</head>
-
 <body>
-    <div metal:fill-slot="main">
-        <tal:main-macro metal:define-macro="main"
-                        tal:define="message request/message | python:None;">
-
-            <tal:block condition ="message">
-                <dl class="portalMessage info">
-                    <dt i18n:translate="label_info">Info</dt>
-
-                    <dd tal:content="message">message</dd>
-                </dl>
-
-            </tal:block>
-
-            <h1 i18n:translate="title_customize_columns">Customize columns</h1>
-            <form action="#" method="post"
-                  tal:attributes="action string:${context/absolute_url}/customize_view?type=${view/contenttype}">
-                  <div tal:repeat="field view/get_columns">
-                   <input type="checkbox"
-                          name="selected:list"
-                          tal:attributes="id field/id;
-                                          value field/id;
-                                          checked field/checked"/>
-                    <label
-                          tal:content="field/title"
-                          tal:attributes="for field/id">Field Name</label>
-                    <input type="hidden" name="columns:list"
-                            tal:attributes="value field/id"/>
-                  </div>
-                   <input type="hidden" name="customize.submitted" value="True"/>
-                   <input type="hidden" name="customize.type"
-                          tal:attributes="value contenttype/contenttype"/>
-                   <br/>
-                <input class="context"
-                       type="submit"
-                       name="form_submit"
-                       value="Save"
-                       i18n:attributes="value label_save;"
-                       />
-                <input class="standalone"
-                       type="submit"
-                       name="form.button.cancel"
-                       value="Cancel"
-                       i18n:attributes="value label_cancel;"
-                       />
-                       
-            </form>
-
-        </tal:main-macro>
-    </div>
+  <div metal:fill-slot="main">
+    <tal:main-macro metal:define-macro="main"
+                    tal:define="message request/message | python:None;">
+      
+      <tal:block condition ="message">
+        <dl class="portalMessage info">
+          <dt i18n:translate="label_info">Info</dt>
+          <dd tal:content="message">message</dd>
+        </dl>
+      </tal:block>
+      
+      <h1 class="documentFirstHeading" 
+          i18n:translate="title_customize_columns">
+        Customize columns
+      </h1>
+      
+      <form action="#" method="post"
+            tal:attributes="action string:${context/absolute_url}/customize">
+        <div class="field">
+          <ul class="visualNoMarker">
+            <li tal:repeat="field view/get_columns">
+              <label>
+                <input type="checkbox"
+                       name="selected:list"
+                       tal:attributes="id field/id;
+                                       value field/id;
+                                       checked field/checked"/>
+                <span tal:replace="field/title">Field Name</span>
+              </label>
+              <input type="hidden" name="columns:list"
+                     tal:attributes="value field/id"/>
+            </li>
+          </ul>
+        </div>
+        <input type="hidden" name="customize.submitted" value="True"/>
+        <input type="hidden" name="customize.type"
+               tal:attributes="value view/contenttype"/>
+        <div class="formControls">
+          <input class="context"
+                 type="submit"
+                 name="form_submit"
+                 value="Save"
+                 i18n:attributes="value label_save;"
+                 />
+          <input class="standalone"
+                 type="submit"
+                 name="form.button.cancel"
+                 value="Cancel"
+                 i18n:attributes="value label_cancel;"
+                 />
+        </div>
+      </form>
+      
+    </tal:main-macro>
+  </div>
 </body>
 </html>

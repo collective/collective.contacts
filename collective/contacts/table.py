@@ -5,6 +5,7 @@ from zope.component import adapts, getAdapter, getUtility
 from zope.schema.interfaces import IVocabularyFactory
 
 from Products.CMFPlone.PloneBatch import Batch
+from Products.Archetypes.Field import Image
 
 from collective.contacts.interfaces import ITable, ICustomizableColumns, IPerson, IOrganization, IGroup, ISearch
 
@@ -27,25 +28,25 @@ class PersonTable(object):
         return [self.cols.translate_column(column) for column in self.cols.get_columns()]
     
     def rows(self):
-        attrs = {'short_name' : self.request.get('short_name', None),
-                 'first_name' : self.request.get('first_name', None),
-                 'last_name' : self.request.get('last_name', None),
-                 'organization' : self.request.get('organization', None),
-                 'position' : self.request.get('position', None),
-                 'department' : self.request.get('department', None),
-                 'work_phone' : self.request.get('work_phone', None),
-                 'work_mobile_phone' : self.request.get('work_mobile_phone', None),
-                 'work_email' : self.request.get('work_email', None),
-                 'address' : self.request.get('address', None),
-                 'city' : self.request.get('city', None),
-                 'zip' : self.request.get('zip', None),
-                 'country' : self.request.get('country', None),
-                 'state' : self.request.get('state', None),
-                 'phone' : self.request.get('phone', None),
-                 'mobile_phone' : self.request.get('mobile_phone', None),
-                 'email' : self.request.get('email', None),
-                 'web' : self.request.get('web', None),
-                 'text' : self.request.get('text', None),
+        attrs = {'short_name' : self.request.get('form.short_name', None),
+                 'first_name' : self.request.get('form.first_name', None),
+                 'last_name' : self.request.get('form.last_name', None),
+                 'organization' : self.request.get('form.organization', None),
+                 'position' : self.request.get('form.position', None),
+                 'department' : self.request.get('form.department', None),
+                 'work_phone' : self.request.get('form.work_phone', None),
+                 'work_mobile_phone' : self.request.get('form.work_mobile_phone', None),
+                 'work_email' : self.request.get('form.work_email', None),
+                 'address' : self.request.get('form.address', None),
+                 'city' : self.request.get('form.city', None),
+                 'zip' : self.request.get('form.zip', None),
+                 'country' : self.request.get('form.country', None),
+                 'state' : self.request.get('form.state', None),
+                 'phone' : self.request.get('form.phone', None),
+                 'mobile_phone' : self.request.get('form.mobile_phone', None),
+                 'email' : self.request.get('form.email', None),
+                 'web' : self.request.get('form.web', None),
+                 'text' : self.request.get('form.text', None),
                  'SearchableText' : self.request.get('SearchableText', None),
                  'object_provides': IPerson.__identifier__,
         }
@@ -111,7 +112,7 @@ class PersonTable(object):
                         html += value.Title()
                 elif col == 'photo':
                     photo = getattr(result, match_field[col], '')
-                    if isinstance(result, Image):
+                    if isinstance(photo, Image):
                         html += result.tag(scale='thumb')
                 else:
                     html += getattr(result, match_field[col], '')
@@ -178,18 +179,22 @@ class OrganizationTable(object):
         return [self.cols.translate_column(column) for column in self.cols.get_columns()]
     
     def rows(self, sort='sortable_title'):
-        attrs = {'title' : self.request.get('title', None),
-                 'address' : self.request.get('address', None),
-                 'city' : self.request.get('city', None),
-                 'zip' : self.request.get('zip', None),
-                 'extra_adress' : self.request.get('extra_adress', None),
-                 'phone' : self.request.get('phone', None),
-                 'fax' : self.request.get('fax', None),
-                 'email' : self.request.get('email', None),
-                 'email2' : self.request.get('email2', None),
-                 'email3' : self.request.get('email3', None),
-                 'web' : self.request.get('web', None),
-                 'text' : self.request.get('text', None),
+        attrs = {'title' : self.request.get('form.title', None),
+                 'address' : self.request.get('form.address', None),
+                 'city' : self.request.get('form.city', None),
+                 'zip' : self.request.get('form.zip', None),
+                 'extra_adress' : self.request.get('form.extra_adress', None),
+                 'phone' : self.request.get('form.phone', None),
+                 'fax' : self.request.get('form.fax', None),
+                 'email' : self.request.get('form.email', None),
+                 'email2' : self.request.get('form.email2', None),
+                 'email3' : self.request.get('form.email3', None),
+                 'web' : self.request.get('form.web', None),
+                 'text' : self.request.get('form.text', None),
+                 'country' : self.request.get('form.country', None),
+                 'state' : self.request.get('form.state', None),
+                 'sector' : self.request.get('form.sector', None),
+                 'sub_sector' : self.request.get('form.sub_sector', None),
                  'SearchableText' : self.request.get('SearchableText', None),
                  'object_provides': IOrganization.__identifier__,
                 }
