@@ -19,7 +19,7 @@
         
         <tal:mail condition="mail">
           <h1 class="documentFirstHeading" i18n:translate="label_send_emails">Send emails</h1>
-          <p i18n:translate="label_send_emails_text"><strong>You're about to send an email to the following addresses:</strong></p>
+          <p><strong i18n:translate="label_send_emails_text">You're about to send an email to the following addresses:</strong></p>
           <p><span tal:content="mail"></span></p>
           <p i18n:translate="">Click <span i18n:name="label_here"><a class="link" href="#" tal:attributes="href string:mailto:${mail}" i18n:translate="">here</a></span> if it is correct.</p>
           <p i18n:translate="label_help_send_mail">Your default e-mail client will be opened to send the email.</p>
@@ -55,7 +55,7 @@
               
               <div class="formControls">
                 <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to" class="context visualNoPrint">
-                <input name="form.button.export" value="Export" type="submit" i18n:attributes="value label_export" class="context visualNoPrint">
+                <input name="form.button.export" value="Export selected" type="submit" i18n:attributes="value label_export_selected" class="context visualNoPrint">
                 <input type="submit" name="form.button.advanced" class="context visualNoPrint"
                        value="Search Again"
                        i18n:attributes="value label_do_another_search"
@@ -78,7 +78,7 @@
               </div>
             </form>
             <br/>
-            <a href = "javascript:history.back()" i18n:translate="label_go_back" class="visualNoPrint">Go back</a>
+            <a href = "javascript:history.back()" i18n:translate="" class="visualNoPrint">Go back</a>
             <br/>
           </div>
         </tal:results>
