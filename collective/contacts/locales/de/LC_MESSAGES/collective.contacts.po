@@ -176,7 +176,7 @@ msgstr "Nachname"
 #. Default: "Let you have several persons together"
 #: ./profiles/default/types/Group.xml
 msgid "Let you have several persons together"
-msgstr "Ermöglicht mehrer Personen zu gruppieren"
+msgstr "Ermöglicht mehrere Personen zu gruppieren"
 
 #: ./content/person.py:338
 msgid "Mobile Phone Number"
