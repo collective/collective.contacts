@@ -1,11 +1,11 @@
 from Acquisition import aq_inner, aq_parent
 
-from zope.interface import implements
+from zope.interface import implements, Interface
 from zope.component import adapts
 
 from Products.CMFCore.utils import getToolByName
 
-from collective.contacts.interfaces import ISearch, IGroup, IAddressBook, IOrganization
+from collective.contacts.interfaces import ISearch, IGroup, IPerson, IAddressBook, IOrganization
 
 class Search(object):
     """ Searches the portal
@@ -36,6 +36,9 @@ class Search(object):
     
     def additional_query(self):
         return {}
+    
+    def object_provides(self):
+        return Interface.__identifier__
 
     @property
     def portal_catalog(self):
@@ -59,6 +62,8 @@ class Search(object):
         # a result, even if no full word is provided
         if catalog.has_key('SearchableText'):
             catalog['SearchableText'] = '* OR '.join(catalog['SearchableText'].lower().split())+'*'
+        # add object provides to catalog query
+        catalog['object_provides'] = self.object_provides()
         # check whether the sort parameter is a string and use the ordinary catalog
         # search or it is not and we need to use advanced query for sorting
         if isinstance(sort, basestring):
@@ -75,20 +80,35 @@ class Search(object):
                 continue
             filtered.append(o)
         return filtered
-
+    
 class AddressBookSearch(Search):
-    """ Searches an address book
+    """ Searches address books
     """
     adapts(IAddressBook)
-    
     def additional_query(self):
         return {'path': '/'.join(self.context.getPhysicalPath())}
-    
-class OrganizationSearch(Search):
-    """ Searches in an organization
+
+class AddressBookPersonSearch(AddressBookSearch):
+    """ Searches persons in address books
     """
-    adapts(IOrganization)
-    
+    def object_provides(self):
+        return IPerson.__identifier__
+
+class AddressBookOrganizationSearch(AddressBookSearch):
+    """ Searches organizations in address books
+    """
+    def object_provides(self):
+        return IOrganization.__identifier__
+
+class AddressBookGroupSearch(AddressBookSearch):
+    """ Searches groups in address books
+    """
+    def object_provides(self):
+        return IGroup.__identifier__ 
+
+class OrganizationPersonSearch(Search):
+    """ Searches persons in organizations
+    """
     def additional_query(self):
         # find address book
         parent = aq_parent(aq_inner(self.context))
@@ -96,17 +116,43 @@ class OrganizationSearch(Search):
             parent = aq_parent(parent)
         return {'path': '/'.join(parent.getPhysicalPath()),
                 'organization': self.context.UID()}
+    def object_provides(self):
+        return IPerson.__identifier__
 
-class GroupSearch(Search):
-    """ Searches in a group
+class OrganizationGroupSearch(Search):
+    """ Searches groups in organizations
+    """
+    adapts(IOrganization)
+    def additional_query(self):
+        return {'path': {'query': '/'.join(self.context.getPhysicalPath()),
+                         'depth': 1}}
+    def object_provides(self):
+        return IGroup.__identifier__ 
+
+class GroupPersonSearch(Search):
+    """ Searches persons in groups
     """
     adapts(IGroup)
-    
     def additional_query(self):
+        # if we have no persons return the groups UID to force an empty result set
+        if not self.context.persons:
+            return {'UID': self.context.UID()}
         # find address book
         parent = aq_parent(aq_inner(self.context))
         while not IAddressBook.providedBy(parent):
             parent = aq_parent(parent)
         return {'path': '/'.join(parent.getPhysicalPath()),
                 'UID': [person.UID() for person in self.context.persons]}
+    def object_provides(self):
+        return IPerson.__identifier__ 
+
+class GroupGroupSearch(Search):
+    """ Searches groups in groups
+    """
+    adapts(IGroup)
+    def additional_query(self):
+        return {'path': {'query': '/'.join(self.context.getPhysicalPath()),
+                         'depth': 1}}
+    def object_provides(self):
+        return IGroup.__identifier__ 
     

@@ -18,11 +18,11 @@
     <element value="Group" />
   </property>
   <property name="allow_discussion">False</property>
-  <property name="default_view">organizations</property>
+  <property name="default_view">list_organizations</property>
   <property name="view_methods">
-    <element value="organizations" />
-    <element value="persons" />
-    <element value="groups" />
+    <element value="list_organizations" />
+    <element value="list_persons" />
+    <element value="list_groups" />
     <element value="base_view" />
   </property>
   <alias from="(Default)" to="(dynamic view)" />

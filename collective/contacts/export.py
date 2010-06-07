@@ -8,8 +8,8 @@ import time
 import re
 
 from zope.i18n import translate
-from zope.interface import implements, Interface
-from zope.component import getUtility
+from zope.interface import implements
+from zope.component import getUtility, getAdapter
 from zope.schema.interfaces import IVocabularyFactory
 
 from Products.ATContentTypes.lib.calendarsupport import rfc2445dt, n2rn, vformat
@@ -23,7 +23,6 @@ class AbstractCSVExport(object):
     
         Subclasses need to provide the following attributes:
         
-        * iface: the Interface of the Objects to list
         * name: the name of the corresponding CustomizableColumns
                 adapter
         * fields: list of attributes to be included in the csv
@@ -41,10 +40,10 @@ class AbstractCSVExport(object):
     
         writer.writerow(self.fields)
         
-        # if no persons are given fetch all persons using the search adapter
+        # if no persons are given fetch all objects using the search adapter
         if objects is None:
-            search = ISearch(self.context)
-            objects = search.search({'object_provides': self.iface.__identifier__})
+            search = getAdapter(self.context, interface=ISearch, name=self.name)
+            objects = search.search()
         
         # And now, for each person, i load his data on each column
     
@@ -78,8 +77,7 @@ class AbstractCSVExport(object):
         
 class PersonCSVExport(AbstractCSVExport):
     implements(IExport)
-    name = "persons"
-    iface = IPerson
+    name = "person"
     fields = ["id",
               "shortName",
               "firstName", 
@@ -106,8 +104,7 @@ class PersonCSVExport(AbstractCSVExport):
         
 class OrganizationCSVExport(AbstractCSVExport):
     implements(IExport)
-    name = "organizations"
-    iface = IOrganization
+    name = "organization"
     fields = ["id",
               "title",
               "address",
@@ -233,7 +230,7 @@ ROLE:%(department)s
 BDAY:%(birthdate)s
 TEL;TYPE=WORK:%(workPhone)s
 TEL;TYPE=WORK,CELL,MSG:%(workMobilePhone)s
-EMAIL;TYPE=WORK,PREF:%(work_email)s
+EMAIL;TYPE=WORK,PREF:%(workEmail)s
 EMAIL;TYPE=WORK:%(workEmail2)s
 EMAIL;TYPE=WORK:%(workEmail3)s
 TEL;TYPE=HOME:%(phone)s
@@ -252,8 +249,8 @@ REV:%(revision)s"""
             if IPerson.providedBy(self.context):
                 objects = [self.context]
             else:
-                search = ISearch(self.context)
-                objects = search.search({'object_provides': IPerson.__identifier__})
+                search = getAdapter(self.context, interface=ISearch, name='person')
+                objects = search.search()
         return self._export(objects, len(objects)>1 and 'persons' or objects[0].getId(), request)
 
 class OrganizationVCardExport(AbstractTemplateExport):
@@ -281,8 +278,8 @@ REV:%(revision)s"""
             if IOrganization.providedBy(self.context):
                 organizations = [self.context]
             else:
-                search = ISearch(self.context)
-                objects = search.search({'object_provides': IOrganization.__identifier__})
+                search = getAdapter(self.context, interface=ISearch, name='organization')
+                objects = search.search()
         return self._export(objects, len(objects)>1 and 'organizations' or objects[0].getId(), request)
 
 class PersonVCalendarExport(AbstractTemplateExport):
@@ -332,8 +329,8 @@ SUMMARY:%(birthdaysummary)s"""
             if IPerson.providedBy(self.context):
                 objects = [self.context]
             else:
-                search = ISearch(self.context)
-                objects = search.search({'object_provides': IPerson.__identifier__})
+                search = getAdapter(self.context, interface=ISearch, name='person')
+                objects = search.search()
         return self._export(objects, len(objects)>1 and 'persons' or objects[0].getId(), request)
     
     def _addResponseHeaders(self, request, data, name):

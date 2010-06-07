@@ -38,10 +38,10 @@ class CustomizeView(BrowserView):
         url = self.context.absolute_url()
         if self.contenttype == 'organization':
             url = self.context.absolute_url() + \
-                '/@@organizations'
+                '/list_organizations'
         elif self.contenttype == 'person':
             url = self.context.absolute_url() + \
-                '/@@persons'
+                '/list_persons'
         return self.request.response.redirect(url)
 
     def get_columns(self):

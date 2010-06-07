@@ -68,7 +68,7 @@ class AbstractListView(BrowserView):
 class PersonListView(AbstractListView):
     """ Lists persons
     """
-    template_id = 'persons'
+    template_id = 'list_persons'
     name = 'person'
     page_size = 20
     error_msg = _('no_persons', default=u'There are no persons available')
@@ -77,7 +77,7 @@ class PersonListView(AbstractListView):
 class OrganizationListView(AbstractListView):
     """ Lists organizations
     """
-    template_id = 'organizations'
+    template_id = 'list_organizations'
     name = 'organization'
     page_size = 20
     error_msg = _('no_organizations', default=u'There are no organizations available')
@@ -86,7 +86,7 @@ class OrganizationListView(AbstractListView):
 class GroupListView(AbstractListView):
     """ Lists groups
     """
-    template_id = 'groups'
+    template_id = 'list_groups'
     name = 'group'
     page_size = 20
     error_msg = _('no_groups', default=u'There are no groups available')

@@ -5,53 +5,53 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="collective.contacts">
-
-  <five:registerPackage package="." initialize=".initialize" />
-
-  <!-- Include the sub-packages that use their own configure.zcml files. -->
-  <include package=".browser" />
-  <include package=".content" />
-
-  <include file="updates.zcml" />
-
-  <!-- Register the installation GenericSetup extension profile -->
-  <genericsetup:registerProfile
-      name="default"
-      title="Contacts"
-      directory="profiles/default"
-      description="Address book content types for Plone"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
-
-  <genericsetup:registerProfile
-      name="uninstall"
-      title="Contacts Uninstall"
-      directory="profiles/uninstall"
-      description="Remove Collective.Contacts"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
-
+  
+    <five:registerPackage package="." initialize=".initialize" />
+  
+    <!-- Include the sub-packages that use their own configure.zcml files. -->
+    <include package=".browser" />
+    <include package=".content" />
+  
+    <include file="updates.zcml" />
+  
+    <!-- Register the installation GenericSetup extension profile -->
+    <genericsetup:registerProfile
+        name="default"
+        title="Contacts"
+        directory="profiles/default"
+        description="Address book content types for Plone"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+  
+    <genericsetup:registerProfile
+        name="uninstall"
+        title="Contacts Uninstall"
+        directory="profiles/uninstall"
+        description="Remove Collective.Contacts"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+  
     <i18n:registerTranslations directory="locales" />
-
+  
     <include file="skins.zcml" />
-
+  
     <utility factory=".vocabularies.CountriesStatesFromFile" />
-
+  
     <utility
         component=".vocabularies.Countries"
         name="contacts.countries"
         />
-
+  
     <utility
         component=".vocabularies.States"
         name="contacts.states"
         />
-
+  
     <utility
         component=".vocabularies.Sectors"
         name="contacts.sectors"
         />
-
+  
     <utility
         component=".vocabularies.SubSectors"
         name="contacts.sub_sectors"
@@ -107,7 +107,7 @@
         provides=".interfaces.IExport"
         name="organization.vcard"
         />
-
+  
     <!-- columns -->
     <adapter
         factory=".columns.PersonColumns"
@@ -132,25 +132,46 @@
         
     <!-- search -->
     <adapter
-        factory=".search.Search"
-        for="*"
+        factory=".search.AddressBookPersonSearch"
+        name="person"
+        for=".interfaces.IAddressBook"
         provides=".interfaces.ISearch"
         />
-        
     <adapter
-        factory=".search.AddressBookSearch"
+        factory=".search.AddressBookOrganizationSearch"
+        name="organization"
+        for=".interfaces.IAddressBook"
+        provides=".interfaces.ISearch"
+        />
+    <adapter
+        factory=".search.AddressBookGroupSearch"
+        name="group"
         for=".interfaces.IAddressBook"
         provides=".interfaces.ISearch"
         />
         
     <adapter
-        factory=".search.OrganizationSearch"
+        factory=".search.OrganizationPersonSearch"
+        name="person"
+        for=".interfaces.IOrganization"
+        provides=".interfaces.ISearch"
+        />
+    <adapter
+        factory=".search.OrganizationGroupSearch"
+        name="group"
         for=".interfaces.IOrganization"
         provides=".interfaces.ISearch"
         />
         
     <adapter
-        factory=".search.GroupSearch"
+        factory=".search.GroupPersonSearch"
+        name="person"
+        for=".interfaces.IGroup"
+        provides=".interfaces.ISearch"
+        />
+    <adapter
+        factory=".search.GroupGroupSearch"
+        name="group"
         for=".interfaces.IGroup"
         provides=".interfaces.ISearch"
         />
@@ -179,7 +200,7 @@
         provides="collective.contacts.interfaces.ITable"
         name="group"
         />
-
-  <!-- -*- extra stuff goes here -*- -->
+  
+    <!-- -*- extra stuff goes here -*- -->
 
 </configure>

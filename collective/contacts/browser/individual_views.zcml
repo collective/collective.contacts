@@ -5,14 +5,14 @@
 
   <browser:page
       for="..interfaces.IOrganization"
-      name="persons"
+      name="list_persons"
       class=".organization.OrganizationView"
       permission="zope.Public"
       />
 
   <browser:page
       for="..interfaces.IGroup"
-      name="persons"
+      name="list_persons"
       class=".group.GroupView"
       permission="zope.Public"
       />

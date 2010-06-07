@@ -9,14 +9,13 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.PloneBatch import Batch
 from Products.Archetypes.Field import Image
 
-from collective.contacts.interfaces import ITable, ICustomizableColumns, IPerson, IOrganization, IGroup, ISearch
+from collective.contacts.interfaces import ITable, ICustomizableColumns, ISearch, IOrganization
 
 class AbstractTable(object):
     """ Abstract table class
     
         Subclasses need to provide the following attributes:
         
-        * iface: the Interface of the Objects to list
         * default_sort: the default sorting (tuple of
                         field, order pairs)
         * name: the name of the corresponding CustomizableColumns
@@ -61,7 +60,7 @@ class AbstractTable(object):
         return columns
     
     def rows(self):
-        attrs = {'object_provides': self.iface.__identifier__}
+        attrs = {}
         if hasattr(self.request, 'SESSION'):
             if self.newSearch():
                 attrs = {}
@@ -71,7 +70,7 @@ class AbstractTable(object):
             for attr in self.attrs:
                 attrs[attr] = self.request.SESSION.get('%s.%s' % (self.name, attr), None)
         
-        search = ISearch(self.context)
+        search = getAdapter(self.context, interface=ISearch, name=self.name)
         results = search.search(query=attrs, sort=self.sort)
         if not results:
             return []
@@ -149,7 +148,6 @@ class PersonTable(AbstractTable):
     """
     implements(ITable)
     name = "person"
-    iface = IPerson
     default_sort = (('lastName', 'asc'),
                     ('firstName', 'asc'))
     attrs = ['shortName',
@@ -186,7 +184,6 @@ class OrganizationTable(AbstractTable):
     """
     implements(ITable)
     name = "organization"
-    iface = IOrganization
     default_sort = (('sortable_title', 'asc'),)
     attrs = ['title',
              'address',
@@ -218,7 +215,6 @@ class GroupTable(AbstractTable):
     """
     implements(ITable)
     name = "group"
-    iface = IGroup
     default_sort = (('sortable_title', 'asc'),)
     attrs = ['SearchableText',]
             

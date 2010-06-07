@@ -5,7 +5,7 @@
 from zope.interface import implements, directlyProvides
 
 from Products.Archetypes import atapi
-from Products.ATContentTypes.content import base
+from Products.ATContentTypes.content import folder
 from Products.ATContentTypes.content import schemata
 
 from collective.contacts import contactsMessageFactory as _
@@ -13,7 +13,7 @@ from collective.contacts.interfaces import IOrganization
 from collective.contacts.config import PROJECTNAME
 from collective.contacts.content import DeprecatedATFieldProperty
 
-OrganizationSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
+OrganizationSchema = folder.ATFolderSchema.copy() + atapi.Schema((
 
     # -*- Your Archetypes field definitions here ... -*-
 
@@ -203,10 +203,13 @@ OrganizationSchema['description'].storage = atapi.AnnotationStorage()
 OrganizationSchema['description'].widget.visible = {'edit': 'invisible',
                                                     'view': 'invisible'}
 
+schemata.finalizeATCTSchema(
+    OrganizationSchema,
+    folderish=True,
+    moveDiscussion=False
+)
 
-schemata.finalizeATCTSchema(OrganizationSchema, moveDiscussion=False)
-
-class Organization(base.ATCTContent):
+class Organization(folder.ATFolder):
     """Contact information of an organization"""
     implements(IOrganization)
 

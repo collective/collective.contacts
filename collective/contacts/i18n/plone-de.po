@@ -56,15 +56,15 @@ msgid "Group"
 msgstr "Gruppe"
 
 #: ./profiles/default/types/Address_Book.xml
-msgid "organizations"
+msgid "list_organizations"
 msgstr "Organisationen"
 
 #: ./profiles/default/types/Address_Book.xml
-msgid "persons"
+msgid "list_persons"
 msgstr "Personen"
 
 #: ./profiles/default/types/Address_Book.xml
-msgid "groups"
+msgid "list_groups"
 msgstr "Gruppen"
 
 #: ./profiles/default/types/Address_Book.xml

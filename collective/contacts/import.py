@@ -5,6 +5,7 @@ from zLOG import LOG, INFO, WARNING
 from config import PROJECTNAME
 
 from zope.interface import implements
+from zope.component import getAdapter
 
 from Products.CMFCore.utils import getToolByName
 
@@ -60,12 +61,11 @@ class PersonCSVImport(object):
     
         # I now have all persons in my results, so i should start adding them to
         # the site
-        search = ISearch(self.context)
+        search = getAdapter(self.context, interface=ISearch, name="organization")
         for person in results:
             organization = None
             if person['organization']:
-                organization = search.search({'object_provides': IOrganization.__identifier__,
-                                              'id': person['organization']})
+                organization = search.search({'id': person['organization']})
     
             if organization and len(organization)>1:
                 LOG(PROJECTNAME, WARNING, 'There are %s organizations with the same id, '
