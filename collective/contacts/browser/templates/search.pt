@@ -47,20 +47,32 @@
             </form>
           </div>
           <div class="contacts-list"
+               tal:define="batch view/batch;
+                           template_id view/template_id"
                tal:condition="view/table/rows">
             <form action="#" method="post"
                   tal:attributes="action string:${view/search_url}">
+
+              <div metal:use-macro="here/batch_macros/macros/navigation" />
   
               <table tal:replace="structure view/results" />
-              
+
+              <div metal:use-macro="here/batch_macros/macros/navigation" />
+    
               <div class="formControls">
-                <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to" class="context visualNoPrint">
-                <input name="form.button.export" value="Export selected" type="submit" i18n:attributes="value label_export_selected" class="context visualNoPrint">
-                <input type="submit" name="form.button.advanced" class="context visualNoPrint"
-                       value="Search Again"
-                       i18n:attributes="value label_do_another_search"
-                       tal:condition="view/advanced_url"
-                       />
+                <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to" class="context visualNoPrint"/>
+                <input name="form.button.export" value="Export selected" type="submit" tal:condition="view/exportFormats" i18n:attributes="value label_export_selected" class="context visualNoPrint"/>
+                <input name="form.button.exportsearch" value="Export all" type="submit" tal:condition="view/exportFormats" i18n:attributes="value label_export_all" class="context visualNoPrint"/>
+                <tal:format condition="view/exportFormats">
+                <br /><br />
+                <label><span tal:omit-tag="python:1" i18n:translate="">Export format:</span>
+                <select name="form.exportformat" size="1">
+                  <option tal:repeat="format view/exportFormats"
+                          tal:attributes="value format/value"
+                          tal:content="format/title">CSV</option>
+                </select>
+                </label>
+                </tal:format>
               </div>
             </form>
           </div>

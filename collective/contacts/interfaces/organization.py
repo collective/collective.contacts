@@ -34,7 +34,7 @@ class IOrganization(Interface):
         title=_(u"ZIP"),
         required=False,
     )
-    extra_address = schema.TextLine(
+    extraAddress = schema.TextLine(
         title=_(u"Extra Address Info"),
         required=False,
     )

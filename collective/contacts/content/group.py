@@ -9,9 +9,15 @@ from Products.ATContentTypes.content import schemata
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import \
     ReferenceBrowserWidget
 
+from plone.indexer import indexer
+
 from collective.contacts import contactsMessageFactory as _
 from collective.contacts.interfaces import IGroup
 from collective.contacts.config import PROJECTNAME
+    
+@indexer(IGroup)
+def members(obj):
+    return len(obj.persons)
 
 GroupSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 

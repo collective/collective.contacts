@@ -19,6 +19,13 @@
       <p tal:condition="view/error">
         <strong tal:content="view/error">There are no persons available.</strong>
       </p>
+        
+      <form action="#" method="post" tal:condition="view/error"
+            tal:attributes="action view/search_url">
+        <div class="formControls">
+          <input name="form.button.import" value="Import organizations or persons" type="submit" tal:condition="view/canImport" i18n:attributes="value label_import_organizations_persons" class="context visualNoPrint"/>
+        </div>
+      </form>
       
       <div class="contacts-list"
            tal:condition="not:view/error"
@@ -28,7 +35,7 @@
               tal:condition="view/search_url"
               tal:attributes="action view/search_url">
           <div class="formControls">
-            <input name="SearchableText"/>
+            <input name="form.SearchableText"/>
             <input type="submit" name="quicksearch"
                    class="context"
                    value="Quick Search"
@@ -54,10 +61,20 @@
 
           <div class="formControls">
             <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to" class="context visualNoPrint"/>
-            <input name="form.button.export" value="Export selected" type="submit" i18n:attributes="value label_export_selected" class="context visualNoPrint"/>
+            <input name="form.button.export" value="Export selected" type="submit" tal:condition="view/exportFormats" i18n:attributes="value label_export_selected" class="context visualNoPrint"/>
             <br /><br />
-            <input name="form.button.exportall" value="Export all" type="submit" tal:condition="view/export_url" i18n:attributes="value label_export_all" class="context visualNoPrint"/>
+            <input name="form.button.exportall" value="Export all" type="submit" tal:condition="view/exportFormats" i18n:attributes="value label_export_all" class="context visualNoPrint"/>
             <input name="form.button.import" value="Import organizations or persons" type="submit" tal:condition="view/canImport" i18n:attributes="value label_import_organizations_persons" class="context visualNoPrint"/>
+            <tal:format condition="view/exportFormats">
+            <br /><br />
+            <label><span tal:omit-tag="python:1" i18n:translate="">Export format:</span>
+            <select name="form.exportformat" size="1">
+              <option tal:repeat="format view/exportFormats"
+                      tal:attributes="value format/value"
+                      tal:content="format/title">CSV</option>
+            </select>
+            </label>
+            </tal:format>
           </div>
 
         </form>

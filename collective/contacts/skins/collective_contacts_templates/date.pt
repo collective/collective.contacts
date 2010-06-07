@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="collective.contacts">
+
+  <head><title></title></head>
+
+  <body>
+
+    <!-- Date Widgets -->
+
+    <metal:view_macro define-macro="view"
+            tal:define="kssClassesView context/@@kss_field_decorator_view;
+                        getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;">
+        <div metal:define-macro="calendar-field-view"
+            tal:define="kss_class python:getKssClasses(fieldName,
+                        templateId='date', macro='date-field-view');
+                        date python:field.getLocalized(context);"
+            tal:attributes="class kss_class;
+                            id string:parent-fieldname-$fieldName">
+            <metal:inside define-slot="inside" tal:content="date">
+              08/01
+            </metal:inside>
+        </div>
+    </metal:view_macro>
+
+    <metal:define define-macro="edit"
+       tal:define="format widget/format">
+      <metal:use use-macro="field_macro | here/widgets/field/macros/edit">
+        <metal:fill fill-slot="widget_body">
+          <tal:define define="day python:field.getDay(context);
+                              month python:field.getMonth(context);">
+            <select name="month" size="1"
+                    tal:attributes="name string:${fieldName}_month">
+              <option value="" i18n:translate="">Month</option>
+              <tal:m repeat="m python:range(1, 13)">
+              <option value=""
+                      tal:attributes="value m;
+                                      selected python:m == month and 'selected' or ''"
+                      tal:content="m">1</option>
+              </tal:m>
+            </select>
+            <select name="day" size="1"
+                    tal:attributes="name string:${fieldName}_day">
+              <option value="" i18n:translate="">Day</option>
+              <tal:d repeat="d python:range(1, 32)">
+              <option value=""
+                      tal:attributes="value d;
+                                      selected python:d == day and 'selected' or ''"
+                      tal:content="d">1</option>
+              </tal:d>
+            </select>
+          </tal:define>
+        </metal:fill>
+      </metal:use>
+    </metal:define>
+
+    <metal:define define-macro="search">
+      <metal:field use-macro="here/date/macros/edit" />
+    </metal:define>
+
+  </body>
+
+</html>

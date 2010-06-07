@@ -2,17 +2,94 @@
 """Definition of the Person content type
 """
 
+from Acquisition import aq_parent 
+from AccessControl import ClassSecurityInfo
 from zope.interface import implements, directlyProvides
 
+from Products.CMFCore import permissions
+from Products.CMFPlone.CatalogTool import sortable_title
 from Products.Archetypes import atapi
+from Products.Archetypes.Widget import TypesWidget
+from Products.Archetypes.Registry import registerWidget, registerField
 from Products.ATContentTypes.content import base
 from Products.ATContentTypes.content import schemata
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import \
     ReferenceBrowserWidget
 
+from plone.indexer import indexer
+
 from collective.contacts import contactsMessageFactory as _
 from collective.contacts.interfaces import IPerson
 from collective.contacts.config import PROJECTNAME
+from collective.contacts.content import DeprecatedATFieldProperty
+
+class DateField(atapi.StringField):
+    security  = ClassSecurityInfo()
+    
+    def _split(self, instance, **kwargs):
+        try:
+            value = self.getStorage(instance).get(self.getName(), instance, **kwargs).split('/')
+            return value[0], value[1]
+        except:
+            return None, None
+
+    security.declareProtected(permissions.View, 'getLocalized')
+    def getLocalized(self, instance, **kwargs):
+        month, day = self._split(instance)
+        if not day or not month:
+            return ''
+        return _(u'date_format', default=u'${m}/${d}', mapping={'d': day,
+                                                                'm': month})
+
+    security.declareProtected(permissions.View, 'getDay')
+    def getDay(self, instance, **kwargs):
+        month, day = self._split(instance)
+        return day and int(day) or day
+
+    security.declareProtected(permissions.View, 'getMonth')
+    def getMonth(self, instance, **kwargs):
+        month, day = self._split(instance, **kwargs)
+        return month and int(month) or month
+
+class DateWidget(TypesWidget):
+    _properties = TypesWidget._properties.copy()
+    _properties.update({
+        'macro' : "date",
+        })
+    security = ClassSecurityInfo()
+
+    security.declarePublic('process_form')
+    def process_form(self, instance, field, form, empty_marker=None,
+                     emptyReturnsMarker=False, validating=True):
+        """Basic impl for form processing in a widget"""
+        fname = field.getName()
+        month = form.get('%s_month' % fname, 0)
+        day = form.get('%s_day' % fname, 0)
+        if month and day:
+            value = '%02d/%02d' % (int(month), int(day))
+        else:
+            value = ''
+        if emptyReturnsMarker and value == '':
+            return empty_marker
+        # stick it back in request.form
+        form[fname] = value
+        return value, {}
+    
+@indexer(IPerson)
+def organization(obj):
+    return obj.organization.UID()
+    
+@indexer(IPerson)
+def sortable_organization(obj):
+    return sortable_title(organization)
+
+@indexer(IPerson)
+def birthdate(obj):
+    field = obj.getField('birthdate')
+    month, day = field.getMonth(obj), field.getMonth(obj)
+    if not month or not day:
+        return '0000'
+    return '%02d%02d' % (month, day)
 
 PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 
@@ -58,6 +135,16 @@ PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         ),
         searchable=1,
         required=True,
+    ),
+
+    DateField(
+        'birthdate',
+        storage=atapi.AnnotationStorage(),
+        widget=DateWidget(
+            label=_(u"Date of birth"),
+            description=_(u"Person's date of birth"),
+        ),
+        required=False,
     ),
 
     atapi.ReferenceField(
@@ -321,17 +408,18 @@ class Person(base.ATCTContent):
     description = atapi.ATFieldProperty('description')
 
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
-    short_name = atapi.ATFieldProperty('shortName')
-    first_name = atapi.ATFieldProperty('firstName')
-    last_name = atapi.ATFieldProperty('lastName')
+    shortName = atapi.ATFieldProperty('shortName')
+    lastName = atapi.ATFieldProperty('lastName')
+    firstName = atapi.ATFieldProperty('firstName')
+    birthdate = atapi.ATFieldProperty('birthdate')
     organization = atapi.ATReferenceFieldProperty('organization')
     position = atapi.ATFieldProperty('position')
     department = atapi.ATFieldProperty('department')
-    work_phone = atapi.ATFieldProperty('workPhone')
-    work_mobile_phone = atapi.ATFieldProperty('workMobilePhone')
-    work_email = atapi.ATFieldProperty('workEmail')
-    work_email2 = atapi.ATFieldProperty('workEmail2')
-    work_email3 = atapi.ATFieldProperty('workEmail3')
+    workPhone = atapi.ATFieldProperty('workPhone')
+    workMobilePhone = atapi.ATFieldProperty('workMobilePhone')
+    workEmail = atapi.ATFieldProperty('workEmail')
+    workEmail2 = atapi.ATFieldProperty('workEmail2')
+    workEmail3 = atapi.ATFieldProperty('workEmail3')
     photo = atapi.ATFieldProperty('photo')
     address = atapi.ATFieldProperty('address')
     country = atapi.ATFieldProperty('country')
@@ -339,14 +427,25 @@ class Person(base.ATCTContent):
     city = atapi.ATFieldProperty('city')
     zip = atapi.ATFieldProperty('zip')
     phone = atapi.ATFieldProperty('phone')
-    mobile_phone = atapi.ATFieldProperty('mobilePhone')
+    mobilePhone = atapi.ATFieldProperty('mobilePhone')
     email = atapi.ATFieldProperty('email')
     web = atapi.ATFieldProperty('web')
     text = atapi.ATFieldProperty('text')
     
+    # deprecated properties
+    short_name = DeprecatedATFieldProperty('shortName', 'short_name')
+    last_name = DeprecatedATFieldProperty('lastName', 'last_name')
+    first_name = DeprecatedATFieldProperty('firstName', 'first_name')
+    work_phone = DeprecatedATFieldProperty('workPhone', 'work_phone')
+    work_mobile_phone = DeprecatedATFieldProperty('workMobilePhone', 'work_mobile_phone')
+    work_email = DeprecatedATFieldProperty('workEmail', 'work_email')
+    work_email2 = DeprecatedATFieldProperty('workEmail2', 'work_email2')
+    work_email3 = DeprecatedATFieldProperty('workEmail3', 'work_email3')
+    mobile_phone = DeprecatedATFieldProperty('mobilePhone', 'mobile_phone')
+    
     def _compute_title(self):
         """Compute title from last and first name"""
-        return '%s, %s' % (self.last_name, self.first_name)
+        return '%s, %s' % (self.lastName, self.firstName)
 
     def tag(self, **kwargs):
         """Generate image tag using the api of the ImageField
@@ -375,3 +474,13 @@ class Person(base.ATCTContent):
 
 
 atapi.registerType(Person, PROJECTNAME)
+
+registerField(DateField,
+              title='Date',
+              description='Used for storing dates without years')
+
+registerWidget(DateWidget,
+               title='Date',
+               description=('Renders a day and a month drop down'),
+               used_for=('collective.contacts.content.person.DateField',)
+               )

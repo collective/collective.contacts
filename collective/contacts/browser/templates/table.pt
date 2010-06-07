@@ -11,8 +11,9 @@
              id="pt_toggle"
              class="noborder"/>
     </th>
-    <th tal:repeat="header table/columns">
-      <span tal:content="header" i18n:translate="" />
+    <th tal:repeat="header table/columns"
+        tal:content="structure header">
+      Header
     </th>
   </tr>
   <tal:block repeat="row rows">

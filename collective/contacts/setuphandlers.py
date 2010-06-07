@@ -1,4 +1,22 @@
 # -*- coding: utf-8 -*-
+INDEXES = ['shortName',
+           'firstName',
+           'lastName',
+           'birthdate',
+           'organization',
+           'sortable_organization',
+           'position',
+           'department',
+           'address',
+           'country',
+           'state',
+           'city',
+           'zip',
+           'sector',
+           'sub_sector',
+           'members',
+           ]
+
 def importVarious(context):
     """
     Import various settings for collective.contacts
@@ -24,10 +42,12 @@ def importVarious(context):
 
 def reindexCatalog(context):
     """
-    This method will reindex the 2 new indexes added to the catalog
+    This method will reindex the 3 new indexes added to the catalog
     """
     from Products.CMFCore.utils import getToolByName
     site = context.getSite()
     cat = getToolByName(site, 'portal_catalog')
-    cat.reindexIndex('lastName', site.REQUEST)
-    cat.reindexIndex('firstName', site.REQUEST)
+    indexes = cat.indexes()
+    for index in INDEXES:
+        if index in indexes:
+            cat.reindexIndex(index, site.REQUEST)

@@ -10,17 +10,21 @@ class IPerson(Interface):
 
     # -*- schema definition goes here -*-
 
-    short_name = schema.TextLine(
+    shortName = schema.TextLine(
         title=_(u"Short Name"),
         required=False,
     )
-    first_name = schema.TextLine(
+    firstName = schema.TextLine(
         title=_(u"First Name"), 
         required=True,
     )
-    last_name = schema.TextLine(
+    lastName = schema.TextLine(
         title=_(u"Last Name"), 
         required=True,
+    )
+    birthdate = schema.TextLine(
+        title=_(u"Date of birth"),
+        required = False,
     )
     organization = schema.Object(
         title=_(u"Organization"),
@@ -35,23 +39,23 @@ class IPerson(Interface):
         title=_(u"Department"),
         required=False,
     )
-    work_phone = schema.TextLine(
+    workPhone = schema.TextLine(
         title=_(u"Work Phone Number"),
         required=False,
     )
-    work_mobile_phone = schema.TextLine(
+    workMobilePhone = schema.TextLine(
         title=_(u"Work Mobile Phone Number"),
         required=False,
     )
-    work_email = schema.TextLine(
+    workEmail = schema.TextLine(
         title=_(u"Work E-mail address"),
         required=False,
     )
-    work_email2 = schema.TextLine(
+    workEmail2 = schema.TextLine(
         title=_(u"2nd Work E-mail address (optional)"),
         required=False,
     )
-    work_email3 = schema.TextLine(
+    workEmail3 = schema.TextLine(
         title=_(u"3nd Work E-mail address (optional)"),
         required=False,
     )
@@ -85,7 +89,7 @@ class IPerson(Interface):
         title=_(u"Phone Number"),
         required=False,
     )
-    mobile_phone = schema.TextLine(
+    mobilePhone = schema.TextLine(
         title=_(u"Mobile Phone Number"),
         required=False,
     )

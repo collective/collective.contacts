@@ -1,6 +1,6 @@
 from Acquisition import aq_inner, aq_parent
 
-from zope.component import getMultiAdapter
+from zope.component import getMultiAdapter, getAdapters, queryMultiAdapter
 from plone.memoize.instance import memoize
 
 from Products.Five import BrowserView
@@ -10,9 +10,8 @@ from Products.CMFPlone.PloneBatch import Batch
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
-from collective.contacts.interfaces import IAddressBook, ITable
+from collective.contacts.interfaces import IAddressBook, ITable, IExport
 from collective.contacts import contactsMessageFactory as _
-from collective.contacts.export import exportPersons, exportOrganizations
 
 class AbstractListView(BrowserView):
     template = ViewPageTemplateFile('./templates/list.pt')
@@ -25,24 +24,30 @@ class AbstractListView(BrowserView):
         
     def __call__(self):
         self.error = None
+        self.table.reset()
         rows = self.table.rows()
         if not rows:
             self.error = self.error_msg
         self.batch = Batch(rows, self.page_size, self.request.form.get('b_start', 0))
         return self.template()
     
-    def canExport(self):
-        return not self.name == 'group'
+    @memoize
+    def exportFormats(self):
+        return [{'value': name,
+                 'title': adapter.title} for name, adapter in getAdapters((self.context,), IExport) if name.startswith('%s.' % self.name)]
     
+    @memoize
     def canImport(self):
         parent = aq_inner(self.context)
         while not IAddressBook.providedBy(parent):
             parent = aq_parent(parent)
         return _checkPermission(ModifyPortalContent, parent)
     
+    @memoize
     def hasAdvancedSearch(self):
-        return not self.name == 'group'
+        return queryMultiAdapter((self.context, self.request), name='find_%s' % self.name) is not None
     
+    @memoize
     def customize_url(self):
         if self.name == 'group':
             return None
@@ -50,6 +55,7 @@ class AbstractListView(BrowserView):
             return None
         return '%s/customize?customize.type=%s' % (self.context.absolute_url(), self.name)
     
+    @memoize
     def search_url(self):
         return '%s/search_%s' % (self.context.absolute_url(), self.name)
     

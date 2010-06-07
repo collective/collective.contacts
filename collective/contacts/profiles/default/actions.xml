@@ -39,4 +39,28 @@
    <property name="visible">True</property>
   </object>
  </object>
+ <object name="document_actions" meta_type="CMF Action Category">
+  <object name="vcf" meta_type="CMF Action" i18n:domain="collective.contacts">
+   <property name="title" i18n:translate="">vCard</property>
+   <property name="description" i18n:translate=""/>
+   <property name="url_expr">string:${object_url}/export.vcf</property>
+   <property name="icon_expr"/>
+   <property name="available_expr">python:object.meta_type in ('Person', 'Organization')</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="ics" meta_type="CMF Action" i18n:domain="collective.contacts">
+   <property name="title" i18n:translate="">vCal</property>
+   <property name="description" i18n:translate=""/>
+   <property name="url_expr">string:${object_url}/export.ics</property>
+   <property name="icon_expr"/>
+   <property name="available_expr">python:object.meta_type == 'Person'</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+ </object>
 </object>

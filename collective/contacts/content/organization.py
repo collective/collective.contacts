@@ -11,6 +11,7 @@ from Products.ATContentTypes.content import schemata
 from collective.contacts import contactsMessageFactory as _
 from collective.contacts.interfaces import IOrganization
 from collective.contacts.config import PROJECTNAME
+from collective.contacts.content import DeprecatedATFieldProperty
 
 OrganizationSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 
@@ -221,7 +222,7 @@ class Organization(base.ATCTContent):
     state = atapi.ATFieldProperty('state')
     city = atapi.ATFieldProperty('city')
     zip = atapi.ATFieldProperty('zip')
-    extra_address = atapi.ATFieldProperty('extraAddress')
+    extraAddress = atapi.ATFieldProperty('extraAddress')
     phone = atapi.ATFieldProperty('phone')
     fax = atapi.ATFieldProperty('fax')
     email = atapi.ATFieldProperty('email')
@@ -231,6 +232,8 @@ class Organization(base.ATCTContent):
     sector = atapi.ATFieldProperty('sector')
     sub_sector = atapi.ATFieldProperty('sub_sector')
     text = atapi.ATFieldProperty('text')
-
+    
+    # deprecated properties
+    extra_address = DeprecatedATFieldProperty('extraAddress', 'extra_address')
 
 atapi.registerType(Organization, PROJECTNAME)

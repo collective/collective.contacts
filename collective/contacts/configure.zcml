@@ -57,26 +57,76 @@
         name="contacts.sub_sectors"
         />
     
+    <!-- import -->
+    <adapter
+        factory=".import.PersonCSVImport"
+        for=".interfaces.IAddressBook"
+        provides=".interfaces.IImport"
+        name="person.csv"
+        />
+        
+    <adapter
+        factory=".import.OrganizationCSVImport"
+        for=".interfaces.IAddressBook"
+        provides=".interfaces.IImport"
+        name="organization.csv"
+        />
+    
+    <!-- export -->
+    <adapter
+        factory=".export.PersonCSVExport"
+        for="*"
+        provides=".interfaces.IExport"
+        name="person.csv"
+        />
+        
+    <adapter
+        factory=".export.OrganizationCSVExport"
+        for="*"
+        provides=".interfaces.IExport"
+        name="organization.csv"
+        />
+        
+    <adapter
+        factory=".export.PersonVCardExport"
+        for="*"
+        provides=".interfaces.IExport"
+        name="person.vcard"
+        />
+        
+    <adapter
+        factory=".export.PersonVCalendarExport"
+        for="*"
+        provides=".interfaces.IExport"
+        name="person.vcalendar"
+        />
+        
+    <adapter
+        factory=".export.OrganizationVCardExport"
+        for="*"
+        provides=".interfaces.IExport"
+        name="organization.vcard"
+        />
 
     <!-- columns -->
     <adapter
         factory=".columns.PersonColumns"
         for="*"
-        provides="collective.contacts.interfaces.ICustomizableColumns"
+        provides=".interfaces.ICustomizableColumns"
         name="person"
         />
         
     <adapter
         factory=".columns.OrganizationColumns"
         for="*"
-        provides="collective.contacts.interfaces.ICustomizableColumns"
+        provides=".interfaces.ICustomizableColumns"
         name="organization"
         />
         
     <adapter
         factory=".columns.GroupColumns"
         for="*"
-        provides="collective.contacts.interfaces.ICustomizableColumns"
+        provides=".interfaces.ICustomizableColumns"
         name="group"
         />
         
@@ -84,25 +134,25 @@
     <adapter
         factory=".search.Search"
         for="*"
-        provides="collective.contacts.interfaces.ISearch"
+        provides=".interfaces.ISearch"
         />
         
     <adapter
         factory=".search.AddressBookSearch"
-        for="collective.contacts.interfaces.IAddressBook"
-        provides="collective.contacts.interfaces.ISearch"
+        for=".interfaces.IAddressBook"
+        provides=".interfaces.ISearch"
         />
         
     <adapter
         factory=".search.OrganizationSearch"
-        for="collective.contacts.interfaces.IOrganization"
-        provides="collective.contacts.interfaces.ISearch"
+        for=".interfaces.IOrganization"
+        provides=".interfaces.ISearch"
         />
         
     <adapter
         factory=".search.GroupSearch"
-        for="collective.contacts.interfaces.IGroup"
-        provides="collective.contacts.interfaces.ISearch"
+        for=".interfaces.IGroup"
+        provides=".interfaces.ISearch"
         />
     
     <!-- table -->
@@ -110,7 +160,7 @@
         factory=".table.PersonTable"
         for="*
              zope.publisher.interfaces.browser.IBrowserRequest"
-        provides="collective.contacts.interfaces.ITable"
+        provides=".interfaces.ITable"
         name="person"
         />
     
@@ -118,7 +168,7 @@
         factory=".table.OrganizationTable"
         for="*
              zope.publisher.interfaces.browser.IBrowserRequest"
-        provides="collective.contacts.interfaces.ITable"
+        provides=".interfaces.ITable"
         name="organization"
         />
     

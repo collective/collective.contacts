@@ -1,88 +1,80 @@
 from Acquisition import aq_inner, aq_parent
 
-from zope.interface import implements
+from zope.i18n import translate
+from zope.interface import implements, Interface
 from zope.component import adapts, getAdapter, getUtility
 from zope.schema.interfaces import IVocabularyFactory
 
+from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.PloneBatch import Batch
 from Products.Archetypes.Field import Image
 
 from collective.contacts.interfaces import ITable, ICustomizableColumns, IPerson, IOrganization, IGroup, ISearch
 
-class PersonTable(object):
-    """ Lists persons
+class AbstractTable(object):
+    """ Abstract table class
+    
+        Subclasses need to provide the following attributes:
+        
+        * iface: the Interface of the Objects to list
+        * default_sort: the default sorting (tuple of
+                        field, order pairs)
+        * name: the name of the corresponding CustomizableColumns
+                adapter
+        * attrs: list of attributes which may be searched for
+        
+        Additionally the following methods have to be implemented:
+        
+        * newSearch: returns whether a new search was issued or not
+        * email: see interfaces.ITable
     """
-    implements(ITable)
     
     def __init__(self, context, request):
         self.context = context
         self.request = request
-        self.cols = getAdapter(self.context, interface=ICustomizableColumns, name='person')
-        self.sort = (('lastName', 'asc'),
-                     ('firstName', 'asc'))
-        
-    def set_sort(self, sort):
-        self.sort = sort
+        self.cols = getAdapter(self.context, interface=ICustomizableColumns, name=self.name)
+        sort = self.request.get('sort_on', None)
+        sort_by = self.request.get('sort_by', 'asc')
+        self.sort = tuple([(on, sort_by == 'desc' and (by == 'asc' and 'desc' or 'asc') or by) for on, by in self.default_sort if not on == sort])
+        if sort is not None:
+            self.sort = ((sort, sort_by),) + self.sort
+            
+    def reset(self):
+        if not hasattr(self.request, 'SESSION'):
+            return
+        for attr in self.attrs:
+            if self.request.SESSION.has_key('%s.%s' % (self.name, attr)):
+                del self.request.SESSION['%s.%s' % (self.name, attr)]
         
     def columns(self):
-        return [self.cols.translate_column(column) for column in self.cols.get_columns()]
+        catalog = getToolByName(self.context, 'portal_catalog')
+        indexes = catalog.indexes()
+        base = self.request.get('URL')
+        columns = []
+        for column in self.cols.get_columns():
+            html = translate(self.cols.translate_column(column), context=self.request)
+            sortable = 'sortable_%s' % column
+            if column in indexes or sortable in indexes:
+                index = sortable in indexes and sortable or column
+                html = '<a href="%s?sort_on=%s&sort_by=%s">%s</a>' % (base, index, dict(self.sort).get(index, None) == 'asc' and 'desc' or 'asc', html)
+            columns.append(html)
+        return columns
     
     def rows(self):
-        attrs = {'short_name' : self.request.get('form.short_name', None),
-                 'first_name' : self.request.get('form.first_name', None),
-                 'last_name' : self.request.get('form.last_name', None),
-                 'organization' : self.request.get('form.organization', None),
-                 'position' : self.request.get('form.position', None),
-                 'department' : self.request.get('form.department', None),
-                 'work_phone' : self.request.get('form.work_phone', None),
-                 'work_mobile_phone' : self.request.get('form.work_mobile_phone', None),
-                 'work_email' : self.request.get('form.work_email', None),
-                 'address' : self.request.get('form.address', None),
-                 'city' : self.request.get('form.city', None),
-                 'zip' : self.request.get('form.zip', None),
-                 'country' : self.request.get('form.country', None),
-                 'state' : self.request.get('form.state', None),
-                 'phone' : self.request.get('form.phone', None),
-                 'mobile_phone' : self.request.get('form.mobile_phone', None),
-                 'email' : self.request.get('form.email', None),
-                 'web' : self.request.get('form.web', None),
-                 'text' : self.request.get('form.text', None),
-                 'SearchableText' : self.request.get('SearchableText', None),
-                 'object_provides': IPerson.__identifier__,
-        }
+        attrs = {'object_provides': self.iface.__identifier__}
+        if hasattr(self.request, 'SESSION'):
+            if self.newSearch():
+                attrs = {}
+                for attr in self.attrs:
+                    self.request.SESSION.set('%s.%s' % (self.name, attr), self.request.get('form.%s' % attr, None))
+                    
+            for attr in self.attrs:
+                attrs[attr] = self.request.SESSION.get('%s.%s' % (self.name, attr), None)
+        
         search = ISearch(self.context)
         results = search.search(query=attrs, sort=self.sort)
         if not results:
             return []
-    
-        #XXX: For some unknown reason, when this product was first developed
-        # i used different names for the fields than the ones from the
-        # schemas, so i need to do this ugly thing here. This should be
-        # removed when we have some unit tests and we can safely change
-        # the field names
-        match_field ={'title':'title',
-                      'shortName':'short_name',
-                      'firstName':'first_name',
-                      'lastName':'last_name',
-                      'organization':'organization',
-                      'position':'position',
-                      'department':'department',
-                      'workPhone':'work_phone',
-                      'workMobilePhone':'work_mobile_phone',
-                      'workEmail':'work_email',
-                      'phone':'phone',
-                      'mobilePhone':'mobile_phone',
-                      'email':'email',
-                      'web':'web',
-                      'address':'address',
-                      'city':'city',
-                      'zip':'zip',
-                      'country':'country',
-                      'state':'state',
-                      'workEmail2':'work_email2',
-                      'workEmail3':'work_email3',
-                      'photo':'photo',
-                      'text':'text'}
     
         columns = self.cols.get_columns()
         countries = getUtility(IVocabularyFactory, name='contacts.countries')(self.context)
@@ -111,215 +103,133 @@ class PersonTable(object):
                     if IOrganization.providedBy(value):
                         html += value.Title()
                 elif col == 'photo':
-                    photo = getattr(result, match_field[col], '')
+                    photo = getattr(result, col, '')
                     if isinstance(photo, Image):
                         html += result.tag(scale='thumb')
+                elif col == 'birthdate':
+                    msg = result.getField('birthdate').getLocalized(result)
+                    if msg:
+                        html += translate(msg, context=self.request)
                 else:
-                    html += getattr(result, match_field[col], '')
+                    html += getattr(result, col, '')
                 html += '</span>'
     
                 # If the column is the title (Full name), the short name, first
                 # name, or last name, i need to wrap it between <a> tags
-                if col == 'title' or\
-                   col == 'shortName' or\
-                   col == 'firstName' or\
-                   col == 'lastName':
-                    html = ('<a href="' + result.absolute_url() + '">' +
-                            html + '</a>')
+                if col in ('title', 'shortName', 'firstName', 'lastName'):
+                    html = '<a href="%s">%s</a>' % (result.absolute_url(), html)
     
                 # If the column is the organization, then i wrap it between
                 # <a> tags with the organization's URL
                 if col == 'organization':
                     value = getattr(result, col, '')
                     if IOrganization.providedBy(value):
-                        html = ('<a href="' + value.absolute_url() + '">' +
-                            html + '</a>')
+                        html = '<a href="%s">%s</a>' % (value.absolute_url(), html)
                             
                 # If the column is the email address (any of them), i need to
                 # wrap it between <a> tags with mailto:
-                if col == 'email' or\
-                   col == 'workEmail' or\
-                   col == 'workEmail2' or\
-                   col == 'workEmail3':
-                    html = ('<a href="mailto:' + getattr(result,\
-                                                         match_field[col],\
-                                                         '')\
-                                                        +'">' + html + '</a>')
+                if col in ('email', 'workEmail', 'workEmail2', 'workEmail3'):
+                    html = '<a href="mailto:%s">%s</a>' % (getattr(result, col, ''), html)
     
                 # If the column is the website field, i need also <a> tags
                 if col == 'web':
-                    html = ('<a href="' + getattr(result,\
-                                                         match_field[col],\
-                                                         '')\
-                                                       + '">' + html + '</a>')
+                    html = '<a href="%s">%s</a>' % (getattr(result, col, ''), html)
+                    
+                if col == 'members':
+                    html = len(result.persons)
     
                 row.append(html)
             rows.append({'object': result,
                          'cells': row})
         return rows
     
-    def email(self, person):
-        return person.email or person.work_email or person.work_email2 or person.work_email3 or None
 
-class OrganizationTable(object):
+class PersonTable(AbstractTable):
+    """ Lists persons
+    """
+    implements(ITable)
+    name = "person"
+    iface = IPerson
+    default_sort = (('lastName', 'asc'),
+                    ('firstName', 'asc'))
+    attrs = ['shortName',
+             'firstName',
+             'lastName',
+             'birthdate',
+             'organization',
+             'position',
+             'department',
+             'workPhone',
+             'workMobilePhone',
+             'workEmail',
+             'address',
+             'city',
+             'zip',
+             'country',
+             'state',
+             'phone',
+             'mobilePhone',
+             'email',
+             'web',
+             'text',
+             'SearchableText',]
+            
+    def newSearch(self):
+        return self.request.get('form.actions.label_search_persons', None) is not None or \
+               self.request.get('quicksearch', None) is not None
+    
+    def email(self, person):
+        return person.email or person.workEmail or person.workEmail2 or person.workEmail3 or None
+
+class OrganizationTable(AbstractTable):
     """ Lists organizations
     """
     implements(ITable)
-    
-    def __init__(self, context, request):
-        self.context = context
-        self.request = request
-        self.cols = getAdapter(self.context, interface=ICustomizableColumns, name='organization')
-        self.sort = 'sortable_title'
-        
-    def set_sort(self, sort):
-        self.sort = sort
-        
-    def columns(self):
-        return [self.cols.translate_column(column) for column in self.cols.get_columns()]
-    
-    def rows(self, sort='sortable_title'):
-        attrs = {'title' : self.request.get('form.title', None),
-                 'address' : self.request.get('form.address', None),
-                 'city' : self.request.get('form.city', None),
-                 'zip' : self.request.get('form.zip', None),
-                 'extra_adress' : self.request.get('form.extra_adress', None),
-                 'phone' : self.request.get('form.phone', None),
-                 'fax' : self.request.get('form.fax', None),
-                 'email' : self.request.get('form.email', None),
-                 'email2' : self.request.get('form.email2', None),
-                 'email3' : self.request.get('form.email3', None),
-                 'web' : self.request.get('form.web', None),
-                 'text' : self.request.get('form.text', None),
-                 'country' : self.request.get('form.country', None),
-                 'state' : self.request.get('form.state', None),
-                 'sector' : self.request.get('form.sector', None),
-                 'sub_sector' : self.request.get('form.sub_sector', None),
-                 'SearchableText' : self.request.get('SearchableText', None),
-                 'object_provides': IOrganization.__identifier__,
-                }
-        search = ISearch(self.context)
-        results = search.search(query=attrs, sort=self.sort)
-        if not results:
-            return []
-
-        #XXX: For some unknown reason, when this product was first developed
-        # i used different names for the fields than the ones from the
-        # schemas, so i need to do this ugly thing here. This should be
-        # removed when we have some unit tests and we can safely change
-        # the field names
-        match_field ={'title':'title',
-                      'sector':'sector',
-                      'sub_sector':'sub_sector',
-                      'phone':'phone',
-                      'fax':'fax',
-                      'email':'email',
-                      'web':'web',
-                      'address':'address',
-                      'city':'city',
-                      'country':'country',
-                      'description':'description',
-                      'state':'state',
-                      'zip':'zip',
-                      'extraAddress':'extra_address',
-                      'email2':'email2',
-                      'email3':'email3',
-                      'text':'text'}
-    
-        columns = self.cols.get_columns()
-        countries = getUtility(IVocabularyFactory, name='contacts.countries')(self.context)
-        states = getUtility(IVocabularyFactory, name='contacts.states')(self.context)
-        rows = []
-        for result in results:
-            row = []
-            for col in columns:
-                html =''
-                html += '<span>'
-                if col == 'country':
-                    try:
-                        value = countries.getTerm(result.country).title
-                        if value:
-                            html += value
-                    except LookupError:
-                        pass
-                elif col == 'state':
-                    try:
-                        value = states.getTerm(result.state).title
-                        if value:
-                            html += value
-                    except LookupError:
-                        pass
-                else:
-                    html += getattr(result, match_field[col], '')
-                html += '</span>'
-    
-                # If the column is the title, i need to wrap it between <a> tags
-                if col == 'title':
-                    html = ('<a href="' + result.absolute_url() + '">' +
-                            html + '</a>')
-    
-                # If the column is the email address, i need to wrap it between <a>
-                # tags with mailto:
-                if col == 'email':
-                    html = ('<a href="mailto:' + getattr(result,\
-                                                         match_field[col],\
-                                                        '')\
-                                                        +'">' + html + '</a>')
-    
-                # If the column is the website field, i need also <a> tags
-                if col == 'web':
-                    html = ('<a href="' + getattr(result,\
-                                                  match_field[col],\
-                                                  '')\
-                                                  + '">' + html + '</a>')
-    
-                row.append(html)
-            rows.append({'object': result,
-                         'cells': row})
-        return rows
+    name = "organization"
+    iface = IOrganization
+    default_sort = (('sortable_title', 'asc'),)
+    attrs = ['title',
+             'address',
+             'city',
+             'zip',
+             'extraAddress',
+             'phone',
+             'fax',
+             'email',
+             'email2',
+             'email3',
+             'web',
+             'text',
+             'country',
+             'state',
+             'sector',
+             'sub_sector',
+             'SearchableText',]
+            
+    def newSearch(self):
+        return self.request.get('form.actions.label_search_organizations', None) is not None or \
+               self.request.get('quicksearch', None) is not None
     
     def email(self, organization):
         return organization.email or organization.email2 or organization.email3 or None
 
-class GroupTable(object):
+class GroupTable(AbstractTable):
     """ Lists groups
     """
     implements(ITable)
-    
-    def __init__(self, context, request):
-        self.context = context
-        self.request = request
-        self.cols = getAdapter(self.context, interface=ICustomizableColumns, name='group')
-        self.sort = 'sortable_title'
-        
-    def set_sort(self, sort):
-        self.sort = sort
-        
-    def columns(self):
-        return [self.cols.translate_column(column) for column in self.cols.get_columns()]
-    
-    def rows(self):
-        attrs = {'SearchableText' : self.request.get('SearchableText', None),
-                 'object_provides': IGroup.__identifier__,
-                }
-        search = ISearch(self.context)
-        results = search.search(query=attrs, sort=self.sort)
-        if not results:
-            return []
-    
-        rows = []
-        for result in results:
-            row = ['<a href="%s">%s</a>' % (result.absolute_url(), result.title),
-                   len(result.persons)]
-            rows.append({'object': result,
-                         'cells': row})
-        return rows
+    name = "group"
+    iface = IGroup
+    default_sort = (('sortable_title', 'asc'),)
+    attrs = ['SearchableText',]
+            
+    def newSearch(self):
+        return self.request.get('quicksearch', None) is not None
     
     def email(self, group):
         emails = []
         persons = group.persons
         for person in persons:
-            email = person.email or person.work_email or person.work_email2 or person.work_email3 or None
+            email = person.email or person.workEmail or person.workEmail2 or person.workEmail3 or None
             if email is not None:
                 emails.append(email)
         return ', '.join(emails)

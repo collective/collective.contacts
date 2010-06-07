@@ -1,9 +1,12 @@
+from zope.component import getAdapter, getAdapters
+from plone.memoize.instance import memoize
+
 from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 
+from collective.contacts.interfaces import IImport
 from collective.contacts import contactsMessageFactory as _
-from collective.contacts.imports import importCSVPersons, importCSVOrganizations
 
 class ImportView(BrowserView):
     """
@@ -11,6 +14,9 @@ class ImportView(BrowserView):
     """
 
     pt = ViewPageTemplateFile('./templates/import.pt')
+    labels = {'person': _('label_persons', default=u'Persons'),
+              'organization': _('label_organizations', default=u'Organizations'),
+              'group': _(u'Groups')}
 
     def __init__(self, context, request):
         self.context = context
@@ -23,16 +29,16 @@ class ImportView(BrowserView):
         if submitted:
             import_type = self.request.form.get('import_selection', False)
             import_file = self.request.form.get('import_file')
-            path = '/'.join(self.context.getPhysicalPath())
-
-            if import_type == 'persons':
-                # Call the persons import method
-                imported = importCSVPersons(self.context, path, import_file)
-                self.message = _(u'Successfuly imported ${number} persons', mapping={'number': imported})
-
-            elif import_type == 'organizations':
-                # Call the organizations import method
-                imported = importCSVOrganizations(self.context, path, import_file)
-                self.message = _(u'Successfuly imported ${number} organizations', mapping={'number': imported})
+            
+            # Call the import method
+            handler = getAdapter(self.context, interface=IImport, name=import_type)
+            imported = handler.importFile(import_file)
+            self.message = handler.successMsg(imported)
         
         return self.pt()
+    
+    @memoize
+    def importFormats(self):
+        return [{'value': name,
+                 'title': self.labels.get(name.split('.')[0], name.split('.')[0]),
+                 'format': adapter.title} for name, adapter in getAdapters((self.context,), IImport) if len(name.split('.'))>1]

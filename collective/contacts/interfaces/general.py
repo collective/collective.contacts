@@ -1,12 +1,8 @@
-from zope.interface import Interface
+from zope.interface import Interface, Attribute
 
 class ITable(Interface):
     """ List items in a table with custom columns
     """
-    
-    def set_sort(sort):
-        """ Defines the sorting (to be called before getting the rows)
-        """
     
     def columns():
         """ Returns a list of column headers
@@ -17,6 +13,10 @@ class ITable(Interface):
         
             object: the object itself
             cells: list of strings one per cell
+        """
+        
+    def reset():
+        """ Resets the search query stored in the session
         """
     
     def email(object):
@@ -53,5 +53,30 @@ class ICustomizableColumns(Interface):
         
     def translate_column(column):
         """ Translates a column
+        """
+        
+class IExport(Interface):
+    """ Provides format specific export functionality
+    """
+    title = Attribute("title", "The title of the export format")
+    
+    def export(request=None, objects=None):
+        """ Exports all/provided objects and sets the response header
+            if a request is provided otherwise returns the export data
+        """
+    
+class IImport(Interface):
+    """ Provides format specific import functionality
+    """
+    title = Attribute("title", "The title of the import format")
+    
+    def importFile(file):
+        """ Imports objects contained in the provided file and returns
+            the number of persons imported
+        """
+    
+    def successMsg(imported):
+        """ The internationalized message to be display to the user after
+            successfull import
         """
     

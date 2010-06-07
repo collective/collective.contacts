@@ -17,8 +17,6 @@ class Search(object):
         self.context = context
         
     def filter(self, o, query):
-        if not self.custom_filter(o, query):
-            return False
         for attr, value in query.items():
             data = getattr(o, attr, self._marker)
             if data is self._marker:
@@ -34,9 +32,6 @@ class Search(object):
                     data = ''
             if value.lower() not in data.lower():
                 return False
-        return True
-        
-    def custom_filter(self, o, query):
         return True
     
     def additional_query(self):
@@ -99,27 +94,19 @@ class OrganizationSearch(Search):
         parent = aq_parent(aq_inner(self.context))
         while not IAddressBook.providedBy(parent):
             parent = aq_parent(parent)
-        return {'path': '/'.join(parent.getPhysicalPath())}
-    
-    def custom_filter(self, o, query):
-        return o.organization and o.organization.getId() == self.context.getId()
+        return {'path': '/'.join(parent.getPhysicalPath()),
+                'organization': self.context.UID()}
 
 class GroupSearch(Search):
     """ Searches in a group
     """
     adapts(IGroup)
     
-    @property
-    def group_persons(self):
-        return self.context.persons
-    
     def additional_query(self):
         # find address book
         parent = aq_parent(aq_inner(self.context))
         while not IAddressBook.providedBy(parent):
             parent = aq_parent(parent)
-        return {'path': '/'.join(parent.getPhysicalPath())}
-    
-    def custom_filter(self, o, query):
-        return o in self.context.persons
+        return {'path': '/'.join(parent.getPhysicalPath()),
+                'UID': [person.UID() for person in self.context.persons]}
     
