@@ -5,13 +5,8 @@
     meta_type="Filesystem Directory View"
     directory="collective.contacts:skins/collective_contacts_templates" remove="True"/>
 
- <object name="collective_contacts_styles"
-    meta_type="Filesystem Directory View"
-    directory="collective.contacts:skins/collective_contacts_styles" remove="True"/>
-
  <skin-path name="*">
   <layer name="collective_contacts_templates" remove="True"/>
-  <layer name="collective_contacts_styles" remove="True"/>
  </skin-path>
 
 </object>
