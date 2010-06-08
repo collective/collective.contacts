@@ -28,3 +28,7 @@ class FindPersonForm(PageForm):
     @form.action(_('label_search_persons', default=u'Search Persons'))
     def action_search(self, action, data):
         pass
+
+    @form.action(_('label_cancel', default=u'Cancel'))
+    def action_search(self, action, data):
+        pass

@@ -1,14 +1,19 @@
+from zope.interface import implements
 from zope.component import getAdapter
 
+from plone.app.layout.globals.interfaces import IViewView
+from Products.statusmessages.interfaces import IStatusMessage
 from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from collective.contacts.interfaces import ICustomizableColumns
+from collective.contacts import contactsMessageFactory as _
 
 class CustomizeView(BrowserView):
     """
     Customize browser view
     """
+    implements(IViewView)
 
     pt = ViewPageTemplateFile('./templates/customize.pt')
 
@@ -17,7 +22,6 @@ class CustomizeView(BrowserView):
         self.request = request
 
     def __call__(self):
-        self.request.set('disable_border', 1)
         self.contenttype = self.request.get('customize.type', False)
         cancelled = self.request.form.get('form.button.cancel', False)
        
@@ -30,6 +34,8 @@ class CustomizeView(BrowserView):
 
         if submitted:
             self.columns.set_columns(self.request.form.get('selected', []))
+            statusmessage = IStatusMessage(self.request)
+            statusmessage.addStatusMessage(_(u'View successfully customized'), 'info')
             return self.redirect()
 
         return self.pt()

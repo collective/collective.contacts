@@ -11,9 +11,23 @@
       />
 
   <browser:page
+      for="..interfaces.IOrganization"
+      name="list_groups"
+      class=".organization.OrganizationGroupsView"
+      permission="zope.Public"
+      />
+
+  <browser:page
       for="..interfaces.IGroup"
       name="list_persons"
       class=".group.GroupView"
+      permission="zope.Public"
+      />
+
+  <browser:page
+      for="..interfaces.IGroup"
+      name="list_groups"
+      class=".group.GroupGroupsView"
       permission="zope.Public"
       />
 

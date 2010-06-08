@@ -14,4 +14,11 @@
       permission="zope.Public"
       />
 
+  <browser:viewlet
+      name="collective.contacts.actions"
+      manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
+      class=".actions.ContactsActionsViewlet"
+      permission="zope2.View" 
+      />
+
 </configure>

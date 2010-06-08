@@ -27,6 +27,8 @@ class FindOrganizationForm(PageForm):
 
     @form.action(_('label_search_organizations', default=u'Search Organizations'))
     def action_search(self, action, data):
-        """Send the notification
-        """
+        pass
+
+    @form.action(_('label_cancel', default=u'Cancel'))
+    def action_search(self, action, data):
         pass

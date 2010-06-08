@@ -5,16 +5,16 @@
 <body>
   <div metal:fill-slot="main">
     <tal:main-macro metal:define-macro="main">
+
+      <div tal:replace="structure provider:plone.abovecontenttitle" />
           
       <h1 class="documentFirstHeading" tal:content="view/title">
         Persons
       </h1>
 
-      <a href="#" class="customize-view"
-         tal:attributes="href view/customize_url"
-         tal:condition="view/customize_url">
-        <span i18n:translate="customize_view">Customize view</span>
-      </a>
+      <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+      <div tal:replace="structure provider:plone.abovecontentbody" />
 
       <p tal:condition="view/error">
         <strong tal:content="view/error">There are no persons available.</strong>
@@ -44,41 +44,71 @@
             <input type="submit" name="form.button.advanced"
                    class="context"
                    value="Advanced Search"
-                   tal:condition="view/hasAdvancedSearch"
+                   tal:condition="view/advanced_url"
                    i18n:attributes="value label_advanced_search"
                    />
           </div>
         </form>
         
         <form action="#" method="post"
-            tal:attributes="action view/search_url">
+              tal:attributes="action view/search_url">
+              
+          <input type="hidden" name="form.camefrom" value="list_persons" tal:attributes="value template_id" />
 
           <div metal:use-macro="here/batch_macros/macros/navigation" />
         
           <table tal:replace="structure view/results" />
 
-          <div metal:use-macro="here/batch_macros/macros/navigation" />
-
           <div class="formControls">
-            <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to" class="context visualNoPrint"/>
-            <input name="form.button.export" value="Export selected" type="submit" tal:condition="view/exportFormats" i18n:attributes="value label_export_selected" class="context visualNoPrint"/>
-            <br /><br />
-            <input name="form.button.exportall" value="Export all" type="submit" tal:condition="view/exportFormats" i18n:attributes="value label_export_all" class="context visualNoPrint"/>
-            <input name="form.button.import" value="Import organizations or persons" type="submit" tal:condition="view/canImport" i18n:attributes="value label_import_organizations_persons" class="context visualNoPrint"/>
-            <tal:format condition="view/exportFormats">
-            <br /><br />
-            <label><span tal:omit-tag="python:1" i18n:translate="">Export format:</span>
-            <select name="form.exportformat" size="1">
+            <input name="form.button.mailto"
+                   value="Send mail to"
+                   class="context visualNoPrint"
+                   type="submit"
+                   i18n:attributes="value label_send_mail_to"
+                   />
+            <input name="form.button.export"
+                   value="Export selected"
+                   class="context visualNoPrint"
+                   type="submit"
+                   tal:condition="view/exportFormats"
+                   i18n:attributes="value label_export_selected"
+                   />
+          </div>
+
+          <div metal:use-macro="here/batch_macros/macros/navigation" />
+          
+          <hr tal:condition="python: not (batch.next or batch.previous)" />
+          
+          <div class="exportFormats" tal:condition="view/exportFormats">
+            <label for="form.exportformat" i18n:translate="">Export format:</label>
+            <select id="form.exportformat" name="form.exportformat" size="1">
               <option tal:repeat="format view/exportFormats"
                       tal:attributes="value format/value"
                       tal:content="format/title">CSV</option>
             </select>
-            </label>
-            </tal:format>
+          </div>
+          
+          <div class="formControls">
+            <input name="form.button.exportall"
+                   value="Export all"
+                   class="context visualNoPrint"
+                   type="submit"
+                   tal:condition="view/exportFormats"
+                   i18n:attributes="value label_export_all"
+                   />
+            <input name="form.button.import"
+                   value="Import organizations or persons"
+                   class="context visualNoPrint"
+                   type="submit"
+                   tal:condition="view/canImport"
+                   i18n:attributes="value label_import_organizations_persons"
+                   />
           </div>
 
         </form>
       </div>
+    
+      <div tal:replace="structure provider:plone.belowcontentbody" />
 
     </tal:main-macro>
   </div>

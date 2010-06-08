@@ -12,13 +12,6 @@
         Import organizations or persons
       </h1>
       
-      <tal:block condition="message">
-        <dl class="portalMessage info">
-          <dt i18n:translate="label_info">Info</dt>
-          <dd tal:content="message">message</dd>
-        </dl>
-      </tal:block>
-      
       <form action="#" method="post" enctype="multipart/form-data"
             tal:condition="view/importFormats"
             tal:attributes="action string:${context/absolute_url}/import">
@@ -39,7 +32,13 @@
         </div>
         <input type="hidden" name="import.submitted" value="1">
         <div class="formControls">
-          <input type="submit" name="submit" id="submit" class="context" i18n:attributes="value label_import_submit" value="Import">
+          <input type="submit"
+                 name="submit"
+                 value="Import"
+                 id="submit"
+                 class="context"
+                 i18n:attributes="value label_import_submit"
+                 />
         </div>
       </form>
       

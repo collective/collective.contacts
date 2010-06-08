@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-06-08 06:26+0000\n"
+"POT-Creation-Date: 2010-06-08 10:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,11 +16,6 @@ msgstr ""
 "Language-Name: Italian\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.contacts\n"
-
-#. Default: "${label_go_back} to correct."
-#: ./browser/templates/search.pt:15
-msgid "${label_go_back} to correct."
-msgstr "${label_go_back} per correggere."
 
 #: ./browser/ksscommands.py:104
 msgid "(no value)"
@@ -80,8 +75,16 @@ msgstr "Rubrica"
 msgid "An address book"
 msgstr "Una rubrica"
 
+#: ./export.py:287
+msgid "Birthday (vCal)"
+msgstr ""
+
 #: ./export.py:324
 msgid "Birthday of ${name}"
+msgstr ""
+
+#: ./export.py:222
+msgid "Business Card (vCard)"
 msgstr ""
 
 #: ./content/organization.py:59
@@ -89,7 +92,7 @@ msgid "City"
 msgstr "Città"
 
 #. Default: "Click ${label_here} if it is correct."
-#: ./browser/templates/search.pt:24
+#: ./browser/templates/search.pt:15
 msgid "Click ${label_here} if it is correct."
 msgstr "Click ${label_here} se corretto."
 
@@ -112,7 +115,7 @@ msgid "Date of birth"
 msgstr ""
 
 #. Default: "Day"
-#: ./skins/collective_contacts_templates/date.pt:46
+#: ./skins/collective_contacts/date.pt:46
 msgid "Day"
 msgstr ""
 
@@ -129,7 +132,7 @@ msgid "E-mail address"
 msgstr "E-mail"
 
 #. Default: "Export format:"
-#: ./browser/templates/list.pt:70
+#: ./browser/templates/list.pt:100
 msgid "Export format:"
 msgstr ""
 
@@ -154,7 +157,7 @@ msgid "Full Name"
 msgstr "Nome completo"
 
 #. Default: "Go back"
-#: ./browser/templates/search.pt:15
+#: ./browser/templates/search.pt:117
 msgid "Go back"
 msgstr "Indietro"
 
@@ -163,7 +166,7 @@ msgstr "Indietro"
 msgid "Group"
 msgstr "Gruppo"
 
-#: ./browser/import.py:19
+#: ./browser/import.py:20
 msgid "Groups"
 msgstr "Gruppi"
 
@@ -181,7 +184,7 @@ msgid "Mobile Phone Number"
 msgstr "Cellulare"
 
 #. Default: "Month"
-#: ./skins/collective_contacts_templates/date.pt:36
+#: ./skins/collective_contacts/date.pt:36
 msgid "Month"
 msgstr ""
 
@@ -190,7 +193,7 @@ msgid "Name"
 msgstr "Nome"
 
 #. Default: "Or ${label_go_back} to correct."
-#: ./browser/templates/search.pt:26
+#: ./browser/templates/search.pt:17
 msgid "Or ${label_go_back} to correct."
 msgstr "Oppure ${label_go_back} per correggere."
 
@@ -254,7 +257,7 @@ msgstr "Sotto-settore dell'organizzazione"
 msgid "Organization's web page or blog. Example: http://www.google.com"
 msgstr "Sito Web o Blog dell'organizzazione (es. http://www.google.com)"
 
-#: ./browser/list.py:84
+#: ./browser/list.py:96
 msgid "Organizations"
 msgstr "Organizzazioni"
 
@@ -331,7 +334,7 @@ msgstr "Cellulare ufficio della persona"
 msgid "Person's work phone number"
 msgstr "Telefono ufficio della persona"
 
-#: ./browser/list.py:75
+#: ./browser/list.py:86
 msgid "Persons"
 msgstr "Persone"
 
@@ -346,6 +349,10 @@ msgstr "Telefono"
 #: ./content/person.py:258
 msgid "Photo"
 msgstr "Foto"
+
+#: ./browser/import.py:37
+msgid "Please select a file to import"
+msgstr ""
 
 #: ./content/person.py:171
 msgid "Position"
@@ -395,6 +402,10 @@ msgstr "L'organizzazione a cui appartiene la persona"
 msgid "The persons that belong to this group"
 msgstr "Le persone che appartengono a questo gruppo"
 
+#: ./browser/customize.py:38
+msgid "View successfully customized"
+msgstr ""
+
 #: ./content/organization.py:148
 msgid "Web"
 msgstr "Web"
@@ -415,11 +426,11 @@ msgstr "Cellulare ufficio"
 msgid "Work Phone Number"
 msgstr "Telefono ufficio"
 
-#: ./browser/search.py:55
+#: ./browser/search.py:53
 msgid "You need to select at least one person or organization"
 msgstr "Devi selezionare almeno una persona o una organizzazione"
 
-#: ./browser/search.py:59
+#: ./browser/search.py:57
 msgid "You need to select at least one person or organization that has an email"
 msgstr "Devi selezionare almeno una persona o una organizzazione che abbiano una e-mail"
 
@@ -442,7 +453,7 @@ msgid "countries"
 msgstr "Paesi"
 
 #. Default: "Customize view"
-#: ./browser/templates/list.pt:16
+#: ./browser/actions.py:18
 msgid "customize_view"
 msgstr "Personalizza vista"
 
@@ -452,17 +463,17 @@ msgid "date_format"
 msgstr ""
 
 #. Default: "No results were found."
-#: ./browser/templates/search.pt:34
+#: ./browser/templates/search.pt:25
 msgid "description_no_results_found"
 msgstr "Nessun risultato trovato."
 
 #. Default: "go back"
-#: ./browser/templates/search.pt:26
+#: ./browser/templates/search.pt:17
 msgid "go back"
 msgstr "indietro"
 
 #. Default: "here"
-#: ./browser/templates/search.pt:24
+#: ./browser/templates/search.pt:15
 msgid "here"
 msgstr "qui"
 
@@ -472,37 +483,32 @@ msgid "label_advanced_search"
 msgstr "Ricerca avanzata"
 
 #. Default: "Cancel"
-#: ./browser/templates/customize.pt:50
+#: ./browser/templates/customize.pt:42
 msgid "label_cancel"
 msgstr "Annulla"
 
 #. Default: "Search Again"
-#: ./browser/templates/search.pt:40
+#: ./browser/templates/search.pt:32
 msgid "label_do_another_search"
 msgstr "Cerca ancora"
 
-#. Default: "Error"
-#: ./browser/templates/search.pt:12
-msgid "label_error"
-msgstr "Errore"
-
 #. Default: "Export all"
-#: ./browser/templates/list.pt:66
+#: ./browser/templates/list.pt:82
 msgid "label_export_all"
 msgstr "Esporta tutte"
 
 #. Default: "Export selected"
-#: ./browser/templates/list.pt:64
+#: ./browser/templates/list.pt:69
 msgid "label_export_selected"
 msgstr "Esporta selezionate"
 
 #. Default: "Your default e-mail client will be opened to send the email."
-#: ./browser/templates/search.pt:25
+#: ./browser/templates/search.pt:16
 msgid "label_help_send_mail"
 msgstr "Verrà aperto il tuo programma di posta per spedire l'e-mail."
 
 #. Default: "Import file"
-#: ./browser/templates/import.pt:26
+#: ./browser/templates/import.pt:19
 msgid "label_import_file"
 msgstr "Importa file"
 
@@ -512,27 +518,22 @@ msgid "label_import_organizations_persons"
 msgstr "Importa organizzazioni o persone"
 
 #. Default: "Selection"
-#: ./browser/templates/import.pt:30
+#: ./browser/templates/import.pt:23
 msgid "label_import_selection"
 msgstr "Selezione"
 
 #. Default: "Import"
-#: ./browser/templates/import.pt:42
+#: ./browser/templates/import.pt:35
 msgid "label_import_submit"
 msgstr "Importa"
 
-#. Default: "Info"
-#: ./browser/templates/customize.pt:12
-msgid "label_info"
-msgstr "Info"
-
 #. Default: "Organizations"
-#: ./browser/import.py:18
+#: ./browser/import.py:19
 msgid "label_organizations"
 msgstr "Organizzazioni"
 
 #. Default: "Persons"
-#: ./browser/import.py:17
+#: ./browser/import.py:18
 msgid "label_persons"
 msgstr "Persone"
 
@@ -542,7 +543,7 @@ msgid "label_quick_search"
 msgstr "Ricerca rapida"
 
 #. Default: "Save"
-#: ./browser/templates/customize.pt:44
+#: ./browser/templates/customize.pt:36
 msgid "label_save"
 msgstr "Salva"
 
@@ -557,12 +558,12 @@ msgid "label_search_persons"
 msgstr "Cerca persone"
 
 #. Default: "Send emails"
-#: ./browser/templates/search.pt:21
+#: ./browser/templates/search.pt:12
 msgid "label_send_emails"
 msgstr "Invia e-mail"
 
 #. Default: "You're about to send an email to the following addresses:"
-#: ./browser/templates/search.pt:22
+#: ./browser/templates/search.pt:13
 msgid "label_send_emails_text"
 msgstr "Stai per spedire un'e-mail a questi indirizzi:"
 
@@ -582,17 +583,22 @@ msgid "listingheader_groups_name"
 msgstr "Nome"
 
 #. Default: "There are no groups available"
-#: ./browser/list.py:92
+#: ./browser/list.py:105
 msgid "no_groups"
 msgstr ""
 
+#. Default: "There are no groups in this organization"
+#: ./browser/organization.py:16
+msgid "no_groups_in_organization"
+msgstr ""
+
 #. Default: "There are no organizations available"
-#: ./browser/list.py:83
+#: ./browser/list.py:95
 msgid "no_organizations"
 msgstr ""
 
 #. Default: "There are no persons available"
-#: ./browser/list.py:74
+#: ./browser/list.py:85
 msgid "no_persons"
 msgstr ""
 
@@ -606,8 +612,13 @@ msgstr ""
 msgid "no_persons_in_organization"
 msgstr ""
 
+#. Default: "There are no sub groups in this group"
+#: ./browser/group.py:16
+msgid "no_subgroups_in_group"
+msgstr ""
+
 #. Default: "Search results"
-#: ./browser/templates/search.pt:30
+#: ./browser/templates/search.pt:21
 msgid "search_results"
 msgstr "Risultati della ricerca"
 
@@ -616,17 +627,7 @@ msgid "states"
 msgstr "stati"
 
 #. Default: "Customize columns"
-#: ./browser/templates/customize.pt:17
+#: ./browser/templates/customize.pt:9
 msgid "title_customize_columns"
 msgstr "Personalizza colonne"
-
-#. Default: "vCal"
-#: ./profiles/default/actions.xml
-msgid "vCal"
-msgstr ""
-
-#. Default: "vCard"
-#: ./profiles/default/actions.xml
-msgid "vCard"
-msgstr ""
 

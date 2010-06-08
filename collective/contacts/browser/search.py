@@ -4,29 +4,28 @@ from AccessControl import Unauthorized
 from zope.component import getMultiAdapter, queryAdapter, queryMultiAdapter, getAdapters
 from plone.memoize.instance import memoize
 
-from Products.Five import BrowserView
+from Products.statusmessages.interfaces import IStatusMessage
 from Products.CMFCore.utils import getToolByName, _checkPermission
 from Products.CMFCore.permissions import ModifyPortalContent
 from Products.CMFPlone.PloneBatch import Batch
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
+from collective.contacts.browser.list import AbstractListView
 from collective.contacts.interfaces import ITable, IAddressBook, IExport
 from collective.contacts import contactsMessageFactory as _
 
-class AbstractSearchView(BrowserView):
+class AbstractSearchView(AbstractListView):
     """ Displays search results
     """
-
     template = ViewPageTemplateFile('./templates/search.pt')
-    table_template = ViewPageTemplateFile('./templates/table.pt')
-
-    def __init__(self, context, request):
-        self.context = context
-        self.request = request
         
     def __call__(self):
         self.request.set('disable_border', 1)
+        # redirect on cancel
+        if self.request.get('form.actions.label_cancel'):
+            return self.request.response.redirect('%s/list_%ss' % (self.context.absolute_url(), self.name))
+        
         # redirect on import
         if self.request.get('form.button.import', None) is not None:
             parent = aq_inner(self.context)
@@ -45,7 +44,6 @@ class AbstractSearchView(BrowserView):
         exportformat = self.request.get('form.exportformat', 'csv')
         advanced = self.request.get('form.button.advanced', None) is not None
         
-        self.table = getMultiAdapter((self.context, self.request), interface=ITable, name=self.name)
         rows = self.table.rows()
         self.batch = Batch(rows, self.page_size, self.request.form.get('b_start', 0))
         
@@ -65,7 +63,12 @@ class AbstractSearchView(BrowserView):
                 handler = queryAdapter(self.context, interface=IExport, name='%s.csv' % self.name)
             return handler.export(self.request, (export or exportsearch) and selection or None)
         elif advanced:
-            return self.request.RESPONSE.redirect(self.advanced_url)
+            return self.request.RESPONSE.redirect(self.advanced_url())
+        
+        if self.error:
+            statusmessage = IStatusMessage(self.request)
+            statusmessage.addStatusMessage(self.error, 'error')
+            return self.request.response.redirect(self.back_url())
         
         return self.template()
     
@@ -86,27 +89,14 @@ class AbstractSearchView(BrowserView):
         return ', '.join(set(emails))
     
     @memoize
-    def exportFormats(self):
-        return [{'value': name,
-                 'title': adapter.title} for name, adapter in getAdapters((self.context,), IExport) if name.startswith('%s.' % self.name)]
-    
-    @property
-    @memoize
-    def advanced_url(self):
-        if queryMultiAdapter((self.context, self.request), name='find_%s' % self.name) is None:
+    def customize_url(self):
+        if getattr(self, 'mailto', None):
             return None
-        return '%s/find_%s' % (self.context.absolute_url(), self.name)
-    
-    @property
-    @memoize
-    def search_url(self):
-        return '%s/search_%s' % (self.context.absolute_url(), self.name)
+        return super(AbstractSearchView, self).customize_url()
     
     @memoize
-    def results(self):
-        if not self.table:
-            return None
-        return self.table_template(table=self.table, batch=self.batch)
+    def back_url(self):
+        return '%s/%s' % (self.context.absolute_url(), self.request.get('form.camefrom', 'list_%ss' % self.name))
 
 class PersonSearchView(AbstractSearchView):
     """ Displays person search results

@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.contacts\n"
-"POT-Creation-Date: 2010-06-08 06:26+0000\n"
+"POT-Creation-Date: 2010-06-08 10:15+0000\n"
 "PO-Revision-Date: 2010-05-25 10:42+0100\n"
 "Last-Translator: Simon Kaeser <skaeser@raptus.com>\n"
 "Language-Team: German <skaeser@raptus.com>\n"
@@ -17,11 +17,6 @@ msgstr ""
 "Domain: collective.contacts\n"
 "Preferred-encodings: utf-8 latin1\n"
 "X-is-fallback-for: de-ch de-de de-at de-li de-lu\n"
-
-#. Default: "${label_go_back} to correct."
-#: ./browser/templates/search.pt:15
-msgid "${label_go_back} to correct."
-msgstr "${label_go_back} zur Korrektur."
 
 #: ./browser/ksscommands.py:104
 msgid "(no value)"
@@ -81,16 +76,24 @@ msgstr "Adressbuch"
 msgid "An address book"
 msgstr "Ein Adressbuch"
 
+#: ./export.py:287
+msgid "Birthday (vCal)"
+msgstr "Geburtstag (vCal)"
+
 #: ./export.py:324
 msgid "Birthday of ${name}"
 msgstr "Geburtstag von ${name}"
+
+#: ./export.py:222
+msgid "Business Card (vCard)"
+msgstr "Visitenkarte (vCard)"
 
 #: ./content/organization.py:59
 msgid "City"
 msgstr "Stadt"
 
 #. Default: "Click ${label_here} if it is correct."
-#: ./browser/templates/search.pt:24
+#: ./browser/templates/search.pt:15
 msgid "Click ${label_here} if it is correct."
 msgstr "Klicken Sie ${label_here} falls dies korrekt ist."
 
@@ -113,7 +116,7 @@ msgid "Date of birth"
 msgstr "Geburtsdatum"
 
 #. Default: "Day"
-#: ./skins/collective_contacts_templates/date.pt:46
+#: ./skins/collective_contacts/date.pt:46
 msgid "Day"
 msgstr "Tag"
 
@@ -130,7 +133,7 @@ msgid "E-mail address"
 msgstr "Emailadresse"
 
 #. Default: "Export format:"
-#: ./browser/templates/list.pt:70
+#: ./browser/templates/list.pt:100
 msgid "Export format:"
 msgstr "Exportformat:"
 
@@ -155,7 +158,7 @@ msgid "Full Name"
 msgstr "Vollständiger Name"
 
 #. Default: "Go back"
-#: ./browser/templates/search.pt:15
+#: ./browser/templates/search.pt:117
 msgid "Go back"
 msgstr "Zurück"
 
@@ -165,7 +168,7 @@ msgid "Group"
 msgstr "Gruppe"
 
 #. Default: "Groups"
-#: ./browser/import.py:19
+#: ./browser/import.py:20
 msgid "Groups"
 msgstr "Gruppen"
 
@@ -183,7 +186,7 @@ msgid "Mobile Phone Number"
 msgstr "Mobile Telefonnummer"
 
 #. Default: "Month"
-#: ./skins/collective_contacts_templates/date.pt:36
+#: ./skins/collective_contacts/date.pt:36
 msgid "Month"
 msgstr "Monat"
 
@@ -192,7 +195,7 @@ msgid "Name"
 msgstr "Name"
 
 #. Default: "Or ${label_go_back} to correct."
-#: ./browser/templates/search.pt:26
+#: ./browser/templates/search.pt:17
 msgid "Or ${label_go_back} to correct."
 msgstr "Oder gehen Sie zur Korrektur ${label_go_back}."
 
@@ -257,7 +260,7 @@ msgid "Organization's web page or blog. Example: http://www.google.com"
 msgstr "Webseite oder Blog der Organisation. Beispiel: http://www.google.com"
 
 #. Default: "Organizations"
-#: ./browser/list.py:84
+#: ./browser/list.py:96
 msgid "Organizations"
 msgstr "Organisationen"
 
@@ -334,7 +337,7 @@ msgstr "Geschäftliche mobile Telefonnummer der Person"
 msgid "Person's work phone number"
 msgstr "Geschäftliche Telefonnummer der Person"
 
-#: ./browser/list.py:75
+#: ./browser/list.py:86
 msgid "Persons"
 msgstr "Personen"
 
@@ -349,6 +352,10 @@ msgstr "Telefonnummer"
 #: ./content/person.py:258
 msgid "Photo"
 msgstr "Foto"
+
+#: ./browser/import.py:37
+msgid "Please select a file to import"
+msgstr "Bitte wählen Sie eine Datei für den Import aus"
 
 #: ./content/person.py:171
 msgid "Position"
@@ -398,6 +405,10 @@ msgstr "Die Organisation zu der diese Person gehört"
 msgid "The persons that belong to this group"
 msgstr "Die Personen welche zu dieser Gruppe gehören"
 
+#: ./browser/customize.py:38
+msgid "View successfully customized"
+msgstr "Ansicht wurde erfolgreich angepasst"
+
 #: ./content/organization.py:148
 msgid "Web"
 msgstr "Webseite"
@@ -418,11 +429,11 @@ msgstr "Geschäftliche mobile Telefonnummer"
 msgid "Work Phone Number"
 msgstr "Geschäftliche Telefonnummer"
 
-#: ./browser/search.py:55
+#: ./browser/search.py:53
 msgid "You need to select at least one person or organization"
 msgstr "Es muss mindestens eine Person oder Organisation ausgewählt werden"
 
-#: ./browser/search.py:59
+#: ./browser/search.py:57
 msgid "You need to select at least one person or organization that has an email"
 msgstr "Es muss mindestens eine Person oder Organisation mit einer Emailadresse ausgewählt werden"
 
@@ -445,7 +456,7 @@ msgid "countries"
 msgstr "Länder"
 
 #. Default: "Customize view"
-#: ./browser/templates/list.pt:16
+#: ./browser/actions.py:18
 msgid "customize_view"
 msgstr "Ansicht anpassen"
 
@@ -455,17 +466,17 @@ msgid "date_format"
 msgstr "${d}.${m}."
 
 #. Default: "No results were found."
-#: ./browser/templates/search.pt:34
+#: ./browser/templates/search.pt:25
 msgid "description_no_results_found"
 msgstr "Keine Resultate gefunden."
 
 #. Default: "go back"
-#: ./browser/templates/search.pt:26
+#: ./browser/templates/search.pt:17
 msgid "go back"
 msgstr "zurück"
 
 #. Default: "here"
-#: ./browser/templates/search.pt:24
+#: ./browser/templates/search.pt:15
 msgid "here"
 msgstr "hier"
 
@@ -475,37 +486,32 @@ msgid "label_advanced_search"
 msgstr "Erweiterte Suche"
 
 #. Default: "Cancel"
-#: ./browser/templates/customize.pt:50
+#: ./browser/templates/customize.pt:42
 msgid "label_cancel"
 msgstr "Abbrechen"
 
 #. Default: "Search Again"
-#: ./browser/templates/search.pt:40
+#: ./browser/templates/search.pt:32
 msgid "label_do_another_search"
 msgstr "Erneut suchen"
 
-#. Default: "Error"
-#: ./browser/templates/search.pt:12
-msgid "label_error"
-msgstr "Fehler"
-
 #. Default: "Export all"
-#: ./browser/templates/list.pt:66
+#: ./browser/templates/list.pt:82
 msgid "label_export_all"
 msgstr "Alle exportieren"
 
 #. Default: "Export selected"
-#: ./browser/templates/list.pt:64
+#: ./browser/templates/list.pt:69
 msgid "label_export_selected"
 msgstr "Ausgewählte exportieren"
 
 #. Default: "Your default e-mail client will be opened to send the email."
-#: ./browser/templates/search.pt:25
+#: ./browser/templates/search.pt:16
 msgid "label_help_send_mail"
 msgstr "Ihr Standard-Emailprogramm wird zum Versenden der Email geöffnet."
 
 #. Default: "Import file"
-#: ./browser/templates/import.pt:26
+#: ./browser/templates/import.pt:19
 msgid "label_import_file"
 msgstr "Datei importieren"
 
@@ -515,27 +521,22 @@ msgid "label_import_organizations_persons"
 msgstr "Organisationen oder Personen importieren"
 
 #. Default: "Selection"
-#: ./browser/templates/import.pt:30
+#: ./browser/templates/import.pt:23
 msgid "label_import_selection"
 msgstr "Auswahl"
 
 #. Default: "Import"
-#: ./browser/templates/import.pt:42
+#: ./browser/templates/import.pt:35
 msgid "label_import_submit"
 msgstr "Importieren"
 
-#. Default: "Info"
-#: ./browser/templates/customize.pt:12
-msgid "label_info"
-msgstr "Information"
-
 #. Default: "Organizations"
-#: ./browser/import.py:18
+#: ./browser/import.py:19
 msgid "label_organizations"
 msgstr "Organisationen"
 
 #. Default: "Persons"
-#: ./browser/import.py:17
+#: ./browser/import.py:18
 msgid "label_persons"
 msgstr "Personen"
 
@@ -545,7 +546,7 @@ msgid "label_quick_search"
 msgstr "Schnellsuche"
 
 #. Default: "Save"
-#: ./browser/templates/customize.pt:44
+#: ./browser/templates/customize.pt:36
 msgid "label_save"
 msgstr "Speichern"
 
@@ -560,12 +561,12 @@ msgid "label_search_persons"
 msgstr "Personen suchen"
 
 #. Default: "Send emails"
-#: ./browser/templates/search.pt:21
+#: ./browser/templates/search.pt:12
 msgid "label_send_emails"
 msgstr "Emails versenden"
 
 #. Default: "You're about to send an email to the following addresses:"
-#: ./browser/templates/search.pt:22
+#: ./browser/templates/search.pt:13
 msgid "label_send_emails_text"
 msgstr "Sie sind dabei eine Email an folgende Adressen zu senden:"
 
@@ -585,17 +586,22 @@ msgid "listingheader_groups_name"
 msgstr "Name"
 
 #. Default: "There are no groups available"
-#: ./browser/list.py:92
+#: ./browser/list.py:105
 msgid "no_groups"
 msgstr "Es sind keine Gruppen vorhanden"
 
+#. Default: "There are no groups in this organization"
+#: ./browser/organization.py:16
+msgid "no_groups_in_organization"
+msgstr "Diese Organisation enthält keine Gruppen"
+
 #. Default: "There are no organizations available"
-#: ./browser/list.py:83
+#: ./browser/list.py:95
 msgid "no_organizations"
 msgstr "Es sind keine Organisationen vorhanden"
 
 #. Default: "There are no persons available"
-#: ./browser/list.py:74
+#: ./browser/list.py:85
 msgid "no_persons"
 msgstr "Es sind keine Personen vorhanden"
 
@@ -609,8 +615,13 @@ msgstr "Es sind keine Personen dieser Gruppe zugeordnet"
 msgid "no_persons_in_organization"
 msgstr "Es sind keine Personen dieser Organisation zugeordnet"
 
+#. Default: "There are no sub groups in this group"
+#: ./browser/group.py:16
+msgid "no_subgroups_in_group"
+msgstr "Diese Gruppe enthält keine Untergruppen"
+
 #. Default: "Search results"
-#: ./browser/templates/search.pt:30
+#: ./browser/templates/search.pt:21
 msgid "search_results"
 msgstr "Suchresultate"
 
@@ -619,17 +630,7 @@ msgid "states"
 msgstr "Bundesländer/Kantone"
 
 #. Default: "Customize columns"
-#: ./browser/templates/customize.pt:17
+#: ./browser/templates/customize.pt:9
 msgid "title_customize_columns"
 msgstr "Spalten anpassen"
-
-#. Default: "vCal"
-#: ./profiles/default/actions.xml
-msgid "vCal"
-msgstr ""
-
-#. Default: "vCard"
-#: ./profiles/default/actions.xml
-msgid "vCard"
-msgstr ""
 

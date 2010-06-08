@@ -1,6 +1,7 @@
 from zope.component import getAdapter, getAdapters
 from plone.memoize.instance import memoize
 
+from Products.statusmessages.interfaces import IStatusMessage
 from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
@@ -30,10 +31,16 @@ class ImportView(BrowserView):
             import_type = self.request.form.get('import_selection', False)
             import_file = self.request.form.get('import_file')
             
-            # Call the import method
-            handler = getAdapter(self.context, interface=IImport, name=import_type)
-            imported = handler.importFile(import_file)
-            self.message = handler.successMsg(imported)
+            statusmessage = IStatusMessage(self.request)
+            
+            if not import_file:
+                statusmessage.addStatusMessage(_(u'Please select a file to import'), 'error')
+            else:
+                # Call the import method
+                handler = getAdapter(self.context, interface=IImport, name=import_type)
+                imported = handler.importFile(import_file)
+                
+                statusmessage.addStatusMessage(handler.successMsg(imported), 'info')
         
         return self.pt()
     

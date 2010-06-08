@@ -5,6 +5,6 @@
 
     <!-- File System Directory Views registration -->
     <cmf:registerDirectory
-        name="collective_contacts_templates"/>
+        name="collective_contacts"/>
 
 </configure>

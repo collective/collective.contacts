@@ -1,0 +1,32 @@
+/* <dtml-with base_properties> */
+
+.contactsActions {
+  float:right;
+  clear:right;
+  font-size:0.9em;
+}
+
+.contactsActions ul {
+  list-style-type:none;
+}
+
+.contactsActions li {
+  display:inline;
+  margin-left:1em;
+}
+
+.contactsActions li a {
+  border:none;
+}
+
+.exportFormats {
+  float:right;
+  font-size:0.9em;
+  line-height:1.5em;
+}
+
+.backLink {
+  margin-top:1em;
+}
+
+/* </dtml-with> */

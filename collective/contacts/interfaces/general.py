@@ -31,6 +31,14 @@ class ISearch(Interface):
     def search(query={}, sort='sortable_title'):
         """ Search for items matching the query
         """
+        
+class ICustomizableView(Interface):
+    """ Marks a view as customizable
+    """
+    
+    def customize_url():
+        """ Returns the URL to customize a view
+        """
 
 class ICustomizableColumns(Interface):
     """ Provides customizable columns used by ITable

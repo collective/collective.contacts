@@ -3,99 +3,122 @@
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="collective.contacts">
 <body>
-  <div metal:fill-slot="main" tal:define="error view/error | nothing;
-                                          mail view/mailto | nothing">
+  <div metal:fill-slot="main" tal:define="mail view/mailto | nothing">
     <tal:main-macro metal:define-macro="main">
-      
-      <tal:error condition="error">
-        <dl class="portalMessage error">
-          <dt i18n:translate="label_error">Error</dt>
-          <dd tal:content="error">error message</dd>
-        </dl>
-        <p i18n:translate=""><span i18n:name="label_go_back"><a href="javascript:history.back()" i18n:translate="">Go back</a></span> to correct.</p>
-      </tal:error>
-      
-      <tal:noerror condition="not: error">
-        
-        <tal:mail condition="mail">
-          <h1 class="documentFirstHeading" i18n:translate="label_send_emails">Send emails</h1>
-          <p><strong i18n:translate="label_send_emails_text">You're about to send an email to the following addresses:</strong></p>
-          <p><span tal:content="mail"></span></p>
-          <p i18n:translate="">Click <span i18n:name="label_here"><a class="link" href="#" tal:attributes="href string:mailto:${mail}" i18n:translate="">here</a></span> if it is correct.</p>
-          <p i18n:translate="label_help_send_mail">Your default e-mail client will be opened to send the email.</p>
-          <p i18n:translate="">Or <span i18n:name="label_go_back"><a href="javascript:history.back()" i18n:translate="">go back</a></span> to correct.</p>
-        </tal:mail>
-        
-        <tal:results condition="not: mail">
-          <h1 class="documentFirstHeading" i18n:translate="search_results">Search results</h1>
-          
-          <div tal:condition="not: view/table/rows">
-            <p>
-              <strong i18n:translate="description_no_results_found">No results were found.</strong>
-            </p>
-            <form action="#" method="post" class="visualNoPrint"
-                  tal:attributes="action string:${view/search_url}">
-              
-              <div class="formControls">
-                <input type="submit" name="form.button.advanced"
-                       value="Search Again"
-                       class="context"
-                       i18n:attributes="value label_do_another_search"
-                       tal:condition="view/advanced_url"
-                       />
-              </div>
-            </form>
-          </div>
-          <div class="contacts-list"
-               tal:define="batch view/batch;
-                           template_id view/template_id"
-               tal:condition="view/table/rows">
-            <form action="#" method="post"
-                  tal:attributes="action string:${view/search_url}">
 
-              <div metal:use-macro="here/batch_macros/macros/navigation" />
+      <div tal:replace="structure provider:plone.abovecontenttitle" />
+      
+      <tal:mail condition="mail">
+        <h1 class="documentFirstHeading" i18n:translate="label_send_emails">Send emails</h1>
+        <p><strong i18n:translate="label_send_emails_text">You're about to send an email to the following addresses:</strong></p>
+        <p><span tal:content="mail"></span></p>
+        <p i18n:translate="">Click <span i18n:name="label_here"><a class="link" href="#" tal:attributes="href string:mailto:${mail}" i18n:translate="">here</a></span> if it is correct.</p>
+        <p i18n:translate="label_help_send_mail">Your default e-mail client will be opened to send the email.</p>
+        <p i18n:translate="">Or <span i18n:name="label_go_back"><a href="" tal:attributes="href view/back_url" i18n:translate="">go back</a></span> to correct.</p>
+      </tal:mail>
+      
+      <tal:results condition="not: mail">
+        <h1 class="documentFirstHeading" i18n:translate="search_results">Search results</h1>
+        
+        <div tal:condition="not: view/table/rows">
+          <p>
+            <strong i18n:translate="description_no_results_found">No results were found.</strong>
+          </p>
+          <form action="#" method="post" class="visualNoPrint"
+                tal:attributes="action string:${view/search_url}">
+            
+            <div class="formControls"
+                 tal:condition="view/advanced_url">
+              <input type="submit" name="form.button.advanced"
+                     value="Search Again"
+                     class="context"
+                     i18n:attributes="value label_do_another_search"
+                     tal:condition="not: view/quick"
+                     />
+              <input type="submit" name="form.button.advanced"
+                     value="Advanced Search"
+                     class="context"
+                     i18n:attributes="value label_advanced_search"
+                     tal:condition="view/quick"
+                     />
+            </div>
+          </form>
+        </div>
+        <div class="contacts-list"
+             tal:define="batch view/batch;
+                         template_id view/template_id"
+             tal:condition="view/table/rows">
+          <form action="#" method="post"
+                tal:attributes="action string:${view/search_url}">
+                  
+            <input type="hidden" name="form.camefrom" value="search_person" tal:attributes="value template_id" />
+
+            <div metal:use-macro="here/batch_macros/macros/navigation" />
+
+            <table tal:replace="structure view/results" />
   
-              <table tal:replace="structure view/results" />
+            <div class="formControls">
+              <input name="form.button.mailto"
+                     value="Send mail to"
+                     class="context visualNoPrint"
+                     type="submit"
+                     i18n:attributes="value label_send_mail_to"
+                     />
+              <input name="form.button.export"
+                     value="Export selected"
+                     class="context visualNoPrint"
+                     type="submit"
+                     tal:condition="view/exportFormats"
+                     i18n:attributes="value label_export_selected"
+                     />
+            </div>
 
-              <div metal:use-macro="here/batch_macros/macros/navigation" />
-    
-              <div class="formControls">
-                <input name="form.button.mailto" value="Send mail to" type="submit" i18n:attributes="value label_send_mail_to" class="context visualNoPrint"/>
-                <input name="form.button.export" value="Export selected" type="submit" tal:condition="view/exportFormats" i18n:attributes="value label_export_selected" class="context visualNoPrint"/>
-                <input name="form.button.exportsearch" value="Export all" type="submit" tal:condition="view/exportFormats" i18n:attributes="value label_export_all" class="context visualNoPrint"/>
-                <tal:format condition="view/exportFormats">
-                <br /><br />
-                <label><span tal:omit-tag="python:1" i18n:translate="">Export format:</span>
+            <div metal:use-macro="here/batch_macros/macros/navigation" />
+            
+            <hr tal:condition="python: not (batch.next or batch.previous)" />
+            
+            <div class="exportFormats" tal:condition="view/exportFormats">
+              <label><span tal:omit-tag="python:1" i18n:translate="">Export format:</span>
                 <select name="form.exportformat" size="1">
                   <option tal:repeat="format view/exportFormats"
                           tal:attributes="value format/value"
                           tal:content="format/title">CSV</option>
                 </select>
-                </label>
-                </tal:format>
-              </div>
-            </form>
-          </div>
-          <div class="bottom_search_buttons" tal:condition="view/quick">
-            <br/>
-            <form action="#" method="post" class="visualNoPrint"
-                  tal:attributes="action string:${view/advanced_url}">
-              <div class="formControls">
-                <input type="submit" name="form.button.advanced"
-                       value="Advanced Search"
-                       class="context"
-                       i18n:attributes="value label_advanced_search"
-                       tal:condition="view/advanced_url"
-                       />
-              </div>
-            </form>
-            <br/>
-            <a href = "javascript:history.back()" i18n:translate="" class="visualNoPrint">Go back</a>
-            <br/>
-          </div>
-        </tal:results>
+              </label>
+            </div>
+            
+            <div class="formControls">
+              <input name="form.button.exportsearch"
+                     value="Export all" 
+                     class="context visualNoPrint"
+                     type="submit"
+                     tal:condition="view/exportFormats"
+                     i18n:attributes="value label_export_all"
+                     />
+              <input name="form.button.advanced"
+                     value="Search Again"
+                     class="context visualNoPrint"
+                     type="submit"
+                     tal:condition="python:view.advanced_url() and not view.quick"
+                     i18n:attributes="value label_do_another_search"
+                     />
+              <input name="form.button.advanced"
+                     value="Advanced Search"
+                     class="context visualNoPrint"
+                     type="submit"
+                     tal:condition="python:view.advanced_url() and view.quick"
+                     i18n:attributes="value label_advanced_search"
+                     />
+            </div>
+          </form>
+        </div>
         
-      </tal:noerror>
+        <p class="backLink visualNoPrint">
+          <a href="" tal:attributes="href view/back_url" i18n:translate="">Go back</a>
+        </p>
+      </tal:results>
+  
+      <div tal:replace="structure provider:plone.belowcontentbody" />
         
     </tal:main-macro>
   </div>

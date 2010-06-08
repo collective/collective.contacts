@@ -1,7 +1,10 @@
 from Acquisition import aq_inner, aq_parent
 
+from zope.i18n import translate
+from zope.interface import implements
 from zope.component import getMultiAdapter, getAdapters, queryMultiAdapter
 from plone.memoize.instance import memoize
+from plone.app.layout.globals.interfaces import IViewView
 
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName, _checkPermission
@@ -10,10 +13,11 @@ from Products.CMFPlone.PloneBatch import Batch
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
-from collective.contacts.interfaces import IAddressBook, ITable, IExport
+from collective.contacts.interfaces import IAddressBook, ITable, IExport, ICustomizableView
 from collective.contacts import contactsMessageFactory as _
 
 class AbstractListView(BrowserView):
+    implements(ICustomizableView)
     template = ViewPageTemplateFile('./templates/list.pt')
     table_template = ViewPageTemplateFile('./templates/table.pt')
 
@@ -33,8 +37,12 @@ class AbstractListView(BrowserView):
     
     @memoize
     def exportFormats(self):
-        return [{'value': name,
-                 'title': adapter.title} for name, adapter in getAdapters((self.context,), IExport) if name.startswith('%s.' % self.name)]
+        def format_cmp(x, y):
+            return cmp(x['title'], y['title'])
+        formats = [{'value': name,
+                    'title': translate(adapter.title, context=self.request)} for name, adapter in getAdapters((self.context,), IExport) if name.startswith('%s.' % self.name)]
+        formats.sort(format_cmp)
+        return formats
     
     @memoize
     def canImport(self):
@@ -44,8 +52,10 @@ class AbstractListView(BrowserView):
         return _checkPermission(ModifyPortalContent, parent)
     
     @memoize
-    def hasAdvancedSearch(self):
-        return queryMultiAdapter((self.context, self.request), name='find_%s' % self.name) is not None
+    def advanced_url(self):
+        if queryMultiAdapter((self.context, self.request), name='find_%s' % self.name) is None:
+            return None
+        return '%s/find_%s' % (self.context.absolute_url(), self.name)
     
     @memoize
     def customize_url(self):
@@ -68,6 +78,7 @@ class AbstractListView(BrowserView):
 class PersonListView(AbstractListView):
     """ Lists persons
     """
+    implements(IViewView)
     template_id = 'list_persons'
     name = 'person'
     page_size = 20
@@ -77,6 +88,7 @@ class PersonListView(AbstractListView):
 class OrganizationListView(AbstractListView):
     """ Lists organizations
     """
+    implements(IViewView)
     template_id = 'list_organizations'
     name = 'organization'
     page_size = 20
@@ -86,6 +98,7 @@ class OrganizationListView(AbstractListView):
 class GroupListView(AbstractListView):
     """ Lists groups
     """
+    implements(IViewView)
     template_id = 'list_groups'
     name = 'group'
     page_size = 20
