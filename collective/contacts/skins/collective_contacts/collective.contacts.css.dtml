@@ -1,5 +1,9 @@
 /* <dtml-with base_properties> */
 
+.inlineForm .ArchetypesSelectionWidget label {
+  display:none;
+}
+
 .contactsActions {
   float:right;
   clear:right;
