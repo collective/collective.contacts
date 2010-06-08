@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.contacts\n"
-"POT-Creation-Date: 2010-06-07 13:05+0000\n"
+"POT-Creation-Date: 2010-06-08 06:26+0000\n"
 "PO-Revision-Date: 2010-05-25 10:42+0100\n"
 "Last-Translator: Simon Kaeser <skaeser@raptus.com>\n"
 "Language-Team: German <skaeser@raptus.com>\n"
@@ -81,7 +81,7 @@ msgstr "Adressbuch"
 msgid "An address book"
 msgstr "Ein Adressbuch"
 
-#: ./export.py:327
+#: ./export.py:324
 msgid "Birthday of ${name}"
 msgstr "Geburtstag von ${name}"
 
@@ -382,7 +382,7 @@ msgstr "Subsektor"
 msgid "Successfully imported ${number} organizations"
 msgstr "${number} Organisationen erfolgreich importiert"
 
-#: ./import.py:22
+#: ./import.py:23
 msgid "Successfully imported ${number} persons"
 msgstr "${number} Personen erfolgreich importiert"
 

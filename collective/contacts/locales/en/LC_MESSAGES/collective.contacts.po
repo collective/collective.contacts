@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-06-07 13:05+0000\n"
+"POT-Creation-Date: 2010-06-08 06:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,7 +77,7 @@ msgstr ""
 msgid "An address book"
 msgstr ""
 
-#: ./export.py:327
+#: ./export.py:324
 msgid "Birthday of ${name}"
 msgstr ""
 
@@ -378,7 +378,7 @@ msgstr ""
 msgid "Successfully imported ${number} organizations"
 msgstr ""
 
-#: ./import.py:22
+#: ./import.py:23
 msgid "Successfully imported ${number} persons"
 msgstr ""
 

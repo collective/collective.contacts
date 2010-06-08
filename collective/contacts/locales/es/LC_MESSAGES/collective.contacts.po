@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.contacts\n"
-"POT-Creation-Date: 2010-06-07 13:05+0000\n"
+"POT-Creation-Date: 2010-06-08 06:26+0000\n"
 "PO-Revision-Date: 2009-06-27 21:25-0300\n"
 "Last-Translator: Franco Pellegrini <franco.p@ifpeople.net>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -80,7 +80,7 @@ msgstr "Libreta de direcciones"
 msgid "An address book"
 msgstr "Una libreta de direcciones"
 
-#: ./export.py:327
+#: ./export.py:324
 msgid "Birthday of ${name}"
 msgstr ""
 
@@ -381,7 +381,7 @@ msgstr "Sub rubro"
 msgid "Successfully imported ${number} organizations"
 msgstr "${number} organizaciones importadas correctamente"
 
-#: ./import.py:22
+#: ./import.py:23
 msgid "Successfully imported ${number} persons"
 msgstr "${number} personas importadas correctamente"
 
