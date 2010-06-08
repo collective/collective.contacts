@@ -219,7 +219,7 @@ END:VCARD
 
 class PersonVCardExport(AbstractTemplateExport):
     implements(IExport)
-    title = "vCard"
+    title = _(u"Business Card (vCard)")
     
     contents = """N:%(lastName)s;%(firstName)s
 FN:%(title)s
@@ -255,7 +255,7 @@ REV:%(revision)s"""
 
 class OrganizationVCardExport(AbstractTemplateExport):
     implements(IExport)
-    title = "vCard"
+    title = _(u"Business Card (vCard)")
     
     contents = """N:%(title)s
 FN:%(title)s
@@ -276,7 +276,7 @@ REV:%(revision)s"""
     def export(self, request=None, objects=None):
         if not objects:
             if IOrganization.providedBy(self.context):
-                organizations = [self.context]
+                objects = [self.context]
             else:
                 search = getAdapter(self.context, interface=ISearch, name='organization')
                 objects = search.search()
@@ -284,7 +284,7 @@ REV:%(revision)s"""
 
 class PersonVCalendarExport(AbstractTemplateExport):
     implements(IExport)
-    title = "vCal"
+    title = _(u"Birthday (vCal)")
     
     global_template = """BEGIN:VCALENDAR
 VERSION:2.0
