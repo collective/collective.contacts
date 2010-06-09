@@ -8,6 +8,7 @@ from zope.interface import implements, directlyProvides
 
 from Products.CMFCore import permissions
 from Products.CMFPlone.CatalogTool import sortable_title
+from Products.CMFPlone.utils import safe_unicode
 from Products.Archetypes import atapi
 from Products.Archetypes.Widget import TypesWidget
 from Products.Archetypes.Registry import registerWidget, registerField
@@ -445,7 +446,7 @@ class Person(base.ATCTContent):
     
     def _compute_title(self):
         """Compute title from last and first name"""
-        return '%s, %s' % (self.lastName, self.firstName)
+        return safe_unicode('%s, %s' % (self.lastName, self.firstName))
 
     def tag(self, **kwargs):
         """Generate image tag using the api of the ImageField
