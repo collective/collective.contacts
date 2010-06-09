@@ -10,7 +10,6 @@ input#sectors\.sector{
 
 .contactsActions {
   float:right;
-  clear:right;
   font-size:0.9em;
 }
 
