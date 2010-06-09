@@ -12,6 +12,12 @@
         Import organizations or persons
       </h1>
       
+      <p class="discreet"
+         i18n:translate="">
+        When importing persons make sure the organizations associated with them exist.
+        Otherwise the persons can not be imported.
+      </p>
+      
       <form action="#" method="post" enctype="multipart/form-data"
             tal:condition="view/importFormats"
             tal:attributes="action string:${context/absolute_url}/import">
@@ -41,6 +47,16 @@
                  />
         </div>
       </form>
+      
+      <dl class="discreet" tal:condition="view/errors">
+        <dt i18n:translate="">
+          The following errors where raised during the import
+        </dt>
+        <dd tal:repeat="error view/errors"
+            tal:content="error">
+          Error
+        </dd>
+      </dl>
       
     </tal:main-macro>
   </div>
