@@ -122,11 +122,11 @@ msgstr "Tag"
 
 #: ./content/person.py:183
 msgid "Department"
-msgstr "Department"
+msgstr "Abteilung"
 
 #: ./content/person.py:184
 msgid "Department where this person works"
-msgstr "Department in welchem diese Person arbeitet"
+msgstr "Abteilung in welchem diese Person arbeitet"
 
 #: ./content/organization.py:112
 msgid "E-mail address"

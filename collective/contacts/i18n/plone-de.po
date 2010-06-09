@@ -32,7 +32,7 @@ msgstr " Mehr "
 
 # Default: " Work "
 msgid "label_schema_work"
-msgstr " Arbeit "
+msgstr " Geschäftlich "
 
 # this (below this line) is needed for the edit templates :(
 #. Default: "Address Book"
