@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.contacts\n"
-"POT-Creation-Date: 2010-06-08 10:15+0000\n"
+"POT-Creation-Date: 2010-06-08 14:42+0000\n"
 "PO-Revision-Date: 2010-05-25 10:42+0100\n"
 "Last-Translator: Simon Kaeser <skaeser@raptus.com>\n"
 "Language-Team: German <skaeser@raptus.com>\n"
@@ -133,7 +133,7 @@ msgid "E-mail address"
 msgstr "Emailadresse"
 
 #. Default: "Export format:"
-#: ./browser/templates/list.pt:100
+#: ./browser/templates/list.pt:83
 msgid "Export format:"
 msgstr "Exportformat:"
 
@@ -168,7 +168,7 @@ msgid "Group"
 msgstr "Gruppe"
 
 #. Default: "Groups"
-#: ./browser/import.py:20
+#: ./browser/import.py:21
 msgid "Groups"
 msgstr "Gruppen"
 
@@ -353,7 +353,7 @@ msgstr "Telefonnummer"
 msgid "Photo"
 msgstr "Foto"
 
-#: ./browser/import.py:37
+#: ./browser/import.py:39
 msgid "Please select a file to import"
 msgstr "Bitte wählen Sie eine Datei für den Import aus"
 
@@ -385,17 +385,22 @@ msgstr "Bundesland/Kanton"
 msgid "Sub sector"
 msgstr "Subsektor"
 
-#: ./import.py:118
+#: ./import.py:186
 msgid "Successfully imported ${number} organizations"
 msgstr "${number} Organisationen erfolgreich importiert"
 
-#: ./import.py:23
+#: ./import.py:47
 msgid "Successfully imported ${number} persons"
 msgstr "${number} Personen erfolgreich importiert"
 
 #: ./content/organization.py:187
 msgid "Text"
 msgstr "Text"
+
+#. Default: "The following errors where raised during the import"
+#: ./browser/templates/import.pt:52
+msgid "The following errors where raised during the import"
+msgstr "Folgende Fehler sind während dem Import aufgetreten"
 
 #: ./content/person.py:155
 msgid "The organization the person belongs to"
@@ -416,6 +421,11 @@ msgstr "Webseite"
 #: ./content/person.py:361
 msgid "Web / Blog"
 msgstr "Webseite / Blog"
+
+#. Default: "When importing persons make sure the organizations associated with them exist. Otherwise the persons can not be imported."
+#: ./browser/templates/import.pt:15
+msgid "When importing persons make sure the organizations associated with them exist. Otherwise the persons can not be imported."
+msgstr "Falls Sie Personen importieren, stellen Sie zuvor sicher, dass die Organisationen welche mit diesen verknüpft sind existieren. Ansonsten können die Personen nicht importiert werden."
 
 #: ./content/person.py:219
 msgid "Work E-mail address"
@@ -442,12 +452,12 @@ msgid "ZIP"
 msgstr "PLZ"
 
 #. Default: "Advanced organizations search:"
-#: ./browser/find_organization.py:20
+#: ./browser/find.py:20
 msgid "advanced_organizations_search"
 msgstr "Erweiterte Organisationensuche"
 
 #. Default: "Advanced persons search:"
-#: ./browser/find_person.py:18
+#: ./browser/find.py:40
 msgid "advanced_persons_search"
 msgstr "Erweiterte Personensuche"
 
@@ -480,6 +490,41 @@ msgstr "zurück"
 msgid "here"
 msgstr "hier"
 
+#. Default: "Wrong file format. Export an existing address book as CSV to get a reference file."
+#: ./import.py:72
+msgid "import_error_format"
+msgstr "Falsches Dateiformat. Exportieren Sie ein existierendes Adressbuch um eine Referenzdatei zu erhalten."
+
+#. Default: "There are ${number} organizations with the same id, I don't know with which one relate this person. You will have to load the person with id ${person_id} manually."
+#: ./import.py:106
+msgid "import_error_multipleorganizations"
+msgstr "Es existieren ${number} Organisationen mit der selben ID, es ist nicht klar zu welcher diese Person gehört. Die Person mit der ID ${person_id} muss manuell erstellt werden."
+
+#. Default: "There's no organization with id ${organization_id} make sure it exists before adding persons. ${person_id} not added"
+#: ./import.py:148
+msgid "import_error_noorganization"
+msgstr "Es existiert keine Organisation mit der ID ${organization_id}. Stellen Sie sicher, dass diese existiert bevor Sie Person hinzufügen. ${person_id} wurde nicht erstellt."
+
+#. Default: "There was an error while adding. You will have to load the organization with id ${organization_id} manually."
+#: ./import.py:252
+msgid "import_error_organization"
+msgstr "Während dem Erstellen ist ein Fehler aufgetreten. Die Organisation mit der ID ${organization_id} muss manuell erstellt werden."
+
+#. Default: "There's already an organization with this id here. You will have to load the organization with id ${organization_id} manually."
+#: ./import.py:235
+msgid "import_error_organizationexists"
+msgstr "Es existiert bereits eine Organisation mi dieser ID. Die Organisation mit der ID ${organization_id} muss manuell erstellt werden."
+
+#. Default: "There was an error while adding. You will have to load the person with id ${person_id} manually."
+#: ./import.py:141
+msgid "import_error_person"
+msgstr "Während dem Erstellen ist ein Fehler aufgetreten. Die Person mit der ID ${person_id} muss manuell erstellt werden."
+
+#. Default: "There's already a person with this id here. You will have to load the person with id ${person_id} manually."
+#: ./import.py:119
+msgid "import_error_personexists"
+msgstr "Es existiert bereits eine Person mi dieser ID. Die Person mit der ID ${person_id} muss manuell erstellt werden."
+
 #. Default: "Advanced Search"
 #: ./browser/templates/list.pt:44
 msgid "label_advanced_search"
@@ -496,7 +541,7 @@ msgid "label_do_another_search"
 msgstr "Erneut suchen"
 
 #. Default: "Export all"
-#: ./browser/templates/list.pt:82
+#: ./browser/templates/list.pt:92
 msgid "label_export_all"
 msgstr "Alle exportieren"
 
@@ -511,7 +556,7 @@ msgid "label_help_send_mail"
 msgstr "Ihr Standard-Emailprogramm wird zum Versenden der Email geöffnet."
 
 #. Default: "Import file"
-#: ./browser/templates/import.pt:19
+#: ./browser/templates/import.pt:25
 msgid "label_import_file"
 msgstr "Datei importieren"
 
@@ -521,22 +566,22 @@ msgid "label_import_organizations_persons"
 msgstr "Organisationen oder Personen importieren"
 
 #. Default: "Selection"
-#: ./browser/templates/import.pt:23
+#: ./browser/templates/import.pt:29
 msgid "label_import_selection"
 msgstr "Auswahl"
 
 #. Default: "Import"
-#: ./browser/templates/import.pt:35
+#: ./browser/templates/import.pt:41
 msgid "label_import_submit"
 msgstr "Importieren"
 
 #. Default: "Organizations"
-#: ./browser/import.py:19
+#: ./browser/import.py:20
 msgid "label_organizations"
 msgstr "Organisationen"
 
 #. Default: "Persons"
-#: ./browser/import.py:18
+#: ./browser/import.py:19
 msgid "label_persons"
 msgstr "Personen"
 
@@ -551,12 +596,12 @@ msgid "label_save"
 msgstr "Speichern"
 
 #. Default: "Search Organizations"
-#: ./browser/find_organization.py:28
+#: ./browser/find.py:28
 msgid "label_search_organizations"
 msgstr "Organisationen suchen"
 
 #. Default: "Search Persons"
-#: ./browser/find_person.py:28
+#: ./browser/find.py:50
 msgid "label_search_persons"
 msgstr "Personen suchen"
 
