@@ -6,6 +6,11 @@ Changelog for collective.contacts
 SVN
 ---
 
+  * Added arrows indicating the current sort column [simu]
+
+  * Fixed _compute_title to return unicode (PlacelessTranslationService 
+    raised UnicodeDecodeError when using non ascii characters) [simu]
+
   * Removed no longer needed upgrade step (columns are now handled by 
     the ICustomizableColumns adapters) [simu]
 
@@ -16,7 +21,7 @@ SVN
 
   * Added vCard and vCal export [simu]
   
-  * Added pluggable import and export functionality
+  * Added pluggable import and export functionality [simu]
   
   * Added sorting functionality [simu]
   
