@@ -13,7 +13,7 @@ from zope.component import getUtility, getAdapter
 from zope.schema.interfaces import IVocabularyFactory
 
 from Products.ATContentTypes.lib.calendarsupport import rfc2445dt, n2rn, vformat
-from Products.CMFPlone.utils import safe_callable
+from Products.CMFPlone.utils import safe_callable, safe_unicode
 
 from collective.contacts import contactsMessageFactory as _
 from collective.contacts.interfaces import ISearch, IPerson, IOrganization, IExport
@@ -195,7 +195,7 @@ END:VCARD
                 value = value()
             if value and not attr in self.noescape:
                 value = vformat(value)
-            map[attr] = value
+            map[attr] = safe_unicode(value)
         for required in self.required:
             if not map[required]:
                 return ''
@@ -319,10 +319,10 @@ SUMMARY:%(birthdaysummary)s"""
         return ''
     
     def birthdaysummary(self, object, value):
-        name = object.title.decode('utf-8')
+        name = object.title
         if hasattr(self.context, 'REQUEST'):
-            return translate(_(u'Birthday of ${name}', mapping={'name': name}), context=self.context.REQUEST).encode('utf-8')
-        return ('Birthday of %s' % name.decode('utf-8')).encode('utf-8')
+            return translate(_(u'Birthday of ${name}', mapping={'name': name}), context=self.context.REQUEST)
+        return u'Birthday of %s' % name
         
     def export(self, request=None, objects=None):
         if not objects:
