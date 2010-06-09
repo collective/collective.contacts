@@ -15,14 +15,42 @@ from collective.contacts.interfaces import IImport, ISearch, IOrganization
 class PersonCSVImport(object):
     implements(IImport)
     title = "CSV"
+    fields = ["id",
+              "shortName",
+              "firstName", 
+              "lastName", 
+              "birthdate",
+              "organization", 
+              "position", 
+              "department", 
+              "workPhone", 
+              "workMobilePhone", 
+              "workEmail", 
+              "workEmail2", 
+              "workEmail3", 
+              "address", 
+              "country",
+              "state",
+              "city",
+              "zip",
+              "phone", 
+              "mobilePhone", 
+              "email", 
+              "web", 
+              "text"]
     
     def __init__(self, context):
         self.context = context
+        self._errors = []
         
     def successMsg(self, imported):
         return _(u'Successfully imported ${number} persons', mapping={'number': imported})
+    
+    def errors(self):
+        return self._errors
         
     def importFile(self, file):
+        self._errors = []
     
         LOG(PROJECTNAME, INFO, 'Starting the persons import process')
     
@@ -40,6 +68,13 @@ class PersonCSVImport(object):
         # Now we first load the headers
         headers = reader.next()
         rowLength = len(headers)
+        if rowLength != len(self.fields):
+            self._errors.append(_('import_error_format', default=u'Wrong file format. Export an existing address book as CSV to get a reference file.'))
+            return 0
+        for field in self.fields:
+            if not field in headers:
+                self._errors.append(_('import_error_format', default=u'Wrong file format. Export an existing address book as CSV to get a reference file.'))
+                return 0
         counter = 0
     
         # Now i have to continue loading the rest of the persons
@@ -68,6 +103,11 @@ class PersonCSVImport(object):
                 organization = search.search({'id': person['organization']})
     
             if organization and len(organization)>1:
+                self._errors.append(_('import_error_multipleorganizations', default=u'There are ${number} organizations with the same id, '
+                                                                                     'I don\'t know with which one relate this person. '
+                                                                                     'You will have to load the person with id ${person_id} '
+                                                                                     'manually.', mapping={'number': len(organization),
+                                                                                                           'person_id': person['id']}))
                 LOG(PROJECTNAME, WARNING, 'There are %s organizations with the same id, '
                                           'I don\'t know with which one relate this person.' % len(organization))
                 LOG(PROJECTNAME, WARNING, 'You will have to load the person with id %s '
@@ -76,6 +116,9 @@ class PersonCSVImport(object):
             elif ((organization and len(organization)==1) or
                  not person['organization']):
                 if self.context.get(person['id']):
+                    self._errors.append(_('import_error_personexists', default=u'There\'s already a person with this id here. '
+                                                                                'You will have to load the person with id ${person_id} '
+                                                                                'manually.', mapping={'person_id': person['id']}))
                     LOG(PROJECTNAME, WARNING, 'There\'s already a person with this id here.')
                     LOG(PROJECTNAME, WARNING, 'You will have to load the person with id '
                                               '%s manually.' % person['id'])
@@ -95,10 +138,17 @@ class PersonCSVImport(object):
     
                         LOG(PROJECTNAME, INFO, 'Successfully added %s.' % person['id'])
                     except:
+                        self._errors.append(_('import_error_person', default=u'There was an error while adding. '
+                                                                              'You will have to load the person with id ${person_id} '
+                                                                              'manually.', mapping={'person_id': person['id']}))
                         LOG(PROJECTNAME, WARNING, 'There was an error while adding.')
                         LOG(PROJECTNAME, WARNING, 'You will have to load the person with id '
                                                   '%s manually.' % person['id'])
             else:
+                self._errors.append(_('import_error_noorganization', default=u'There\'s no organization with id ${organization_id} '
+                                                                              'make sure it exists before adding persons. '
+                                                                              '${person_id} not added', mapping={'organization_id': person['organization'],
+                                                                                                                 'person_id': person['id']}))
                 LOG(PROJECTNAME, WARNING, 'There\'s no organization with id %s, '
                                           'make sure it exists before adding persons. '
                                           '%s not added' % (person['organization'], person['id']))
@@ -110,14 +160,37 @@ class PersonCSVImport(object):
 class OrganizationCSVImport(object):
     implements(IImport)
     title = "CSV"
+    fields = ["id",
+              "title",
+              "address",
+              "city",
+              "zip",
+              "country",
+              "state",
+              "extraAddress",
+              "phone",
+              "fax",
+              "email",
+              "email2",
+              "email3",
+              "web",
+              "sector",
+              "sub_sector",
+              "text"]
     
     def __init__(self, context):
         self.context = context
+        self._errors = []
         
     def successMsg(self, imported):
         return _(u'Successfully imported ${number} organizations', mapping={'number': imported})
     
+    def errors(self):
+        return self._errors
+    
     def importFile(self, file):
+        self._errors = []
+        
         LOG(PROJECTNAME, INFO, 'Starting the organizations import process')
         # First we set our results as an empty list, we will be loading
         # each user here
@@ -131,6 +204,13 @@ class OrganizationCSVImport(object):
         # Now we first load the headers
         headers = reader.next()
         rowLength = len(headers)
+        if rowLength != len(self.fields):
+            self._errors.append(_('import_error_format', default=u'Wrong file format. Export an existing address book as CSV to get a reference file.'))
+            return 0
+        for field in self.fields:
+            if not field in headers:
+                self._errors.append(_('import_error_format', default=u'Wrong file format. Export an existing address book as CSV to get a reference file.'))
+                return 0
         counter = 0
     
         # Now i have to continue loading the rest of the persons
@@ -152,11 +232,12 @@ class OrganizationCSVImport(object):
         # I now have all persons in my results, so i should start adding them to site
         for organization in results:
             if self.context.get(organization['id']):
-    
+                self._errors.append(_('import_error_organizationexists', default=u'There\'s already an organization with this id here. '
+                                                                                  'You will have to load the organization with id ${organization_id} '
+                                                                                  'manually.', mapping={'organization_id': organization['id']}))
                 LOG(PROJECTNAME, WARNING, 'There\'s already an organization with this id here.')
                 LOG(PROJECTNAME, WARNING, 'You will have to load the organization with id '
                                           '%s manually.' % organization['id'])
-    
             else:
                 try:
                     self.context.invokeFactory('Organization', organization['id'])
@@ -168,6 +249,9 @@ class OrganizationCSVImport(object):
                     portal_catalog.reindexObject(new_organization)
                     LOG(PROJECTNAME, INFO, 'Successfully added %s.' % organization['id'])
                 except:
+                    self._errors.append(_('import_error_organization', default=u'There was an error while adding. '
+                                                                                'You will have to load the organization with id ${organization_id} '
+                                                                                'manually.', mapping={'organization_id': organization['id']}))
                     LOG(PROJECTNAME, WARNING, 'There was an error while adding.')
                     LOG(PROJECTNAME, WARNING, 'You will have to load the organization with id '
                                               '%s manually.' % organization['id'])

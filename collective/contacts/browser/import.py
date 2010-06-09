@@ -1,4 +1,5 @@
 from zope.component import getAdapter, getAdapters
+from zope.i18n import translate
 from plone.memoize.instance import memoize
 
 from Products.statusmessages.interfaces import IStatusMessage
@@ -24,6 +25,7 @@ class ImportView(BrowserView):
         self.request = request
 
     def __call__(self):
+        self.errors = None
         self.message = None
         submitted = self.request.form.get('import.submitted', False)
 
@@ -39,6 +41,8 @@ class ImportView(BrowserView):
                 # Call the import method
                 handler = getAdapter(self.context, interface=IImport, name=import_type)
                 imported = handler.importFile(import_file)
+                
+                self.errors = handler.errors()
                 
                 statusmessage.addStatusMessage(handler.successMsg(imported), 'info')
         

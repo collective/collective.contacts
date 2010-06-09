@@ -85,6 +85,10 @@ class IImport(Interface):
     
     def successMsg(imported):
         """ The internationalized message to be display to the user after
-            successfull import
+            successful import
+        """
+        
+    def errors():
+        """ Returns a list of error messages raised by the last import
         """
     
