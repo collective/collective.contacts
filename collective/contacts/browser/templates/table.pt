@@ -1,6 +1,6 @@
 <tal:def define="table options/table;
                  rows options/batch|table/rows">
-<table class="listing"
+<table class="listing contacts-listing"
        tal:condition="rows">
   <tr>
     <th  class="visualNoPrint">

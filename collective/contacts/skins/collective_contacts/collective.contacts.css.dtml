@@ -37,4 +37,14 @@ input#sectors\.sector{
   margin-top:1em;
 }
 
+.contacts-listing th {
+  white-space:nowrap;
+}
+
+.contacts-listing .arrowDownAlternative,
+.contacts-listing .arrowUpAlternative {
+  font-size:50%;
+  vertical-align:middle;
+}
+
 /* </dtml-with> */

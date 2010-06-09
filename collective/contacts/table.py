@@ -55,7 +55,10 @@ class AbstractTable(object):
             sortable = 'sortable_%s' % column
             if column in indexes or sortable in indexes:
                 index = sortable in indexes and sortable or column
-                html = '<a href="%s?sort_on=%s&sort_by=%s">%s</a>' % (base, index, dict(self.sort).get(index, None) == 'asc' and 'desc' or 'asc', html)
+                current = dict(self.sort[:1]).get(index, None)
+                if current is not None:
+                    html += current == 'asc' and ' <span class="arrowUpAlternative">&#9650;</span>' or ' <span class="arrowDownAlternative">&#9660;</span>'
+                html = '<a href="%s?sort_on=%s&sort_by=%s">%s</a>' % (base, index, current == 'asc' and 'desc' or 'asc', html)
             columns.append(html)
         return columns
     
