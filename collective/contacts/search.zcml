@@ -1,0 +1,53 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="collective.contacts">
+
+    <!-- address book -->
+    <adapter
+        factory=".search.AddressBookPersonSearch"
+        name="person"
+        for=".interfaces.IAddressBook"
+        provides=".interfaces.ISearch"
+        />
+    <adapter
+        factory=".search.AddressBookOrganizationSearch"
+        name="organization"
+        for=".interfaces.IAddressBook"
+        provides=".interfaces.ISearch"
+        />
+    <adapter
+        factory=".search.AddressBookGroupSearch"
+        name="group"
+        for=".interfaces.IAddressBook"
+        provides=".interfaces.ISearch"
+        />
+        
+    <!-- organization -->
+    <adapter
+        factory=".search.OrganizationPersonSearch"
+        name="person"
+        for=".interfaces.IOrganization"
+        provides=".interfaces.ISearch"
+        />
+    <adapter
+        factory=".search.OrganizationGroupSearch"
+        name="group"
+        for=".interfaces.IOrganization"
+        provides=".interfaces.ISearch"
+        />
+        
+    <!-- group -->
+    <adapter
+        factory=".search.GroupPersonSearch"
+        name="person"
+        for=".interfaces.IGroup"
+        provides=".interfaces.ISearch"
+        />
+    <adapter
+        factory=".search.GroupGroupSearch"
+        name="group"
+        for=".interfaces.IGroup"
+        provides=".interfaces.ISearch"
+        />
+
+</configure>

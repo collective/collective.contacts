@@ -30,14 +30,14 @@
   <browser:page
       for="*"
       name="find_person"
-      class=".find_person.FindPersonForm"
+      class=".find.FindPersonForm"
       permission="zope.Public"
       />
 
   <browser:page
       for="*"
       name="find_organization"
-      class=".find_organization.FindOrganizationForm"
+      class=".find.FindOrganizationForm"
       permission="zope.Public"
       />
 

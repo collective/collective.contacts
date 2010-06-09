@@ -1,0 +1,25 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="collective.contacts">
+
+    <adapter
+        factory=".columns.PersonColumns"
+        for="*"
+        provides=".interfaces.ICustomizableColumns"
+        name="person"
+        />
+        
+    <adapter
+        factory=".columns.OrganizationColumns"
+        for="*"
+        provides=".interfaces.ICustomizableColumns"
+        name="organization"
+        />
+        
+    <adapter
+        factory=".columns.GroupColumns"
+        for="*"
+        provides=".interfaces.ICustomizableColumns"
+        name="group"
+        />
+</configure>

@@ -3,9 +3,11 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="collective.contacts">
 
-  <include file="address_views.zcml" />
-  <include file="search_views.zcml" />
-  <include file="individual_views.zcml" />
+  <include file="export.zcml" />
+  <include file="import.zcml" />
+  <include file="list.zcml" />
+  <include file="search.zcml" />
+  <include file="customize.zcml" />
   <include file="kss.zcml" />
 
   <browser:resourceDirectory
