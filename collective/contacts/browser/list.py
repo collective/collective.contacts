@@ -46,6 +46,8 @@ class AbstractListView(BrowserView):
     
     @memoize
     def canImport(self):
+        if self.name == 'group':
+            return
         parent = aq_inner(self.context)
         while not IAddressBook.providedBy(parent):
             parent = aq_parent(parent)
