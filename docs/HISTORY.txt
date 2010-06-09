@@ -6,6 +6,11 @@ Changelog for collective.contacts
 SVN
 ---
 
+  * Removed no longer needed upgrade step (columns are now handled by 
+    the ICustomizableColumns adapters) [simu]
+
+  * Added transparent error handling and CSV format check for import [simu]
+
   * Refactored views to use Products.statusmessages for info and error
     messages [simu]
 
