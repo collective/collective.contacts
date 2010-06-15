@@ -959,7 +959,7 @@ export all organizations
 
 check the headers
 
-    >>> "id,title,address,city,zip,country,state,extraAddress,phone,fax,email" in browser.contents
+    >>> "id,title,address,city,zip,country,state,extraAddress,phone,phoneInternal,fax,email" in browser.contents
     True
     >>> "email2,email3,web,sector,sub_sector,text" in browser.contents
     True
