@@ -96,6 +96,16 @@ OrganizationSchema = folder.ATFolderSchema.copy() + atapi.Schema((
     ),
 
     atapi.StringField(
+        'phoneInternal',
+        storage=atapi.AnnotationStorage(),
+        widget=atapi.StringWidget(
+            label=_(u"Internal Phone Number"),
+            description=_(u"Organization's internal phone number"),
+        ),
+        searchable=1,
+    ),
+
+    atapi.StringField(
         'fax',
         storage=atapi.AnnotationStorage(),
         widget=atapi.StringWidget(
@@ -227,6 +237,7 @@ class Organization(folder.ATFolder):
     zip = atapi.ATFieldProperty('zip')
     extraAddress = atapi.ATFieldProperty('extraAddress')
     phone = atapi.ATFieldProperty('phone')
+    phoneInternal = atapi.ATFieldProperty('phoneInternal')
     fax = atapi.ATFieldProperty('fax')
     email = atapi.ATFieldProperty('email')
     email2 = atapi.ATFieldProperty('email2')

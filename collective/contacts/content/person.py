@@ -202,11 +202,35 @@ PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
     ),
 
     atapi.StringField(
+        'workPhoneInternal',
+        storage=atapi.AnnotationStorage(),
+        widget=atapi.StringWidget(
+            label=_(u"Internal Work Phone Number"),
+            description=_(u"Person's internal work phone number"),
+        ),
+        searchable=1,
+        required=False,
+        schemata='work',
+    ),
+
+    atapi.StringField(
         'workMobilePhone',
         storage=atapi.AnnotationStorage(),
         widget=atapi.StringWidget(
             label=_(u"Work Mobile Phone Number"),
             description=_(u"Person's work mobile phone number"),
+        ),
+        searchable=1,
+        required=False,
+        schemata='work',
+    ),
+
+    atapi.StringField(
+        'workFax',
+        storage=atapi.AnnotationStorage(),
+        widget=atapi.StringWidget(
+            label=_(u"Work Fax number"),
+            description=_(u"Person's work fax number"),
         ),
         searchable=1,
         required=False,
@@ -417,7 +441,9 @@ class Person(base.ATCTContent):
     position = atapi.ATFieldProperty('position')
     department = atapi.ATFieldProperty('department')
     workPhone = atapi.ATFieldProperty('workPhone')
+    workPhoneInternal = atapi.ATFieldProperty('workPhoneInternal')
     workMobilePhone = atapi.ATFieldProperty('workMobilePhone')
+    workFax = atapi.ATFieldProperty('workFax')
     workEmail = atapi.ATFieldProperty('workEmail')
     workEmail2 = atapi.ATFieldProperty('workEmail2')
     workEmail3 = atapi.ATFieldProperty('workEmail3')

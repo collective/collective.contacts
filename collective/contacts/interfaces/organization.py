@@ -42,6 +42,10 @@ class IOrganization(Interface):
         title=_(u"Phone Number"),
         required=False,
     )
+    phoneInternal = schema.TextLine(
+        title=_(u"Internal Phone Number"),
+        required=False,
+    )
     fax = schema.TextLine(
         title=_(u"Fax Number"),
         required=False,

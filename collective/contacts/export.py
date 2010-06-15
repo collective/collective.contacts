@@ -87,7 +87,9 @@ class PersonCSVExport(AbstractCSVExport):
               "position", 
               "department", 
               "workPhone", 
+              "workPhoneInternal", 
               "workMobilePhone", 
+              "workFax", 
               "workEmail", 
               "workEmail2", 
               "workEmail3", 
@@ -114,6 +116,7 @@ class OrganizationCSVExport(AbstractCSVExport):
               "state",
               "extraAddress",
               "phone",
+              "phoneInternal",
               "fax",
               "email",
               "email2",
@@ -229,6 +232,8 @@ TITLE:%(position)s
 ROLE:%(department)s
 BDAY:%(birthdate)s
 TEL;TYPE=WORK:%(workPhone)s
+TEL;TYPE=WORK:%(workPhoneInternal)s
+TEL;TYPE=WORK,FAX:%(workFax)s
 TEL;TYPE=WORK,CELL,MSG:%(workMobilePhone)s
 EMAIL;TYPE=WORK,PREF:%(workEmail)s
 EMAIL;TYPE=WORK:%(workEmail2)s
@@ -262,7 +267,8 @@ FN:%(title)s
 TITLE:%(sector)s
 ROLE:%(sub_sector)s
 TEL;TYPE=WORK:%(phone)s
-TEL;TYPE=WORK,FAX:%(workMobilePhone)s
+TEL;TYPE=WORK:%(phoneInternal)s
+TEL;TYPE=WORK,FAX:%(fax)s
 EMAIL;TYPE=WORK,PREF,INTERNET:%(email)s
 EMAIL;TYPE=WORK,INTERNET:%(email2)s
 EMAIL;TYPE=WORK,INTERNET:%(email3)s

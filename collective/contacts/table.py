@@ -132,6 +132,11 @@ class AbstractTable(object):
                 # wrap it between <a> tags with mailto:
                 if col in ('email', 'workEmail', 'workEmail2', 'workEmail3'):
                     html = '<a href="mailto:%s">%s</a>' % (getattr(result, col, ''), html)
+                            
+                # If the column is the phone number (any of them), i need to
+                # wrap it between <a> tags with callto:
+                if col in ('phone', 'workPhone', 'workPhoneInternal', 'phoneInternal'):
+                    html = '<a href="callto:%s">%s</a>' % (getattr(result, col, ''), html)
     
                 # If the column is the website field, i need also <a> tags
                 if col == 'web':

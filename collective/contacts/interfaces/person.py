@@ -43,8 +43,16 @@ class IPerson(Interface):
         title=_(u"Work Phone Number"),
         required=False,
     )
+    workPhoneInternal = schema.TextLine(
+        title=_(u"Internal Work Phone Number"),
+        required=False,
+    )
     workMobilePhone = schema.TextLine(
         title=_(u"Work Mobile Phone Number"),
+        required=False,
+    )
+    workFax = schema.TextLine(
+        title=_(u"Work Fax number"),
         required=False,
     )
     workEmail = schema.TextLine(

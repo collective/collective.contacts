@@ -767,7 +767,7 @@ check the headers
 
     >>> "id,shortName,firstName,lastName,birthdate,organization,position" in browser.contents 
     True
-    >>> "department,workPhone,workMobilePhone,workEmail,workEmail2," in browser.contents
+    >>> "department,workPhone,workPhoneInternal,workMobilePhone,workFax,workEmail,workEmail2," in browser.contents
     True
     >>> "workEmail3,address,country,state,city,zip,phone,mobilePhone,email,web,text" in browser.contents
     True
@@ -793,7 +793,7 @@ check the headers
 
     >>> "id,shortName,firstName,lastName,birthdate,organization,position" in browser.contents 
     True
-    >>> "department,workPhone,workMobilePhone,workEmail,workEmail2," in browser.contents
+    >>> "department,workPhone,workPhoneInternal,workMobilePhone,workFax,workEmail,workEmail2," in browser.contents
     True
     >>> "workEmail3,address,country,state,city,zip,phone,mobilePhone,email,web,text" in browser.contents
     True
@@ -816,7 +816,7 @@ check the headers
 
     >>> "id,shortName,firstName,lastName,birthdate,organization,position" in browser.contents 
     True
-    >>> "department,workPhone,workMobilePhone,workEmail,workEmail2," in browser.contents
+    >>> "department,workPhone,workPhoneInternal,workMobilePhone,workFax,workEmail,workEmail2," in browser.contents
     True
     >>> "workEmail3,address,country,state,city,zip,phone,mobilePhone,email,web,text" in browser.contents
     True
@@ -851,7 +851,7 @@ check the headers
 
     >>> "id,shortName,firstName,lastName,birthdate,organization,position" in browser.contents 
     True
-    >>> "department,workPhone,workMobilePhone,workEmail,workEmail2," in browser.contents
+    >>> "department,workPhone,workPhoneInternal,workMobilePhone,workFax,workEmail,workEmail2," in browser.contents
     True
     >>> "workEmail3,address,country,state,city,zip,phone,mobilePhone,email,web,text" in browser.contents
     True
@@ -881,7 +881,7 @@ organizations with email
 
 check the headers
 
-    >>> "id,title,address,city,zip,country,state,extraAddress,phone,fax,email" in browser.contents
+    >>> "id,title,address,city,zip,country,state,extraAddress,phone,phoneInternal,fax,email" in browser.contents
     True
     >>> "email2,email3,web,sector,sub_sector,text" in browser.contents
     True
@@ -905,7 +905,7 @@ organizations without an email
 
 check the headers
 
-    >>> "id,title,address,city,zip,country,state,extraAddress,phone,fax,email" in browser.contents
+    >>> "id,title,address,city,zip,country,state,extraAddress,phone,phoneInternal,fax,email" in browser.contents
     True
     >>> "email2,email3,web,sector,sub_sector,text" in browser.contents
     True
@@ -926,7 +926,7 @@ organizations with and without an email
 
 check the headers
 
-    >>> "id,title,address,city,zip,country,state,extraAddress,phone,fax,email" in browser.contents
+    >>> "id,title,address,city,zip,country,state,extraAddress,phone,phoneInternal,fax,email" in browser.contents
     True
     >>> "email2,email3,web,sector,sub_sector,text" in browser.contents
     True
