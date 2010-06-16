@@ -1,3 +1,5 @@
+from Products.CMFPlone.utils import safe_unicode
+
 from collective.contacts import contactsMessageFactory as _
 from collective.contacts.browser.list import PersonListView, GroupListView
 
@@ -8,7 +10,7 @@ class OrganizationView(PersonListView):
 
     @property
     def title(self):
-        return _('Persons part of ${organization}', mapping={'organization': self.context.Title()})
+        return _('Persons part of ${organization}', mapping={'organization': safe_unicode(self.context.Title())})
     
 class OrganizationGroupsView(GroupListView):
     """ Lists groups in a group
