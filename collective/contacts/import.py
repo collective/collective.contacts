@@ -82,7 +82,9 @@ class PersonCSVImport(object):
         # Now i have to continue loading the rest of the persons
         for row in reader:
             # We now check that we have consistency in our CSV
-            assert len(row) == rowLength
+            if not len(row) == rowLength:
+                self._errors.append(_('import_error_format', default=u'Wrong file format. Export an existing address book as CSV to get a reference file.'))
+                return 0
             result = {}
             for j in range(rowLength):
                 result[headers[j]] = row[j]
@@ -219,7 +221,9 @@ class OrganizationCSVImport(object):
         # Now i have to continue loading the rest of the persons
         for row in reader:
             # We now check that we have consistency in our CSV
-            assert len(row) == rowLength
+            if not len(row) == rowLength:
+                self._errors.append(_('import_error_format', default=u'Wrong file format. Export an existing address book as CSV to get a reference file.'))
+                return 0
             result = {}
             for j in range(rowLength):
                 result[headers[j]] = row[j]
