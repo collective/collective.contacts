@@ -82,7 +82,7 @@ def organization(obj):
     
 @indexer(IPerson)
 def sortable_organization(obj):
-    return sortable_title(organization)
+    return sortable_title(obj.organization)
 
 @indexer(IPerson)
 def birthdate(obj):
@@ -472,7 +472,12 @@ class Person(base.ATCTContent):
     
     def _compute_title(self):
         """Compute title from last and first name"""
-        return safe_unicode('%s, %s' % (self.lastName, self.firstName))
+        names = []
+        if self.lastName:
+            names.append(self.lastName)
+        if self.firstName:
+            names.append(self.firstName)
+        return safe_unicode(', '.join(names))
 
     def tag(self, **kwargs):
         """Generate image tag using the api of the ImageField
