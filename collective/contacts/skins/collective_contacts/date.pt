@@ -29,15 +29,15 @@
        tal:define="format widget/format">
       <metal:use use-macro="field_macro | here/widgets/field/macros/edit">
         <metal:fill fill-slot="widget_body">
-          <tal:define define="day python:field.getDay(context);
-                              month python:field.getMonth(context);">
+          <tal:define define="day python:not request.form.has_key(fieldName+'_day') and field.getDay(context) or request.form.get(fieldName+'_day', '');
+                              month python:not request.form.has_key(fieldName+'_month') and field.getMonth(context) or request.form.get(fieldName+'_month', '');">
             <select name="month" size="1"
                     tal:attributes="name string:${fieldName}_month">
               <option value="" i18n:translate="">Month</option>
               <tal:m repeat="m python:range(1, 13)">
               <option value=""
                       tal:attributes="value m;
-                                      selected python:m == month and 'selected' or ''"
+                                      selected python:str(m) == str(month) and 'selected' or ''"
                       tal:content="m">1</option>
               </tal:m>
             </select>
@@ -47,7 +47,7 @@
               <tal:d repeat="d python:range(1, 32)">
               <option value=""
                       tal:attributes="value d;
-                                      selected python:d == day and 'selected' or ''"
+                                      selected python:str(d) == str(day) and 'selected' or ''"
                       tal:content="d">1</option>
               </tal:d>
             </select>
