@@ -55,7 +55,7 @@
    <property name="description" i18n:translate=""/>
    <property name="url_expr">string:${object_url}/export.ics</property>
    <property name="icon_expr"/>
-   <property name="available_expr">python:object.meta_type == 'Person' and object.birthdate</property>
+   <property name="available_expr">python:object.meta_type == 'Person' and object.getBirthdate()</property>
    <property name="permissions">
     <element value="View"/>
    </property>
