@@ -7,6 +7,14 @@ SVN
 ---
 
 
+1.4.5
+-----
+
+ * Added german translation [simu]
+
+ * Added ZIP field [kcharvey]
+
+
 1.4.4
 -----
 
