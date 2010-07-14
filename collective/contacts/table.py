@@ -156,8 +156,7 @@ class PersonTable(AbstractTable):
     """
     implements(ITable)
     name = "person"
-    default_sort = (('lastName', 'asc'),
-                    ('firstName', 'asc'))
+    default_sort = (('sortable_title', 'asc'),)
     attrs = ['shortName',
              'firstName',
              'lastName',
