@@ -11,7 +11,7 @@ class ContactsActionsViewlet(DocumentActionsViewlet):
         super(ContactsActionsViewlet, self).update()
         plone_utils = getToolByName(self.context, 'plone_utils')
         self.getIconFor = plone_utils.getIconFor
-        self.actions = self.context_state.actions().get('contacts_actions', None)
+        self.actions = self.context_state.actions().get('contacts_actions', [])
         if ICustomizableView.providedBy(self.view) and \
            self.view.customize_url() is not None:
             self.actions.append({'id': 'customize',
