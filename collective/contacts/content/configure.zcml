@@ -6,19 +6,16 @@
   <!-- configure your content components here -->
 
   <!-- -*- extra stuff goes here -*- -->
-    <class class=".group.Group">
-
-        <require
-            permission="zope2.View"
-            interface="..interfaces.IGroup"
-            />
-
-        <require
-            permission="cmf.ModifyPortalContent"
-            set_schema="..interfaces.IGroup"
-            />
-
-    </class>
+  <class class=".group.Group">
+    <require
+        permission="zope2.View"
+        interface="..interfaces.IGroup"
+        />
+    <require
+        permission="cmf.ModifyPortalContent"
+        set_schema="..interfaces.IGroup"
+        />
+  </class>
   <class class=".organization.Organization">
     <require
         permission="zope2.View"
@@ -49,6 +46,12 @@
         set_schema="..interfaces.IAddressBook"
         />
   </class>
+  
+  <!-- indexes -->
+  <adapter factory=".person.organization" name="organization" />
+  <adapter factory=".person.sortable_organization" name="sortable_organization" />
+  <adapter factory=".person.birthdate" name="birthdate" />
+  <adapter factory=".group.members" name="members" />
 
   <subscriber handler=".addressbook.handle_addressbook_added" />
   <subscriber handler=".addressbook.handle_addressbook_edited" />

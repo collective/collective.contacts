@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="collective.contacts">
+<body>
+  <div metal:fill-slot="main">
+    <tal:main-macro metal:define-macro="main">
+      
+      <h1 class="documentFirstHeading" 
+          i18n:translate="title_customize_columns">
+        Customize columns
+      </h1>
+      
+      <form action="#" method="post"
+            tal:attributes="action string:${context/absolute_url}/customize">
+        <div class="field">
+          <ul class="visualNoMarker">
+            <li tal:repeat="field view/get_columns">
+              <label>
+                <input type="checkbox"
+                       name="selected:list"
+                       tal:attributes="id field/id;
+                                       value field/id;
+                                       checked field/checked"/>
+                <span tal:replace="field/title">Field Name</span>
+              </label>
+              <input type="hidden" name="columns:list"
+                     tal:attributes="value field/id"/>
+            </li>
+          </ul>
+        </div>
+        <input type="hidden" name="customize.submitted" value="True"/>
+        <input type="hidden" name="customize.type"
+               tal:attributes="value view/contenttype"/>
+        <div class="formControls">
+          <input class="context"
+                 type="submit"
+                 name="form_submit"
+                 value="Save"
+                 i18n:attributes="value label_save;"
+                 />
+          <input class="standalone"
+                 type="submit"
+                 name="form.button.cancel"
+                 value="Cancel"
+                 i18n:attributes="value label_cancel;"
+                 />
+        </div>
+      </form>
+      
+    </tal:main-macro>
+  </div>
+</body>
+</html>

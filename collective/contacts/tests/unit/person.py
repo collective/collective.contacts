@@ -23,11 +23,14 @@ class TestPerson(MockTestCase):
         self.fields = ['shortName',
                        'firstName',
                        'lastName',
+                       'birthdate',
                        'organization',
                        'position',
                        'department',
                        'workPhone',
+                       'workPhoneInternal',
                        'workMobilePhone',
+                       'workFax',
                        'workEmail',
                        'workEmail2',
                        'workEmail3',
@@ -64,8 +67,8 @@ class TestPerson(MockTestCase):
 
     def test_compute_title(self):
         person = Person('jsmith')
-        person.last_name = 'Smith'
-        person.first_name = 'Joe'
+        person.lastName = 'Smith'
+        person.firstName = 'Joe'
         self.assertEquals(person._compute_title(), 'Smith, Joe')
 
     def test_title_label(self):

@@ -56,12 +56,11 @@ And we ensure that we get the friendly logged-in message:
     True
 
 
--*- extra stuff goes here -*-
 The Address Book content type
 =============================
 
-In this section we are tesing the Address Book content type by performing
-basic operations like adding, updadating and deleting Address Book content
+In this section we are testing the Address Book content type by performing
+basic operations like adding, updating and deleting Address Book content
 items.
 
 Adding a new Address Book content item
@@ -183,8 +182,8 @@ Finally, let's login back as manager.
 The Person content type
 ========================
 
-In this section we are tesing the Person content type by performing
-basic operations like adding, updadating and deleting Person content
+In this section we are testing the Person content type by performing
+basic operations like adding, updating and deleting Person content
 items.
 
 Adding a new Person content item
@@ -316,8 +315,8 @@ Finally, let's login back as manager.
 The Organization content type
 =============================
 
-In this section we are tesing the Organization content type by performing
-basic operations like adding, updadating and deleting Organization content
+In this section we are testing the Organization content type by performing
+basic operations like adding, updating and deleting Organization content
 items.
 
 Adding a new Organization content item
@@ -445,8 +444,8 @@ Finally, let's login back as manager.
 The Group content type
 ======================
 
-In this section we are tesing the Group content type by performing
-basic operations like adding, updadating and deleting Organization content
+In this section we are testing the Group content type by performing
+basic operations like adding, updating and deleting Organization content
 items.
 
 Adding a new Group content item
@@ -465,7 +464,7 @@ Then we select the type of item we want to add. In this case we select
 
     >>> browser.getControl('Group').click()
     >>> browser.getControl(name='form.button.Add').click()
-    >>> 'Organization' in browser.contents
+    >>> 'Group' in browser.contents
     True
 
 Now we fill the form and submit it.
@@ -548,7 +547,7 @@ We select 'Group' and click the 'Add' button to get to the add form.
 
     >>> browser.getControl('Group').click()
     >>> browser.getControl(name='form.button.Add').click()
-    >>> 'Organization' in browser.contents
+    >>> 'Group' in browser.contents
     True
 
 Now we fill the form and submit it.
@@ -573,24 +572,24 @@ Test the names of the view are correct
 --------------------------------------
 Let's add more persons
 
-	>>> browser.open(portal_url)
-	>>> browser.getLink('Address Book Sample').click()
-	>>> browser.getLink('Add new').click()
-	>>> browser.getControl('Person').click()
-	>>> browser.getControl(name='form.button.Add').click()
-	>>> 'Person' in browser.contents
-	True
-	>>> browser.getControl(name='firstName').value = 'name1'
-	>>> browser.getControl(name='lastName').value = 'last1'
-	>>> browser.getControl(name='email').value = 'name1@mail.com'
-	>>> browser.getControl('Save').click()
-	>>> 'Changes saved' in browser.contents
-	True
+    >>> browser.open(portal_url)
+    >>> browser.getLink('Address Book Sample').click()
+    >>> browser.getLink('Add new').click()
+    >>> browser.getControl('Person').click()
+    >>> browser.getControl(name='form.button.Add').click()
+    >>> 'Person' in browser.contents
+    True
+    >>> browser.getControl(name='firstName').value = 'name1'
+    >>> browser.getControl(name='lastName').value = 'last1'
+    >>> browser.getControl(name='email').value = 'name1@mail.com'
+    >>> browser.getControl('Save').click()
+    >>> 'Changes saved' in browser.contents
+    True
 
 this one do not have no e-mail
 
     >>> browser.open(portal_url)
-	>>> browser.getLink('Address Book Sample').click()
+    >>> browser.getLink('Address Book Sample').click()
     >>> browser.getLink('Add new').click()
     >>> browser.getControl('Person').click()
     >>> browser.getControl(name='form.button.Add').click()
@@ -600,72 +599,69 @@ this one do not have no e-mail
     >>> browser.getControl(name='lastName').value = 'last2'
     >>> browser.getControl('Save').click()
     >>> 'Changes saved' in browser.contents
-	True
+    True
 
 Let's add more organizations
 
-	>>> browser.getLink('Address Book Sample').click()
-	>>> browser.getLink('Add new').click()
-	>>> browser.getControl('Organization').click()
-	>>> browser.getControl(name='form.button.Add').click()
-	>>> 'Organization' in browser.contents
-	True
-	>>> browser.getControl(name='title').value = 'Organization1'
-	>>> browser.getControl(name='email').value = 'Org@mail.com'
-	>>> browser.getControl('Save').click()
-	>>> 'Changes saved' in browser.contents
-	True
+    >>> browser.getLink('Address Book Sample').click()
+    >>> browser.getLink('Add new').click()
+    >>> browser.getControl('Organization').click()
+    >>> browser.getControl(name='form.button.Add').click()
+    >>> 'Organization' in browser.contents
+    True
+    >>> browser.getControl(name='title').value = 'Organization1'
+    >>> browser.getControl(name='email').value = 'Org@mail.com'
+    >>> browser.getControl('Save').click()
+    >>> 'Changes saved' in browser.contents
+    True
 
 this one with out an email
 
-	>>> browser.getLink('Address Book Sample').click()
-	>>> browser.getLink('Add new').click()
-	>>> browser.getControl('Organization').click()
-	>>> browser.getControl(name='form.button.Add').click()
-	>>> 'Organization' in browser.contents
-	True
-	>>> browser.getControl(name='title').value = 'Organization2'
-	>>> browser.getControl('Save').click()
-	>>> 'Changes saved' in browser.contents
-	True
+    >>> browser.getLink('Address Book Sample').click()
+    >>> browser.getLink('Add new').click()
+    >>> browser.getControl('Organization').click()
+    >>> browser.getControl(name='form.button.Add').click()
+    >>> 'Organization' in browser.contents
+    True
+    >>> browser.getControl(name='title').value = 'Organization2'
+    >>> browser.getControl('Save').click()
+    >>> 'Changes saved' in browser.contents
+    True
 
 Checking the organization view is called organizations
 
     >>> browser.open(portal_url)
-	>>> browser.getLink('Address Book Sample').click()
-	>>> view_org_url = browser.url +"/organizations"
-	>>> browser.open(view_org_url)
-	>>> "Organization Sample" in browser.contents
-	True
-	>>> "Organization1" in browser.contents
-	True
-	>>> "Organization2" in browser.contents
-	True
-
-
+    >>> browser.getLink('Address Book Sample').click()
+    >>> view_org_url = browser.url +"/list_organizations"
+    >>> browser.open(view_org_url)
+    >>> "Organization Sample" in browser.contents
+    True
+    >>> "Organization1" in browser.contents
+    True
+    >>> "Organization2" in browser.contents
+    True
 
 Checking the persons view is called persons
 
     >>> browser.open(portal_url)
-	>>> browser.getLink('Address Book Sample').click()
-	>>> view_pers_url = browser.url +"/persons"
-	>>> browser.open(view_pers_url)
-	>>> "juan" in browser.contents
-	True
-	>>> "name1" in browser.contents
-	True
-	>>> "name2" in browser.contents
-	True
-
+    >>> browser.getLink('Address Book Sample').click()
+    >>> view_pers_url = browser.url +"/list_persons"
+    >>> browser.open(view_pers_url)
+    >>> "juan" in browser.contents
+    True
+    >>> "name1" in browser.contents
+    True
+    >>> "name2" in browser.contents
+    True
 
 Checking the groups view is called groups
 
     >>> browser.open(portal_url)
-	>>> browser.getLink('Address Book Sample').click()
-	>>> view_group_url = browser.url +"/groups"
-	>>> browser.open(view_group_url)
-	>>> "Group Sample" in browser.contents
-	True
+    >>> browser.getLink('Address Book Sample').click()
+    >>> view_group_url = browser.url +"/list_groups"
+    >>> browser.open(view_group_url)
+    >>> "Group Sample" in browser.contents
+    True
 
 
 Send mail to persons
@@ -673,42 +669,44 @@ Send mail to persons
 
 Send mail to persons with email
 
-
-	>>> browser.open(view_pers_url)
-	>>> browser.getControl(name='user_selection:list').value = [1]
-	>>> browser.getControl(name='form.button.mailto').click()
-	>>> 'Send emails' in browser.contents
-	True
-	>>> 'name1@mail.com' in browser.contents
-	True
-	>>> 'test@test.com' in browser.contents
-	False
+    >>> browser.open(view_pers_url)
+    >>> import re
+    >>> m = re.search('<input[^>]*name="selection:list"[^>]*value="([^"]*)"[^>]*>[^<]*<\/td>[^<]*<td><a[^>]*><span>last1, name1<\/span>', browser.contents)
+    >>> browser.getControl(name='selection:list').value = [m.group(1)]
+    >>> browser.getControl(name='form.button.mailto').click()
+    >>> 'Send emails' in browser.contents
+    True
+    >>> 'name1@mail.com' in browser.contents
+    True
+    >>> 'test@test.com' in browser.contents
+    False
 	
 Sending mail with out choosing a person
 
-	>>> browser.open(view_pers_url)
-	>>> browser.getControl(name='form.button.mailto').click()
-	>>> 'You need to select at least one person or organization' in browser.contents
-	True
+    >>> browser.open(view_pers_url)
+    >>> browser.getControl(name='form.button.mailto').click()
+    >>> 'You need to select at least one person or organization' in browser.contents
+    True
 	
 Sending mail to a person without an email
 
-	>>> browser.open(view_pers_url)
-	>>> browser.getControl(name='no_mail').value = ['last2-name2 ']
-	>>> browser.getControl(name='form.button.mailto').click()
-	>>> 'You need to select at least one person or organization that has an email' in browser.contents
-	True
+    >>> browser.open(view_pers_url)
+    >>> import re
+    >>> m = re.search('<input[^>]*name="selection:list"[^>]*value="([^"]*)"[^>]*>[^<]*<\/td>[^<]*<td><a[^>]*><span>last2, name2<\/span>', browser.contents)
+    >>> browser.getControl(name='selection:list').value = [m.group(1)]
+    >>> browser.getControl(name='form.button.mailto').click()
+    >>> 'You need to select at least one person or organization that has an email' in browser.contents
+    True
 	
 Sending mails to a person with an email and one without an email
 
-	>>> browser.open(view_pers_url)
-	>>> browser.getControl(name='user_selection:list').value = [1]
-	>>> browser.getControl(name='no_mail').value = ['last2-name2 ']
-	>>> browser.getControl(name='form.button.mailto').click()
-	>>> 'Send emails' in browser.contents
-	True
-	>>> 'name1@mail.com' in browser.contents
-	True
+    >>> browser.open(view_pers_url)
+    >>> for input in browser.getControl(name='selection:list').controls: input.selected = True;
+    >>> browser.getControl(name='form.button.mailto').click()
+    >>> 'Send emails' in browser.contents
+    True
+    >>> 'name1@mail.com' in browser.contents
+    True
 
 
 Send mail to organizations
@@ -716,39 +714,42 @@ Send mail to organizations
 
 Send mail to organizations with email
 
-	>>> browser.open(view_org_url)
-	>>> browser.getControl(name='user_selection:list').value = [1]
-	>>> browser.getControl(name='form.button.mailto').click()
-	>>> 'Send emails' in browser.contents
-	True
-	>>> 'Org@mail.com' in browser.contents
-	True
+    >>> browser.open(view_org_url)
+    >>> import re
+    >>> m = re.search('<input[^>]*name="selection:list"[^>]*value="([^"]*)"[^>]*>[^<]*<\/td>[^<]*<td><a[^>]*><span>Organization1<\/span>', browser.contents)
+    >>> browser.getControl(name='selection:list').value = [m.group(1)]
+    >>> browser.getControl(name='form.button.mailto').click()
+    >>> 'Send emails' in browser.contents
+    True
+    >>> 'Org@mail.com' in browser.contents
+    True
 
 Sending mail with out choosing an organization
 
-	>>> browser.open(view_org_url)
-	>>> browser.getControl(name='form.button.mailto').click()
-	>>> 'You need to select at least one person or organization' in browser.contents
-	True
+    >>> browser.open(view_org_url)
+    >>> browser.getControl(name='form.button.mailto').click()
+    >>> 'You need to select at least one person or organization' in browser.contents
+    True
 
 Sending mail to an organization without an email
 
-	>>> browser.open(view_org_url)
-	>>> browser.getControl(name='no_mail').value = ['organization2 ']
-	>>> browser.getControl(name='form.button.mailto').click()
-	>>> 'You need to select at least one person or organization that has an email' in browser.contents
-	True
+    >>> browser.open(view_org_url)
+    >>> import re
+    >>> m = re.search('<input[^>]*name="selection:list"[^>]*value="([^"]*)"[^>]*>[^<]*<\/td>[^<]*<td><a[^>]*><span>Organization2<\/span>', browser.contents)
+    >>> browser.getControl(name='selection:list').value = [m.group(1)]
+    >>> browser.getControl(name='form.button.mailto').click()
+    >>> 'You need to select at least one person or organization that has an email' in browser.contents
+    True
 	
 Sending mails to an organization with an email and one without an email
 
-	>>> browser.open(view_org_url)
-	>>> browser.getControl(name='user_selection:list').value = [1]
-	>>> browser.getControl(name='no_mail').value = ['organization2 ']
-	>>> browser.getControl(name='form.button.mailto').click()
-	>>> 'Send emails' in browser.contents
-	True
-	>>> 'Org@mail.com' in browser.contents
-	True
+    >>> browser.open(view_org_url)
+    >>> for input in browser.getControl(name='selection:list').controls: input.selected = True;
+    >>> browser.getControl(name='form.button.mailto').click()
+    >>> 'Send emails' in browser.contents
+    True
+    >>> 'Org@mail.com' in browser.contents
+    True
 
 
 Test export file persons
@@ -757,108 +758,114 @@ Test export file persons
 persons with email
 ------------------
 
-	>>> browser.open(view_pers_url)
-	>>> browser.getControl(name='user_selection:list').value = [1]
-	>>> browser.getControl(name='form.button.export_persons',index=0).click()
+    >>> browser.open(view_pers_url)
+    >>> for input in browser.getControl(name='selection:list').controls: input.selected = True;
+    >>> browser.getControl(name='form.exportformat').value = ['person.csv']
+    >>> browser.getControl(name='form.button.export',index=0).click()
 	
 check the headers
 
-	>>> "id,short_name,first_name,last_name,organization,position" in browser.contents 
-	True
-	>>> "department,work_phone,work_mobile_phone,work_email,work_email2," in browser.contents
-	True
-	>>> "work_email3,address,country,state,city,zip,phone,mobile_phone,email,web,text" in browser.contents
-	True
+    >>> "id,shortName,firstName,lastName,birthdate,organization,position" in browser.contents 
+    True
+    >>> "department,workPhone,workPhoneInternal,workMobilePhone,workFax,workEmail,workEmail2," in browser.contents
+    True
+    >>> "workEmail3,address,country,state,city,zip,phone,mobilePhone,email,web,text" in browser.contents
+    True
 	
 check some of the data
 
-	>>> 'last1-name1' in browser.contents
-	True
-	>>> 'name1@mail.com' in browser.contents
-	True
+    >>> 'last1-name1' in browser.contents
+    True
+    >>> 'name1@mail.com' in browser.contents
+    True
 
 persons without an email
 ------------------------
 
-	>>> browser.open(view_pers_url)
-	>>> browser.getControl(name='no_mail').value = ['last2-name2 ']
-	>>> browser.getControl(name='form.button.export_persons',index=0).click()
+    >>> browser.open(view_pers_url)
+    >>> import re
+    >>> m = re.search('<input[^>]*name="selection:list"[^>]*value="([^"]*)"[^>]*>[^<]*<\/td>[^<]*<td><a[^>]*><span>last2, name2<\/span>', browser.contents)
+    >>> browser.getControl(name='selection:list').value = [m.group(1)]
+    >>> browser.getControl(name='form.exportformat').value = ['person.csv']
+    >>> browser.getControl(name='form.button.export',index=0).click()
 
 check the headers
 
-	>>> "id,short_name,first_name,last_name,organization,position" in browser.contents 
-	True
-	>>> "department,work_phone,work_mobile_phone,work_email,work_email2," in browser.contents
-	True
-	>>> "work_email3,address,country,state,city,zip,phone,mobile_phone,email,web,text" in browser.contents
-	True
+    >>> "id,shortName,firstName,lastName,birthdate,organization,position" in browser.contents 
+    True
+    >>> "department,workPhone,workPhoneInternal,workMobilePhone,workFax,workEmail,workEmail2," in browser.contents
+    True
+    >>> "workEmail3,address,country,state,city,zip,phone,mobilePhone,email,web,text" in browser.contents
+    True
 
 check some of the data
 
-	>>> 'last2-name2' in browser.contents
-	True
+    >>> 'last2-name2' in browser.contents
+    True
 
 
 persons with and without an email
 ---------------------------------
 
-	>>> browser.open(view_pers_url)
-	>>> browser.getControl(name='no_mail').value = ['last2-name2 ']
-	>>> browser.getControl(name='user_selection:list').value = [1]
-	>>> browser.getControl(name='form.button.export_persons',index=0).click()
+    >>> browser.open(view_pers_url)
+    >>> for input in browser.getControl(name='selection:list').controls: input.selected = True;
+    >>> browser.getControl(name='form.exportformat').value = ['person.csv']
+    >>> browser.getControl(name='form.button.export',index=0).click()
 
 check the headers
 
-	>>> "id,short_name,first_name,last_name,organization,position" in browser.contents 
-	True
-	>>> "department,work_phone,work_mobile_phone,work_email,work_email2," in browser.contents
-	True
-	>>> "work_email3,address,country,state,city,zip,phone,mobile_phone,email,web,text" in browser.contents
-	True
+    >>> "id,shortName,firstName,lastName,birthdate,organization,position" in browser.contents 
+    True
+    >>> "department,workPhone,workPhoneInternal,workMobilePhone,workFax,workEmail,workEmail2," in browser.contents
+    True
+    >>> "workEmail3,address,country,state,city,zip,phone,mobilePhone,email,web,text" in browser.contents
+    True
 
 check some of the data
 
-	>>> 'last1-name1' in browser.contents
-	True
-	>>> 'name1@mail.com' in browser.contents
-	True
-	>>> 'last2-name2' in browser.contents
-	True
+    >>> 'last1-name1' in browser.contents
+    True
+    >>> 'name1@mail.com' in browser.contents
+    True
+    >>> 'last2-name2' in browser.contents
+    True
 
 without choosing a person
 -------------------------
 
-	>>> browser.open(view_pers_url)
-	>>> browser.getControl(name='form.button.export_persons',index=0).click()
-	>>> 'You need to select at least one person or organization' in browser.contents
-	True
+    >>> browser.open(view_pers_url)
+    >>> browser.getControl(name='form.exportformat').value = ['person.csv']
+    >>> browser.getControl(name='form.button.export',index=0).click()
+    >>> 'You need to select at least one person or organization' in browser.contents
+    True
 
 
 export all persons
 ------------------
 
-	>>> browser.open(view_pers_url)
-	>>> browser.getControl(name='form.button.export_persons',index=1).click()
+    >>> browser.open(view_pers_url)
+    >>> browser.getControl(name='form.exportformat').value = ['person.csv']
+    >>> browser.getControl(name='form.button.exportall').click()
 
 check the headers
 
-	>>> "id,short_name,first_name,last_name,organization,position" in browser.contents 
-	True
-	>>> "department,work_phone,work_mobile_phone,work_email,work_email2," in browser.contents
-	True
-	>>> "work_email3,address,country,state,city,zip,phone,mobile_phone,email,web,text" in browser.contents
-	True
+    >>> "id,shortName,firstName,lastName,birthdate,organization,position" in browser.contents 
+    True
+    >>> "department,workPhone,workPhoneInternal,workMobilePhone,workFax,workEmail,workEmail2," in browser.contents
+    True
+    >>> "workEmail3,address,country,state,city,zip,phone,mobilePhone,email,web,text" in browser.contents
+    True
 
 check some of the data
 
-	>>> 'perez-juan' in browser.contents
-	True
-	>>> 'last1-name1' in browser.contents
-	True
-	>>> 'name1@mail.com' in browser.contents
-	True
-	>>> 'last2-name2' in browser.contents
-	True
+    >>> 'perez-juan' in browser.contents
+    True
+    >>> 'last1-name1' in browser.contents
+    True
+    >>> 'name1@mail.com' in browser.contents
+    True
+    >>> 'last2-name2' in browser.contents
+    True
 
 
 Test export file organizations
@@ -867,112 +874,119 @@ Test export file organizations
 organizations with email
 ------------------------
 
-	>>> browser.open(view_org_url)
-	>>> browser.getControl(name='user_selection:list').value = [1]
-	>>> browser.getControl(name='form.button.export_org',index=0).click()
+    >>> browser.open(view_org_url)
+    >>> for input in browser.getControl(name='selection:list').controls: input.selected = True;
+    >>> browser.getControl(name='form.exportformat').value = ['organization.csv']
+    >>> browser.getControl(name='form.button.export',index=0).click()
 
 check the headers
 
-	>>> "id,title,address,city,zip,country,state,extra_address,phone,fax,email" in browser.contents
-	True
-	>>> "email2,email3,web,sector,sub_sector,text" in browser.contents
-	True
+    >>> "id,title,address,city,zip,country,state,extraAddress,phone,phoneInternal,fax,email" in browser.contents
+    True
+    >>> "email2,email3,web,sector,sub_sector,text" in browser.contents
+    True
 
 check some of the data
 
-	>>> 'organization1' in browser.contents
-	True
-	>>> 'Org@mail.com' in browser.contents
-	True
+    >>> 'organization1' in browser.contents
+    True
+    >>> 'Org@mail.com' in browser.contents
+    True
 
 organizations without an email
-------------------------
+------------------------------
 
-	>>> browser.open(view_org_url)
-	>>> browser.getControl(name='no_mail').value = ['organization2 ']
-	>>> browser.getControl(name='form.button.export_org',index=0).click()
+    >>> browser.open(view_org_url)
+    >>> import re
+    >>> m = re.search('<input[^>]*name="selection:list"[^>]*value="([^"]*)"[^>]*>[^<]*<\/td>[^<]*<td><a[^>]*><span>Organization2<\/span>', browser.contents)
+    >>> browser.getControl(name='selection:list').value = [m.group(1)]
+    >>> browser.getControl(name='form.exportformat').value = ['organization.csv']
+    >>> browser.getControl(name='form.button.export',index=0).click()
 
 check the headers
 
-	>>> "id,title,address,city,zip,country,state,extra_address,phone,fax,email" in browser.contents
-	True
-	>>> "email2,email3,web,sector,sub_sector,text" in browser.contents
-	True
+    >>> "id,title,address,city,zip,country,state,extraAddress,phone,phoneInternal,fax,email" in browser.contents
+    True
+    >>> "email2,email3,web,sector,sub_sector,text" in browser.contents
+    True
 
 check some of the data
 
-	>>> 'organization2' in browser.contents
-	True
+    >>> 'organization2' in browser.contents
+    True
 
 
 organizations with and without an email
----------------------------------
+---------------------------------------
 
-	>>> browser.open(view_org_url)
-	>>> browser.getControl(name='no_mail').value = ['organization2 ']
-	>>> browser.getControl(name='user_selection:list').value = [1]
-	>>> browser.getControl(name='form.button.export_org',index=0).click()
+    >>> browser.open(view_org_url)
+    >>> browser.getControl(name='form.exportformat').value = ['organization.csv']
+    >>> for input in browser.getControl(name='selection:list').controls: input.selected = True;
+    >>> browser.getControl(name='form.button.export',index=0).click()
 
 check the headers
 
-	>>> "id,title,address,city,zip,country,state,extra_address,phone,fax,email" in browser.contents
-	True
-	>>> "email2,email3,web,sector,sub_sector,text" in browser.contents
-	True
+    >>> "id,title,address,city,zip,country,state,extraAddress,phone,phoneInternal,fax,email" in browser.contents
+    True
+    >>> "email2,email3,web,sector,sub_sector,text" in browser.contents
+    True
 
 check some of the data
 
-	>>> 'organization1' in browser.contents
-	True
-	>>> 'Org@mail.com' in browser.contents
-	True
-	>>> 'organization2' in browser.contents
-	True
+    >>> 'organization1' in browser.contents
+    True
+    >>> 'Org@mail.com' in browser.contents
+    True
+    >>> 'organization2' in browser.contents
+    True
 
 without choosing an organization
 --------------------------------
 
-	>>> browser.open(view_org_url)
-	>>> browser.getControl(name='form.button.export_org',index=0).click()
-	>>> 'You need to select at least one person or organization' in browser.contents
-	True
+    >>> browser.open(view_org_url)
+    >>> browser.getControl(name='form.exportformat').value = ['organization.csv']
+    >>> browser.getControl(name='form.button.export',index=0).click()
+    >>> 'You need to select at least one person or organization' in browser.contents
+    True
 
 
 export all organizations
 ------------------------
 
-	>>> browser.open(view_org_url)
-	>>> browser.getControl(name='form.button.export_org',index=1).click()
+    >>> browser.open(view_org_url)
+    >>> browser.getControl(name='form.exportformat').value = ['organization.csv']
+    >>> browser.getControl(name='form.button.exportall').click()
 
 check the headers
 
-
-	>>> "id,title,address,city,zip,country,state,extra_address,phone,fax,email" in browser.contents
-	True
-	>>> "email2,email3,web,sector,sub_sector,text" in browser.contents
-	True
+    >>> "id,title,address,city,zip,country,state,extraAddress,phone,phoneInternal,fax,email" in browser.contents
+    True
+    >>> "email2,email3,web,sector,sub_sector,text" in browser.contents
+    True
 
 check some of the data
 
-	>>> 'organization1' in browser.contents
-	True
-	>>> 'Org@mail.com' in browser.contents
-	True
-	>>> 'organization2' in browser.contents
-	True
+    >>> 'organization1' in browser.contents
+    True
+    >>> 'Org@mail.com' in browser.contents
+    True
+    >>> 'organization2' in browser.contents
+    True
 	
 Import persons
----------------
+--------------
 
-    >>> #import_view = portal_url + "/import_view"
-    >>> #browser.open(import_view)
-    >>> #browser.getControl(name='import_selection').value = ['persons']
-    >>> #import os
-    >>> #input = open('user.csv', 'rb')
-    >>> #control = browser.getControl(name='import_file')
-    >>> #file_control = control.mech_control
-    >>> #file_control.add_file(input,'text/plain', 'test.csv')
-    >>> #browser.getControl(name='submit').click()
-    >>> #'1 successfuly imported persons' in browser.contents
-
-for a reason is not reading the file correctly, but if it's done throw the web works
+    >>> browser.open(portal_url)
+    >>> browser.getLink('Address Book Sample').click()
+    >>> browser.getControl(name='form.button.import').click()
+    >>> browser.getControl(name='import_selection').value = ['person.csv']
+    >>> import os
+    >>> import collective.contacts
+    >>> path = os.path.join(collective.contacts.__path__[0], 'user.csv')
+    >>> input = open(path, 'rb')
+    >>> control = browser.getControl(name='import_file')
+    >>> file_control = control.mech_control
+    >>> file_control.add_file(input, 'text/plain', path)
+    >>> browser.getControl(name='submit').click()
+    >>> 'Successfully imported 1 persons' in browser.contents
+    True

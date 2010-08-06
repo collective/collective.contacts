@@ -5,14 +5,15 @@
 from zope.interface import implements, directlyProvides
 
 from Products.Archetypes import atapi
-from Products.ATContentTypes.content import base
+from Products.ATContentTypes.content import folder
 from Products.ATContentTypes.content import schemata
 
 from collective.contacts import contactsMessageFactory as _
 from collective.contacts.interfaces import IOrganization
 from collective.contacts.config import PROJECTNAME
+from collective.contacts.content import DeprecatedATFieldProperty
 
-OrganizationSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
+OrganizationSchema = folder.ATFolderSchema.copy() + atapi.Schema((
 
     # -*- Your Archetypes field definitions here ... -*-
 
@@ -90,6 +91,16 @@ OrganizationSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         widget=atapi.StringWidget(
             label=_(u"Phone Number"),
             description=_(u"Organization's phone number"),
+        ),
+        searchable=1,
+    ),
+
+    atapi.StringField(
+        'phoneInternal',
+        storage=atapi.AnnotationStorage(),
+        widget=atapi.StringWidget(
+            label=_(u"Internal Phone Number"),
+            description=_(u"Organization's internal phone number"),
         ),
         searchable=1,
     ),
@@ -202,10 +213,13 @@ OrganizationSchema['description'].storage = atapi.AnnotationStorage()
 OrganizationSchema['description'].widget.visible = {'edit': 'invisible',
                                                     'view': 'invisible'}
 
+schemata.finalizeATCTSchema(
+    OrganizationSchema,
+    folderish=True,
+    moveDiscussion=False
+)
 
-schemata.finalizeATCTSchema(OrganizationSchema, moveDiscussion=False)
-
-class Organization(base.ATCTContent):
+class Organization(folder.ATFolder):
     """Contact information of an organization"""
     implements(IOrganization)
 
@@ -221,8 +235,9 @@ class Organization(base.ATCTContent):
     state = atapi.ATFieldProperty('state')
     city = atapi.ATFieldProperty('city')
     zip = atapi.ATFieldProperty('zip')
-    extra_address = atapi.ATFieldProperty('extraAddress')
+    extraAddress = atapi.ATFieldProperty('extraAddress')
     phone = atapi.ATFieldProperty('phone')
+    phoneInternal = atapi.ATFieldProperty('phoneInternal')
     fax = atapi.ATFieldProperty('fax')
     email = atapi.ATFieldProperty('email')
     email2 = atapi.ATFieldProperty('email2')
@@ -231,6 +246,8 @@ class Organization(base.ATCTContent):
     sector = atapi.ATFieldProperty('sector')
     sub_sector = atapi.ATFieldProperty('sub_sector')
     text = atapi.ATFieldProperty('text')
-
+    
+    # deprecated properties
+    extra_address = DeprecatedATFieldProperty('extraAddress', 'extra_address')
 
 atapi.registerType(Organization, PROJECTNAME)

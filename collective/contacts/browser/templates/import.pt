@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="collective.contacts">
+<body>
+  <div metal:fill-slot="main">
+    <tal:main-macro metal:define-macro="main"
+                    tal:define="message view/message|nothing;">
+      
+      <h1 class="documentFirstHeading"
+          i18n:translate="label_import_organizations_persons">
+        Import organizations or persons
+      </h1>
+      
+      <p class="discreet"
+         i18n:translate="">
+        When importing persons make sure the organizations associated with them exist.
+        Otherwise the persons can not be imported.
+      </p>
+      
+      <form action="#" method="post" enctype="multipart/form-data"
+            tal:condition="view/importFormats"
+            tal:attributes="action string:${context/absolute_url}/import">
+        <div class="field">
+          <label class="formQuestion" for="import_file" i18n:translate="label_import_file">Import file</label>
+          <input type="file" id="import_file" name="import_file">
+        </div>
+        <div class="field">
+          <label class="formQuestion" for="import_selection" i18n:translate="label_import_selection">Selection</label>
+          <select name="import_selection" id="import_selection">
+            <option value="person"
+                    tal:repeat="format view/importFormats"
+                    tal:attributes="value format/value">
+              <span tal:replace="format/title">Persons</span>
+              [<span tal:replace="format/format">CSV</span>]
+            </option>
+          </select>
+        </div>
+        <input type="hidden" name="import.submitted" value="1">
+        <div class="formControls">
+          <input type="submit"
+                 name="submit"
+                 value="Import"
+                 id="submit"
+                 class="context"
+                 i18n:attributes="value label_import_submit"
+                 />
+        </div>
+      </form>
+      
+      <dl class="discreet" tal:condition="view/errors">
+        <dt i18n:translate="">
+          The following errors where raised during the import
+        </dt>
+        <dd tal:repeat="error view/errors"
+            tal:content="error">
+          Error
+        </dd>
+      </dl>
+      
+    </tal:main-macro>
+  </div>
+</body>
+</html>

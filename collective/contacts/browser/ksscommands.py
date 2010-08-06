@@ -18,7 +18,7 @@ class KSSModifySelector(PloneKSSView):
 
 
     implements(IPloneKSSView)
-    def kssModifyState(self, country=None):
+    def kssModifyState(self, country=None, search=0):
         """
         This method is used to update the province drop down when adding
         a person or organization and also from the advanced search template
@@ -26,19 +26,16 @@ class KSSModifySelector(PloneKSSView):
         in two methods, one that gets called from the ct, and another one
         that gets called from the search template
         """
-
         context = aq_inner(self.context)
         ksscore = self.getCommandSet('core')
 
-        selector = ksscore.getHtmlIdSelector('state')
-
         utility = zapi.getUtility(ICountriesStates)
 
-        if not country:
-            # This is necesary for the inline edition
+        if not search and not country:
+            # This is necessary for the inline edition
             country = context.getCountry()
 
-        if country != '--':
+        if country and country != '--':
             # I will be here if the country has -- selected, in which case
             # i should return all states possible
             results = TitledVocabulary.fromTitles(utility.states(country=country))
@@ -47,39 +44,26 @@ class KSSModifySelector(PloneKSSView):
             # case i should return a filtered state list
             results = TitledVocabulary.fromTitles(utility.states())
 
-        if context.meta_type == 'AddressBook':
-            # If we are here, means this is a search template
+        if search:
+            selector = ksscore.getHtmlIdSelector('form.state')
+            result_html = u'<select name="form.state" id="form.state">'
+        else:
+            selector = ksscore.getHtmlIdSelector('state')
             result_html = u'<select name="state" id="state">'
-            result_html += (u'<option value="--">--</option>')
-
-            for i in results._terms:
-                if (i.value == u'(no values)' or i.value == u'??NA'):
-                    continue
-                aux = _(i.value)
-                value = zope.i18n.translate(aux, context=self.request)
-                aux = _(i.title)
-                title = zope.i18n.translate(aux, context=self.request)
+        
+        for i in results._terms:
+            aux = _(i.value)
+            value = zope.i18n.translate(aux, context=self.request)
+            aux = _(i.title)
+            title = zope.i18n.translate(aux, context=self.request)
+            if not search and context.state == value:
+                result_html += (u'<option value="%s" selected="True">%s'
+                                 '</option>' % (value,title))
+            else:
                 result_html += (u'<option value="%s">%s</option>'
-                                                    % (value,title))
-            result_html += u'</select>'
+                                                % (value,title))
 
-        if (context.meta_type == 'Person' or
-            context.meta_type == 'Organization'):
-            # If i'm here, means this is some content type
-            result_html = u'<select name="state" id="state">'
-            for i in results._terms:
-                aux = _(i.value)
-                value = zope.i18n.translate(aux, context=self.request)
-                aux = _(i.title)
-                title = zope.i18n.translate(aux, context=self.request)
-                if context.state == value:
-                    result_html += (u'<option value="%s" selected="True">%s'
-                                     '</option>' % (value,title))
-                else:
-                    result_html += (u'<option value="%s">%s</option>'
-                                                    % (value,title))
-
-            result_html += u'</select>'
+        result_html += u'</select>'
 
         # I replace the existing drop down
         ksscore.replaceHTML(selector, result_html)
@@ -87,7 +71,7 @@ class KSSModifySelector(PloneKSSView):
         # and finally we render
         return self.render()
 
-    def kssModifySector(self, sector=None):
+    def kssModifySector(self, sector=None, search=0):
         """
         This method is used to update the sub sector drop down when adding
         an organization and also from the advanced search template that's why
@@ -99,53 +83,45 @@ class KSSModifySelector(PloneKSSView):
         context = aq_inner(self.context)
         ksscore = self.getCommandSet('core')
 
-        selector = ksscore.getHtmlIdSelector('sub_sector')
-
-        if context.meta_type == 'AddressBook':
+        if search:
             # If i'm here means i'm inside the search template
             address_book = context
         else:
             # If i'm here means i'm inside some ct
             address_book = context.aq_parent
+            if not sector:
+                # This is necessary for the inline edition
+                sector = context.getSector()
 
-        if not sector:
-            # This is necesary for the inline edition
-            sector = context.getSector()
-
-        if sector == '--':
+        if not sector or sector == '--':
             # If i'm here, means someone selected the -- sector, in which
             # case, i should return all sub sectors available
             sub_sectors = address_book.get_all_sub_sectors()
-            results = TitledVocabulary.fromTitles(
-                                            zip(sub_sectors, sub_sectors))
         else:
             # If i'm here, means someone selected some sector, in which case,
             # i should return a filtered sub sector list
             sub_sectors = address_book.get_sub_sectors(sector)
-            results = TitledVocabulary.fromTitles(zip(sub_sectors, sub_sectors))
-
-        if context.meta_type == 'AddressBook':
+        results = TitledVocabulary.fromTitles([('--',_(u'(no value)'))] + zip(sub_sectors, sub_sectors))
+        
+        if search:
+            selector = ksscore.getHtmlIdSelector('form.sub_sector')
             # If i'm here means i'm inside the advanced search template
             # so i create the html needed for the sub sector drop down
-            result_html = u'<select name="sub_sector" id="sub_sector">'
-            result_html += (u'<option value="--">--</option>')
-            for i in results._terms:
-                result_html += (u'<option value="%s">%s</option>'
-                                                    % (i.value,i.title))
-            result_html += u'</select>'
-
+            result_html = u'<select name="form.sub_sector" id="form.sub_sector" size="1">'
         else:
+            selector = ksscore.getHtmlIdSelector('sub_sector')
             # If i'm here, means i'm inside some ct, then i create the html
             # for the drop down
             result_html = u'<select name="sub_sector" id="sub_sector">'
-            for i in results._terms:
-                if context.sub_sector == i.value:
-                    result_html += (u'<option value="%s" selected="True">%s'
-                                    '</option>' % (i.value,i.title))
-                else:
-                    result_html += (u'<option value="%s">%s</option>'
-                                                        % (i.value,i.title))
-            result_html += u'</select>'
+
+        for i in results._terms:
+            if not search and context.sub_sector == i.value:
+                result_html += (u'<option value="%s" selected="True">%s'
+                                '</option>' % (i.value,i.title))
+            else:
+                result_html += (u'<option value="%s">%s</option>'
+                                                    % (i.value,i.title))
+        result_html += u'</select>'
 
         # replace the existing one
         ksscore.replaceHTML(selector, result_html)

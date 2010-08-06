@@ -1,0 +1,13 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.contacts">
+
+  <browser:page
+      for="..interfaces.IAddressBook"
+      name="import"
+      class=".import.ImportView"
+      permission="cmf.ModifyPortalContent"
+      />
+
+</configure>

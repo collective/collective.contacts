@@ -1,10 +1,52 @@
 <?xml version="1.0"?>
 <object name="portal_catalog" meta_type="Plone Catalog Tool">
+    <index name="shortName" meta_type="FieldIndex">
+        <indexed_attr value="shortName"/>
+    </index>
     <index name="lastName" meta_type="FieldIndex">
-        <indexed_attr value="last_name"/>
+        <indexed_attr value="lastName"/>
     </index>
     <index name="firstName" meta_type="FieldIndex">
-        <indexed_attr value="first_name"/>
+        <indexed_attr value="firstName"/>
+    </index>
+    <index name="birthdate" meta_type="FieldIndex">
+        <indexed_attr value="birthdate"/>
+    </index>
+    <index name="organization" meta_type="FieldIndex">
+        <indexed_attr value="organization"/>
+    </index>
+    <index name="sortable_organization" meta_type="FieldIndex">
+        <indexed_attr value="sortable_organization"/>
+    </index>
+    <index name="position" meta_type="FieldIndex">
+        <indexed_attr value="position"/>
+    </index>
+    <index name="department" meta_type="FieldIndex">
+        <indexed_attr value="department"/>
+    </index>
+    <index name="address" meta_type="FieldIndex">
+        <indexed_attr value="address"/>
+    </index>
+    <index name="country" meta_type="FieldIndex">
+        <indexed_attr value="country"/>
+    </index>
+    <index name="state" meta_type="FieldIndex">
+        <indexed_attr value="state"/>
+    </index>
+    <index name="city" meta_type="FieldIndex">
+        <indexed_attr value="city"/>
+    </index>
+    <index name="zip" meta_type="FieldIndex">
+        <indexed_attr value="zip"/>
+    </index>
+    <index name="sector" meta_type="FieldIndex">
+        <indexed_attr value="sector"/>
+    </index>
+    <index name="sub_sector" meta_type="FieldIndex">
+        <indexed_attr value="sub_sector"/>
+    </index>
+    <index name="members" meta_type="FieldIndex">
+        <indexed_attr value="members"/>
     </index>
     <column value="firstName"/>
     <column value="lastName"/>

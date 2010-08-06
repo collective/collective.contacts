@@ -1,2 +1,2 @@
-id,short_name,first_name,last_name,organization,position,department,work_phone,work_mobile_phone,work_email,work_email2,work_email3,address,country,state,city,zip,phone,mobile_phone,email,web,text
-ramone-joey,joe,joey,ramone,,,,,,,,,,AR,(sin valores),,,,,,
+"id","shortName","firstName","lastName","birthdate","organization","position","department","workPhone","workPhoneInternal","workMobilePhone","workFax","workEmail","workEmail2","workEmail3","address","country","state","city","zip","phone","mobilePhone","email","web","text"
+"ramone-joey","joe","joey","ramone","","","","","","","","","",,,"","AR","--","",,"","","","",

@@ -1,0 +1,44 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:kss="http://namespaces.zope.org/kss"
+    i18n_domain="collective.contacts">
+
+  <browser:page
+      for="*"
+      name="search_person"
+      class=".search.PersonSearchView"
+      permission="zope.Public"
+      />
+
+  <browser:page
+      for="*"
+      name="search_organization"
+      class=".search.OrganizationSearchView"
+      permission="zope.Public"
+      />
+
+  <browser:page
+      for="*"
+      name="search_group"
+      class=".search.GroupSearchView"
+      permission="zope.Public"
+      />
+  
+  <!-- advanced search forms -->
+  
+  <browser:page
+      for="*"
+      name="find_person"
+      class=".find.FindPersonForm"
+      permission="zope.Public"
+      />
+
+  <browser:page
+      for="*"
+      name="find_organization"
+      class=".find.FindOrganizationForm"
+      permission="zope.Public"
+      />
+
+</configure>

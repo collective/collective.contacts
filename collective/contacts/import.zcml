@@ -1,0 +1,19 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="collective.contacts">
+
+    <adapter
+        factory=".import.PersonCSVImport"
+        for=".interfaces.IAddressBook"
+        provides=".interfaces.IImport"
+        name="person.csv"
+        />
+        
+    <adapter
+        factory=".import.OrganizationCSVImport"
+        for=".interfaces.IAddressBook"
+        provides=".interfaces.IImport"
+        name="organization.csv"
+        />
+
+</configure>

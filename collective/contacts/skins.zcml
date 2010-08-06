@@ -3,11 +3,8 @@
     xmlns:cmf="http://namespaces.zope.org/cmf"
     i18n_domain="collective.contacts">
 
-   <!-- File System Directory Views registration -->
-   <cmf:registerDirectory
-       name="collective_contacts_templates"/>
-
-   <cmf:registerDirectory
-       name="collective_contacts_styles"/>
+    <!-- File System Directory Views registration -->
+    <cmf:registerDirectory
+        name="collective_contacts"/>
 
 </configure>

@@ -6,7 +6,7 @@
   <property name="description"
     i18n:translate="">An address book</property>
   <property name="content_meta_type">Address Book</property>
-  <property name="content_icon">folder_icon.gif</property>
+  <property name="content_icon">++resource++resources/addressbook.gif</property>
   <property name="product">collective.contacts</property>
   <property name="factory">addAddressBook</property>
   <property name="immediate_view">edit</property>
@@ -18,11 +18,11 @@
     <element value="Group" />
   </property>
   <property name="allow_discussion">False</property>
-  <property name="default_view">organizations</property>
+  <property name="default_view">list_organizations</property>
   <property name="view_methods">
-    <element value="organizations" />
-    <element value="persons" />
-    <element value="groups" />
+    <element value="list_organizations" />
+    <element value="list_persons" />
+    <element value="list_groups" />
     <element value="base_view" />
   </property>
   <alias from="(Default)" to="(dynamic view)" />
@@ -30,7 +30,7 @@
   <alias from="sharing" to="@@sharing" />
   <alias from="view" to="(selected layout)" />
   <action title="View" action_id="view" category="object" condition_expr=""
-    url_expr="string:${object_url}/" visible="False">
+    url_expr="string:${object_url}/" visible="True">
     <permission value="View" />
   </action>
   <action title="Edit" action_id="edit" category="object" condition_expr=""

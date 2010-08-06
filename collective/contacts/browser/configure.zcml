@@ -1,24 +1,26 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
-    xmlns:kss="http://namespaces.zope.org/kss"
     i18n_domain="collective.contacts">
 
-  <include package="plone.app.contentmenu" />
-
-  <!-- -*- extra stuff goes here -*- -->
-
-  <include file="address_views.zcml" />
-  <include file="individuals_views.zcml" />
-  <include file="search_views.zcml" />
+  <include file="export.zcml" />
+  <include file="import.zcml" />
+  <include file="list.zcml" />
+  <include file="search.zcml" />
+  <include file="customize.zcml" />
   <include file="kss.zcml" />
-  <include file="viewlets.zcml" />
 
+  <browser:resourceDirectory
+      name="resources"
+      directory="resources"
+      permission="zope.Public"
+      />
 
-    <browser:resourceDirectory
-        name="resources"
-        directory="resources"
-        permission="zope.Public"
-        />
+  <browser:viewlet
+      name="collective.contacts.actions"
+      manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
+      class=".actions.ContactsActionsViewlet"
+      permission="zope2.View" 
+      />
 
 </configure>

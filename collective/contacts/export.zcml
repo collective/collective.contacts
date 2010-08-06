@@ -1,0 +1,40 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="collective.contacts">
+
+    <adapter
+        factory=".export.PersonCSVExport"
+        for="*"
+        provides=".interfaces.IExport"
+        name="person.csv"
+        />
+        
+    <adapter
+        factory=".export.OrganizationCSVExport"
+        for="*"
+        provides=".interfaces.IExport"
+        name="organization.csv"
+        />
+        
+    <adapter
+        factory=".export.PersonVCardExport"
+        for="*"
+        provides=".interfaces.IExport"
+        name="person.vcard"
+        />
+        
+    <adapter
+        factory=".export.PersonVCalendarExport"
+        for="*"
+        provides=".interfaces.IExport"
+        name="person.vcalendar"
+        />
+        
+    <adapter
+        factory=".export.OrganizationVCardExport"
+        for="*"
+        provides=".interfaces.IExport"
+        name="organization.vcard"
+        />
+
+</configure>

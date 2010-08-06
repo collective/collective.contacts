@@ -6,6 +6,7 @@ from zope.interface import Interface
 from zope.app.container.constraints import contains
 from zope.app.container.constraints import containers
 
+from collective.contacts.interfaces import IPerson
 from collective.contacts import contactsMessageFactory as _
 
 class IGroup(Interface):
@@ -16,5 +17,5 @@ class IGroup(Interface):
         title=_(u"Persons"),
         required=False,
         description=_(u"The persons that belong to this group"),
-        schema=Interface, # specify the interface(s) of the addable types here
+        schema=IPerson, # specify the interface(s) of the addable types here
     )
