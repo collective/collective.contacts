@@ -6,6 +6,8 @@ Changelog for collective.contacts
 SVN
 ---
 
+ * Fixed a bug and made some changes in the import/export functionality,
+   regarding with the 'organization' field [nikkitousen]
 
 1.4.5
 -----
