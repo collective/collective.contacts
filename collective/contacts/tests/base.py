@@ -26,6 +26,7 @@ from Products.CMFPlone.tests.utils import MockMailHost
 # All of Plone's products are already set up by PloneTestCase.
 
 ztc.installProduct('ATExtensions')
+ztc.installProduct('AdvancedQuery')
 
 @onsetup
 def setup_product():

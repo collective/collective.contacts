@@ -24,19 +24,18 @@ documentation, though, is in the underlying zope.testbrower package.
     >>> browser = Browser()
     >>> browser.handleErrors = False
     >>> portal_url = self.portal.absolute_url()
+    >>> login_form = portal_url+'/login_form'
 
 The following is useful when writing and debugging testbrowser tests. It lets
 us see all error messages in the error_log.
 
     >>> self.portal.error_log._ignored_exceptions = ()
 
-With that in place, we can go to the portal front page and log in. We will
+With that in place, we can go to the login form and log in. We will
 do this using the default user from PloneTestCase:
 
     >>> from Products.PloneTestCase.setup import portal_owner, default_password
-    >>> browser.open(portal_url)
-
-We have the login portlet, so let's use that.
+    >>> browser.open(login_form)
 
     >>> browser.getControl(name='__ac_name').value = portal_owner
     >>> browser.getControl(name='__ac_password').value = default_password
@@ -44,11 +43,6 @@ We have the login portlet, so let's use that.
 
 Here, we set the value of the fields on the login form and then simulate a
 submit click.
-
-We then test that we are still on the portal front page:
-
-    >>> browser.url == portal_url
-    True
 
 And we ensure that we get the friendly logged-in message:
 
@@ -68,6 +62,7 @@ Adding a new Address Book content item
 
 We use the 'Add new' menu to add a new content item.
 
+    >>> browser.open(portal_url)
     >>> browser.getLink('Add new').click()
 
 Then we select the type of item we want to add. In this case we select
@@ -143,7 +138,7 @@ Let's logout and then login as 'contributor', a portal member that has the
 contributor role assigned.
 
     >>> browser.getLink('Log out').click()
-    >>> browser.open(portal_url)
+    >>> browser.open(login_form)
     >>> browser.getControl(name='__ac_name').value = 'contributor'
     >>> browser.getControl(name='__ac_password').value = default_password
     >>> browser.getControl(name='submit').click()
@@ -172,7 +167,7 @@ Done! We added a new Address Book content item logged in as contributor.
 Finally, let's login back as manager.
 
     >>> browser.getLink('Log out').click()
-    >>> browser.open(portal_url)
+    >>> browser.open(login_form)
     >>> browser.getControl(name='__ac_name').value = portal_owner
     >>> browser.getControl(name='__ac_password').value = default_password
     >>> browser.getControl(name='submit').click()
@@ -274,7 +269,7 @@ Let's logout and then login as 'contributor', a portal member that has the
 contributor role assigned.
 
     >>> browser.getLink('Log out').click()
-    >>> browser.open(portal_url)
+    >>> browser.open(login_form)
     >>> browser.getControl(name='__ac_name').value = 'contributor'
     >>> browser.getControl(name='__ac_password').value = default_password
     >>> browser.getControl(name='submit').click()
@@ -305,7 +300,7 @@ Done! We added a new Person content item logged in as contributor.
 Finally, let's login back as manager.
 
     >>> browser.getLink('Log out').click()
-    >>> browser.open(portal_url)
+    >>> browser.open(login_form)
     >>> browser.getControl(name='__ac_name').value = portal_owner
     >>> browser.getControl(name='__ac_password').value = default_password
     >>> browser.getControl(name='submit').click()
@@ -404,7 +399,7 @@ Let's logout and then login as 'contributor', a portal member that has the
 contributor role assigned.
 
     >>> browser.getLink('Log out').click()
-    >>> browser.open(portal_url)
+    >>> browser.open(login_form)
     >>> browser.getControl(name='__ac_name').value = 'contributor'
     >>> browser.getControl(name='__ac_password').value = default_password
     >>> browser.getControl(name='submit').click()
@@ -434,7 +429,7 @@ Done! We added a new Organization content item logged in as contributor.
 Finally, let's login back as manager.
 
     >>> browser.getLink('Log out').click()
-    >>> browser.open(portal_url)
+    >>> browser.open(login_form)
     >>> browser.getControl(name='__ac_name').value = portal_owner
     >>> browser.getControl(name='__ac_password').value = default_password
     >>> browser.getControl(name='submit').click()
@@ -532,7 +527,7 @@ Let's logout and then login as 'contributor', a portal member that has the
 contributor role assigned.
 
     >>> browser.getLink('Log out').click()
-    >>> browser.open(portal_url)
+    >>> browser.open(login_form)
     >>> browser.getControl(name='__ac_name').value = 'contributor'
     >>> browser.getControl(name='__ac_password').value = default_password
     >>> browser.getControl(name='submit').click()
@@ -562,7 +557,7 @@ Done! We added a new Group content item logged in as contributor.
 Finally, let's login back as manager.
 
     >>> browser.getLink('Log out').click()
-    >>> browser.open(portal_url)
+    >>> browser.open(login_form)
     >>> browser.getControl(name='__ac_name').value = portal_owner
     >>> browser.getControl(name='__ac_password').value = default_password
     >>> browser.getControl(name='submit').click()
