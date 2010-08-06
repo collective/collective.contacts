@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from zope.interface import implements, Interface
 
 from Products.Five import BrowserView
@@ -6,9 +8,12 @@ from Products.CMFCore.utils import getToolByName
 from collective.contacts import contactsMessageFactory as _
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from Products.statusmessages.interfaces import IStatusMessage
 
 from collective.contacts.imports import importCSVPersons, importCSVOrganizations
 
+from zLOG import LOG, INFO, WARNING
+from collective.contacts.config import PROJECTNAME
 import zope.i18n
 
 
@@ -40,12 +45,15 @@ class ImportView(BrowserView):
             if import_type == 'persons':
                 # Call the persons import method
                 imported = importCSVPersons(self.context, path, import_file)
-
+                
                 aux = _(u'%s successfuly imported persons')
                 status = zope.i18n.translate(aux, context=self.request)
-
+                
                 url = self.context.absolute_url() + \
-                      '/import_view?message=%s' % (status%imported,)
+                      '/import_view'
+                
+                IStatusMessage(self.request).addStatusMessage((status%imported), type='info')
+                
                 return self.request.response.redirect(url)
 
             elif import_type == 'organizations':

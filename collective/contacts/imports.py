@@ -97,7 +97,7 @@ def importCSVPersons(context, path, file):
 
     counter = 0
 
-    # I now have all persons in my results, so i should start adding them to
+    # i now have all persons in my results, so i should start adding them to
     # the site
     for person in results:
         organization =[i.getObject() for i in portal_catalog(
@@ -107,7 +107,8 @@ def importCSVPersons(context, path, file):
                                     )]
 
 
-        if organization and len(organization)>1:
+        if (organization and len(organization)>1 and
+            person['organization']):
             aux = _('There are ${org_size} organizations with the same title, '
                     'i don\'t know with which one relate this person.',\
                     mapping={'org_size':len(organization)})
@@ -120,9 +121,8 @@ def importCSVPersons(context, path, file):
                     mapping={'person_id':person['id']})
             msg = zope.i18n.translate(aux, context=context.request)
             LOG(PROJECTNAME, WARNING, msg)
-
-        elif ((organization and len(organization)==1) or
-             person['organization'] == ''):
+            
+        else:
             if context.get(person['id']):
                 aux = _('There\'s already a person with this id here.')
                 msg = zope.i18n.translate(aux, context=context.request)
@@ -142,10 +142,20 @@ def importCSVPersons(context, path, file):
                         if attr != 'id' and attr != 'organization':
                             setattr(new_person, attr, person[attr])
                         if (attr == 'organization' and
-                            person['organization'] != ''):
+                            person['organization'] and
+                            organization and len(organization)==1):
                             new_person.setOrganization(organization[0])
 
                     counter += 1
+                    
+                    if person['organization'] and not organization:
+                        aux = _('Organization with title ${org_title} '
+                                'doesn\'t exist. Leaving that field '
+                                'in blank.',\
+                                mapping={'org_title':person['organization']})
+                        msg = zope.i18n.translate(aux, context=context.request)
+                        LOG(PROJECTNAME, WARNING, msg)
+                        
                     portal_catalog.reindexObject(new_person)
 
                     aux = _('Successfuly added ${person_id}.',\
@@ -163,21 +173,15 @@ def importCSVPersons(context, path, file):
                             mapping={'person_id':person['id']})
                     msg = zope.i18n.translate(aux, context=context.request)
                     LOG(PROJECTNAME, WARNING, msg)
-        else:
-            aux = _('There\'s no organization with title ${organization_name}, '
-                    'make sure it exists before adding persons. '
-                    '${person_id} not added',\
-                    mapping={'organization_name':person['organization'],
-                             'person_id':person['id']})
-            msg = zope.i18n.translate(aux, context=context.request)
-            LOG(PROJECTNAME, WARNING, msg)
+                    
 
     aux = _('Successfuly added ${persons_number} persons to ${location}.',\
             mapping={'persons_number':counter,
                      'location':path})
     msg = zope.i18n.translate(aux, context=context.request)
     LOG(PROJECTNAME, INFO, msg)
-
+    
+    # Here I should return also the unexistent organizations
     return counter
 
 

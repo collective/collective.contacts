@@ -4,17 +4,7 @@
       i18n:domain="collective.contacts">
 <body>
     <div metal:fill-slot="main">
-        <tal:main-macro metal:define-macro="main"
-                        tal:define="message request/message | python:None;">
-
-            <tal:block condition ="message">
-                <dl class="portalMessage info">
-                    <dt i18n:translate="label_info">Info</dt>
-
-                    <dd tal:content="message">message</dd>
-                </dl>
-
-            </tal:block>
+        <tal:main-macro metal:define-macro="main">
 
             <form action="#" method="post" enctype="multipart/form-data"
                       tal:attributes="action string:${context/absolute_url}/import_view">

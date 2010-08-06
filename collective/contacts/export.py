@@ -132,7 +132,7 @@ def exportPersonsToCSV(context, path, filter=None):
             if field == 'organization':
                 organization = getattr(person,field)
                 if organization:
-                    row.append(organization.id)
+                    row.append(getattr(organization,'title'))
                 else:
                     row.append('')
             else:
