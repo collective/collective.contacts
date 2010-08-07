@@ -627,7 +627,7 @@ Checking the organization view is called organizations
 
     >>> browser.open(portal_url)
     >>> browser.getLink('Address Book Sample').click()
-    >>> view_org_url = browser.url +"/list_organizations"
+    >>> view_org_url = browser.url +"/organizations"
     >>> browser.open(view_org_url)
     >>> "Organization Sample" in browser.contents
     True
@@ -640,7 +640,7 @@ Checking the persons view is called persons
 
     >>> browser.open(portal_url)
     >>> browser.getLink('Address Book Sample').click()
-    >>> view_pers_url = browser.url +"/list_persons"
+    >>> view_pers_url = browser.url +"/persons"
     >>> browser.open(view_pers_url)
     >>> "juan" in browser.contents
     True
@@ -653,7 +653,7 @@ Checking the groups view is called groups
 
     >>> browser.open(portal_url)
     >>> browser.getLink('Address Book Sample').click()
-    >>> view_group_url = browser.url +"/list_groups"
+    >>> view_group_url = browser.url +"/groups"
     >>> browser.open(view_group_url)
     >>> "Group Sample" in browser.contents
     True

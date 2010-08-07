@@ -11,8 +11,4 @@ class OrganizationView(PersonListView):
     @property
     def title(self):
         return _('Persons part of ${organization}', mapping={'organization': safe_unicode(self.context.Title())})
-    
-class OrganizationGroupsView(GroupListView):
-    """ Lists groups in a group
-    """
-    error_msg = _('no_groups_in_organization', default=u'There are no groups in this organization')
+

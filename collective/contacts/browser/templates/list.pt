@@ -53,7 +53,7 @@
         <form action="#" method="post"
               tal:attributes="action view/search_url">
               
-          <input type="hidden" name="form.camefrom" value="list_persons" tal:attributes="value template_id" />
+          <input type="hidden" name="form.camefrom" value="persons" tal:attributes="value template_id" />
 
           <div metal:use-macro="here/batch_macros/macros/navigation" />
         

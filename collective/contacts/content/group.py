@@ -4,7 +4,7 @@
 from zope.interface import implements, directlyProvides
 
 from Products.Archetypes import atapi
-from Products.ATContentTypes.content import folder
+from Products.ATContentTypes.content import base
 from Products.ATContentTypes.content import schemata
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import \
     ReferenceBrowserWidget
@@ -14,12 +14,12 @@ from plone.indexer import indexer
 from collective.contacts import contactsMessageFactory as _
 from collective.contacts.interfaces import IGroup
 from collective.contacts.config import PROJECTNAME
-    
+
 @indexer(IGroup)
 def members(obj):
     return len(obj.persons)
 
-GroupSchema = folder.ATFolderSchema.copy() + atapi.Schema((
+GroupSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 
     # -*- Your Archetypes field definitions here ... -*-
 
@@ -49,11 +49,10 @@ GroupSchema['description'].storage = atapi.AnnotationStorage()
 
 schemata.finalizeATCTSchema(
     GroupSchema,
-    folderish=True,
     moveDiscussion=False
 )
 
-class Group(folder.ATFolder):
+class Group(base.ATCTContent):
     """Let you have several persons together"""
     implements(IGroup)
 

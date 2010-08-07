@@ -81,7 +81,7 @@ class PersonListView(AbstractListView):
     """ Lists persons
     """
     implements(IViewView)
-    template_id = 'list_persons'
+    template_id = 'persons'
     name = 'person'
     page_size = 20
     error_msg = _('no_persons', default=u'There are no persons available')
@@ -91,7 +91,7 @@ class OrganizationListView(AbstractListView):
     """ Lists organizations
     """
     implements(IViewView)
-    template_id = 'list_organizations'
+    template_id = 'organizations'
     name = 'organization'
     page_size = 20
     error_msg = _('no_organizations', default=u'There are no organizations available')
@@ -101,7 +101,7 @@ class GroupListView(AbstractListView):
     """ Lists groups
     """
     implements(IViewView)
-    template_id = 'list_groups'
+    template_id = 'groups'
     name = 'group'
     page_size = 20
     error_msg = _('no_groups', default=u'There are no groups available')

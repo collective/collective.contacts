@@ -6,21 +6,21 @@
   <!-- global list views -->
   <browser:page
       for="*"
-      name="list_groups"
+      name="groups"
       class=".list.GroupListView"
       permission="zope.Public"
       />
 
   <browser:page
       for="*"
-      name="list_organizations"
+      name="organizations"
       class=".list.OrganizationListView"
       permission="zope.Public"
       />
 
   <browser:page
       for="*"
-	    name="list_persons"
+      name="persons"
       class=".list.PersonListView"
       permission="zope.Public"
       />
@@ -28,29 +28,15 @@
   <!-- specific list views -->
   <browser:page
       for="..interfaces.IOrganization"
-      name="list_persons"
+      name="persons"
       class=".organization.OrganizationView"
       permission="zope.Public"
       />
 
   <browser:page
-      for="..interfaces.IOrganization"
-      name="list_groups"
-      class=".organization.OrganizationGroupsView"
-      permission="zope.Public"
-      />
-
-  <browser:page
       for="..interfaces.IGroup"
-      name="list_persons"
+      name="persons"
       class=".group.GroupView"
-      permission="zope.Public"
-      />
-
-  <browser:page
-      for="..interfaces.IGroup"
-      name="list_groups"
-      class=".group.GroupGroupsView"
       permission="zope.Public"
       />
 

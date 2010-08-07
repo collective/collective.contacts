@@ -5,7 +5,7 @@
   <object name="organizations" meta_type="CMF Action" i18n:domain="collective.contacts">
    <property name="title" i18n:translate="">Organizations</property>
    <property name="description" i18n:translate=""/>
-   <property name="url_expr">string:${folder_url}/list_organizations</property>
+   <property name="url_expr">string:${folder_url}/organizations</property>
    <property name="icon_expr"/>
    <property name="available_expr">python:object.meta_type == 'AddressBook'</property>
    <property name="permissions">
@@ -17,7 +17,7 @@
         insert-after="organizations">
    <property name="title" i18n:translate="">Persons</property>
    <property name="description" i18n:translate=""/>
-   <property name="url_expr">string:${folder_url}/list_persons</property>
+   <property name="url_expr">string:${folder_url}/persons</property>
    <property name="icon_expr"/>
    <property name="available_expr">python:object.meta_type in ('AddressBook', 'Organization', 'Group')</property>
    <property name="permissions">
@@ -29,9 +29,9 @@
         insert-after="persons">
    <property name="title" i18n:translate="">Groups</property>
    <property name="description" i18n:translate=""/>
-   <property name="url_expr">string:${folder_url}/list_groups</property>
+   <property name="url_expr">string:${folder_url}/groups</property>
    <property name="icon_expr"/>
-   <property name="available_expr">python:object.meta_type in ('AddressBook', 'Organization', 'Group')</property>
+   <property name="available_expr">python:object.meta_type == 'AddressBook'</property>
    <property name="permissions">
     <element value="View"/>
    </property>
