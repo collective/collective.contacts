@@ -25,6 +25,9 @@ def importVarious(context):
     This provisional handler will be removed again as soon as
     full handlers are implemented for this step.
     """
+    if context.readDataFile('collective.contacts_various.txt') is None:
+        return
+    
     site = context.getSite()
     pfc = site.portal_form_controller
     pfc.addFormValidators('atct_edit',
@@ -44,6 +47,9 @@ def reindexCatalog(context):
     """
     This method will reindex the 3 new indexes added to the catalog
     """
+    if context.readDataFile('collective.contacts_reindex.txt') is None:
+        return
+    
     from Products.CMFCore.utils import getToolByName
     site = context.getSite()
     cat = getToolByName(site, 'portal_catalog')
