@@ -18,7 +18,7 @@
 
         <a href="#"
             tal:attributes="href string:${context/absolute_url}/customize_view?type=Person"
-            tal:condition="python: checkPermission('Modify Portal Content', context)">
+            tal:condition="python: checkPermission('Modify portal content', context)">
             <span i18n:translate="customize_view">Customize view</span>
         </a>
 
@@ -98,7 +98,7 @@
 
         <form action="#" method="post" class="visualNoPrint"
                     tal:attributes="action string:${context/absolute_url}/import_view"
-                    tal:condition="python: checkPermission('Modify Portal Content', context)">
+                    tal:condition="python: checkPermission('Modify portal content', context)">
             <input name="form.button.import" value="Import organizations or persons" type="submit" i18n:attributes="value label_import_organizations_persons"/>
         </form>
 

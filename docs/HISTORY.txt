@@ -9,6 +9,8 @@ SVN
  * Fixed a bug and made some changes in the import/export functionality,
    regarding with the 'organization' field [nikkitousen]
 
+ * Fixed misspelled permission in templates. [emanuel]
+
 1.4.5
 -----
 
