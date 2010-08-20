@@ -1,0 +1,29 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="collective.contacts">
+
+    <adapter
+        factory=".table.PersonTable"
+        for="*
+             zope.publisher.interfaces.browser.IBrowserRequest"
+        provides=".interfaces.ITable"
+        name="person"
+        />
+    
+    <adapter
+        factory=".table.OrganizationTable"
+        for="*
+             zope.publisher.interfaces.browser.IBrowserRequest"
+        provides=".interfaces.ITable"
+        name="organization"
+        />
+    
+    <adapter
+        factory=".table.GroupTable"
+        for="*
+             zope.publisher.interfaces.browser.IBrowserRequest"
+        provides="collective.contacts.interfaces.ITable"
+        name="group"
+        />
+
+</configure>

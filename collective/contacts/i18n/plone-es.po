@@ -1,0 +1,57 @@
+# Franco Pellegrini <frapell@menttes.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.contacts\n"
+"POT-Creation-Date: 2009-03-10 18:11+0000\n"
+"PO-Revision-Date: 2009-03-10 16:10-0200\n"
+"Last-Translator: Franco Pellegrini <frapell@menttes.com>\n"
+"Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: es\n"
+"Language-Name: Español\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone\n"
+"X-Generator: Lokalize 0.3\n"
+
+#. Default: "delete"
+#: records widget
+msgid "delete_this_entry"
+msgstr "eliminar"
+
+#. Default: "delete all entries"
+#: records widget
+msgid "delete_all_entries"
+msgstr "eliminar todas las entradas"
+
+#. Default: " More "
+#: records widget
+msgid "more_entries"
+msgstr " Más "
+
+# Default: " Work "
+msgid "label_schema_work"
+msgstr "Trabajo"
+
+# this (below this line) is needed for the edit templates :(
+#. Default: "Address Book"
+#: ./profiles/default/types/Address_Book.xml
+msgid "Address Book"
+msgstr "Libreta de direcciones"
+
+#. Default: "Organization"
+#: ./profiles/default/types/Organization.xml
+msgid "Organization"
+msgstr "Organización"
+
+#. Default: "Person"
+#: ./profiles/default/types/Person.xml
+msgid "Person"
+msgstr "Persona"
+
+#. Default: "Group"
+#: ./profiles/default/types/Group.xml
+msgid "Group"
+msgstr "Grupo"

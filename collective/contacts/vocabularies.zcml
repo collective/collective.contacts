@@ -1,0 +1,27 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="collective.contacts">
+  
+    <utility factory=".vocabularies.CountriesStatesFromFile" />
+  
+    <utility
+        component=".vocabularies.Countries"
+        name="contacts.countries"
+        />
+  
+    <utility
+        component=".vocabularies.States"
+        name="contacts.states"
+        />
+  
+    <utility
+        component=".vocabularies.Sectors"
+        name="contacts.sectors"
+        />
+  
+    <utility
+        component=".vocabularies.SubSectors"
+        name="contacts.sub_sectors"
+        />
+
+</configure>

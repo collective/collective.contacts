@@ -1,0 +1,26 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.contacts">
+
+  <include file="export.zcml" />
+  <include file="import.zcml" />
+  <include file="list.zcml" />
+  <include file="search.zcml" />
+  <include file="customize.zcml" />
+  <include file="kss.zcml" />
+
+  <browser:resourceDirectory
+      name="resources"
+      directory="resources"
+      permission="zope.Public"
+      />
+
+  <browser:viewlet
+      name="collective.contacts.actions"
+      manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
+      class=".actions.ContactsActionsViewlet"
+      permission="zope2.View" 
+      />
+
+</configure>

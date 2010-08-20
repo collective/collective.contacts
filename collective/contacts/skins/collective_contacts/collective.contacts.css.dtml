@@ -1,0 +1,49 @@
+/* <dtml-with base_properties> */
+
+input#sectors\.sector{
+    width: 90%;
+}
+
+.inlineForm .ArchetypesSelectionWidget label {
+  display:none;
+}
+
+.contactsActions {
+  float:right;
+  font-size:0.9em;
+}
+
+.contactsActions ul {
+  list-style-type:none;
+}
+
+.contactsActions li {
+  display:inline;
+  margin-left:1em;
+}
+
+.contactsActions li a {
+  border:none;
+}
+
+.exportFormats {
+  float:right;
+  font-size:0.9em;
+  line-height:1.5em;
+}
+
+.backLink {
+  margin-top:1em;
+}
+
+.contacts-listing th {
+  white-space:nowrap;
+}
+
+.contacts-listing .arrowDownAlternative,
+.contacts-listing .arrowUpAlternative {
+  font-size:50%;
+  vertical-align:middle;
+}
+
+/* </dtml-with> */

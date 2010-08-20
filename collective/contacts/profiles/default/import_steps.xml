@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<import-steps>
+ <import-step id="various-collective.contacts" version="20090310-01"
+              handler="collective.contacts.setuphandlers.importVarious"
+              title="Various collective.contacts Settings">
+  <dependency step="toolset"/>
+  Import various settings for collective.contacts.
+ </import-step>
+ <import-step id="reindex-collective.contacts" version="20090511-01"
+              handler="collective.contacts.setuphandlers.reindexCatalog"
+              title="Reindex the new catalogs">
+  <dependency step="catalog"/>
+  Reindex the new catalogs
+ </import-step>
+</import-steps>

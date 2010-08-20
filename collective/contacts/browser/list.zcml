@@ -1,0 +1,43 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.contacts">
+
+  <!-- global list views -->
+  <browser:page
+      for="*"
+      name="groups"
+      class=".list.GroupListView"
+      permission="zope.Public"
+      />
+
+  <browser:page
+      for="*"
+      name="organizations"
+      class=".list.OrganizationListView"
+      permission="zope.Public"
+      />
+
+  <browser:page
+      for="*"
+      name="persons"
+      class=".list.PersonListView"
+      permission="zope.Public"
+      />
+
+  <!-- specific list views -->
+  <browser:page
+      for="..interfaces.IOrganization"
+      name="persons"
+      class=".organization.OrganizationView"
+      permission="zope.Public"
+      />
+
+  <browser:page
+      for="..interfaces.IGroup"
+      name="persons"
+      class=".group.GroupView"
+      permission="zope.Public"
+      />
+
+</configure>

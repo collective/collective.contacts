@@ -1,0 +1,116 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="collective.contacts">
+<body>
+  <div metal:fill-slot="main">
+    <tal:main-macro metal:define-macro="main">
+
+      <div tal:replace="structure provider:plone.abovecontenttitle" />
+          
+      <h1 class="documentFirstHeading" tal:content="view/title">
+        Persons
+      </h1>
+
+      <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+      <div tal:replace="structure provider:plone.abovecontentbody" />
+
+      <p tal:condition="view/error">
+        <strong tal:content="view/error">There are no persons available.</strong>
+      </p>
+        
+      <form action="#" method="post" tal:condition="view/error"
+            tal:attributes="action view/search_url">
+        <div class="formControls">
+          <input name="form.button.import" value="Import organizations or persons" type="submit" tal:condition="view/canImport" i18n:attributes="value label_import_organizations_persons" class="context visualNoPrint"/>
+        </div>
+      </form>
+      
+      <div class="contacts-list"
+           tal:condition="not:view/error"
+           tal:define="batch view/batch;
+                       template_id view/template_id">
+        <form action="#" method="post" class="visualNoPrint"
+              tal:condition="view/search_url"
+              tal:attributes="action view/search_url">
+          <div class="formControls">
+            <input name="form.SearchableText"/>
+            <input type="submit" name="quicksearch"
+                   class="context"
+                   value="Quick Search"
+                   i18n:attributes="value label_quick_search"
+                   />
+            <input type="submit" name="form.button.advanced"
+                   class="context"
+                   value="Advanced Search"
+                   tal:condition="view/advanced_url"
+                   i18n:attributes="value label_advanced_search"
+                   />
+          </div>
+        </form>
+        
+        <form action="#" method="post"
+              tal:attributes="action view/search_url">
+              
+          <input type="hidden" name="form.camefrom" value="persons" tal:attributes="value template_id" />
+
+          <div metal:use-macro="here/batch_macros/macros/navigation" />
+        
+          <table tal:replace="structure view/results" />
+
+          <div class="formControls">
+            <input name="form.button.mailto"
+                   value="Send mail to"
+                   class="context visualNoPrint"
+                   type="submit"
+                   i18n:attributes="value label_send_mail_to"
+                   />
+            <input name="form.button.export"
+                   value="Export selected"
+                   class="context visualNoPrint"
+                   type="submit"
+                   tal:condition="view/exportFormats"
+                   i18n:attributes="value label_export_selected"
+                   />
+          </div>
+
+          <div metal:use-macro="here/batch_macros/macros/navigation" />
+          
+          <hr tal:condition="python: not (batch.next or batch.previous)" />
+          
+          <div class="exportFormats" tal:condition="view/exportFormats">
+            <label for="form.exportformat" i18n:translate="">Export format:</label>
+            <select id="form.exportformat" name="form.exportformat" size="1">
+              <option tal:repeat="format view/exportFormats"
+                      tal:attributes="value format/value"
+                      tal:content="format/title">CSV</option>
+            </select>
+          </div>
+          
+          <div class="formControls">
+            <input name="form.button.exportall"
+                   value="Export all"
+                   class="context visualNoPrint"
+                   type="submit"
+                   tal:condition="view/exportFormats"
+                   i18n:attributes="value label_export_all"
+                   />
+            <input name="form.button.import"
+                   value="Import organizations or persons"
+                   class="context visualNoPrint"
+                   type="submit"
+                   tal:condition="view/canImport"
+                   i18n:attributes="value label_import_organizations_persons"
+                   />
+          </div>
+
+        </form>
+      </div>
+    
+      <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+  </div>
+</body>
+</html>

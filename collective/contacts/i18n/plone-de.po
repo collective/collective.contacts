@@ -1,0 +1,72 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.contacts\n"
+"POT-Creation-Date: 2009-03-10 18:11+0000\n"
+"PO-Revision-Date: 2010-05-25 10:42+0100\n"
+"Last-Translator: Simon Kaeser <skaeser@raptus.com>\n"
+"Language-Team: German <skaeser@raptus.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language-Code: de\n"
+"Language-Name: Deutsch\n"
+"Preferred-encodings: utf-8 latin1\n"
+"Domain: plone\n"
+"X-is-fallback-for: de-ch de-de de-at de-li de-lu\n"
+
+#. Default: "delete"
+#: records widget
+msgid "delete_this_entry"
+msgstr "löschen"
+
+#. Default: "delete all entries"
+#: records widget
+msgid "delete_all_entries"
+msgstr "alle Einträge löschen"
+
+#. Default: " More "
+#: records widget
+msgid "more_entries"
+msgstr " Mehr "
+
+# Default: " Work "
+msgid "label_schema_work"
+msgstr " Geschäftlich "
+
+# this (below this line) is needed for the edit templates :(
+#. Default: "Address Book"
+#: ./profiles/default/types/Address_Book.xml
+msgid "Address Book"
+msgstr "Adressbuch"
+
+#. Default: "Organization"
+#: ./profiles/default/types/Organization.xml
+msgid "Organization"
+msgstr "Organisation"
+
+#. Default: "Person"
+#: ./profiles/default/types/Person.xml
+msgid "Person"
+msgstr "Person"
+
+#. Default: "Group"
+#: ./profiles/default/types/Group.xml
+msgid "Group"
+msgstr "Gruppe"
+
+#: ./profiles/default/types/Address_Book.xml
+msgid "organizations"
+msgstr "Organisationen"
+
+#: ./profiles/default/types/Address_Book.xml
+msgid "persons"
+msgstr "Personen"
+
+#: ./profiles/default/types/Address_Book.xml
+msgid "groups"
+msgstr "Gruppen"
+
+#: ./profiles/default/types/Address_Book.xml
+msgid "Base View"
+msgstr "Standardansicht"

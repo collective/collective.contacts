@@ -1,0 +1,77 @@
+/* This is used when loading the edit template, we cannot use the state
+   drop-down, because we change it later, so we end up in an endless loop */
+   
+select#country:load {
+    action-server:            kssModifyState;
+    kssModifyState-country:   currentFormVar('country');
+}
+select#form\.country:load {
+    action-server:            kssModifyState;
+    kssModifyState-country:   currentFormVar('form.country');
+    kssModifyState-search:    1;
+}
+
+/* This is used when changing the country from the drop-down */
+
+select#country:change {
+    action-server:            kssModifyState;
+    kssModifyState-country:   currentFormVar('country');
+}
+select#form\.country:change {
+    action-server:            kssModifyState;
+    kssModifyState-country:   currentFormVar('form.country');
+    kssModifyState-search:    1;
+}
+
+/* This is used when loading the edit template, we cannot use the sub-sector
+   drop-down, because we change it later, so we end up in an endless loop */
+   
+select#sector:load {
+    action-server:            kssModifySector;
+    kssModifySector-sector:   currentFormVar('sector');
+}
+select#form\.sector:load {
+    action-server:            kssModifySector;
+    kssModifySector-sector:   currentFormVar('form.sector');
+    kssModifySector-search:   1;
+}
+
+/* This is used when changing the sector from the drop-down */
+
+select#sector:change {
+    action-server:            kssModifySector;
+    kssModifySector-sector:   currentFormVar('sector');
+}
+select#form\.sector:change {
+    action-server:            kssModifySector;
+    kssModifySector-sector:   currentFormVar('form.sector');
+    kssModifySector-search:   1;
+}
+
+/* This part will be called when we are in inline edition, we have changed
+   the country, so the state gets updated, but we then cancel the country
+   edition, so we must re update the state to show the state accordingly
+   with the country */
+form#kss-inlineform-country input.standalone:click{
+    action-server:            kssModifyState;
+}
+
+/* This is used for inline edition, again, we cannot use the state drop down
+   because we endup in an endless loop */
+span#parent-fieldname-state:load {
+    action-server:            kssModifyState;
+}
+
+/* This part will be called when we are in inline edition, we have changed
+   the sector, so the sub-sector gets updated, but we then cancel the sector
+   edition, so we must re update the sub-sector to show the state accordingly
+   with the country */
+form#kss-inlineform-sector input.standalone:click{
+    action-server:            kssModifySector;
+}
+
+/* This is used for inline edition, again, we cannot use the sub-sector drop
+   down because we endup in an endless loop */
+span#parent-fieldname-sub_sector:load {
+    action-server:            kssModifySector;
+}
