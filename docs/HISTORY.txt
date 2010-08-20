@@ -5,9 +5,12 @@ Changelog for collective.contacts
 
 SVN
 ---
+  * Added a feature that displays a checkbox for confirmation when the user
+  	tries to add a Person or Organization with the same name of an existent
+  	one [nikkitousen]
 
   * Fixed a bug and made some changes in the import/export functionality,
-   regarding with the 'organization' field [nikkitousen]
+   	regarding with the 'organization' field [nikkitousen]
 
   * Added arrows indicating the current sort column [simu]
 
