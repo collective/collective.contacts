@@ -26,9 +26,6 @@ class IPerson(Interface):
         title=_(u"Add anyway"),
         required=False,
     )
-    skip_validator = schema.Bool(
-        required=False,
-    )
     birthdate = schema.TextLine(
         title=_(u"Date of birth"),
         required = False,

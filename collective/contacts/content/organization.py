@@ -29,16 +29,6 @@ OrganizationSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         searchable=0,
     ),
     
-    atapi.BooleanField(
-        'skip_validator',
-        storage=atapi.AnnotationStorage(),
-        widget=atapi.BooleanWidget(
-            visible={'edit':'hidden', 'view':'hidden'}
-        ),
-        required=False,
-        searchable=0,
-    ),
-    
     atapi.StringField(
         'address',
         storage=atapi.AnnotationStorage(),
@@ -252,7 +242,6 @@ class Organization(base.ATCTContent):
     
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
     add_anyway = atapi.ATFieldProperty('add_anyway')
-    skip_validator = atapi.ATFieldProperty('skip_validator')
     address = atapi.ATFieldProperty('address')
     country = atapi.ATFieldProperty('country')
     state = atapi.ATFieldProperty('state')

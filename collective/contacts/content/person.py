@@ -150,16 +150,6 @@ PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         searchable=0,
     ),
     
-    atapi.BooleanField(
-        'skip_validator',
-        storage=atapi.AnnotationStorage(),
-        widget=atapi.BooleanWidget(
-            visible={'edit':'hidden', 'view':'hidden'}
-        ),
-        required=False,
-        searchable=0,
-    ),
-    
     DateField(
         'birthdate',
         storage=atapi.AnnotationStorage(),
@@ -459,7 +449,6 @@ class Person(base.ATCTContent):
     lastName = atapi.ATFieldProperty('lastName')
     firstName = atapi.ATFieldProperty('firstName')
     add_anyway = atapi.ATFieldProperty('add_anyway')
-    skip_validator = atapi.ATFieldProperty('skip_validator')
     birthdate = atapi.ATFieldProperty('birthdate')
     organization = atapi.ATReferenceFieldProperty('organization')
     position = atapi.ATFieldProperty('position')

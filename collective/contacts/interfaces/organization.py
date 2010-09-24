@@ -16,9 +16,6 @@ class IOrganization(Interface):
         title=_(u"Add anyway"),
         required=False,
     )
-    skip_validator = schema.Bool(
-        required=False,
-    )
     address = schema.TextLine(
         title=_(u"Address"),
         required=False,
