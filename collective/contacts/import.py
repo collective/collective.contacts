@@ -4,6 +4,7 @@ import csv
 from zLOG import LOG, INFO, WARNING
 from config import PROJECTNAME
 
+from zope.i18n import translate
 from zope.interface import implements
 from zope.component import getAdapter
 
@@ -104,7 +105,7 @@ class PersonCSVImport(object):
         for person in results:
             organization = None
             if person['organization']:
-                organization = search.search({'id': person['organization']})
+                organization = search.search({'title': person['organization']})
     
             if (organization and len(organization)>1 and
                 person['organization']):
@@ -128,6 +129,19 @@ class PersonCSVImport(object):
                                               '%s manually.' % person['id'])
                 else:
                     try:
+                        if person['organization'] and not organization:
+                            self._errors.append(_('import_error_organizationdoesnotexist', \
+                                                    default=u'Organization ${org_id} does not exist. '
+                                                    'Leaving the organization field of ${person_id} '
+                                                    'in blank.', mapping={'org_id': person['organization'],
+                                                                          'person_id': person['id']}))
+                            aux = _('Organization with title ${org_title} '
+                                    'doesn\'t exist. Leaving that field '
+                                    'in blank.',\
+                                    mapping={'org_title':person['organization']})
+                            msg = translate(aux, context=self.context.request)
+                            LOG(PROJECTNAME, WARNING, msg)
+                            
                         self.context.invokeFactory('Person', person['id'])
                         new_person = self.context.get(person['id'])
                         for attr in person.keys():
@@ -139,14 +153,6 @@ class PersonCSVImport(object):
                                 new_person.setOrganization(organization[0])
     
                         counter += 1
-
-                        if person['organization'] and not organization:
-                            aux = _('Organization with title ${org_title} '
-                                    'doesn\'t exist. Leaving that field '
-                                    'in blank.',\
-                                    mapping={'org_title':person['organization']})
-                            msg = zope.i18n.translate(aux, context=context.request)
-                            LOG(PROJECTNAME, WARNING, msg)
 
                         portal_catalog.reindexObject(new_person)
     
