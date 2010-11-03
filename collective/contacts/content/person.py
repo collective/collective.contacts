@@ -174,7 +174,7 @@ PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         allowed_types=('Organization',),
         multiValued=False,
         required=False,
-        schemata='work',
+        schemata=_(u'Work'),
     ),
 
     atapi.StringField(
@@ -186,7 +186,7 @@ PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         ),
         searchable=1,
         required=False,
-        schemata='work',
+        schemata=_(u'Work'),
     ),
 
     atapi.StringField(
@@ -198,7 +198,7 @@ PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         ),
         searchable=1,
         required=False,
-        schemata='work',
+        schemata=_(u'Work'),
     ),
 
     atapi.StringField(
@@ -210,7 +210,7 @@ PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         ),
         searchable=1,
         required=False,
-        schemata='work',
+        schemata=_(u'Work'),
     ),
 
     atapi.StringField(
@@ -222,7 +222,7 @@ PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         ),
         searchable=1,
         required=False,
-        schemata='work',
+        schemata=_(u'Work'),
     ),
 
     atapi.StringField(
@@ -234,7 +234,7 @@ PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         ),
         searchable=1,
         required=False,
-        schemata='work',
+        schemata=_(u'Work'),
     ),
 
     atapi.StringField(
@@ -246,7 +246,7 @@ PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         ),
         searchable=1,
         required=False,
-        schemata='work',
+        schemata=_(u'Work'),
     ),
 
     atapi.StringField(
@@ -258,7 +258,7 @@ PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         ),
         validators=('isEmail',),
         required=False,
-        schemata='work',
+        schemata=_(u'Work'),
         searchable=1,
     ),
 
@@ -271,7 +271,7 @@ PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         ),
         validators=('isEmail',),
         required=False,
-        schemata='work',
+        schemata=_(u'Work'),
         searchable=1,
     ),
 
@@ -285,7 +285,7 @@ PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         validators=('isEmail',),
         searchable=1,
         required=False,
-        schemata='work',
+        schemata=_(u'Work'),
     ),
 
     atapi.ImageField(

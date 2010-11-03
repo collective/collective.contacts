@@ -32,8 +32,8 @@ msgid "more_entries"
 msgstr " Más "
 
 # Default: " Work "
-msgid "label_schema_work"
-msgstr "Trabajo"
+msgid "label_schema_Work"
+msgstr " Trabajo "
 
 # this (below this line) is needed for the edit templates :(
 #. Default: "Address Book"

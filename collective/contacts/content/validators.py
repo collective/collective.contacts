@@ -85,8 +85,8 @@ class ValidatePersonName(object):
             if person:
                 request.form['show_checkbox'] = True;
                 if not request.form.get('add_anyway', False):
-                    msg = _(u'There is already a Person with that name and last'
-                            'name. If you want to proceed anyway, please check the'
+                    msg = _(u'There is already a Person with that name and last '
+                            'name. If you want to proceed anyway, please check the '
                             'box below.')
                     messages.addStatusMessage(msg, type="error")
                     self.context.add_anyway = False

@@ -17,4 +17,42 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.contacts\n"
 
+#. Default: "delete"
+#: records widget
+msgid "delete_this_entry"
+msgstr ""
 
+#. Default: "delete all entries"
+#: records widget
+msgid "delete_all_entries"
+msgstr ""
+
+#. Default: " More "
+#: records widget
+msgid "more_entries"
+msgstr ""
+
+# Default: " Work "
+msgid "label_schema_work"
+msgstr ""
+
+# this (below this line) is needed for the edit templates :(
+#. Default: "Address Book"
+#: ./profiles/default/types/Address_Book.xml
+msgid "Address Book"
+msgstr ""
+
+#. Default: "Organization"
+#: ./profiles/default/types/Organization.xml
+msgid "Organization"
+msgstr ""
+
+#. Default: "Person"
+#: ./profiles/default/types/Person.xml
+msgid "Person"
+msgstr ""
+
+#. Default: "Group"
+#: ./profiles/default/types/Group.xml
+msgid "Group"
+msgstr ""

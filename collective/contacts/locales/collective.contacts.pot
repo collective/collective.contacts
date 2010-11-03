@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-06-15 11:59+0000\n"
+"POT-Creation-Date: 2010-11-03 17:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,27 +17,38 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.contacts\n"
 
+#: ./browser/importview.py:62
+msgid "%s successfuly imported organizations"
+msgstr ""
+
+#: ./browser/importview.py:49
+msgid "%s successfuly imported persons"
+msgstr ""
+
 #: ./browser/ksscommands.py:104
 msgid "(no value)"
 msgstr ""
 
-#: ./content/organization.py:134
+#: ./content/organization.py:146
+#: ./interfaces/organization.py:62
 msgid "2nd E-mail address"
 msgstr ""
 
-#: ./content/person.py:257
+#: ./content/person.py:269
+#: ./interfaces/person.py:67
 msgid "2nd Work E-mail address (optional)"
 msgstr ""
 
-#: ./interfaces/person.py:67
+#: ./interfaces/person.py:71
 msgid "3nd Work E-mail address (optional)"
 msgstr ""
 
-#: ./content/organization.py:146
+#: ./content/organization.py:158
+#: ./interfaces/organization.py:66
 msgid "3rd E-mail address"
 msgstr ""
 
-#: ./content/person.py:270
+#: ./content/person.py:282
 msgid "3rd Work E-mail address (optional)"
 msgstr ""
 
@@ -49,252 +60,270 @@ msgstr ""
 msgid "A list of states"
 msgstr ""
 
-#: ./content/person.py:258
+#: ./content/person.py:270
 msgid "A second work e-mail address"
 msgstr ""
 
-#: ./content/person.py:271
+#: ./content/person.py:283
 msgid "A third work e-mail address"
 msgstr ""
 
+#: ./content/organization.py:24
+#: ./content/person.py:145
+#: ./interfaces/organization.py:16
+msgid "Add anyway"
+msgstr ""
+
 #: ./content/addressbook.py:28
+#: ./interfaces/addressbook.py:16
 msgid "Add here sectors and subsectors that will be used by organizations."
 msgstr ""
 
-#: ./content/organization.py:24
+#: ./content/organization.py:36
+#: ./content/person.py:307
+#: ./interfaces/organization.py:20
 msgid "Address"
 msgstr ""
 
-#. Default: "Address Book"
 #: ./profiles/default/types/Address_Book.xml
 msgid "Address Book"
 msgstr ""
 
-#. Default: "An address book"
 #: ./profiles/default/types/Address_Book.xml
 msgid "An address book"
 msgstr ""
 
-#: ./export.py:293
+#: ./profiles/default/actions.xml
 msgid "Birthday (vCal)"
 msgstr ""
 
-#: ./export.py:330
-msgid "Birthday of ${name}"
-msgstr ""
-
-#: ./export.py:225
+#: ./profiles/default/actions.xml
 msgid "Business Card (vCard)"
 msgstr ""
 
-#: ./content/organization.py:59
+#: ./content/organization.py:26
+#: ./content/person.py:147
+msgid "Check if you want to save this organization"
+msgstr ""
+
+#: ./content/organization.py:71
+#: ./content/person.py:342
+#: ./interfaces/organization.py:34
 msgid "City"
 msgstr ""
 
-#. Default: "Click ${label_here} if it is correct."
 #: ./browser/templates/search.pt:15
 msgid "Click ${label_here} if it is correct."
 msgstr ""
 
-#. Default: "Contact information of a person"
 #: ./profiles/default/types/Person.xml
 msgid "Contact information of a person"
 msgstr ""
 
-#. Default: "Contact information of an organization"
 #: ./profiles/default/types/Organization.xml
 msgid "Contact information of an organization"
 msgstr ""
 
-#: ./content/organization.py:35
+#: ./content/organization.py:47
+#: ./content/person.py:318
+#: ./interfaces/organization.py:24
 msgid "Country"
 msgstr ""
 
-#: ./content/person.py:145
+#: ./content/person.py:157
+#: ./interfaces/person.py:30
 msgid "Date of birth"
 msgstr ""
 
-#. Default: "Day"
 #: ./skins/collective_contacts/date.pt:46
 msgid "Day"
 msgstr ""
 
-#: ./content/person.py:184
+#: ./content/person.py:196
+#: ./interfaces/person.py:43
 msgid "Department"
 msgstr ""
 
-#: ./content/person.py:185
+#: ./content/person.py:197
 msgid "Department where this person works"
 msgstr ""
 
-#: ./content/organization.py:122
+#: ./content/organization.py:134
+#: ./content/person.py:386
+#: ./interfaces/organization.py:58
 msgid "E-mail address"
 msgstr ""
 
-#. Default: "Export format:"
 #: ./browser/templates/list.pt:83
+#: ./browser/templates/search.pt:81
 msgid "Export format:"
 msgstr ""
 
-#: ./content/organization.py:81
+#: ./content/organization.py:93
+#: ./interfaces/organization.py:42
 msgid "Extra Address Info"
 msgstr ""
 
-#: ./interfaces/organization.py:50
+#: ./interfaces/organization.py:54
 msgid "Fax Number"
 msgstr ""
 
-#: ./content/organization.py:112
+#: ./content/organization.py:124
 msgid "Fax number"
 msgstr ""
 
 #: ./content/person.py:123
+#: ./interfaces/person.py:18
 msgid "First Name"
 msgstr ""
 
-#: ./content/person.py:413
+#: ./content/person.py:425
 msgid "Full Name"
 msgstr ""
 
-#. Default: "Go back"
 #: ./browser/templates/search.pt:117
 msgid "Go back"
 msgstr ""
 
-#. Default: "Group"
 #: ./profiles/default/types/Group.xml
 msgid "Group"
 msgstr ""
 
-#: ./browser/import.py:21
+#: ./browser/import.py:23
+#: ./browser/list.py:108
+#: ./profiles/default/actions.xml
 msgid "Groups"
 msgstr ""
 
-#: ./content/organization.py:102
+#: ./content/organization.py:114
+#: ./interfaces/organization.py:50
 msgid "Internal Phone Number"
 msgstr ""
 
-#: ./content/person.py:208
+#: ./content/person.py:220
+#: ./interfaces/person.py:51
 msgid "Internal Work Phone Number"
 msgstr ""
 
 #: ./content/person.py:134
+#: ./interfaces/person.py:22
 msgid "Last Name"
 msgstr ""
 
-#. Default: "Let you have several persons together"
 #: ./profiles/default/types/Group.xml
 msgid "Let you have several persons together"
 msgstr ""
 
-#: ./content/person.py:363
+#: ./content/person.py:375
+#: ./interfaces/person.py:105
 msgid "Mobile Phone Number"
 msgstr ""
 
-#. Default: "Month"
 #: ./skins/collective_contacts/date.pt:36
 msgid "Month"
 msgstr ""
 
-#: ./content/organization.py:211
+#: ./content/organization.py:223
+#: ./interfaces/organization.py:12
 msgid "Name"
 msgstr ""
 
-#. Default: "Or ${label_go_back} to correct."
 #: ./browser/templates/search.pt:17
 msgid "Or ${label_go_back} to correct."
 msgstr ""
 
-#: ./content/person.py:155
+#: ./content/person.py:167
+#: ./interfaces/person.py:34
+#: ./profiles/default/types/Organization.xml
 msgid "Organization"
 msgstr ""
 
-#: ./content/organization.py:135
+#: ./content/organization.py:147
 msgid "Organization's 2nd e-mail address"
 msgstr ""
 
-#: ./content/organization.py:147
+#: ./content/organization.py:159
 msgid "Organization's 3rd e-mail address"
 msgstr ""
 
-#: ./content/organization.py:71
+#: ./content/organization.py:83
 msgid "Organization's ZIP"
 msgstr ""
 
-#: ./content/organization.py:25
+#: ./content/organization.py:37
 msgid "Organization's address"
 msgstr ""
 
-#: ./content/organization.py:60
+#: ./content/organization.py:72
 msgid "Organization's city"
 msgstr ""
 
-#: ./content/organization.py:36
+#: ./content/organization.py:48
 msgid "Organization's country"
 msgstr ""
 
-#: ./content/organization.py:123
+#: ./content/organization.py:135
 msgid "Organization's e-mail address"
 msgstr ""
 
-#: ./content/organization.py:82
+#: ./content/organization.py:94
 msgid "Organization's extra address information."
 msgstr ""
 
-#: ./content/organization.py:113
+#: ./content/organization.py:125
 msgid "Organization's fax number"
 msgstr ""
 
-#: ./content/organization.py:103
+#: ./content/organization.py:115
 msgid "Organization's internal phone number"
 msgstr ""
 
-#: ./content/organization.py:93
+#: ./content/organization.py:105
 msgid "Organization's phone number"
 msgstr ""
 
-#: ./content/organization.py:172
+#: ./content/organization.py:184
 msgid "Organization's sector"
 msgstr ""
 
-#: ./content/organization.py:48
+#: ./content/organization.py:60
 msgid "Organization's state"
 msgstr ""
 
-#: ./content/organization.py:185
+#: ./content/organization.py:197
 msgid "Organization's sub sector"
 msgstr ""
 
-#: ./content/organization.py:159
+#: ./content/organization.py:171
 msgid "Organization's web page or blog. Example: http://www.google.com"
 msgstr ""
 
 #: ./browser/list.py:98
+#: ./profiles/default/actions.xml
 msgid "Organizations"
 msgstr ""
 
-#. Default: "Person"
 #: ./profiles/default/types/Person.xml
 msgid "Person"
 msgstr ""
 
-#: ./content/person.py:342
+#: ./content/person.py:354
 msgid "Person's ZIP"
 msgstr ""
 
-#: ./content/person.py:296
+#: ./content/person.py:308
 msgid "Person's address"
 msgstr ""
 
-#: ./content/person.py:331
+#: ./content/person.py:343
 msgid "Person's city"
 msgstr ""
 
-#: ./content/person.py:146
+#: ./content/person.py:158
 msgid "Person's date of birth"
 msgstr ""
 
-#: ./content/person.py:375
+#: ./content/person.py:387
 msgid "Person's e-mail address"
 msgstr ""
 
@@ -302,7 +331,7 @@ msgstr ""
 msgid "Person's first name"
 msgstr ""
 
-#: ./content/person.py:209
+#: ./content/person.py:221
 msgid "Person's internal work phone number"
 msgstr ""
 
@@ -310,19 +339,19 @@ msgstr ""
 msgid "Person's last name"
 msgstr ""
 
-#: ./content/person.py:364
+#: ./content/person.py:376
 msgid "Person's mobile phone number"
 msgstr ""
 
-#: ./content/person.py:353
+#: ./content/person.py:365
 msgid "Person's phone number"
 msgstr ""
 
-#: ./content/person.py:284
+#: ./content/person.py:296
 msgid "Person's photo"
 msgstr ""
 
-#: ./content/person.py:173
+#: ./content/person.py:185
 msgid "Person's position in the company"
 msgstr ""
 
@@ -330,133 +359,158 @@ msgstr ""
 msgid "Person's short name"
 msgstr ""
 
-#: ./content/person.py:319
+#: ./content/person.py:331
 msgid "Person's state"
 msgstr ""
 
-#: ./content/person.py:387
+#: ./content/person.py:399
 msgid "Person's web page or blog. Example: http://www.google.com"
 msgstr ""
 
-#: ./content/person.py:245
+#: ./content/person.py:257
 msgid "Person's work e-mail address"
 msgstr ""
 
-#: ./content/person.py:233
+#: ./content/person.py:245
 msgid "Person's work fax number"
 msgstr ""
 
-#: ./content/person.py:221
+#: ./content/person.py:233
 msgid "Person's work mobile phone number"
 msgstr ""
 
-#: ./content/person.py:197
+#: ./content/person.py:209
 msgid "Person's work phone number"
 msgstr ""
 
 #: ./browser/list.py:88
+#: ./content/group.py:31
+#: ./interfaces/group.py:17
 msgid "Persons"
 msgstr ""
 
-#: ./browser/organization.py:11
+#: ./browser/organization.py:13
 msgid "Persons part of ${organization}"
 msgstr ""
 
-#: ./content/organization.py:92
+#: ./content/organization.py:104
+#: ./content/person.py:364
+#: ./interfaces/organization.py:46
 msgid "Phone Number"
 msgstr ""
 
-#: ./content/person.py:283
+#: ./content/person.py:295
+#: ./interfaces/person.py:75
 msgid "Photo"
 msgstr ""
 
-#: ./browser/import.py:39
+#: ./browser/import.py:41
 msgid "Please select a file to import"
 msgstr ""
 
-#: ./content/person.py:172
+#: ./content/person.py:184
+#: ./interfaces/person.py:39
 msgid "Position"
 msgstr ""
 
 #: ./content/addressbook.py:50
+#: ./content/organization.py:183
+#: ./interfaces/organization.py:74
 msgid "Sector"
 msgstr ""
 
 #: ./content/addressbook.py:31
+#: ./interfaces/addressbook.py:14
 msgid "Sectors"
 msgstr ""
 
-#: ./content/person.py:307
+#: ./content/person.py:319
 msgid "Select a country"
 msgstr ""
 
 #: ./content/person.py:114
+#: ./interfaces/person.py:14
 msgid "Short Name"
 msgstr ""
 
-#: ./content/organization.py:47
+#: ./content/organization.py:59
+#: ./content/person.py:330
+#: ./interfaces/organization.py:29
 msgid "State"
 msgstr ""
 
 #: ./content/addressbook.py:51
+#: ./content/organization.py:196
+#: ./interfaces/organization.py:79
 msgid "Sub sector"
 msgstr ""
 
-#: ./import.py:189
-msgid "Successfully imported ${number} organizations"
-msgstr ""
-
-#: ./import.py:49
-msgid "Successfully imported ${number} persons"
-msgstr ""
-
-#: ./content/organization.py:197
+#: ./content/organization.py:209
+#: ./content/person.py:411
+#: ./interfaces/organization.py:84
 msgid "Text"
 msgstr ""
 
-#. Default: "The following errors where raised during the import"
 #: ./browser/templates/import.pt:52
 msgid "The following errors where raised during the import"
 msgstr ""
 
-#: ./content/person.py:156
+#: ./content/person.py:168
 msgid "The organization the person belongs to"
 msgstr ""
 
 #: ./content/group.py:32
+#: ./interfaces/group.py:19
 msgid "The persons that belong to this group"
+msgstr ""
+
+#: ./content/validators.py:88
+msgid "There is already a Person with that name and last name. If you want to proceed anyway, please check the box below."
+msgstr ""
+
+#: ./content/validators.py:41
+msgid "There is already anorganization with that name. If you want toproceed anyway, please check the box below."
 msgstr ""
 
 #: ./browser/customize.py:38
 msgid "View successfully customized"
 msgstr ""
 
-#: ./content/organization.py:158
+#: ./content/organization.py:170
+#: ./interfaces/organization.py:70
 msgid "Web"
 msgstr ""
 
-#: ./content/person.py:386
+#: ./content/person.py:398
+#: ./interfaces/person.py:113
 msgid "Web / Blog"
 msgstr ""
 
-#. Default: "When importing persons make sure the organizations associated with them exist. Otherwise the persons can not be imported."
 #: ./browser/templates/import.pt:15
 msgid "When importing persons make sure the organizations associated with them exist. Otherwise the persons can not be imported."
 msgstr ""
 
-#: ./content/person.py:244
+#: ./content/person.py:177
+msgid "Work"
+msgstr ""
+
+#: ./content/person.py:256
+#: ./interfaces/person.py:63
 msgid "Work E-mail address"
 msgstr ""
 
-#: ./content/person.py:232
+#: ./content/person.py:244
+#: ./interfaces/person.py:59
 msgid "Work Fax number"
 msgstr ""
 
-#: ./content/person.py:220
+#: ./content/person.py:232
+#: ./interfaces/person.py:55
 msgid "Work Mobile Phone Number"
 msgstr ""
 
-#: ./content/person.py:196
+#: ./content/person.py:208
+#: ./interfaces/person.py:47
 msgid "Work Phone Number"
 msgstr ""
 
@@ -468,7 +522,9 @@ msgstr ""
 msgid "You need to select at least one person or organization that has an email"
 msgstr ""
 
-#: ./content/organization.py:70
+#: ./content/organization.py:82
+#: ./content/person.py:353
+#: ./interfaces/organization.py:38
 msgid "ZIP"
 msgstr ""
 
@@ -501,57 +557,22 @@ msgstr ""
 msgid "description_no_results_found"
 msgstr ""
 
-#. Default: "go back"
 #: ./browser/templates/search.pt:17
 msgid "go back"
 msgstr ""
 
-#. Default: "here"
 #: ./browser/templates/search.pt:15
 msgid "here"
 msgstr ""
 
-#. Default: "Wrong file format. Export an existing address book as CSV to get a reference file."
-#: ./import.py:74
-msgid "import_error_format"
-msgstr ""
-
-#. Default: "There are ${number} organizations with the same id, I don't know with which one relate this person. You will have to load the person with id ${person_id} manually."
-#: ./import.py:108
-msgid "import_error_multipleorganizations"
-msgstr ""
-
-#. Default: "There's no organization with id ${organization_id} make sure it exists before adding persons. ${person_id} not added"
-#: ./import.py:150
-msgid "import_error_noorganization"
-msgstr ""
-
-#. Default: "There was an error while adding. You will have to load the organization with id ${organization_id} manually."
-#: ./import.py:255
-msgid "import_error_organization"
-msgstr ""
-
-#. Default: "There's already an organization with this id here. You will have to load the organization with id ${organization_id} manually."
-#: ./import.py:238
-msgid "import_error_organizationexists"
-msgstr ""
-
-#. Default: "There was an error while adding. You will have to load the person with id ${person_id} manually."
-#: ./import.py:143
-msgid "import_error_person"
-msgstr ""
-
-#. Default: "There's already a person with this id here. You will have to load the person with id ${person_id} manually."
-#: ./import.py:121
-msgid "import_error_personexists"
-msgstr ""
-
 #. Default: "Advanced Search"
 #: ./browser/templates/list.pt:44
+#: ./browser/templates/search.pt:38
 msgid "label_advanced_search"
 msgstr ""
 
 #. Default: "Cancel"
+#: ./browser/find.py:32
 #: ./browser/templates/customize.pt:42
 msgid "label_cancel"
 msgstr ""
@@ -563,11 +584,13 @@ msgstr ""
 
 #. Default: "Export all"
 #: ./browser/templates/list.pt:92
+#: ./browser/templates/search.pt:91
 msgid "label_export_all"
 msgstr ""
 
 #. Default: "Export selected"
 #: ./browser/templates/list.pt:69
+#: ./browser/templates/search.pt:67
 msgid "label_export_selected"
 msgstr ""
 
@@ -578,31 +601,37 @@ msgstr ""
 
 #. Default: "Import file"
 #: ./browser/templates/import.pt:25
+#: ./browser/templates/importview.pt:11
 msgid "label_import_file"
 msgstr ""
 
 #. Default: "Import organizations or persons"
 #: ./browser/templates/import.pt:10
+#: ./browser/templates/list.pt:26
 msgid "label_import_organizations_persons"
 msgstr ""
 
 #. Default: "Selection"
 #: ./browser/templates/import.pt:29
+#: ./browser/templates/importview.pt:14
 msgid "label_import_selection"
 msgstr ""
 
 #. Default: "Import"
 #: ./browser/templates/import.pt:41
+#: ./browser/templates/importview.pt:21
 msgid "label_import_submit"
 msgstr ""
 
 #. Default: "Organizations"
-#: ./browser/import.py:20
+#: ./browser/import.py:22
+#: ./browser/templates/importview.pt:17
 msgid "label_organizations"
 msgstr ""
 
 #. Default: "Persons"
-#: ./browser/import.py:19
+#: ./browser/import.py:21
+#: ./browser/templates/importview.pt:16
 msgid "label_persons"
 msgstr ""
 
@@ -638,27 +667,13 @@ msgstr ""
 
 #. Default: "Send mail to"
 #: ./browser/templates/list.pt:63
+#: ./browser/templates/search.pt:61
 msgid "label_send_mail_to"
-msgstr ""
-
-#. Default: "Members"
-#: ./columns.py:125
-msgid "listingheader_groups_members"
-msgstr ""
-
-#. Default: "Name"
-#: ./columns.py:124
-msgid "listingheader_groups_name"
 msgstr ""
 
 #. Default: "There are no groups available"
 #: ./browser/list.py:107
 msgid "no_groups"
-msgstr ""
-
-#. Default: "There are no groups in this organization"
-#: ./browser/organization.py:16
-msgid "no_groups_in_organization"
 msgstr ""
 
 #. Default: "There are no organizations available"
@@ -677,13 +692,8 @@ msgid "no_persons_in_group"
 msgstr ""
 
 #. Default: "There are no persons in this organization"
-#: ./browser/organization.py:7
+#: ./browser/organization.py:9
 msgid "no_persons_in_organization"
-msgstr ""
-
-#. Default: "There are no sub groups in this group"
-#: ./browser/group.py:16
-msgid "no_subgroups_in_group"
 msgstr ""
 
 #. Default: "Search results"
