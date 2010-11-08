@@ -510,7 +510,7 @@ msgstr "Al importar personas, asegúrese de que las organizaciones asociadas con
 
 #: ./content/person.py:177
 msgid "Work"
-msgstr "Trabajo"
+msgstr ""
 
 #: ./content/person.py:256
 #: ./interfaces/person.py:63
