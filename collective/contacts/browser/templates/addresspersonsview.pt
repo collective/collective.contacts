@@ -12,7 +12,7 @@
                      persons_start request/persons_start | python:0;
                      persons_size request/persons_size | python:20;
                      persons view/get_persons | python:None;
-                     template_id string:persons">
+                     template_id string:addresspersons_view">
 
         <tal:main-macro metal:define-macro="main">
 
