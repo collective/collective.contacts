@@ -6,15 +6,12 @@ Changelog for collective.contacts
 SVN
 ---
 
-  * Fixed a bug and made some changes in the import/export functionality,
-   regarding with the 'organization' field [nikkitousen]
-
   * Added arrows indicating the current sort column [simu]
 
-  * Fixed _compute_title to return unicode (PlacelessTranslationService
+  * Fixed _compute_title to return unicode (PlacelessTranslationService 
     raised UnicodeDecodeError when using non ascii characters) [simu]
 
-  * Removed no longer needed upgrade step (columns are now handled by
+  * Removed no longer needed upgrade step (columns are now handled by 
     the ICustomizableColumns adapters) [simu]
 
   * Added transparent error handling and CSV format check for import [simu]
@@ -23,21 +20,21 @@ SVN
     messages [simu]
 
   * Added vCard and vCal export [simu]
-
+  
   * Added pluggable import and export functionality [simu]
-
+  
   * Added sorting functionality [simu]
-
+  
   * Added catalog indexes for several fields [simu]
-
+  
   * Advanced search now uses zope.formlib [simu]
 
-  * made organizations and groups folderish and allowed groups to be
+  * made organizations and groups folderish and allowed groups to be 
     added into them to support a hirarchical grouping
     (further refactoring of the search adapters was required) [simu]
-
+  
   * Added translations for views [simu]
-
+  
   * Added icons for content types [simu]
 
   * Added correct ATFieldProperties corresponding to the field names,
@@ -47,19 +44,10 @@ SVN
   * Fixed the import doctest [simu]
 
   * Added birth date field to persons [simu]
-
+  
   * Refactored everything using component architecture [simu]
 
   * Added German translation [simu]
-
-
-1.4.5
------
-
-  * Added german translation [simu]
-
-  * Added ZIP field [kcharvey]
-
 
 1.4.4
 -----

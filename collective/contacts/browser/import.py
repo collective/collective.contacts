@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*- 
-
 from zope.component import getAdapter, getAdapters
 from zope.i18n import translate
 from plone.memoize.instance import memoize

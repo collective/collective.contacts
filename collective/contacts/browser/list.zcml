@@ -20,7 +20,7 @@
 
   <browser:page
       for="*"
-      name="persons"
+	  name="persons"
       class=".list.PersonListView"
       permission="zope.Public"
       />

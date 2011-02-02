@@ -31,7 +31,7 @@
    <property name="description" i18n:translate=""/>
    <property name="url_expr">string:${folder_url}/groups</property>
    <property name="icon_expr"/>
-   <property name="available_expr">python:object.meta_type == 'AddressBook'</property>
+   <property name="available_expr">python:object.meta_type == 'AddressBook'</property> 
    <property name="permissions">
     <element value="View"/>
    </property>

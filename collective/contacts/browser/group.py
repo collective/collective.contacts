@@ -9,4 +9,4 @@ class GroupView(PersonListView):
     @property
     def title(self):
         return self.context.Title()
-
+    

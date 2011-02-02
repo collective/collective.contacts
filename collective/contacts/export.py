@@ -55,7 +55,7 @@ class AbstractCSVExport(object):
                 if field == 'organization':
                     organization = getattr(object,field)
                     if organization:
-                        row.append(getattr(organization, 'title'))
+                        row.append(organization.id)
                     else:
                         row.append('')
                 else:

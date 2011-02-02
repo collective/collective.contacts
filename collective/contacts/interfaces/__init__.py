@@ -5,3 +5,5 @@ from addressbook import IAddressBook
 from group import IGroup
 from widgets import ICountriesStates
 from general import *
+
+from browser import IAddressBookView

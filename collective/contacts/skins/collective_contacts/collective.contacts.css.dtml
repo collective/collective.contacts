@@ -46,4 +46,141 @@ input#sectors\.sector{
   vertical-align:middle;
 }
 
+/*ADDRESS BOOK VIEW*/
+.address-book {
+    border:1px solid #999;
+    height:380px;
+}
+#AddressBookForm .address-book li {
+    margin:0px;
+    list-style-type:none;
+}
+.categories {
+    border-right:1px solid #999;
+    float:left;
+    height:100%;
+    position:relative;
+    width:20%;
+    overflow-y:scroll;
+}
+.address-book h3 {
+    background-color:#999;
+    color:#fff;
+    padding:5px 10px;
+    margin:0px;
+    border-bottom:1px solid #666666;
+}
+#AddressBookForm .categories ul,
+#AddressBookForm .members-listing ul{
+    margin-left:0px;
+    padding:0;
+}
+.categories input {
+    width:97%;
+}
+.categories ul li a,
+.members-listing ul li a {
+    cursor:pointer;
+    display:block;
+    padding:5px 10px;
+}
+#AddressBookForm .categories ul li a:hover,
+#AddressBookForm .members-listing ul li a:hover {
+    background-color:#999;
+    color:#FFF !important;
+}
+.oddorg{
+    background:#DDD;
+}
+.org-headers {
+    padding-left:5px;
+}
+.show-all-persons {
+    padding-left:0px;
+}
+.show-all-persons a {
+    display:block;
+    cursor:pointer;
+    padding:5px 5px;
+}
+.categories .org-collapsable {
+    border-bottom:1px solid #999;
+}
+.members {
+    border-right:1px solid #999;
+    float:left;
+    height:100%;
+    position:relative;
+    width:20%;
+    overflow-y:scroll;
+}
+.members-data {
+    float:left;
+    height:100%;
+    position:relative;
+    width:59.777%;
+    overflow-y:auto;
+}
+.members input {
+    width:60%;
+}
+.members input.ajax {
+    width:97%;
+    background:none repeat scroll 0 0 #DDDDDD
+}
+
+.members input.find {
+    width:35%;
+}
+.address-book .selected{
+    background-color:#205C90;
+    color:#FFF;
+}
+.address-book .collapse {
+    display:none;
+}
+.address-book .add-img {
+    display:none
+}
+.address-book .add .add-img {
+    display:inline;
+}
+.address-book .remove-img {
+    display:inline;
+}
+.address-book .add .remove-img {
+    display:none;
+}
+.ajax-loader {
+    display:none;
+    position:absolute;
+    left:50%;
+    padding-top:25px;
+}
+.ajax-loader img {
+    right:50%;
+    position:relative;
+}
+
+.member-data-wrapper {
+    margin:20px;
+}
+.profile-img {
+    border:1px solid #333;
+    float:left;
+    margin-right:10px;
+}
+
+#content .categories ul li a.edit-category{
+    display:inline;
+    float:right;
+    position:absolute;
+    border-bottom:0px;
+    right:0;
+    top:0;
+}
+
+#AddressBookForm .address-book .org-collapsable li {
+position:relative;
+}
 /* </dtml-with> */

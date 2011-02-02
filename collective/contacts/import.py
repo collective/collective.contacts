@@ -106,8 +106,7 @@ class PersonCSVImport(object):
             if person['organization']:
                 organization = search.search({'id': person['organization']})
     
-            if (organization and len(organization)>1 and
-                person['organization']):
+            if organization and len(organization)>1:
                 self._errors.append(_('import_error_multipleorganizations', default=u'There are ${number} organizations with the same id, '
                                                                                      'I don\'t know with which one relate this person. '
                                                                                      'You will have to load the person with id ${person_id} '
@@ -118,7 +117,8 @@ class PersonCSVImport(object):
                 LOG(PROJECTNAME, WARNING, 'You will have to load the person with id %s '
                                           'manually.' % person['id'])
     
-            else:
+            elif ((organization and len(organization)==1) or
+                 not person['organization']):
                 if self.context.get(person['id']):
                     self._errors.append(_('import_error_personexists', default=u'There\'s already a person with this id here. '
                                                                                 'You will have to load the person with id ${person_id} '
@@ -134,20 +134,10 @@ class PersonCSVImport(object):
                             if attr != 'id' and attr != 'organization':
                                 setattr(new_person, attr, person[attr])
                             if (attr == 'organization' and
-                                person['organization'] and
-                                organization and len(organization)==1):
+                                person['organization'] != ''):
                                 new_person.setOrganization(organization[0])
     
                         counter += 1
-
-                        if person['organization'] and not organization:
-                            aux = _('Organization with title ${org_title} '
-                                    'doesn\'t exist. Leaving that field '
-                                    'in blank.',\
-                                    mapping={'org_title':person['organization']})
-                            msg = zope.i18n.translate(aux, context=context.request)
-                            LOG(PROJECTNAME, WARNING, msg)
-
                         portal_catalog.reindexObject(new_person)
     
                         LOG(PROJECTNAME, INFO, 'Successfully added %s.' % person['id'])
@@ -158,10 +148,17 @@ class PersonCSVImport(object):
                         LOG(PROJECTNAME, WARNING, 'There was an error while adding.')
                         LOG(PROJECTNAME, WARNING, 'You will have to load the person with id '
                                                   '%s manually.' % person['id'])
+            else:
+                self._errors.append(_('import_error_noorganization', default=u'There\'s no organization with id ${organization_id} '
+                                                                              'make sure it exists before adding persons. '
+                                                                              '${person_id} not added', mapping={'organization_id': person['organization'],
+                                                                                                                 'person_id': person['id']}))
+                LOG(PROJECTNAME, WARNING, 'There\'s no organization with id %s, '
+                                          'make sure it exists before adding persons. '
+                                          '%s not added' % (person['organization'], person['id']))
     
         LOG(PROJECTNAME, INFO, 'Successfully added %s persons to %s.' % (counter, path))
-   
-        # Here I should return also the unexistent organizations 
+    
         return counter
     
 class OrganizationCSVImport(object):

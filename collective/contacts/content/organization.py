@@ -13,7 +13,7 @@ from collective.contacts.interfaces import IOrganization
 from collective.contacts.config import PROJECTNAME
 from collective.contacts.content import DeprecatedATFieldProperty
 
-OrganizationSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
+OrganizationSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema(( 
 
     # -*- Your Archetypes field definitions here ... -*-
 
@@ -208,7 +208,7 @@ OrganizationSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 # they work well with the python bridge properties.
 
 OrganizationSchema['title'].storage = atapi.AnnotationStorage()
-OrganizationSchema['title'].widget.label = _('Name')
+OrganizationSchema['title'].widget.label = _('Name') 
 OrganizationSchema['description'].storage = atapi.AnnotationStorage()
 OrganizationSchema['description'].widget.visible = {'edit': 'invisible',
                                                     'view': 'invisible'}
@@ -218,7 +218,7 @@ schemata.finalizeATCTSchema(
     moveDiscussion=False
 )
 
-class Organization(base.ATCTContent):
+class Organization(base.ATCTContent): 
     """Contact information of an organization"""
     implements(IOrganization)
 

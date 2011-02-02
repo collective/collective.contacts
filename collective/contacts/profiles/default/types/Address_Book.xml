@@ -20,6 +20,7 @@
   <property name="allow_discussion">False</property>
   <property name="default_view">organizations</property>
   <property name="view_methods">
+    <element value="address_book" />      
     <element value="organizations" />
     <element value="persons" />
     <element value="groups" />

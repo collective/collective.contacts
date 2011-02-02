@@ -1,0 +1,116 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="collective.contacts">
+<head>
+    <metal:block fill-slot="top_slot">
+
+    </metal:block>
+</head>
+<body>
+    <div metal:fill-slot="column_two_slot"></div>
+    <!-- <div metal:fill-slot="column_one_slot"></div> -->
+    <div metal:fill-slot="main">
+        <tal:main-macro metal:define-macro="main">
+        <tal:block>
+        <form action="" name="AddressBookView" id="AddressBookForm"
+              tal:define="index request/index | nothing;
+                          UID request/UID | nothing;
+                          memberUID request/memberUID | nothing;
+                          search request/search | nothing"
+               tal:attributes="action python:context.absolute_url()">
+            <input type="hidden" name="UID" value="" tal:attributes="value request/UID | nothing" id="catUID"/>
+            <div class="address-book">
+                <div class="categories">
+                    <h4 class="org-headers show-all-persons">
+                        <a class="selectable" href="" tal:attributes="href python:context.absolute_url()+'?UID='+ ''">All Contacts <span class="numbers-of-contacts" tal:content="python:'('+str(len(view.get_persons('',''))) + ')'"></span></a>
+                    </h4>
+                    <div class="org-collapsable">
+                        <h4 class="org-headers">Organizations <span id="org-len"></span><a class="collapsable-trigger add" href="#org-collapsable">
+                            <img class="add-img" src="++resource++resources/Add.gif"/><img class="remove-img" src="++resource++resources/Remove.gif"/></a></h4>
+                        <ul id="org-collapsable" class="collapse">
+                            <li class="evenorg" tal:repeat="org python:view.get_categories('Organization')"
+                                tal:attributes="class python:repeat['org'].even() and 'oddorg' or 'evenorg'">
+                                <a class="selectable" href="" tal:content="org/obj_title"
+                                   tal:attributes="href python:context.absolute_url()+'?UID='+ org['UID'];
+                                                   class python:org['UID'] == UID and 'selected selectable' or 'selectable'"></a>
+                                 <a class="edit-category" href="" tal:attributes="href python:org['obj_url']+'/edit'"><img height="16" width="16" src="/++resource++resources/EditIcon.gif" alt="Edit"/></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="org-collapsable">
+                        <h4 class="org-headers">Groups <span id="groups-len"></span><a class="collapsable-trigger add" href="#groups-collapsable">
+                             <img class="add-img" src="++resource++resources/Add.gif"/><img class="remove-img" src="++resource++resources/Remove.gif"/></a></h4>
+                        <ul id="groups-collapsable" class="collapse">
+                            <li class="evenorg" tal:attributes="class python:repeat['org'].even() and 'oddorg' or 'evenorg'"
+                                tal:repeat="org python:view.get_categories('Group')" >
+                                <a class="categorie-link" href="" tal:content="org/obj_title"
+                                   tal:attributes="href python:context.absolute_url()+'?UID='+ org['UID'];
+                                                   class python:org['UID'] == UID and 'selected selectable' or 'selectable'"></a>
+                                <a class="edit-category" href="" tal:attributes="href python:org['obj_url']+'/edit'"><img height="16" width="16" src="/++resource++resources/EditIcon.gif" alt="Edit"/></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="members">
+                    <h3>Persons <span id="persons-len"></span></h3>
+                    <input type="text" name="search" class="oddorg"  id="searchMembers"/>
+                    <input class="find" type="submit" value="find">
+                    <div class="ajax-loader"><img src="++resource++resources/ajax-loader2.gif"/></div>
+                    <div class="members-listing">
+                        <ul tal:replace="structure python:view.member_listing_view(UID,search)"></ul>
+                    </div>
+                </div>
+                <div class="members-data">
+                    <div class="ajax-loader"><img src="++resource++resources/ajax-loader2.gif"/></div>
+                    <div class="member-data-wrapper">
+                        <ul tal:replace="structure python:view.member_data_view(memberUID)"></ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- <form action="" name="searchMembers" id="searchFormMembers"
+              tal:attributes="action python:context.absolute_url()"
+              tal:define="index request/index | nothing;
+                          UID request/UID | nothing">
+            <div class="search-box">
+                <h2>Search Members</h2>
+                <div class="search-member-field">
+                    <input type="text" value="" class="input_search" accesskey="4" title="Search Site" size="18" name="index" autocomplete="off" tal:attributes="value index">
+                    <input type="submit" class="search_button" value="Search">
+
+                </div>
+            </div>
+            <div id="members-data">
+                <div class="members">
+                    <h3>Members</h3>
+                    <div class="ajax-loader"><img src="++resource++resources/ajax-loader.gif"/></div>
+                    <div class="members-list">
+                        <tal:iterator tal:repeat="member python:view.search(index)">
+                            <tal:members tal:condition="python:member and index">
+                            <div>
+                                <a href="#" tal:content="member/full_name"
+                                    tal:attributes="href python:context.absolute_url()+'?index='+ index +';;UID='+ member['UID'];
+                                                    class python:member['UID'] == UID and 'selected' or None"></a>
+                            </div>
+                            </tal:members>
+                        </tal:iterator>
+                    </div>
+                </div>
+                <div class="members-data">
+                    <div class="ajax-loader"><img src="++resource++resources/ajax-loader.gif"/></div>
+                    <div class="member-data-wrapper" style="padding: 10px 20px;">
+                        <tal:block tal:condition="UID">
+                            <div tal:define="data_view context/@@userprofile_data" tal:replace="structure python:data_view.my_context(UID)"></div>
+                        </tal:block>
+                    </div>
+                </div>
+            </div>
+        </form> -->
+
+   <script type="text/javascript" src="++resource++resources/address_book.js"></script>
+        </tal:block>
+        </tal:main-macro>
+    </div>
+</body>
+</html>

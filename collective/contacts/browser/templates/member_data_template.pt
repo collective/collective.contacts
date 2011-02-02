@@ -1,0 +1,63 @@
+<div tal:define="person view/person | nothing;" tal:condition="person">
+
+    <div class="personal-data">
+        <a class="edit-person" href="" tal:attributes="href python:view.custom_context.absolute_url()+'/edit'"><img height="16" width="16" src="/++resource++resources/EditIcon.gif" alt="Edit"/>Edit</a>
+        <tal:block-img tal:define="image python:view.custom_context.getPhoto()">
+            <tal:img tal:condition="image">
+                <img class="profile-img" src="" tal:attributes="src python:image.absolute_url()+'_thumb'"/>
+            </tal:img>
+            <tal:not-img tal:condition="not: image">
+                <img class="profile-img" src="" tal:attributes="src python:view.custom_context.portal_url()+'/defaultUser.gif'"/>
+            </tal:not-img>
+        </tal:block-img>
+
+        <h2><span tal:content="python:view.custom_context.getFirstName()"></span>
+        <span tal:content="python:view.custom_context.getLastName()"></span></h2>
+        <span>(<tal:block tal:content="python:view.custom_context.getShortName()"></tal:block>)</span>
+        <div>
+            <span><b>Birthdate: </b></span><span><tal:block tal:content="python:view.custom_context.getBirthdate()"></tal:block></span>
+        </div>
+        <div>
+            <span><b>Email: </b></span><span><tal:block tal:content="python:view.custom_context.getEmail()"></tal:block></span>
+        </div>
+        <div>
+            <span><b>Web: </b></span><span><tal:block tal:content="python:view.custom_context.getWeb()"></tal:block></span>
+        </div>
+        <div>
+            <span><b>Phone: </b></span><span><tal:block tal:content="structure python:view.custom_context.getPhone()"></tal:block></span>
+        </div>
+        <div>
+            <span><b>Mobile phone: </b></span><span><tal:block tal:content="structure python:view.custom_context.getMobilePhone()"></tal:block></span>
+        </div>
+        <!-- <div>
+            <span><b>Text: </b></span><span><tal:block tal:content="structure python:view.custom_context.getText()"></tal:block></span>
+        </div> -->
+    </div>
+
+    <div class="adress-information">
+        <div>
+            <h4>Adress</h4>
+            <span><b>Street: </b></span>
+            <span><tal:block tal:content="structure python:view.custom_context.getAddress()"></tal:block></span><br/>
+            <span><b>Country: </b><tal:block tal:content="structure python:view.custom_context.getCountry()"></tal:block></span>
+            <span><b>State: </b><tal:block tal:content="structure python:view.custom_context.getState()"></tal:block></span><br/>
+            <span><b>City: </b><tal:block tal:content="structure python:view.custom_context.getCity()"></tal:block></span>
+            <span><b>Zip code: </b><tal:block tal:content="structure python:view.custom_context.getZip()"></tal:block></span>
+        </div>
+    </div>
+
+    <div class="work-adress-information">
+        <h4>Work Information</h4>
+        <span><b>organization: </b><tal:block tal:content="structure python:view.custom_context.getOrganization()"></tal:block></span><br/>
+        <span><b>Position: </b><tal:block tal:content="structure python:view.custom_context.getPosition()"></tal:block></span><br/>
+        <span><b>Department: </b><tal:block tal:content="structure python:view.custom_context.getDepartment()"></tal:block></span><br/>
+
+        <span><b>Work phone: </b><tal:block tal:content="structure python:view.custom_context.getWorkPhone()"></tal:block></span><br/>
+        <span><b>Work phone internal: </b><tal:block tal:content="structure python:view.custom_context.getWorkPhoneInternal()"></tal:block></span><br/>
+        <span><b>Work mobile phone: </b><tal:block tal:content="structure python:view.custom_context.getWorkMobilePhone()"></tal:block></span><br/>
+        <span><b>Work fax: </b><tal:block tal:content="structure python:view.custom_context.getWorkFax()"></tal:block></span>  <br/>
+        <span><b>Work email: </b><tal:block tal:content="structure python:view.custom_context.getWorkEmail()"></tal:block></span> <br/>
+        <span><b>Work email 2: </b><tal:block tal:content="structure python:view.custom_context.getWorkEmail2()"></tal:block></span> <br/>
+        <span><b>Work email 3: </b><tal:block tal:content="structure python:view.custom_context.getWorkEmail3()"></tal:block></span> <br/>
+    </div>
+</div>

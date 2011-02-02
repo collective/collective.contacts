@@ -23,4 +23,38 @@
       permission="zope2.View" 
       />
 
+    <!--adress view -->
+    <!-- a better context?  => for="collective.contacts.interfaces.IAddressBook" -->
+    <browser:page
+        for="*"
+        name="address_book"
+        class=".address_book_view.AddressBookView"
+        template="templates/address_book.pt"
+        permission="zope2.View"
+        />
+
+  <browser:page
+     for="*"
+     name="member_listing_view"
+     attribute="member_listing_view"
+     class=".address_book_view.AddressBookView"
+     permission="zope2.View"
+     />   
+
+  <browser:page
+     for="*"
+     name="member_data_view"
+     attribute="member_data_view"
+     class=".address_book_view.AddressBookView"
+     permission="zope2.View"
+     />  
+
+  <browser:page
+     for="*"
+     name="get_categories"
+     attribute="get_categories"
+     class=".address_book_view.AddressBookView"
+     permission="zope2.View"
+     />              
+        
 </configure>

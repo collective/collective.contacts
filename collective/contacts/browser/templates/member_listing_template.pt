@@ -1,0 +1,9 @@
+<ul tal:define="memberUID request/memberUID | nothing;
+                                                      UID request/UID | nothing;">
+    <li class="oddorg" tal:repeat="member view/members_list" 
+        tal:attributes="class python:repeat['member'].even() and 'oddorg' or 'evenorg'">
+        <a class="selectable" href="" tal:content="member/obj_title"
+                   tal:attributes="href python:context.absolute_url()+'?memberUID='+ member['UID'] + '&UID=' +(UID or '');
+                                   class python:member['UID'] == memberUID and 'selected selectable' or 'selectable'"></a>
+    </li>
+</ul>

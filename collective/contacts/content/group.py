@@ -19,7 +19,7 @@ from collective.contacts.config import PROJECTNAME
 def members(obj):
     return len(obj.persons)
 
-GroupSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
+GroupSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema(( 
 
     # -*- Your Archetypes field definitions here ... -*-
 
@@ -52,7 +52,7 @@ schemata.finalizeATCTSchema(
     moveDiscussion=False
 )
 
-class Group(base.ATCTContent):
+class Group(base.ATCTContent): 
     """Let you have several persons together"""
     implements(IGroup)
 
