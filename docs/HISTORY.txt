@@ -49,6 +49,8 @@ SVN
 
   * Added German translation [simu]
 
+  * Added French translation [toutpt]
+
 1.4.4
 -----
 
