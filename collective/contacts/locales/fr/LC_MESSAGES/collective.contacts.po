@@ -91,7 +91,7 @@ msgstr "Ville"
 #. Default: "Click ${label_here} if it is correct."
 #: ./browser/templates/search.pt:15
 msgid "Click ${label_here} if it is correct."
-msgstr "Cliquez sur ${label_here} si c'est valide"
+msgstr "Cliquez ${label_here} pour continuer."
 
 #. Default: "Contact information of a person"
 #: ./profiles/default/types/Person.xml
@@ -201,7 +201,7 @@ msgstr "Nom"
 #. Default: "Or ${label_go_back} to correct."
 #: ./browser/templates/search.pt:17
 msgid "Or ${label_go_back} to correct."
-msgstr "Ou ${label_go_back} pour corriger."
+msgstr "Sinon ${label_go_back} pour modifier votre sélection."
 
 #: ./content/person.py:155
 msgid "Organization"
@@ -474,7 +474,7 @@ msgstr "Code postal"
 #. Default: "Advanced organizations search:"
 #: ./browser/find.py:20
 msgid "advanced_organizations_search"
-msgstr "Recherche avancées d'organisations"
+msgstr "Recherche avancée d'organisation"
 
 #. Default: "Advanced persons search:"
 #: ./browser/find.py:40
@@ -503,7 +503,7 @@ msgstr "Aucun résultat trouvé."
 #. Default: "go back"
 #: ./browser/templates/search.pt:17
 msgid "go back"
-msgstr "Revenir en arrière"
+msgstr "revenir en arrière"
 
 #. Default: "here"
 #: ./browser/templates/search.pt:15
@@ -573,7 +573,7 @@ msgstr "Exporter la sélection"
 #. Default: "Your default e-mail client will be opened to send the email."
 #: ./browser/templates/search.pt:16
 msgid "label_help_send_mail"
-msgstr "Votre client e-lauk par défaut sera ouvert pour envoyer le mail."
+msgstr "Votre client e-mail par défaut sera ouvert pour envoyer le mail."
 
 #. Default: "Import file"
 #: ./browser/templates/import.pt:25
