@@ -54,6 +54,7 @@ setup(name='collective.contacts',
       install_requires=['setuptools',
                         # -*- Extra requirements: -*-
                         'Products.ATExtensions',
+                        'Products.AdvancedQuery',
                         ],
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
