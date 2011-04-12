@@ -44,7 +44,7 @@ msgstr "Une liste de pays"
 
 #: ./interfaces/widgets.py:16
 msgid "A list of states"
-msgstr "Une liste d'états"
+msgstr "Une liste de départements"
 
 #: ./content/person.py:258
 msgid "A second work e-mail address"
@@ -257,7 +257,7 @@ msgstr "Secteur de l'organisation"
 
 #: ./content/organization.py:48
 msgid "Organization's state"
-msgstr "Etat de l'organisation"
+msgstr "Département de l'organisation"
 
 #: ./content/organization.py:185
 msgid "Organization's sub sector"
@@ -331,7 +331,7 @@ msgstr "Le pseudo de la personne"
 
 #: ./content/person.py:319
 msgid "Person's state"
-msgstr "L'état de la personne"
+msgstr "Le département de la personne"
 
 #: ./content/person.py:387
 msgid "Person's web page or blog. Example: http://www.google.com"
@@ -395,7 +395,7 @@ msgstr "Pseudo (nom court)"
 
 #: ./content/organization.py:47
 msgid "State"
-msgstr "Etat"
+msgstr "Département"
 
 #: ./content/addressbook.py:51
 msgid "Sub sector"
@@ -692,7 +692,7 @@ msgstr "Résultats de recherche"
 
 #: ./interfaces/widgets.py:15
 msgid "states"
-msgstr "états"
+msgstr "départements"
 
 #. Default: "Customize columns"
 #: ./browser/templates/customize.pt:9
