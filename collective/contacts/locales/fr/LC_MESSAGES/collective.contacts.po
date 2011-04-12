@@ -359,7 +359,7 @@ msgstr "Personnes"
 
 #: ./browser/organization.py:11
 msgid "Persons part of ${organization}"
-msgstr "Personnes faisant partie de ${organisation}"
+msgstr "Personnes faisant partie de ${organization}"
 
 #: ./content/organization.py:92
 msgid "Phone Number"
