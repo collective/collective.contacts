@@ -80,7 +80,7 @@ msgstr "Voeg hier sectoren en subsectoren doe die voor organisaties gebruikt wor
 #: ./content/person.py:295
 #: ./interfaces/organization.py:16
 msgid "Address"
-msgstr "Adres"
+msgstr "Straatnaam"
 
 #: ./profiles/default/types/Address_Book.xml
 msgid "Address Book"
@@ -160,7 +160,7 @@ msgstr "Export formaat"
 #: ./content/organization.py:81
 #: ./interfaces/organization.py:38
 msgid "Extra Address Info"
-msgstr "Extra adresinformatie"
+msgstr "Extra adresregel"
 
 #: ./content/organization.py:112
 #: ./interfaces/organization.py:50
@@ -239,11 +239,11 @@ msgstr "Organisatie met title ${org_title} bestaat niet. Veld blijft leeg."
 
 #: ./content/organization.py:135
 msgid "Organization's 2nd e-mail address"
-msgstr "2e email-adres van de organisatie."
+msgstr "2e email-adres van de organisatie"
 
 #: ./content/organization.py:147
 msgid "Organization's 3rd e-mail address"
-msgstr "3e email-adres van de organisatie."
+msgstr "3e email-adres van de organisatie"
 
 #: ./content/organization.py:71
 msgid "Organization's ZIP"
@@ -251,11 +251,11 @@ msgstr "Postcode van de organisatie"
 
 #: ./content/organization.py:25
 msgid "Organization's address"
-msgstr "Adres van de organisatie"
+msgstr "Straatnaam van de organisatie"
 
 #: ./content/organization.py:60
 msgid "Organization's city"
-msgstr "Plaats van de organisatie"
+msgstr "Vestigingsplaats van de organisatie"
 
 #: ./content/organization.py:36
 msgid "Organization's country"
@@ -267,7 +267,7 @@ msgstr "Email-adres van de organisatie"
 
 #: ./content/organization.py:82
 msgid "Organization's extra address information."
-msgstr "Extra adresinformatie van de organisatie"
+msgstr "Extra adresregel van de organisatie"
 
 #: ./content/organization.py:113
 msgid "Organization's fax number"
@@ -312,11 +312,11 @@ msgstr "Postcode van de persoon"
 
 #: ./content/person.py:296
 msgid "Person's address"
-msgstr "Adres van de persoon"
+msgstr "Straatnaam van de persoon"
 
 #: ./content/person.py:331
 msgid "Person's city"
-msgstr "plaats van de persoon"
+msgstr "Woonplaats van de persoon"
 
 #: ./content/person.py:146
 msgid "Person's date of birth"
@@ -332,11 +332,11 @@ msgstr "Voornaam van de persoon"
 
 #: ./content/person.py:209
 msgid "Person's internal work phone number"
-msgstr "Intern werk telefoonnumme van de persoon"
+msgstr "Intern werk telefoonnummer van de persoon"
 
 #: ./content/person.py:135
 msgid "Person's last name"
-msgstr "Achternaamvan de persoon"
+msgstr "Achternaam van de persoon"
 
 #: ./content/person.py:364
 msgid "Person's mobile phone number"
