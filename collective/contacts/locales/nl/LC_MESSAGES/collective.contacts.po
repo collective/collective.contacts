@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.contacts\n"
-"POT-Creation-Date: 2011-06-07 11:11+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"POT-Creation-Date: 2011-06-07 13:30+0000\n"
+"PO-Revision-Date: 2011-06-07 15:29 +0100\n"
 "Last-Translator: Fred van Dijk <@zestsoftware.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -263,7 +263,7 @@ msgstr "Land van de organisatie"
 
 #: ./content/organization.py:123
 msgid "Organization's e-mail address"
-msgstr ""
+msgstr "Email-adres van de organisatie"
 
 #: ./content/organization.py:82
 msgid "Organization's extra address information."
@@ -300,501 +300,501 @@ msgstr "website of blog van de organisatie. Bijv. http://www.google.nl"
 #: ./browser/list.py:98
 #: ./profiles/default/actions.xml
 msgid "Organizations"
-msgstr ""
+msgstr "Organisaties"
 
 #: ./profiles/default/types/Person.xml
 msgid "Person"
-msgstr ""
+msgstr "Persoon"
 
 #: ./content/person.py:342
 msgid "Person's ZIP"
-msgstr ""
+msgstr "Postcode van de persoon"
 
 #: ./content/person.py:296
 msgid "Person's address"
-msgstr ""
+msgstr "Adres van de persoon"
 
 #: ./content/person.py:331
 msgid "Person's city"
-msgstr ""
+msgstr "plaats van de persoon"
 
 #: ./content/person.py:146
 msgid "Person's date of birth"
-msgstr ""
+msgstr "Geboortedatum van de persoon"
 
 #: ./content/person.py:375
 msgid "Person's e-mail address"
-msgstr ""
+msgstr "Email-adres van de persoon"
 
 #: ./content/person.py:124
 msgid "Person's first name"
-msgstr ""
+msgstr "Voornaam van de persoon"
 
 #: ./content/person.py:209
 msgid "Person's internal work phone number"
-msgstr ""
+msgstr "Intern werk telefoonnumme van de persoon"
 
 #: ./content/person.py:135
 msgid "Person's last name"
-msgstr ""
+msgstr "Achternaamvan de persoon"
 
 #: ./content/person.py:364
 msgid "Person's mobile phone number"
-msgstr ""
+msgstr "Mobiel nummer van de persoon"
 
 #: ./content/person.py:353
 msgid "Person's phone number"
-msgstr ""
+msgstr "Telefoonnummer van de persoon"
 
 #: ./content/person.py:284
 msgid "Person's photo"
-msgstr ""
+msgstr "Foto van de persoon"
 
 #: ./content/person.py:173
 msgid "Person's position in the company"
-msgstr ""
+msgstr "Functie van de persoon binnen de organisatie"
 
 #: ./content/person.py:115
 msgid "Person's short name"
-msgstr ""
+msgstr "Verkorte naam van de persoon"
 
 #: ./content/person.py:319
 msgid "Person's state"
-msgstr ""
+msgstr "Provincie van de persoon"
 
 #: ./content/person.py:387
 msgid "Person's web page or blog. Example: http://www.google.com"
-msgstr ""
+msgstr "Homepage of blog van de persoon. Bijv. http://www.google.nl"
 
 #: ./content/person.py:245
 msgid "Person's work e-mail address"
-msgstr ""
+msgstr "Werk email-adres van de persoon"
 
 #: ./content/person.py:233
 msgid "Person's work fax number"
-msgstr ""
+msgstr "Faxnummer van de persoon"
 
 #: ./content/person.py:221
 msgid "Person's work mobile phone number"
-msgstr ""
+msgstr "Mobiel nummer werk van de persoon"
 
 #: ./content/person.py:197
 msgid "Person's work phone number"
-msgstr ""
+msgstr "Telefoonnummer werk van de persoon"
 
 #: ./browser/list.py:88
 #: ./content/group.py:31
 #: ./interfaces/group.py:17
 msgid "Persons"
-msgstr ""
+msgstr "Personen"
 
 #: ./browser/organization.py:13
 msgid "Persons part of ${organization}"
-msgstr ""
+msgstr "Personen die onderdeel zijn van ${organization}"
 
 #: ./content/organization.py:92
 #: ./content/person.py:352
 #: ./interfaces/organization.py:42
 msgid "Phone Number"
-msgstr ""
+msgstr "Telefoonnummer"
 
 #: ./content/person.py:283
 #: ./interfaces/person.py:71
 msgid "Photo"
-msgstr ""
+msgstr "Foto"
 
 #: ./browser/import.py:39
 msgid "Please select a file to import"
-msgstr ""
+msgstr "Kies een bestand om te importeren"
 
 #: ./content/person.py:172
 #: ./interfaces/person.py:35
 msgid "Position"
-msgstr ""
+msgstr "Functie"
 
 #: ./content/addressbook.py:50
 #: ./content/organization.py:171
 #: ./interfaces/organization.py:70
 msgid "Sector"
-msgstr ""
+msgstr "Sector"
 
 #: ./content/addressbook.py:31
 #: ./interfaces/addressbook.py:14
 msgid "Sectors"
-msgstr ""
+msgstr "Sectoren"
 
 #: ./content/person.py:307
 msgid "Select a country"
-msgstr ""
+msgstr "Kies een land"
 
 #: ./content/person.py:114
 #: ./interfaces/person.py:14
 msgid "Short Name"
-msgstr ""
+msgstr "Verkorte naam"
 
 #: ./imports.py:194
 msgid "Starting the organizations import process"
-msgstr ""
+msgstr "Importeren van organisaties gestart"
 
 #: ./imports.py:59
 msgid "Starting the persons import process"
-msgstr ""
+msgstr "Importeren van personen gestart"
 
 #: ./content/organization.py:47
 #: ./content/person.py:318
 #: ./interfaces/organization.py:25
 msgid "State"
-msgstr ""
+msgstr "Provincie/Regio"
 
 #: ./content/addressbook.py:51
 #: ./content/organization.py:184
 #: ./interfaces/organization.py:75
 msgid "Sub sector"
-msgstr ""
+msgstr "Subsector"
 
 #: ./import.py:191
 msgid "Successfully imported ${number} organizations"
-msgstr ""
+msgstr "${number} organisaties zijn geïmporteerd"
 
 #: ./import.py:49
 msgid "Successfully imported ${number} persons"
-msgstr ""
+msgstr "${number} personen zijn geïmporteerd"
 
 #: ./imports.py:254
 msgid "Successfuly added ${organization_id}."
-msgstr ""
+msgstr "${organization_id} is toegevoegd."
 
 #: ./imports.py:270
 msgid "Successfuly added ${organizations_number} organizations to ${location}."
-msgstr ""
+msgstr "${organizations_number} organisaties zijn toegevoegd aan ${location}."
 
 #: ./imports.py:161
 msgid "Successfuly added ${person_id}."
-msgstr ""
+msgstr "${person_id} is toegevoegd."
 
 #: ./imports.py:178
 msgid "Successfuly added ${persons_number} persons to ${location}."
-msgstr ""
+msgstr "${persons_number} personen zijn toegeovegd aan ${location}."
 
 #: ./content/organization.py:197
 #: ./content/person.py:399
 #: ./interfaces/organization.py:80
 msgid "Text"
-msgstr ""
+msgstr "Tekst"
 
 #: ./browser/templates/import.pt:52
 msgid "The following errors where raised during the import"
-msgstr ""
+msgstr "De volgende problemen zijn gevonden bij het importeren"
 
 #: ./content/person.py:156
 msgid "The organization the person belongs to"
-msgstr ""
+msgstr "De organisaties waar de persoon aan is verbonden"
 
 #: ./content/group.py:32
 #: ./interfaces/group.py:19
 msgid "The persons that belong to this group"
-msgstr ""
+msgstr "De personen die bij deze groep horen"
 
 #: ./imports.py:112
 msgid "There are ${org_size} organizations with the same title, i don't know with which one relate this person."
-msgstr ""
+msgstr "Er zijn ${org_size} organisaties met dezelfde titel, het is niet "
 
 #: ./imports.py:167
 msgid "There was an error while adding."
-msgstr ""
+msgstr "Er wsa een probleem bij het toevoegen"
 
 #: ./imports.py:127
 msgid "There's already a person with this id here."
-msgstr ""
+msgstr "Er bestaat al een persoon hier met dit ID."
 
 #: ./imports.py:234
 msgid "There's already an organization with this id here."
-msgstr ""
+msgstr "Er bestaat al een persoon met dit ID."
 
 #: ./browser/customize.py:38
 msgid "View successfully customized"
-msgstr ""
+msgstr "Weergave is aangepast"
 
 #: ./content/organization.py:158
 #: ./interfaces/organization.py:66
 msgid "Web"
-msgstr ""
+msgstr "Web"
 
 #: ./content/person.py:386
 #: ./interfaces/person.py:109
 msgid "Web / Blog"
-msgstr ""
+msgstr "Web/blog"
 
 #: ./browser/templates/import.pt:15
 msgid "When importing persons make sure the organizations associated with them exist. Otherwise the persons can not be imported."
-msgstr ""
+msgstr "Zorg ervoor dat bij het importeren van personen de organisaties die bij ze horen ook bestaan. Anders wordt de peroson niet geïmporteerd."
 
 #: ./content/person.py:244
 #: ./interfaces/person.py:59
 msgid "Work E-mail address"
-msgstr ""
+msgstr "Email-adres werk"
 
 #: ./content/person.py:232
 #: ./interfaces/person.py:55
 msgid "Work Fax number"
-msgstr ""
+msgstr "Faxnummer werk"
 
 #: ./content/person.py:220
 #: ./interfaces/person.py:51
 msgid "Work Mobile Phone Number"
-msgstr ""
+msgstr "Mobiel nummer werk"
 
 #: ./content/person.py:196
 #: ./interfaces/person.py:43
 msgid "Work Phone Number"
-msgstr ""
+msgstr "Telefoonnummer werk"
 
 #: ./browser/search.py:53
 msgid "You need to select at least one person or organization"
-msgstr ""
+msgstr "Kies tenminste één persoon of organisatie"
 
 #: ./browser/search.py:57
 msgid "You need to select at least one person or organization that has an email"
-msgstr ""
+msgstr "Kies tenminste één persoon of organisatie met een email-adres"
 
 #: ./imports.py:238
 msgid "You will have to load the organization with id ${organization_id} manually."
-msgstr ""
+msgstr "Laad de organisate met id ${organization_id} handmatig."
 
 #: ./imports.py:119
 msgid "You will have to load the person with id ${person_id} manually."
-msgstr ""
+msgstr "Laad de persoon met id ${person_id} handmatig."
 
 #: ./content/organization.py:70
 #: ./content/person.py:341
 #: ./interfaces/organization.py:34
 msgid "ZIP"
-msgstr ""
+msgstr "Postcode"
 
 #. Default: "Advanced organizations search:"
 #: ./browser/find.py:20
 msgid "advanced_organizations_search"
-msgstr ""
+msgstr "Geavanceerd zoeken naar organisaties:"
 
 #. Default: "Advanced persons search:"
 #: ./browser/find.py:40
 msgid "advanced_persons_search"
-msgstr ""
+msgstr "Geavanceerd zoeken naar personen:"
 
 #: ./interfaces/widgets.py:11
 msgid "countries"
-msgstr ""
+msgstr "landen"
 
 #. Default: "Customize view"
 #: ./browser/actions.py:18
 msgid "customize_view"
-msgstr ""
+msgstr "Weergave aanpassen"
 
 #. Default: "${m}/${d}"
 #: ./content/person.py:42
 msgid "date_format"
-msgstr ""
+msgstr "${m}/${d}"
 
 #. Default: "No results were found."
 #: ./browser/templates/search.pt:25
 msgid "description_no_results_found"
-msgstr ""
+msgstr "Geen resultaten gevonden."
 
 #: ./browser/templates/search.pt:17
 msgid "go back"
-msgstr ""
+msgstr "ga terug"
 
 #: ./browser/templates/search.pt:15
 msgid "here"
-msgstr ""
+msgstr "hier"
 
 #. Default: "Wrong file format. Export an existing address book as CSV to get a reference file."
 #: ./import.py:74
 msgid "import_error_format"
-msgstr ""
+msgstr "Verkeerd bestandsformaat. Exporteer een bestaand adresbook als CSV om het juiste formaat te zien."
 
 #. Default: "There are ${number} organizations with the same id, I don't know with which one relate this person. You will have to load the person with id ${person_id} manually."
 #: ./import.py:110
 msgid "import_error_multipleorganizations"
-msgstr ""
+msgstr "Er zijn ${number} organisaties met hetzelfde ID. Het is niet vast te stellen welke bij deze persoon hoort. Voeg de persoon handmatig toe."
 
 #. Default: "There's no organization with id ${organization_id} make sure it exists before adding persons. ${person_id} not added"
 #: ./import.py:152
 msgid "import_error_noorganization"
-msgstr ""
+msgstr "Er is geen organisatie met id ${organization_id}. Zorg dat deze bestaat voor u de persoon ${person_id} toevoegt, dit is nu niet gedaan. "
 
 #. Default: "There was an error while adding. You will have to load the organization with id ${organization_id} manually."
 #: ./import.py:259
 msgid "import_error_organization"
-msgstr ""
+msgstr "Er was een probleem met het toevoegen. Voer de organisatie met id ${organisation_id} handmatig toe."
 
 #. Default: "There's already an organization with this id here. You will have to load the organization with id ${organization_id} manually."
 #: ./import.py:242
 msgid "import_error_organizationexists"
-msgstr ""
+msgstr "Er bestaat al een organisatie met id ${organization_id}. Voeg de organisatie handmatig toe."
 
 #. Default: "There was an error while adding. You will have to load the person with id ${person_id} manually."
 #: ./import.py:145
 msgid "import_error_person"
-msgstr ""
+msgstr "Er was een probleem met het toevoegen. Voer de persoon met id ${person_id} handmatig toe."
 
 #. Default: "There's already a person with this id here. You will have to load the person with id ${person_id} manually."
 #: ./import.py:123
 msgid "import_error_personexists"
-msgstr ""
+msgstr "Er bestaat al een persoon met id ${person_id}. Voeg de persoon handmatig toe."
 
 #. Default: "Advanced Search"
 #: ./browser/templates/list.pt:44
 #: ./browser/templates/search.pt:38
 msgid "label_advanced_search"
-msgstr ""
+msgstr "Geavanceerd zoeken"
 
 #. Default: "Cancel"
 #: ./browser/find.py:32
 #: ./browser/templates/customize.pt:42
 msgid "label_cancel"
-msgstr ""
+msgstr "Afbreken"
 
 #. Default: "Search Again"
 #: ./browser/templates/search.pt:32
 msgid "label_do_another_search"
-msgstr ""
+msgstr "Zoek opnieuw"
 
 #. Default: "Export all"
 #: ./browser/templates/list.pt:92
 #: ./browser/templates/search.pt:91
 msgid "label_export_all"
-msgstr ""
+msgstr "Alles exporteren"
 
 #. Default: "Export selected"
 #: ./browser/templates/list.pt:69
 #: ./browser/templates/search.pt:67
 msgid "label_export_selected"
-msgstr ""
+msgstr "Geselecteerde exporteren"
 
 #. Default: "Your default e-mail client will be opened to send the email."
 #: ./browser/templates/search.pt:16
 msgid "label_help_send_mail"
-msgstr ""
+msgstr "De standaard email-applicatie wordt geopend om de e-mail te versturen."
 
 #. Default: "Import file"
 #: ./browser/templates/import.pt:25
 #: ./browser/templates/importview.pt:11
 msgid "label_import_file"
-msgstr ""
+msgstr "Importeer bestand"
 
 #. Default: "Import organizations or persons"
 #: ./browser/templates/import.pt:10
 #: ./browser/templates/list.pt:26
 msgid "label_import_organizations_persons"
-msgstr ""
+msgstr "Importeer organisaties of personen"
 
 #. Default: "Selection"
 #: ./browser/templates/import.pt:29
 #: ./browser/templates/importview.pt:14
 msgid "label_import_selection"
-msgstr ""
+msgstr "Selectie"
 
 #. Default: "Import"
 #: ./browser/templates/import.pt:41
 #: ./browser/templates/importview.pt:21
 msgid "label_import_submit"
-msgstr ""
+msgstr "Importeren"
 
 #. Default: "Organizations"
 #: ./browser/import.py:20
 #: ./browser/templates/importview.pt:17
 msgid "label_organizations"
-msgstr ""
+msgstr "Organisaties"
 
 #. Default: "Persons"
 #: ./browser/import.py:19
 #: ./browser/templates/importview.pt:16
 msgid "label_persons"
-msgstr ""
+msgstr "Personen"
 
 #. Default: "Quick Search"
 #: ./browser/templates/list.pt:39
 msgid "label_quick_search"
-msgstr ""
+msgstr "Snel zoeken"
 
 #. Default: "Save"
 #: ./browser/templates/customize.pt:36
 msgid "label_save"
-msgstr ""
+msgstr "Bewaren"
 
 #. Default: "Search Organizations"
 #: ./browser/find.py:28
 msgid "label_search_organizations"
-msgstr ""
+msgstr "Zoek organisaties"
 
 #. Default: "Search Persons"
 #: ./browser/find.py:50
 msgid "label_search_persons"
-msgstr ""
+msgstr "Zoek personen"
 
 #. Default: "Send emails"
 #: ./browser/templates/search.pt:12
 msgid "label_send_emails"
-msgstr ""
+msgstr "Verstuur e-mails"
 
 #. Default: "You're about to send an email to the following addresses:"
 #: ./browser/templates/search.pt:13
 msgid "label_send_emails_text"
-msgstr ""
+msgstr "Er gaan e-mails verstuur worden naar de volgende adressen:"
 
 #. Default: "Send mail to"
 #: ./browser/templates/list.pt:63
 #: ./browser/templates/search.pt:61
 msgid "label_send_mail_to"
-msgstr ""
+msgstr "Verstuur email naar"
 
 #. Default: "Members"
 #: ./columns.py:125
 msgid "listingheader_groups_members"
-msgstr ""
+msgstr "groepsleden"
 
 #. Default: "Name"
 #: ./columns.py:124
 msgid "listingheader_groups_name"
-msgstr ""
+msgstr "Naam"
 
 #. Default: "There are no groups available"
 #: ./browser/list.py:107
 msgid "no_groups"
-msgstr ""
+msgstr "Er zijn geen groepen beschikbaar"
 
 #. Default: "There are no organizations available"
 #: ./browser/list.py:97
 msgid "no_organizations"
-msgstr ""
+msgstr "Er zijn geen organisaties beschikbaar"
 
 #. Default: "There are no persons available"
 #: ./browser/list.py:87
 msgid "no_persons"
-msgstr ""
+msgstr "Er zijn geen personen beschikbaar"
 
 #. Default: "There are no persons assigned to this group"
 #: ./browser/group.py:7
 msgid "no_persons_in_group"
-msgstr ""
+msgstr "Er zijn geen personen toegevoegd aan deze groep"
 
 #. Default: "There are no persons in this organization"
 #: ./browser/organization.py:9
 msgid "no_persons_in_organization"
-msgstr ""
+msgstr "Er zijn geen personen toegevoegd aan deze organisatie"
 
 #. Default: "Search results"
 #: ./browser/templates/search.pt:21
 msgid "search_results"
-msgstr ""
+msgstr "Zoekresultaten"
 
 #: ./interfaces/widgets.py:15
 msgid "states"
-msgstr ""
+msgstr "Provincies/Regio's"
 
 #. Default: "Customize columns"
 #: ./browser/templates/customize.pt:9
 msgid "title_customize_columns"
-msgstr ""
+msgstr "Kolommen aanpassen"
 
