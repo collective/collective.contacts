@@ -47,7 +47,7 @@ class IOrganization(Interface):
         required=False,
     )
     fax = schema.TextLine(
-        title=_(u"Fax Number"),
+        title=_(u"Fax number"),
         required=False,
     )
     email = schema.TextLine(

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-06-07 10:54+0000\n"
+"POT-Creation-Date: 2011-06-07 11:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,16 +45,13 @@ msgstr "2ième adresse E-mail"
 msgid "2nd Work E-mail address (optional)"
 msgstr "2ième adresse E-mail pro (optionnelle)"
 
-#: ./interfaces/person.py:67
-msgid "3nd Work E-mail address (optional)"
-msgstr "3ième adresse E-mail pro (optionnelle)"
-
 #: ./content/organization.py:146
 #: ./interfaces/organization.py:62
 msgid "3rd E-mail address"
 msgstr "3ième adresse E-mail"
 
 #: ./content/person.py:270
+#: ./interfaces/person.py:67
 msgid "3rd Work E-mail address (optional)"
 msgstr "3ième adresse E-mail pro (optionnelle)"
 
@@ -172,11 +169,8 @@ msgstr "Format d'export"
 msgid "Extra Address Info"
 msgstr "Complément d'adresse"
 
-#: ./interfaces/organization.py:50
-msgid "Fax Number"
-msgstr "Numéro de fax"
-
 #: ./content/organization.py:112
+#: ./interfaces/organization.py:50
 msgid "Fax number"
 msgstr "Numéro de fax"
 

@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.contacts\n"
-"POT-Creation-Date: 2011-06-07 10:54+0000\n"
+"POT-Creation-Date: 2011-06-07 11:11+0000\n"
 "PO-Revision-Date: 2010-05-25 10:42+0100\n"
 "Last-Translator: Simon Kaeser <skaeser@raptus.com>\n"
 "Language-Team: German <skaeser@raptus.com>\n"
@@ -49,16 +49,13 @@ msgstr "2. Emailadresse"
 msgid "2nd Work E-mail address (optional)"
 msgstr "2. geschäftliche Emailadresse (optional)"
 
-#: ./interfaces/person.py:67
-msgid "3nd Work E-mail address (optional)"
-msgstr "3. geschäftliche Emailadresse (optional)"
-
 #: ./content/organization.py:146
 #: ./interfaces/organization.py:62
 msgid "3rd E-mail address"
 msgstr "3. Emailadresse"
 
 #: ./content/person.py:270
+#: ./interfaces/person.py:67
 msgid "3rd Work E-mail address (optional)"
 msgstr "3. Geschäfts-Emailadresse (optional)"
 
@@ -176,11 +173,8 @@ msgstr "Exportformat:"
 msgid "Extra Address Info"
 msgstr "Zusätzliche Adressinformationen"
 
-#: ./interfaces/organization.py:50
-msgid "Fax Number"
-msgstr "Faxnummer"
-
 #: ./content/organization.py:112
+#: ./interfaces/organization.py:50
 msgid "Fax number"
 msgstr "Faxnummer"
 

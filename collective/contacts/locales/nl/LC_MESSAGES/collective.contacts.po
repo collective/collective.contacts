@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.contacts\n"
-"POT-Creation-Date: 2011-06-07 10:54+0000\n"
+"POT-Creation-Date: 2011-06-07 11:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Fred van Dijk <@zestsoftware.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,256 +16,250 @@ msgstr ""
 
 #: ./imports.py:223
 msgid "${organizations_number} organizations to be added to ${location}."
-msgstr ""
+msgstr "${organizations_number} organisaties om toe te voegen aan ${location}."
 
 #: ./imports.py:92
 msgid "${persons_number} persons to be added to ${location}."
-msgstr ""
+msgstr "${persons_number} personen om toe te voegen aan ${location}."
 
 #: ./browser/importview.py:62
 msgid "%s successfuly imported organizations"
-msgstr ""
+msgstr "%s organisaties zijn goed geïmporteerd"
 
 #: ./browser/importview.py:49
 msgid "%s successfuly imported persons"
-msgstr ""
+msgstr "%s personen zijn goed geïmporteerd"
 
 #: ./browser/ksscommands.py:104
 #: ./vocabularies.py:41
 msgid "(no value)"
-msgstr ""
+msgstr "(geen waarde)"
 
 #: ./content/organization.py:134
 #: ./interfaces/organization.py:58
 msgid "2nd E-mail address"
-msgstr ""
+msgstr "2e email-adres"
 
 #: ./content/person.py:257
 #: ./interfaces/person.py:63
 msgid "2nd Work E-mail address (optional)"
-msgstr ""
-
-#: ./interfaces/person.py:67
-msgid "3nd Work E-mail address (optional)"
-msgstr ""
+msgstr "2e werk email-adres (optioneel)"
 
 #: ./content/organization.py:146
 #: ./interfaces/organization.py:62
 msgid "3rd E-mail address"
-msgstr ""
+msgstr "3e email-adres"
 
 #: ./content/person.py:270
+#: ./interfaces/person.py:67
 msgid "3rd Work E-mail address (optional)"
-msgstr ""
+msgstr "3e werk email-adres (optioneel)"
 
 #: ./interfaces/widgets.py:12
 msgid "A list of countries"
-msgstr ""
+msgstr "Lijst van landen"
 
 #: ./interfaces/widgets.py:16
 msgid "A list of states"
-msgstr ""
+msgstr "Lijst van provincies"
 
 #: ./content/person.py:258
 msgid "A second work e-mail address"
-msgstr ""
+msgstr "Een tweede werk email-adres"
 
 #: ./content/person.py:271
 msgid "A third work e-mail address"
-msgstr ""
+msgstr "een derde werk email-adres"
 
 #: ./content/addressbook.py:28
 #: ./interfaces/addressbook.py:16
 msgid "Add here sectors and subsectors that will be used by organizations."
-msgstr ""
+msgstr "Voeg hier sectoren en subsectoren doe die voor organisaties gebruikt worden."
 
 #: ./content/organization.py:24
 #: ./content/person.py:295
 #: ./interfaces/organization.py:16
 msgid "Address"
-msgstr ""
+msgstr "Adres"
 
 #: ./profiles/default/types/Address_Book.xml
 msgid "Address Book"
-msgstr ""
+msgstr "Adresboek"
 
 #: ./profiles/default/types/Address_Book.xml
 msgid "An address book"
-msgstr ""
+msgstr "Een adresboek"
 
 #: ./export.py:293
 #: ./profiles/default/actions.xml
 msgid "Birthday (vCal)"
-msgstr ""
+msgstr "Geboortedatum (vCal)"
 
 #: ./export.py:330
 msgid "Birthday of ${name}"
-msgstr ""
+msgstr "Verjaardag van ${name}"
 
 #: ./export.py:225
 #: ./profiles/default/actions.xml
 msgid "Business Card (vCard)"
-msgstr ""
+msgstr "Visitekaartje (vCard)"
 
 #: ./content/organization.py:59
 #: ./content/person.py:330
 #: ./interfaces/organization.py:30
 msgid "City"
-msgstr ""
+msgstr "Plaats"
 
 #: ./browser/templates/search.pt:15
 msgid "Click ${label_here} if it is correct."
-msgstr ""
+msgstr "Klik ${label_here} als dit juist is."
 
 #: ./profiles/default/types/Person.xml
 msgid "Contact information of a person"
-msgstr ""
+msgstr "Contactinformatie van een persoon"
 
 #: ./profiles/default/types/Organization.xml
 msgid "Contact information of an organization"
-msgstr ""
+msgstr "Contactinformatie van een oragnisatie"
 
 #: ./content/organization.py:35
 #: ./content/person.py:306
 #: ./interfaces/organization.py:20
 msgid "Country"
-msgstr ""
+msgstr "Land"
 
 #: ./content/person.py:145
 #: ./interfaces/person.py:26
 msgid "Date of birth"
-msgstr ""
+msgstr "Geboortedatum"
 
 #: ./skins/collective_contacts/date.pt:46
 msgid "Day"
-msgstr ""
+msgstr "Dag"
 
 #: ./content/person.py:184
 #: ./interfaces/person.py:39
 msgid "Department"
-msgstr ""
+msgstr "Afdeling"
 
 #: ./content/person.py:185
 msgid "Department where this person works"
-msgstr ""
+msgstr "Afdeling waar deze persoon werkt"
 
 #: ./content/organization.py:122
 #: ./content/person.py:374
 #: ./interfaces/organization.py:54
 msgid "E-mail address"
-msgstr ""
+msgstr "Email-adres"
 
 #: ./browser/templates/list.pt:83
 #: ./browser/templates/search.pt:81
 msgid "Export format:"
-msgstr ""
+msgstr "Export formaat"
 
 #: ./content/organization.py:81
 #: ./interfaces/organization.py:38
 msgid "Extra Address Info"
-msgstr ""
-
-#: ./interfaces/organization.py:50
-msgid "Fax Number"
-msgstr ""
+msgstr "Extra adresinformatie"
 
 #: ./content/organization.py:112
+#: ./interfaces/organization.py:50
 msgid "Fax number"
-msgstr ""
+msgstr "Faxnummer"
 
 #: ./content/person.py:123
 #: ./interfaces/person.py:18
 msgid "First Name"
-msgstr ""
+msgstr "Voornaam"
 
 #: ./content/person.py:413
 msgid "Full Name"
-msgstr ""
+msgstr "Volledige naam"
 
 #: ./browser/templates/search.pt:117
 msgid "Go back"
-msgstr ""
+msgstr "Ga terug"
 
 #: ./profiles/default/types/Group.xml
 msgid "Group"
-msgstr ""
+msgstr "Groep"
 
 #: ./browser/import.py:21
 #: ./browser/list.py:108
 #: ./profiles/default/actions.xml
 msgid "Groups"
-msgstr ""
+msgstr "Groepen"
 
 #: ./content/organization.py:102
 #: ./interfaces/organization.py:46
 msgid "Internal Phone Number"
-msgstr ""
+msgstr "Intern telefoonnummer"
 
 #: ./content/person.py:208
 #: ./interfaces/person.py:47
 msgid "Internal Work Phone Number"
-msgstr ""
+msgstr "Intern werk telefoonnummer"
 
 #: ./content/person.py:134
 #: ./interfaces/person.py:22
 msgid "Last Name"
-msgstr ""
+msgstr "Achternaam"
 
 #: ./profiles/default/types/Group.xml
 msgid "Let you have several persons together"
-msgstr ""
+msgstr "Groepeert een aantal personen"
 
 #: ./content/person.py:363
 #: ./interfaces/person.py:101
 msgid "Mobile Phone Number"
-msgstr ""
+msgstr "Mobiel nummer"
 
 #: ./skins/collective_contacts/date.pt:36
 msgid "Month"
-msgstr ""
+msgstr "Maand"
 
 #: ./content/organization.py:211
 #: ./interfaces/organization.py:12
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 #: ./browser/templates/search.pt:17
 msgid "Or ${label_go_back} to correct."
-msgstr ""
+msgstr "Of ${label_go_back} om te corrigeren"
 
 #: ./content/person.py:155
 #: ./interfaces/person.py:30
 #: ./profiles/default/types/Organization.xml
 msgid "Organization"
-msgstr ""
+msgstr "Organisatie"
 
 #: ./imports.py:152
 msgid "Organization with title ${org_title} doesn't exist. Leaving that field in blank."
-msgstr ""
+msgstr "Organisatie met title ${org_title} bestaat niet. Veld blijft leeg."
 
 #: ./content/organization.py:135
 msgid "Organization's 2nd e-mail address"
-msgstr ""
+msgstr "2e email-adres van de organisatie."
 
 #: ./content/organization.py:147
 msgid "Organization's 3rd e-mail address"
-msgstr ""
+msgstr "3e email-adres van de organisatie."
 
 #: ./content/organization.py:71
 msgid "Organization's ZIP"
-msgstr ""
+msgstr "Postcode van de organisatie"
 
 #: ./content/organization.py:25
 msgid "Organization's address"
-msgstr ""
+msgstr "Adres van de organisatie"
 
 #: ./content/organization.py:60
 msgid "Organization's city"
-msgstr ""
+msgstr "Plaats van de organisatie"
 
 #: ./content/organization.py:36
 msgid "Organization's country"
-msgstr ""
+msgstr "Land van de organisatie"
 
 #: ./content/organization.py:123
 msgid "Organization's e-mail address"
@@ -273,35 +267,35 @@ msgstr ""
 
 #: ./content/organization.py:82
 msgid "Organization's extra address information."
-msgstr ""
+msgstr "Extra adresinformatie van de organisatie"
 
 #: ./content/organization.py:113
 msgid "Organization's fax number"
-msgstr ""
+msgstr "faxnummer van de organisatie"
 
 #: ./content/organization.py:103
 msgid "Organization's internal phone number"
-msgstr ""
+msgstr "Intern telefoonnummer van de organisatie"
 
 #: ./content/organization.py:93
 msgid "Organization's phone number"
-msgstr ""
+msgstr "Telefoonnummer van de organisatie"
 
 #: ./content/organization.py:172
 msgid "Organization's sector"
-msgstr ""
+msgstr "Sector van de organisatie"
 
 #: ./content/organization.py:48
 msgid "Organization's state"
-msgstr ""
+msgstr "Provincie van de organisatie"
 
 #: ./content/organization.py:185
 msgid "Organization's sub sector"
-msgstr ""
+msgstr "Subsector van de organisatie"
 
 #: ./content/organization.py:159
 msgid "Organization's web page or blog. Example: http://www.google.com"
-msgstr ""
+msgstr "website of blog van de organisatie. Bijv. http://www.google.nl"
 
 #: ./browser/list.py:98
 #: ./profiles/default/actions.xml

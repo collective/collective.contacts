@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.contacts\n"
-"POT-Creation-Date: 2011-06-07 10:54+0000\n"
+"POT-Creation-Date: 2011-06-07 11:11+0000\n"
 "PO-Revision-Date: 2009-06-27 21:25-0300\n"
 "Last-Translator: Franco Pellegrini <franco.p@ifpeople.net>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -48,16 +48,13 @@ msgstr "2da dirección de email"
 msgid "2nd Work E-mail address (optional)"
 msgstr "2da dirección de email del trabajo (opcional)"
 
-#: ./interfaces/person.py:67
-msgid "3nd Work E-mail address (optional)"
-msgstr "3ra dirección de email del trabajo (opcional)"
-
 #: ./content/organization.py:146
 #: ./interfaces/organization.py:62
 msgid "3rd E-mail address"
 msgstr "3ra dirección de email"
 
 #: ./content/person.py:270
+#: ./interfaces/person.py:67
 msgid "3rd Work E-mail address (optional)"
 msgstr "3ra dirección de email del trabajo (opcional)"
 
@@ -175,11 +172,8 @@ msgstr ""
 msgid "Extra Address Info"
 msgstr "Información extra de la dirección"
 
-#: ./interfaces/organization.py:50
-msgid "Fax Number"
-msgstr "Número de Fax"
-
 #: ./content/organization.py:112
+#: ./interfaces/organization.py:50
 msgid "Fax number"
 msgstr "Número de Fax"
 
