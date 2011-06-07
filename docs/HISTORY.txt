@@ -6,6 +6,8 @@ Changelog for collective.contacts
 SVN
 ---
 
+  * Added Dutch translations, merged some translations [fvandijk]
+
   * Added arrows indicating the current sort column [simu]
 
   * Fixed _compute_title to return unicode (PlacelessTranslationService 
