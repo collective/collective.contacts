@@ -64,7 +64,7 @@ class IPerson(Interface):
         required=False,
     )
     workEmail3 = schema.TextLine(
-        title=_(u"3nd Work E-mail address (optional)"),
+        title=_(u"3rd Work E-mail address (optional)"),
         required=False,
     )
     photo = schema.Bytes(
