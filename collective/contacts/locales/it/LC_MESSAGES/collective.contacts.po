@@ -460,7 +460,7 @@ msgstr "Inizio il processo di importazione delle persone"
 #: ./content/person.py:318
 #: ./interfaces/organization.py:25
 msgid "State"
-msgstr "Paese"
+msgstr "Provincia"
 
 #: ./content/addressbook.py:51
 #: ./content/organization.py:184
@@ -613,7 +613,7 @@ msgstr "Personalizza vista"
 #. Default: "${m}/${d}"
 #: ./content/person.py:42
 msgid "date_format"
-msgstr "${d}/{$m}"
+msgstr "${d}/${m}"
 
 #. Default: "No results were found."
 #: ./browser/templates/search.pt:25
