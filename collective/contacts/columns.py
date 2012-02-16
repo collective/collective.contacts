@@ -1,12 +1,9 @@
-from Acquisition import aq_inner, aq_parent
-
 from zope.interface import implements
-from zope.component import adapts
 
 from collective.contacts import contactsMessageFactory as _
 from collective.contacts.content.person import Person
 from collective.contacts.content.organization import Organization
-from collective.contacts.interfaces import ICustomizableColumns, IGroup, IAddressBook, IOrganization
+from collective.contacts.interfaces import ICustomizableColumns
 
 class BaseColumns(object):
     

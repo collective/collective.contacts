@@ -1,7 +1,7 @@
 from Products.CMFPlone.utils import safe_unicode
 
 from collective.contacts import contactsMessageFactory as _
-from collective.contacts.browser.list import PersonListView, GroupListView
+from collective.contacts.browser.list import PersonListView
 
 class OrganizationView(PersonListView):
     """ Displays information about an organization

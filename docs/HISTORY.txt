@@ -54,6 +54,12 @@ SVN
   * Added French translation [toutpt]
 
   * Updated italian transaltion [keul]
+  
+  * pyflakes cleanup [keul]
+  
+  * removed import of json, unused and that brake Plone 3 compatibility [keul]
+  
+  * fixed ``find`` browser view, duplicated methods name [keul]
 
 1.4.4
 -----

@@ -1,5 +1,5 @@
 from collective.contacts import contactsMessageFactory as _
-from collective.contacts.browser.list import PersonListView, GroupListView
+from collective.contacts.browser.list import PersonListView
 
 class GroupView(PersonListView):
     """ Displays information about a group

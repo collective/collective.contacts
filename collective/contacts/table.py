@@ -1,12 +1,11 @@
-from Acquisition import aq_inner, aq_parent
+# -*- coding: utf-8 -*-
 
 from zope.i18n import translate
-from zope.interface import implements, Interface
-from zope.component import adapts, getAdapter, getUtility
+from zope.interface import implements
+from zope.component import getAdapter, getUtility
 from zope.schema.interfaces import IVocabularyFactory
 
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.PloneBatch import Batch
 from Products.Archetypes.Field import Image
 
 from collective.contacts.interfaces import ITable, ICustomizableColumns, ISearch, IOrganization

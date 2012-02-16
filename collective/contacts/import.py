@@ -10,7 +10,7 @@ from zope.component import getAdapter
 from Products.CMFCore.utils import getToolByName
 
 from collective.contacts import contactsMessageFactory as _
-from collective.contacts.interfaces import IImport, ISearch, IOrganization
+from collective.contacts.interfaces import IImport, ISearch
 
 class PersonCSVImport(object):
     implements(IImport)

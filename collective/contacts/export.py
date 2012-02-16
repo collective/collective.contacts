@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
+
 from StringIO import StringIO
 from DateTime import DateTime
-from DateTime.interfaces import DateError
 from base64 import encodestring
 import csv
 import time
@@ -12,7 +12,7 @@ from zope.interface import implements
 from zope.component import getUtility, getAdapter
 from zope.schema.interfaces import IVocabularyFactory
 
-from Products.ATContentTypes.lib.calendarsupport import rfc2445dt, n2rn, vformat
+from Products.ATContentTypes.lib.calendarsupport import rfc2445dt, vformat
 from Products.CMFPlone.utils import safe_callable, safe_unicode
 
 from collective.contacts import contactsMessageFactory as _
@@ -183,7 +183,6 @@ END:VCARD
         return ''
 
     def getEntry(self, object):
-        lines = []
         attrs = re.findall('%\([^\)]+\)', self.contents)
         map = {}
         for attr in attrs:

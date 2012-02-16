@@ -1,11 +1,9 @@
 from zope.component import getAdapter, getAdapters
-from zope.i18n import translate
 from plone.memoize.instance import memoize
 
 from Products.statusmessages.interfaces import IStatusMessage
 from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.CMFCore.utils import getToolByName
 
 from collective.contacts.interfaces import IImport
 from collective.contacts import contactsMessageFactory as _

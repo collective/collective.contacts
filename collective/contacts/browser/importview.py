@@ -12,8 +12,6 @@ from Products.statusmessages.interfaces import IStatusMessage
 
 from collective.contacts.imports import importCSVPersons, importCSVOrganizations
 
-from zLOG import LOG, INFO, WARNING
-from collective.contacts.config import PROJECTNAME
 import zope.i18n
 
 

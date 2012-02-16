@@ -2,9 +2,8 @@
 """Definition of the Person content type
 """
 
-from Acquisition import aq_parent 
 from AccessControl import ClassSecurityInfo
-from zope.interface import implements, directlyProvides
+from zope.interface import implements
 
 from Products.CMFCore import permissions
 from Products.CMFPlone.CatalogTool import sortable_title

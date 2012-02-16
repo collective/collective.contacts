@@ -1,7 +1,7 @@
 from Acquisition import aq_inner, aq_parent
 from AccessControl import Unauthorized
 
-from zope.component import getMultiAdapter, queryAdapter, queryMultiAdapter, getAdapters
+from zope.component import queryAdapter
 from plone.memoize.instance import memoize
 
 from Products.statusmessages.interfaces import IStatusMessage
@@ -12,7 +12,7 @@ from Products.CMFPlone.PloneBatch import Batch
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from collective.contacts.browser.list import AbstractListView
-from collective.contacts.interfaces import ITable, IAddressBook, IExport
+from collective.contacts.interfaces import IAddressBook, IExport
 from collective.contacts import contactsMessageFactory as _
 
 class AbstractSearchView(AbstractListView):

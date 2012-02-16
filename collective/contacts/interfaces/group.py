@@ -3,9 +3,6 @@
 from zope import schema
 from zope.interface import Interface
 
-from zope.app.container.constraints import contains
-from zope.app.container.constraints import containers
-
 from collective.contacts.interfaces import IPerson
 from collective.contacts import contactsMessageFactory as _
 

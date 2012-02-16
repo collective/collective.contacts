@@ -30,7 +30,7 @@ class FindOrganizationForm(PageForm):
         pass
 
     @form.action(_('label_cancel', default=u'Cancel'))
-    def action_search(self, action, data):
+    def action_cancel(self, action, data):
         pass
 
 class FindPersonForm(PageForm):
@@ -52,5 +52,5 @@ class FindPersonForm(PageForm):
         pass
 
     @form.action(_('label_cancel', default=u'Cancel'))
-    def action_search(self, action, data):
+    def action_cancel(self, action, data):
         pass

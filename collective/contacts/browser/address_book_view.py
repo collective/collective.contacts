@@ -3,11 +3,8 @@ from zope.interface import implements
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from collective.contacts.interfaces import IAddressBookView
-
-import json
 
 class AddressBookView(BrowserView):
     implements(IAddressBookView)

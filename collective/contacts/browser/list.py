@@ -7,7 +7,7 @@ from plone.memoize.instance import memoize
 from plone.app.layout.globals.interfaces import IViewView
 
 from Products.Five import BrowserView
-from Products.CMFCore.utils import getToolByName, _checkPermission
+from Products.CMFCore.utils import _checkPermission
 from Products.CMFCore.permissions import ModifyPortalContent
 from Products.CMFPlone.PloneBatch import Batch
 
