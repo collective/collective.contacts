@@ -53,6 +53,8 @@ SVN
 
   * Added French translation [toutpt]
 
+  * Updated italian transaltion [keul]
+
 1.4.4
 -----
 
