@@ -134,7 +134,7 @@ msgstr "Informazioni sull'organizzazione"
 #: ./content/person.py:306
 #: ./interfaces/organization.py:20
 msgid "Country"
-msgstr "Paese"
+msgstr "Nazione"
 
 #: ./content/person.py:145
 #: ./interfaces/person.py:26
@@ -613,7 +613,7 @@ msgstr "Personalizza vista"
 #. Default: "${m}/${d}"
 #: ./content/person.py:42
 msgid "date_format"
-msgstr "${d}/{m}"
+msgstr "${d}/{$m}"
 
 #. Default: "No results were found."
 #: ./browser/templates/search.pt:25
