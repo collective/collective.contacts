@@ -60,6 +60,8 @@ SVN
   * removed import of json, unused and that brake Plone 3 compatibility [keul]
   
   * fixed ``find`` browser view, duplicated methods name [keul]
+  
+  * fixed import errors on Plone 4.1 [keul]
 
 1.4.4
 -----
