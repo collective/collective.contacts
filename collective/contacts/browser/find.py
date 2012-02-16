@@ -1,7 +1,10 @@
 from zope.formlib import form
 from zope.app.form.browser import DropdownWidget
 
-from Products.Five.formlib.formbase import PageForm
+try:
+    from Products.Five.formlib.formbase import PageForm
+except ImportError:
+    from five.formlib.formbase import PageForm
 
 from collective.contacts import contactsMessageFactory as _
 from collective.contacts.interfaces import IPerson, IOrganization

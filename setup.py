@@ -36,6 +36,8 @@ setup(name='collective.contacts',
       classifiers=[
         'Framework :: Plone',
         'Framework :: Plone :: 3.3',
+        'Framework :: Plone :: 4.0',
+        'Framework :: Plone :: 4.1',
         'Intended Audience :: Developers',
         'Intended Audience :: End Users/Desktop',
         'Topic :: Software Development :: Libraries :: Python Modules',
