@@ -70,6 +70,12 @@ Changelog for collective.contacts
   * The "state" field not try to load states of the current selected country. Also,
     default country will be the one taken from the context language or global portal
     language [keul]
+  
+  * Removed old-style install script, dependency are handled using Generic Setup now
+    [keul]
+
+  * Removed the code that reindex all new index every time the products is reinstalled
+    [keul]
 
 1.4.4
 -----

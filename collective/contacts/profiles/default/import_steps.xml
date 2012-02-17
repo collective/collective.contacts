@@ -6,10 +6,10 @@
   <dependency step="toolset"/>
   Import various settings for collective.contacts.
  </import-step>
- <import-step id="reindex-collective.contacts" version="20090511-01"
-              handler="collective.contacts.setuphandlers.reindexCatalog"
-              title="Reindex the new catalogs">
+ <import-step id="addindex-collective.contacts" version="20120217-01"
+              handler="collective.contacts.setuphandlers.addKeyToCatalog"
+              title="add new indexes">
   <dependency step="catalog"/>
-  Reindex the new catalogs
+  Add new indexes
  </import-step>
 </import-steps>

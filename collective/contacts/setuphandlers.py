@@ -3,7 +3,7 @@
 from Products.CMFCore.utils import getToolByName
 from collective.contacts import logger
 
-INDEXES = ['shortName',
+wanted = ['shortName',
            'firstName',
            'lastName',
            'birthdate',
@@ -44,13 +44,21 @@ def importVarious(context):
     return "Added validator and action for the 'more' button to " \
            "the form controller."
 
-def reindexCatalog(context):
-    """
-    This method will reindex the 3 new indexes added to the catalog
-    """
+# form : http://maurits.vanrees.org/weblog/archive/2009/12/catalog
+def addKeyToCatalog(context):
+    '''Takes portal_catalog and adds a key to it
+    @param portal: context providing portal_catalog
+    '''
     site = context.getSite()
-    cat = getToolByName(site, 'portal_catalog')
-    indexes = cat.indexes()
-    for index in INDEXES:
-        if index in indexes:
-            cat.reindexIndex(index, site.REQUEST)
+    catalog = getToolByName(site, 'portal_catalog')
+    indexes = catalog.indexes()
+    # Specify the indexes you want, with ('index_name', 'index_type')
+
+    indexables = []
+    for name in wanted:
+        meta_type = 'FieldIndex' 
+        if name not in indexes:
+            catalog.addIndex(name, meta_type)
+            indexables.append(name)
+            logger.info("Added %s for field %s.", meta_type, name)
+
