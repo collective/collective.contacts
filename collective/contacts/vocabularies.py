@@ -13,6 +13,7 @@ from zope.schema import vocabulary
 
 from iso3166 import CountriesStatesParser
 from interfaces import ICountriesStates, IAddressBook
+from Products.CMFCore.utils import getToolByName
 
 
 from zope.i18nmessageid import MessageFactory
@@ -104,7 +105,9 @@ alsoProvides(Countries, IVocabularyFactory)
 
 @implementer(IVocabulary)
 def States( context ):
-    lang = context.getCountry() or context.Language().upper() or ltool.getDefaultLanguage().upper()
+    ltool = getToolByName(context, 'portal_languages')
+    lang = (hasattr(context, 'getCountry') and context.getCountry()) \
+            or context.Language().upper() or ltool.getDefaultLanguage().upper()
     utility = zapi.getUtility(ICountriesStates)
     return TitledVocabulary.fromTitles(utility.states(country=lang))
 alsoProvides(States, IVocabularyFactory)
