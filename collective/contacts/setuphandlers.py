@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+
+from Products.CMFCore.utils import getToolByName
+from collective.contacts import logger
+
 INDEXES = ['shortName',
            'firstName',
            'lastName',
@@ -44,7 +48,6 @@ def reindexCatalog(context):
     """
     This method will reindex the 3 new indexes added to the catalog
     """
-    from Products.CMFCore.utils import getToolByName
     site = context.getSite()
     cat = getToolByName(site, 'portal_catalog')
     indexes = cat.indexes()

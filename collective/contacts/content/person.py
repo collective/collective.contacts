@@ -7,7 +7,7 @@ from zope.interface import implements
 
 from Products.CMFCore import permissions
 from Products.CMFPlone.CatalogTool import sortable_title
-from Products.CMFPlone.utils import safe_unicode
+from Products.CMFPlone.utils import safe_unicode, getToolByName
 from Products.Archetypes import atapi
 from Products.Archetypes.Widget import TypesWidget
 from Products.Archetypes.Registry import registerWidget, registerField
@@ -306,6 +306,7 @@ PersonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
             description=_("Select a country")
         ),
         vocabulary_factory='contacts.countries',
+        default_method='_getDefaultCountry',
         required=False,
         searchable=1
     ),
@@ -477,6 +478,10 @@ class Person(base.ATCTContent):
         if self.firstName:
             names.append(self.firstName)
         return safe_unicode(', '.join(names))
+
+    def _getDefaultCountry(self):
+        ltool = getToolByName(self, 'portal_languages')
+        return self.Language().upper() or ltool.getDefaultLanguage().upper()
 
     def tag(self, **kwargs):
         """Generate image tag using the api of the ImageField

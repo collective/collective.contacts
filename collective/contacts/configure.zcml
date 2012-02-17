@@ -7,6 +7,7 @@
     i18n_domain="collective.contacts">
   
     <five:registerPackage package="." initialize=".initialize" />
+    <i18n:registerTranslations directory="locales" />
   
     <!-- Include the sub-packages that use their own configure.zcml files. -->
     <include package=".browser" />
@@ -30,8 +31,6 @@
         description="Remove Collective.Contacts"
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
-  
-    <i18n:registerTranslations directory="locales" />
   
     <include file="skins.zcml" />
     <include file="vocabularies.zcml" />

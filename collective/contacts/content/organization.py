@@ -4,6 +4,7 @@
 
 from zope.interface import implements
 
+from Products.CMFCore.utils import getToolByName
 from Products.Archetypes import atapi
 from Products.ATContentTypes.content import base
 from Products.ATContentTypes.content import schemata
@@ -36,6 +37,7 @@ OrganizationSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
             description=_(u"Organization's country"),
         ),
         vocabulary_factory='contacts.countries',
+        default_method='_getDefaultCountry',
         required=False,
         searchable=1,
     ),
@@ -248,5 +250,10 @@ class Organization(base.ATCTContent):
     
     # deprecated properties
     extra_address = DeprecatedATFieldProperty('extraAddress', 'extra_address')
+
+    def _getDefaultCountry(self):
+        ltool = getToolByName(self, 'portal_languages')
+        return self.Language().upper() or ltool.getDefaultLanguage().upper()
+
 
 atapi.registerType(Organization, PROJECTNAME)

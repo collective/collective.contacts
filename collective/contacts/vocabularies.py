@@ -104,8 +104,9 @@ alsoProvides(Countries, IVocabularyFactory)
 
 @implementer(IVocabulary)
 def States( context ):
+    lang = context.getCountry() or context.Language().upper() or ltool.getDefaultLanguage().upper()
     utility = zapi.getUtility(ICountriesStates)
-    return TitledVocabulary.fromTitles(utility.allStateValues())
+    return TitledVocabulary.fromTitles(utility.states(country=lang))
 alsoProvides(States, IVocabularyFactory)
 
 @implementer(IVocabulary)

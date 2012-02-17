@@ -6,7 +6,14 @@ from AccessControl import ClassSecurityInfo
 from zope.interface import implements
 
 from Products.Archetypes import atapi
-from Products.ATContentTypes.content import folder
+try:
+    from plone.app.folder.folder import ATFolder as Folder
+    from plone.app.folder.folder import ATFolderSchema as FolderSchema
+except ImportError:
+    # still Plone 3
+    from Products.ATContentTypes.content.folder import ATBTreeFolder as Folder
+    from Products.ATContentTypes.content.folder import ATBTreeFolderSchema as FolderSchema
+
 from Products.ATContentTypes.content import schemata
 
 from Products.ATExtensions.ateapi import *
@@ -19,7 +26,7 @@ from Products.Archetypes.interfaces import IObjectInitializedEvent, IObjectEdite
 from zope.component import adapter
 import transaction
 
-AddressBookSchema = folder.ATFolderSchema.copy() + atapi.Schema((
+AddressBookSchema = FolderSchema.copy() + atapi.Schema((
 
     # -*- Your Archetypes field definitions here ... -*-
     RecordsField(
@@ -65,11 +72,12 @@ schemata.finalizeATCTSchema(
     moveDiscussion=False
 )
 
-class AddressBook(folder.ATFolder):
+class AddressBook(Folder):
     """An address book"""
     implements(IAddressBook)
     security = ClassSecurityInfo()
 
+    meta_type = "AddressBook" # without this we can have bug in folder reordering
     portal_type = "Address Book"
     schema = AddressBookSchema
 

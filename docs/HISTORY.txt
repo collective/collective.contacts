@@ -3,8 +3,8 @@ Changelog for collective.contacts
 
     (name of developer listed in brackets)
 
-SVN
----
+1.5.0 (Unreleased)
+------------------
 
   * Added Dutch translations, merged some translations [fvandijk]
 
@@ -62,6 +62,14 @@ SVN
   * fixed ``find`` browser view, duplicated methods name [keul]
   
   * fixed import errors on Plone 4.1 [keul]
+  
+  * when on Plone 3, use LargeFolder as basic class for AddressBook.
+    Please note that on Plone 3 **this change is not compatible with older
+    versions** [keul]
+
+  * The "state" field not try to load states of the current selected country. Also,
+    default country will be the one taken from the context language or global portal
+    language [keul]
 
 1.4.4
 -----
