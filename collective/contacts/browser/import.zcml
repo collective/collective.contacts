@@ -3,6 +3,8 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="collective.contacts">
 
+  <include package="Products.CMFCore" />
+
   <browser:page
       for="..interfaces.IAddressBook"
       name="import"
