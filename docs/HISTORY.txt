@@ -1,16 +1,14 @@
 Changelog for collective.contacts
 =================================
 
-1.5.1 (unreleased)
+1.5.1 (2012-06-06)
 ------------------
 
-- Nothing changed yet.
+  * fixes permission error on Plone 4.2 [jpg]
 
 
 1.5.0 (2012-06-06)
-
-SVN
----
+------------------
 
   * Added Dutch translations, merged some translations [fvandijk]
 
